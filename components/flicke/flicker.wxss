@@ -1,0 +1,85 @@
+/* pages/cssCase/meteor/index.wxss */
+page {
+  /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(45deg);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.rain {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 100%;
+}
+
+.rain::before {
+  content: "";
+  position: absolute;
+  top: calc(50%);
+  right: 0px;
+  width: 1px;
+  height: 1px;
+  transform: translate(0, -50%);
+  border-radius: 100%;
+  box-sizing: content-box;
+  animation: shining 2s linear infinite;
+}
+
+.rain1 {
+  top: calc(50% - 130px);
+  left: calc(50%);
+}
+
+.rain2 {
+  top: calc(50% - 22px);
+  left: calc(50% - 154px);
+}
+
+.rain3 {
+  top: calc(50% - 188px);
+  left: calc(50% - 71px);
+}
+
+.rain4 {
+  top: calc(50% - 86px);
+  left: calc(50% - 147px);
+}
+
+.rain5 {
+  top: calc(50% - -111px);
+  left: calc(50% - 52px);
+}
+
+@keyframes shining {
+  0% {
+    padding: 0;
+    background-color: rgba(255, 255, 255, 1);
+    border: transparent;
+  }
+
+
+  50% {
+    padding: 5px;
+    background-color: transparent;
+    border: 1px solid white;
+  }
+
+  100% {
+    padding: 0;
+    background-color: rgba(255, 255, 255, 1);
+    border: transparent;
+  }
+}

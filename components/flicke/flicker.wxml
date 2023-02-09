@@ -1,0 +1,9 @@
+<view class="box">
+  <view class="rain"></view>
+  <!-- 不支持nth-child(n)选择器 -->
+  <view class="rain rain1"></view>
+  <view class="rain rain2"></view>
+  <view class="rain rain3"></view>
+  <view class="rain rain4"></view>
+  <view class="rain rain5"></view>
+</view>

@@ -1,0 +1,35 @@
+.swiper-item {
+  display: block;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  background-color: salmon;
+}
+
+.logoView {
+  margin-top: 10px;
+  height: 50px;
+  display: flex;
+  align-content: center;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  background-color: salmon;
+  margin-right: 40px;
+}
+
+.enter {
+  width: 140px;
+  height: 40px;
+  background-color: salmon;
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+}

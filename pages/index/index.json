@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "FunctinonBar": "/components/functionBar/bar",
+    "TaskList": "/components/taskList/task",
+    "flicker":"/components/flicke/flicker",
+    "accordion": "/components/accordion/accordion"
+  }
+}

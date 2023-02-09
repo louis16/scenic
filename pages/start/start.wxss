@@ -1,0 +1,44 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.bgImg {
+  width: 100vw;
+  height: 100vh;
+}
+
+.bgmask {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(27, 5, 2, 0.411);
+  z-index: 20;
+  top: 0;
+}
+
+.descWrap {
+  background-color: rgba(20, 16, 16, 0.7);
+  padding: 7px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 10px;
+  color: white;
+  max-height: 200px;
+  overflow: auto;
+  box-sizing: content-box;
+}
+
+.startNow {
+  background-color: teal;
+  z-index: 30;
+  position: absolute;
+  bottom: 50px;
+  width: 40vw;
+  height: 7vh;
+  line-height: 7vh;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}

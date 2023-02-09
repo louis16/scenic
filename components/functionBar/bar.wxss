@@ -1,0 +1,38 @@
+/* components/functionBar/bar.wxss */
+.barContainer {
+  width: 100vw;
+  height: 10vh;
+  position: absolute;
+  /* background-color: rgb(24, 58, 58); */
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.funcItem {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(187, 174, 174, 0.5);
+  position: absolute;
+  font-size:small;
+  opacity: 0;
+  transform: translateX(48px);
+}
+.itemIcon{
+  width: 25px;
+  height: 25px;
+}
+.toggle {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: white;
+  z-index: 10;
+}

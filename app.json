@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/chooseScenic/chooseScenic",
+    "pages/scenicDetail/scenicDetail",
+    "pages/index/index",
+    "pages/start/start"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

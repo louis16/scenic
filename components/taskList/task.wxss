@@ -1,0 +1,27 @@
+.listContainer {
+  position: absolute;
+  width: 100vw;
+  height: 70vh;
+  background-color: #008080;
+  bottom: -80vh;
+  z-index: 20;
+  overflow: hidden;
+}
+.closeBtn{
+  position: absolute;
+  right: 10px;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 40px;
+  line-height: 40px;
+}
+
+.body {
+  /* 相对于整个弹出框减去顶部固定位置的高度 */
+  height: calc(100% - 40px);
+  overflow-y: auto;
+}

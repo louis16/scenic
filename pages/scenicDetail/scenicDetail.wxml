@@ -1,0 +1,27 @@
+<view>
+  <swiper>
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <view class="swiper-item"> {{item}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="logoView">
+    <image class="logo" src="" mode="" alt="logo" />
+    <text>景区名{{desc}}</text>
+  </view>
+  <view>
+    <text>景区介绍</text>
+    <view>
+      <text>联系电话</text>
+      <text>11111</text>
+    </view>
+    <view>
+      <text>景区地址</text>
+      <text>地址地址地址地址</text>
+    </view>
+  </view>
+  <view class="enter" bindtap="onHomePage">
+    进入景区
+  </view>
+</view>

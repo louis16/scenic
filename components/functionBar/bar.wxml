@@ -1,0 +1,21 @@
+<view class="barContainer">
+  <view class="funcItem" animation="{{anim1}}" bindtap="clickItem" data-type="1" data-name="我的">
+    <image class="itemIcon" src="/static/imgs/demoMark.jpg" mode="aspectFill" />
+    <text>我的</text>
+  </view>
+  <view class=" funcItem" animation="{{anim2}}" bindtap="clickItem" data-type="2" data-name="队伍">
+    <image class="itemIcon" src="/static/imgs/demoMark.jpg" mode="aspectFill" />
+    <text>队伍</text>
+  </view>
+  <view class="funcItem" animation="{{anim3}}" bindtap="clickItem" data-type="3" data-name="任务">
+    <image class="itemIcon" src="/static/imgs/demoMark.jpg" mode="aspectFill" />
+    <text>任务</text>
+  </view>
+  <view class="funcItem" animation="{{anim4}}" bindtap="clickItem" data-type="4" data-name="背包">
+    <image class="itemIcon" src="/static/imgs/demoMark.jpg" mode="aspectFill" />
+    <text>背包</text>
+  </view>
+  <view class="toggle" bindtap="toggle">
+    <text>展开</text>
+  </view>
+</view>

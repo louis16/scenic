@@ -1,0 +1,19 @@
+.topMenu {
+  position: absolute;
+  z-index: 9999;
+}
+
+.topWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  position: relative;
+}
+
+.titleWrap {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+}

@@ -1,0 +1,11 @@
+<view class="topMenu" style="width: 100vw; height:{{navHeight}}px;padding-right: {{navObjWid}}px;">
+  <!-- <view class="topMenu" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;"> -->
+  <view class="topWrap" style="height: {{titleHeight}}px;top: {{statusBarHeight}}px;">
+    <view hidden="{{hiddenBack}}" bindtap="goBack">
+      <text>返回</text>
+    </view>
+    <view wx:if="title" class="titleWrap">
+      <text>{{title}}</text>
+    </view>
+  </view>
+</view>

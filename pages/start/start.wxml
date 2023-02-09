@@ -1,0 +1,15 @@
+<view>
+  <topContainer title="自定义名称" />
+  <view class="container">
+    <image src="/static/imgs/demoMark.jpg" mode="aspectFill" class="bgImg" />
+    <view class="bgmask">
+      <view class="descWrap">
+        <text user-select>背景描述背景描述背景描述背景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背1111111景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背2222景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背33333景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背444444
+        </text>
+      </view>
+    </view>
+    <view class="startNow" bindtap="startNow">
+      立即出发
+    </view>
+  </view>
+</view>
