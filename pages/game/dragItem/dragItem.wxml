@@ -1,0 +1,8 @@
+<view catchtap="itemClick">
+	<view  class="info">
+		<view class="info__item">
+			<image class="image" src="{{itemData.images}}"></image>
+      <text style="position: absolute;left: 8px;">{{itemData.dragId}}</text>
+		</view>
+	</view>
+</view>

@@ -1,15 +1,15 @@
-<view>
-  <topContainer title="自定义名称" />
+
   <view class="container">
     <image src="/static/imgs/demoMark.jpg" mode="aspectFill" class="bgImg" />
     <view class="bgmask">
       <view class="descWrap">
-        <text user-select>背景描述背景描述背景描述背景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背1111111景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背2222景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背33333景描述背景描述背景描背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述背景描述述背景描述背景描述背444444
+        <text user-select class="descText">自然保护区，位于四川省西北部岷山山脉南段的阿坝藏族羌族自治州九寨沟县种，鸟类93种，爬行类4种，两栖类4种。
+自然保护区，位于四川省西北部岷山山脉南段的阿坝藏族羌族自治州九寨沟县种，鸟类93种，爬行类4种，两栖类4种。
         </text>
       </view>
     </view>
-    <view class="startNow" bindtap="startNow">
-      立即出发
+    <view class="startNow">
+      <image src="/static/icon/icon_swip.png" style="transform: translateX({{scrollX}}rpx);" mode="aspectFill" class="icon" bindtap="startNow" bindtouchmove="moveIcon" bindtouchend="endMove"/>
+      <text class="goText">向右滑动出发</text>
     </view>
   </view>
-</view>

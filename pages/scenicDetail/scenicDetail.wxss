@@ -1,35 +1,131 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.swiper {
+    height: 460rpx;
+}
+
 .swiper-item {
-  display: block;
-  height: 150px;
-  text-align: center;
-  line-height: 150px;
-  background-color: salmon;
+    display: block;
+    height: 460rpx;
+    text-align: center;
+    line-height: 460rpx;
+    background-color: #90ADD8;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0 40rpx;
+}
+
+.container::before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 60rpx;
+    background-color: white;
+    transform: translate(-40rpx, -58rpx);
+    border-radius: 48rpx 48rpx 0 0;
 }
 
 .logoView {
-  margin-top: 10px;
-  height: 50px;
-  display: flex;
-  align-content: center;
-  line-height: 50px;
-  padding: 0 20px;
+    margin-top: 30rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    font-family: 'PingFang SC Bold';
+    font-weight: 400;
+    font-size: 32rpx;
+    line-height: 32rpx;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
-  background-color: salmon;
-  margin-right: 40px;
+    width: 80rpx;
+    height: 80rpx;
+    background-color: #90ADD8;
+    margin-right: 8rpx;
+}
+
+.titleView {
+    margin: 46rpx 0 32rpx;
+    height: 34rpx;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    font-family: 'PingFang SC Bold';
+    font-weight: 400;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    z-index: 20;
+}
+
+.line {
+    position: absolute;
+    width: 112rpx;
+    height: 16rpx;
+    bottom: 0;
+    background-color: #C2D4EE;
+    z-index: 10;
+}
+
+.descText {
+    font-family: 'PingFang SC Regular';
+    font-weight: 400;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+
+.telephone {
+    display: block;
+    font-family: 'PingFang SC Regular';
+    font-weight: normal;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #90ADD8;
+    text-decoration: underline;
+    margin-top: 32rpx;
+}
+
+
+.addressView {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.addressIcon {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 8rpx;
+}
+
+.address {
+    font-family: PingFang SC Regular;
+    font-weight: normal;
+    font-size: 28rpx;
+    line-height: 40rpx;
 }
 
 .enter {
-  width: 140px;
-  height: 40px;
-  background-color: salmon;
-  line-height: 40px;
-  text-align: center;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+    width: 410rpx;
+    height: 80rpx;
+    background-color: #90ADD8;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'PingFang SC Regular';
+    font-size: 32rpx;
+    font-weight: normal;
+    line-height: 80rpx;
+    color: #ffffff;
+    border-radius: 28rpx;
+    margin-top: 72rpx;
 
 }

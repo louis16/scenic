@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/chooseScenic/chooseScenic",
     "pages/scenicDetail/scenicDetail",
+    "pages/chooseScenic/chooseScenic",
     "pages/index/index",
-    "pages/start/start"
+    "pages/game/game",
+    "pages/start/start",
+    "pages/testPage/test"
   ],
   "window": {
     "navigationStyle": "custom"

@@ -1,3 +1,4 @@
+<!-- 扫码点闪烁动画 -->
 <view class="box">
   <view class="rain"></view>
   <!-- 不支持nth-child(n)选择器 -->

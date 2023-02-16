@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "exam":"/components/exam/exam",
+    "scrollnews":"/components/scrollnews/scrollnews"
+  }
+}

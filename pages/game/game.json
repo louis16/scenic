@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "drag":"/components/drag/drag",
+		"drag-item": "./dragItem/dragItem"
+  }
+}

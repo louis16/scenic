@@ -31,7 +31,7 @@ const INIT_MARKER2 = {
   height: '34px',
   rotate: 0,
   alpha: 1,
-  id: 2
+  id: 2142
 };
 Page({
   data: {
@@ -60,7 +60,13 @@ Page({
     }
   },
   marktap(e) {
-    console.log('@@@marktap', e)
+    //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
+    let timer = setTimeout(() => {
+      this.setData({
+        showTaskModal: true
+      })
+      clearTimeout(timer)
+    }, 160)
   },
   maptap() {
     this.setData({

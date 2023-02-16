@@ -1,0 +1,4 @@
+<view>
+  <scrollnews/>
+  <exam />
+</view>

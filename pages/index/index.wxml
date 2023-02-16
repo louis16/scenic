@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <map longitude="103.33938" latitude="29.547287" scale="15" max-scale="17" min-scale="13" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite bindmarkertap="{{marktap}}" bindtap="maptap">
+  <map longitude="103.33938" latitude="29.547287" scale="15" max-scale="17" min-scale="13" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite bindmarkertap="marktap" bindtap="maptap">
   </map>
   <FunctinonBar bind:clickItem="handleFuncClick" />
   <!-- <flicker/> -->

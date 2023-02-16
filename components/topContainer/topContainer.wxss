@@ -1,6 +1,8 @@
 .topMenu {
-  position: absolute;
   z-index: 9999;
+}
+.absolute{
+    position: absolute;
 }
 
 .topWrap {
