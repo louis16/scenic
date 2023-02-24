@@ -18,7 +18,7 @@
         {
           "name": "",
           "pathName": "pages/scenicDetail/scenicDetail",
-          "query": "id=33333",
+          "query": "id=1",
           "launchMode": "default",
           "scene": null
         },
@@ -28,8 +28,23 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/panScroll/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/testPage/test",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "libVersion": "2.30.1"
 }

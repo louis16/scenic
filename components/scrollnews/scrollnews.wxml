@@ -1,4 +1,3 @@
-<!--pages/another/scrNews/index.wxml-->
-<view class="box flex-row">
-  <text class="r">纯CSS文字滚动播放11111纯CSS文字滚动播放222222纯CSS文字滚动播放33333纯CSS文字滚动播放44444纯CSS文字滚动播放55555</text>
+<view class="box " style="top: {{navHeight}}px;">
+	<text class="r">纯CSS文字滚动播放11111纯CSS文字滚动播放222222纯CSS文字滚动播放33333纯CSS文字滚动播放44444纯CSS文字滚动播放55555</text>
 </view>

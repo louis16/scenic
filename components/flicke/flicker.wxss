@@ -1,12 +1,3 @@
-/* pages/cssCase/meteor/index.wxss */
-page {
-  /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  height: 90vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-}
 
 .box {
   position: relative;

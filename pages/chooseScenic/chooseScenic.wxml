@@ -1,20 +1,28 @@
-<view>
-  <view>
-    <input type="text" style="border: 10rpx solid red;" placeholder="输入景区名称" />
-    <view>
-      <text data-filter="all" bindtap="changeFilter">全部景区</text>
-      <text data-filter="filter1" bindtap="changeFilter">筛选1</text>
-    </view>
-  </view>
-  <view wx:for="{{scenicList}}" wx:key="index" class="item" data-id="{{item.id}}" bindtap="goToScenicDetail">
-    <text>{{item.name}}</text>
-  </view>
-  <view bindtap="tt1">
-    11111111111111
-  </view>
-  <view bindtap="tt12">
-    22222222222
-  </view>
-  <button class="authbtn" type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserProfile">获取用户信息</button>
-  <button class="authbtn" open-type="getPhoneNumber" type="primary" bindgetphonenumber="onGetPhoneNumber">获取手机号码</button>
+<view class="wrap">
+	<topContainer title="选择景区" style="background-color: #F1F2F6;" />
+	<input type="text" class="inputWrap" placeholder="输入景区名称" />
+	<view class="filterView">
+		<view>
+			<text class="filter {{currentFilter ==='all' ? 'activeFilter' : ''}}" data-filter="all" bindtap="changeFilter">全部景区</text>
+			<text class="filter {{currentFilter ==='closest' ? 'activeFilter' : ''}}" data-filter="closest" bindtap="changeFilter">离我最近</text>
+		</view>
+		<text class="chooseDistric">地区筛选</text>
+	</view>
+	<block wx:if="{{scenicList.length > 0}}">
+		<scroll-view class="safeBottom">
+			<view wx:for="{{scenicList}}" wx:key="index" class="item" data-id="{{item.id}}" bindtap="goToScenicDetail">
+				<image src="" mode="" class="itemIcon" />
+				<view class="itemTitle">
+					<text class="title">{{item.name}}</text>
+					<text class="desc">{{item.description}}</text>
+				</view>
+			</view>
+		</scroll-view>
+	</block>
+	<block wx:else>
+		<view class="emptyView">
+			<image src="/static/icon/img_null.png" mode="" />
+			<text>什么都没有搜到哦</text>
+		</view>
+	</block>
 </view>

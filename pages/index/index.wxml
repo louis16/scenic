@@ -1,25 +1,35 @@
 <!--index.wxml-->
 <view class="container">
-  <map longitude="103.33938" latitude="29.547287" scale="15" max-scale="17" min-scale="13" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite bindmarkertap="marktap" bindtap="maptap">
-  </map>
-  <FunctinonBar bind:clickItem="handleFuncClick" />
-  <!-- <flicker/> -->
-  <!-- 任务 -->
-  <block wx:if="{{showTaskModal}}">
-    <TaskList bind:closeModal="closeModal" title="任务1">
-      <view slot="header" style="height: 10vh;background-color: red;">
-        <text>头部</text>
-      </view>
-      <accordion slot="body" />
-    </TaskList>
-  </block>
-  <!-- 背包 -->
-  <block wx:if="{{showPackageModal}}">
-    <TaskList bind:closeModal="closeModal" title="背包">
-      <view slot="header" style="height: 10vh;background-color: red;">
-        <text>背包头部</text>
-      </view>
-      <accordion slot="body" />
-    </TaskList>
-  </block>
+	<topContainer absolute style="background: linear-gradient(180deg, rgba(144, 173, 216, 0.90) 0%, rgba(144, 173, 216, 0.76) 57%, rgba(144, 173, 216, 0.00) 100%);">
+		<view class="logoView">
+			<image src="" mode="" />
+			<text>名称</text>
+		</view>
+		<image class="searchIcon" src="/static/icon/search.png" mode="" />
+	</topContainer>
+	<scrollnews>
+	</scrollnews>
+	<map longitude="103.33020865186211" latitude="29.54261859112155" scale="15" max-scale="17" min-scale="13" markers="{{markers}}" style="width: 100vw;height: 100vh;" bindmarkertap="marktap" bindtap="maptap">
+	</map>
+	<!-- enable-satellite  -->
+	<FunctinonBar bind:clickItem="handleFuncClick" />
+	<!-- <flicker/> -->
+	<!-- 任务 -->
+	<block wx:if="{{showTaskModal}}">
+		<TaskList bind:closeModal="closeModal" title="任务1">
+			<view slot="header" style="height: 10vh;background-color: red;">
+				<text>头部</text>
+			</view>
+			<accordion slot="body" />
+		</TaskList>
+	</block>
+	<!-- 背包 -->
+	<block wx:if="{{showPackageModal}}">
+		<TaskList bind:closeModal="closeModal" title="背包">
+			<view slot="header" style="height: 10vh;background-color: red;">
+				<text>背包头部</text>
+			</view>
+			<accordion slot="body" />
+		</TaskList>
+	</block>
 </view>

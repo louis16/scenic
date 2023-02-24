@@ -1,58 +1,81 @@
 const {
-  getWxCode,
-  getWxUserInfo
+	get
+} = require('../../util/http')
+const {
+	getWxCode,
+	getWxUserInfo
 } = require('../../util/loginUtil')
+const {
+	showLoading,
+	hideLoading
+} = require('../../util/util')
+const app = getApp()
 Page({
-  data: {
-    scenicList: [{
-      id: 111,
-      name: 1111
-    }, {
-      id: 222,
-      name: 2222
-    }, {
-      id: 33333,
-      name: 3333
-    }, {
-      id: 44444,
-      name: 44444
-    }]
-  },
-  onLoad(options) {},
-  onReady() {},
-  onShow() {},
-  onHide() {},
-  onUnload() {},
-  onPullDownRefresh() {},
-  onReachBottom() {},
-  onShareAppMessage() {},
-  goToScenicDetail(event) {
-    const {
-      id
-    } = event.target.dataset
-    wx.navigateTo({
-      url: `/pages/scenicDetail/scenicDetail?id=${id}`,
-    })
-  },
-  changeFilter(event) {
-    const {
-      filter
-    } = event.target.dataset
-    wx.showToast({
-      title: filter,
-    })
-  },
-  getUserProfile(e) {
-    console.log(e)
-  },
-  onGetPhoneNumber(e) {
-    console.log(e)
-  },
-  tt1() {
-    getWxUserInfo()
-  },
-  tt12() {
-    console.log(123)
-    getWxCode()
-  }
+	data: {
+		scenicList: [],
+		currentFilter: 'all',
+		height: app.globalData.windowHeight
+	},
+	onLoad(options) {
+		this.getScenicList()
+	},
+	onReady() {},
+	onShow() {},
+	onHide() {},
+	onUnload() {},
+	onPullDownRefresh() {
+		this.getScenicList(true)
+	},
+	onReachBottom() {
+		this.getScenicList(false)
+	},
+	onShareAppMessage() {},
+	goToScenicDetail(event) {
+		const {
+			id
+		} = event.currentTarget.dataset
+		wx.navigateTo({
+			url: `/pages/scenicDetail/scenicDetail?id=${id}`,
+		})
+	},
+	getScenicList(refresh) {
+		showLoading()
+		get({
+			url: '/sceneries',
+		}).then(scenicListResult => {
+			this.setData({
+				scenicList: [...scenicListResult.datas]
+			})
+		}).finally(() => {
+			if (refresh) {
+				wx.stopPullDownRefresh()
+			}
+			hideLoading()
+		})
+	},
+	changeFilter(event) {
+		const {
+			filter
+		} = event.target.dataset
+		this.setData({
+			currentFilter: filter
+		})
+		this.getScenicList(filter === 'all')
+	},
+	getUserProfile(e) {
+		console.log(e)
+	},
+	onGetPhoneNumber(e) {
+		console.log(e)
+	},
+	tt1() {
+		getWxUserInfo()
+	},
+	tt12() {
+		console.log(123)
+		getWxCode().then(res => {
+			console.log(res)
+		})
+	}
+
 })

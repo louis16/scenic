@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/scenicDetail/scenicDetail",
     "pages/chooseScenic/chooseScenic",
+    "pages/scenicDetail/scenicDetail",
     "pages/index/index",
     "pages/game/game",
     "pages/start/start",

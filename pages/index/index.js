@@ -8,8 +8,8 @@ const INIT_MARKER = {
     borderRadius: 10,
     display: 'ALWAYS'
   },
-  latitude: 29.547287,
-  longitude: 103.33938,
+  latitude: 29.54261859112155,
+  longitude: 103.33020865186211,
   iconPath: '../../static/imgs/Marker1_Activated@3x.png',
   width: '34px',
   height: '34px',
@@ -24,8 +24,8 @@ const INIT_MARKER2 = {
     borderRadius: 2,
     display: 'BYCLICK'
   },
-  latitude: 29.547387,
-  longitude: 103.33838,
+  latitude: 29.53931087790219,
+  longitude: 103.33432795683859,
   iconPath: '../../static/imgs/demoMark.jpg',
   width: '34px',
   height: '34px',
@@ -68,7 +68,8 @@ Page({
       clearTimeout(timer)
     }, 160)
   },
-  maptap() {
+  maptap(e) {
+	  console.log(e,11111111)
     this.setData({
       showTaskModal: false,
       showPackageModal: false

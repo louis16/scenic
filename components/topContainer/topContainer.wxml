@@ -1,11 +1,12 @@
-<view class="topMenu {{absolute? 'absolute': ''}}" style="width: 100vw; height:{{navHeight}}px;padding-right: {{navObjWid}}px;{{style}}">
-    <!-- <view class="topMenu" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;"> -->
-    <view class="topWrap" style="height: {{titleHeight}}px;top: {{statusBarHeight}}px;">
-        <view hidden="{{hiddenBack}}" bindtap="goBack">
-            <text>返回</text>
-        </view>
-        <view wx:if="title" class="titleWrap">
-            <text>{{title}}</text>
-        </view>
-    </view>
+<view class="topMenu {{absolute? 'absolute': ''}} " style="width: {{width}}px; height:{{navHeight}}px;padding-right: {{navObjWid}}px;{{style}}">
+	<!-- <view class="topMenu" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;"> -->
+	<view class="topWrap" style="height: {{titleHeight}}px;top: {{statusBarHeight}}px;padding-right: {{navObjWid}}px;">
+		<view hidden="{{hiddenBack}}" bindtap="goBack">
+			<text>返回</text>
+		</view>
+		<view wx:if="title" class="titleWrap">
+			<text>{{title}}</text>
+		</view>
+		<slot></slot>
+	</view>
 </view>

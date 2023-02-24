@@ -16,7 +16,7 @@ Component({
         style: {
             type: String,
             value: ""
-        }
+        },
     },
     data: {
         navHeight: app.globalData.navHeight, //导航栏高度
@@ -25,6 +25,7 @@ Component({
         navObjWid: app.globalData.navObjWid, //胶囊宽度+距右距离
         titleHeight: app.globalData.navHeight - app.globalData.statusBarHeight,
         statusBarHeight: app.globalData.statusBarHeight,
+        width: app.globalData.windowWidth,
         navWidth: app.globalData.navWidth
     },
     methods: {

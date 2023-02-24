@@ -1,6 +1,6 @@
-page {
+/* page {
   padding-top: 110rpx;
-}
+} */
 
 .drag-item-wrap {
   background: #f7f7f7;

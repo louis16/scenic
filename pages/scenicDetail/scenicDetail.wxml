@@ -1,49 +1,50 @@
 <view class="wrap">
-    <topContainer hiddenBack="{{false}}" title="自定义名称" style="background-color: goldenrod;"/>
-    <swiper class="swiper" autoplay interval="2000" easing-function="easeInOutCubic" circular>
-        <block wx:for="{{background}}" wx:key="*this">
-            <swiper-item>
-                <view class="swiper-item"> {{item}}</view>
-            </swiper-item>
-        </block>
-    </swiper>
-    <view class="container safeBottom">
-        <view class="logoView">
-            <image class="logo" src="" mode="" alt="logo" />
-            <text>景区名{{desc}}</text>
-        </view>
-        <view>
-            <view>
-                <view class="titleView">
-                    <text class="title">景区介绍</text>
-                    <view class="line" />
-                </view>
-                <text class="descText">峨眉山积极探索“冰雪+”玩法，推动冰雪运动与文旅、休闲、体育等资源深度融合，营造冰雪消费新场景。
-                    景区以冰雪温泉欢乐季为契机，携雷洞坪滑雪场、红珠山森林温泉、灵秀温泉、瑜伽温泉等产品推出了“冰雪温泉欢乐季·五千万消费券大派送”等系列优惠，带动高山区冰雪游、中山区观光游与低山区温泉游同步升温。
-                    滑雪、温泉、亲子等特色主题产品成为游客“打卡”的热门项目。</text>
-            </view>
-            <view>
-                <view class="titleView">
-                    <text class="title">景区介绍</text>
-                    <view class="line" />
-                </view>
-                <text class="telephone" bindtap="callTele" data-phone="028-26532544">028-26532544</text>
-                <text class="telephone" bindtap="callTele" data-phone="028-26532544">028-26532544</text>
-            </view>
-            <view>
-                <view class="titleView">
-                    <text class="title">景区介绍</text>
-                    <view class="line" />
-                </view>
-                <view class="addressView" bindtap="openMapApp">
-                    <image src="/static/icon/icon_navigation.png" mode="" class="addressIcon" />
-                    <text class="address">四川省乐山市峨眉山市名山南路41号峨眉山西南门附近</text>
-                </view>
-            </view>
-        </view>
-        <view class="enter" bindtap="onHomePage">
-            进入景区
-        </view>
-    </view>
-    <map longitude="" latitude="" hidden="true" id="map"/>
+	<topContainer hiddenBack="{{false}}" title="景区详情" />
+	<swiper class="swiper" autoplay interval="2000" easing-function="easeInOutCubic" circular>
+		<block wx:for="{{background}}" wx:key="*this">
+			<swiper-item>
+				<view class="swiper-item"> {{item}}</view>
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="container safeBottom">
+		<view class="logoView">
+			<image class="logo" src="{{logo}}" mode="" alt="logo" />
+			<text>{{detailData.name}}</text>
+		</view>
+		<view>
+			<view> 
+				<view class="titleView">
+					<text class="title">景区介绍</text>
+					<view class="line" />
+				</view>
+				<text class="descText">{{detailData.description}}</text>
+			</view>
+			<block wx:if="{{detailData.phones}}">
+				<view>
+					<view class="titleView">
+						<text class="title">联系电话</text>
+						<view class="line" />
+					</view>
+					<text wx:for="{{detailData.phones}}" wx:key="index" class="telephone" bindtap="callTele" data-phone="{{item}}">{{item}}</text>
+				</view>
+			</block>
+			<block wx:if="{{detailData.city}}">
+				<view>
+					<view class="titleView">
+						<text class="title">景区地址</text>
+						<view class="line" />
+					</view>
+					<view class="addressView" bindtap="openMapApp">
+						<image src="/static/icon/icon_navigation.png" mode="" class="addressIcon" />
+						<text class="address">{{detailData.city}}{{detailData.address}}</text>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view class="enter" bindtap="onHomePage">
+			进入景区
+		</view>
+	</view>
+	<map longitude="" latitude="" hidden="true" id="map" />
 </view>

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+	"usingComponents": {
+		"topContainer": "/components/topContainer/topContainer"
+	},
+	"enablePullDownRefresh": true,
+	"onReachBottomDistance": 350
 }

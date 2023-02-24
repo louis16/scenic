@@ -46,7 +46,7 @@
 .logo {
     width: 80rpx;
     height: 80rpx;
-    background-color: #90ADD8;
+    background-color: #90add828;
     margin-right: 8rpx;
 }
 

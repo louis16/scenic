@@ -1,5 +1,9 @@
-.safeBottom{
-    margin-bottom: 100rpx;
-    /* margin-bottom: constant(safe-area-inset-bottom); */
-    /* margin-bottom: env(safe-area-inset-bottom); */
+page {
+	padding-bottom: calc(env(safe-area-inset-bottom) + 10rpx);
+	padding-bottom: calc(constant(safe-area-inset-bottom)+ 10rpx);
+}
+
+.safeBottom {
+	margin-bottom: constant(safe-area-inset-bottom);
+	margin-bottom: env(safe-area-inset-bottom);
 }

@@ -3,6 +3,8 @@
     "FunctinonBar": "/components/functionBar/bar",
     "TaskList": "/components/taskList/task",
     "flicker":"/components/flicke/flicker",
-    "accordion": "/components/accordion/accordion"
+	"accordion": "/components/accordion/accordion",
+	"topContainer":"/components/topContainer/topContainer",
+    "scrollnews":"/components/scrollnews/scrollnews"
   }
 }
