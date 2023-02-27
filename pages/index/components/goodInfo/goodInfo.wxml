@@ -1,0 +1,5 @@
+<view class="mask" bindtap="close">
+	<view class="contentWrap">
+			{{itemData.id}}
+	</view>
+</view>

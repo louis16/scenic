@@ -1,0 +1,13 @@
+<block>
+	<view class="wrap">
+		<view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">
+			<view class="itemLine">
+				<text class="itemNum">{{item.id}}</text>
+				<image class="itemImg" src="" mode="" />
+				<view wx:if="{{index%2 === 0}}" class="viewMask">
+					合成
+				</view>
+			</view>
+		</view>
+	</view>
+</block>

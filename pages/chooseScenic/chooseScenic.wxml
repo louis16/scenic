@@ -25,4 +25,5 @@
 			<text>什么都没有搜到哦</text>
 		</view>
 	</block>
+	<button class="authbtn" open-type="getPhoneNumber" type="primary" bindgetphonenumber="onGetPhoneNumber">获取手机号码</button>
 </view>

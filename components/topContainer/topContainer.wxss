@@ -16,6 +16,15 @@
 	position: relative;
 }
 
+.backIcon {
+	width: 28rpx;
+	height: 28rpx;
+	border: 4rpx solid #333333;
+	transform: rotate(45deg);
+	border-top: none;
+	border-right: none;
+}
+
 .titleWrap {
 	position: absolute;
 	right: 50%;

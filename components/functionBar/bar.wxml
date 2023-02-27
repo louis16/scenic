@@ -13,7 +13,7 @@
 	</view>
 	<view class="funcItem" bindtap="clickItem" data-type="3" data-name="我的">
 		<image class="itemIcon" src="/static/icon/package.png" mode="aspectFill" />
-		<text>我的</text>
+		<text>背包</text>
 	</view>
 	<view class="funcItem" bindtap="clickItem" data-type="4" data-name="我的">
 		<image class="itemIcon" src="/static/icon/aboutMe.png" mode="aspectFill" />

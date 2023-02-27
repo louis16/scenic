@@ -1,4 +1,7 @@
-<view>
-  <scrollnews/>
-  <exam />
-</view>
+<scroll-view>
+	<scrollnews />
+	<exam />
+	<exam />
+	<exam />
+	<exam />
+</scroll-view>

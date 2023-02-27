@@ -1,7 +1,11 @@
 const {
-	get
+	request
 } = require('../../util/http')
-const util = require('../../util/util')
+const {
+	showLoading,
+	hideLoading,
+	compareVersion
+} = require('../../util/util')
 const app = getApp()
 Page({
 	data: {
@@ -11,14 +15,15 @@ Page({
 	},
 	onLoad(options) {
 		if (options.id) {
-			get({
+			showLoading()
+			request({
 				url: `/sceneries/${options.id}`
 			}).then(detailResult => {
 				this.setData({
 					detailData: detailResult,
 					logo: `${ app.globalData.fileUrl}/${detailResult.logo}`
 				})
-			})
+			}).finally(() => hideLoading())
 		} else {
 			wx.reLaunch({
 				url: '/pages/chooseScenic/chooseScenic',
@@ -52,7 +57,7 @@ Page({
 	},
 	openMapApp() {
 		const version = wx.getSystemInfoSync().SDKVersion
-		if (util.compareVersion(version, '2.14.0') < 0) {
+		if (compareVersion(version, '2.14.0') < 0) {
 			wx.showToast({
 				title: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。',
 				icon: 'none'

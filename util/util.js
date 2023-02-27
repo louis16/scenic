@@ -29,9 +29,31 @@ const showLoading = (option) => {
 	})
 }
 const hideLoading = () => wx.hideLoading()
+const storageSync = (key, data) => {
+	return wx.setStorageSync(key, data)
+}
+const storage = (key, data, callback) => {
+	wx.setStorage({
+		key,
+		data,
+		success() {
+			callback && callback()
+		}
+	})
+}
+const getStorageSync = (key) => {
+	return wx.getStorageSync(key)
+}
 
+const removeStorageSync = (key) => wx.removeStorageSync(key)
+const TOKEN = 'TOKEN'
 module.exports = {
 	compareVersion,
 	showLoading,
-	hideLoading
+	hideLoading,
+	TOKEN,
+	storage,
+	storageSync,
+	getStorageSync,
+	removeStorageSync
 };

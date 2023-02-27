@@ -1,0 +1,18 @@
+.mask {
+	width: 100vw;
+	height: 100vh;
+	background-color: #00000030;
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.contentWrap {
+	width: 614rpx;
+	min-height: 680rpx;
+	backdrop-filter: blur(34px);
+	box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}

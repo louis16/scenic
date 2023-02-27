@@ -1,10 +1,6 @@
 const {
-	get
+	request
 } = require('../../util/http')
-const {
-	getWxCode,
-	getWxUserInfo
-} = require('../../util/loginUtil')
 const {
 	showLoading,
 	hideLoading
@@ -14,10 +10,13 @@ Page({
 	data: {
 		scenicList: [],
 		currentFilter: 'all',
-		height: app.globalData.windowHeight
+		height: app.globalData.windowHeight,
+		pagenation: {
+			current_page: 1,
+		}
 	},
 	onLoad(options) {
-		this.getScenicList()
+		this.getScenicList(true)
 	},
 	onReady() {},
 	onShow() {},
@@ -27,7 +26,9 @@ Page({
 		this.getScenicList(true)
 	},
 	onReachBottom() {
-		this.getScenicList(false)
+		if (this.data.pagenation.current_page < this.data.pagenation.total_page) {
+			this.getScenicList(false)
+		}
 	},
 	onShareAppMessage() {},
 	goToScenicDetail(event) {
@@ -39,12 +40,29 @@ Page({
 		})
 	},
 	getScenicList(refresh) {
+		let currentPage = this.data.pagenation.current_page
+		refresh && (currentPage = 1)
 		showLoading()
-		get({
-			url: '/sceneries',
+		request({
+			url: `/sceneries?page=${currentPage}&per_page=10`,
 		}).then(scenicListResult => {
+			const {
+				datas,
+				current_page,
+				total_page,
+			} = scenicListResult
+			let temp = this.data.scenicList
+			if (!refresh) {
+				temp.push(...datas)
+			} else {
+				temp = datas
+			}
 			this.setData({
-				scenicList: [...scenicListResult.datas]
+				scenicList: [...temp],
+				pagenation: {
+					current_page: current_page + 1,
+					total_page,
+				}
 			})
 		}).finally(() => {
 			if (refresh) {
@@ -57,25 +75,10 @@ Page({
 		const {
 			filter
 		} = event.target.dataset
-		this.setData({
-			currentFilter: filter
-		})
-		this.getScenicList(filter === 'all')
-	},
-	getUserProfile(e) {
-		console.log(e)
+		this.getScenicList(true)
 	},
 	onGetPhoneNumber(e) {
 		console.log(e)
-	},
-	tt1() {
-		getWxUserInfo()
-	},
-	tt12() {
-		console.log(123)
-		getWxCode().then(res => {
-			console.log(res)
-		})
 	}
 
 })

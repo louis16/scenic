@@ -1,19 +1,26 @@
+import {
+	getStorageSync,
+	TOKEN
+} from "./util";
+
 //导入模块使用相对路径，不能使用绝对路径
 const base_url = 'http://api.ysr.uninote.com.cn'
-
+let HEADER_TOKEN = 'bearer '
 //定义错误码信息
 const tips = {
 	1: "亲:小E迷路了,请等等我"
 };
 
 
-function get(params) {
+function request(params) {
+	HEADER_TOKEN = `${HEADER_TOKEN} ${getStorageSync(TOKEN)}`
 	return new Promise((resolve, reject) => {
 		wx.request({
 			url: base_url + params.url,
-			method: 'GET',
+			method: params.method || 'GET',
 			data: params.data,
 			header: {
+				"Authorization": HEADER_TOKEN,
 				"content-type": "application/json"
 			},
 			success: (res) => {
@@ -37,7 +44,6 @@ function get(params) {
 				}
 			},
 			fail: (res) => {
-				console.log(res, '111111')
 				wx.showToast({
 					title: "网络异常,请检查网络连接!",
 					icon: 'none',
@@ -71,6 +77,6 @@ function _showToas(msg) {
 	});
 }
 export {
-	get,
+	request,
 	_showToas
 };

@@ -16,12 +16,24 @@
 	<!-- <flicker/> -->
 	<!-- 任务 -->
 	<block wx:if="{{showTaskModal}}">
-		<TaskList bind:closeModal="closeModal" title="任务1">
-			<view slot="header" style="height: 10vh;background-color: red;">
-				<text>头部</text>
+		<TaskList bind:closeModal="closeModal" title="任务" bind:toggleExpand="toggleExpand">
+			<view class="head" slot="header">
+				<view class="hd">
+					<block wx:for="{{navList}}" wx:key="navList">
+						<view class="hd_flex {{nav_type == index ? 'hd_flex_on' : ''}}" catchtap="changeType" data-index="{{index}}">{{item}}
+						</view>
+					</block>
+				</view>
 			</view>
-			<accordion slot="body" />
+			<view slot="body" style="height: {{height}}vh">
+				<GoodsList list="{{goodsList}}" bind:goodclick="toogleItemInfo" />
+			</view>
+			<!-- <accordion slot="body" />       -->
 		</TaskList>
+	</block>
+	<!-- 物品点击后显示的详情 -->
+	<block wx:if="{{showItem}}">
+		<ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}"/>
 	</block>
 	<!-- 背包 -->
 	<block wx:if="{{showPackageModal}}">

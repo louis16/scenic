@@ -1,10 +1,31 @@
 // app.js
+const {
+	request
+} = require('./util/http')
+const {
+	TOKEN,
+	storageSync
+} = require('./util/util')
 App({
 	onLaunch() {
 		// 登录
 		wx.login({
 			success: res => {
+				console.log(res)
 				// 发送 res.code 到后台换取 openId, sessionKey, unionId
+				request({
+					url: "/auth/login",
+					method: "POST",
+					data: {
+						code: res.code,
+						gender: 1,
+						birthday: '2023-02-02'
+					}
+				}).then(res => {
+					storageSync(TOKEN, res.access_token)
+				}).catch(err => {
+					console.error(err)
+				})
 			}
 		})
 		// 自定义头部
@@ -26,7 +47,6 @@ App({
 				this.globalData.windowHeight = res.windowHeight;
 				this.globalData.windowWidth = res.windowWidth;
 				this.globalData.fileUrl = 'http://file.ysr.uninote.com.cn';
-				// console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
 			},
 			fail(err) {
 				console.log(err);

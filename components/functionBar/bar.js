@@ -1,4 +1,3 @@
-// components/functionBar/bar.js
 Component({
 	properties: {
 
@@ -15,7 +14,7 @@ Component({
 				type: e.currentTarget.dataset.type,
 				name: e.currentTarget.dataset.name
 			});
-			this.closeAnimation.call(this)
+			// this.closeAnimation()
 			this.setData({
 				isShow: false
 			})

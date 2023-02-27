@@ -1,13 +1,16 @@
 <!--components/taskList/task.wxml-->
-<view class="listContainer" animation="{{upScroll}}">
-  <view class="title">
-    <text>{{title}}</text>
-    <view bindtap="changeModalStatus" class="closeBtn">
-      <text>关闭</text>
-    </view>
-  </view>
-  <view class="body">
-    <slot name="header"></slot>
-    <slot name="body"></slot>
-  </view>
+<view class="listContainer " animation="{{upScroll}}">
+	<view class="title">
+		<view bindtap="changeExpand" class="expandBtn">
+			<text>{{isExpand? '折叠': '展开'}}</text>
+		</view>
+		<text>{{title}}</text>
+		<view bindtap="changeModalStatus" class="closeBtn">
+			<text>关闭</text>
+		</view>
+	</view>
+	<view class="body">
+		<slot name="header"></slot>
+		<slot name="body"></slot>
+	</view>
 </view>

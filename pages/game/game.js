@@ -54,7 +54,6 @@ Page({
     });
   },
   change(e) {
-    // console.log("change", e.detail.listData);
   },
 
   itemClick(e) {
