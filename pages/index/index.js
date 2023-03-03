@@ -1,4 +1,13 @@
 // index.js
+const {
+	mapIcon
+} = require("../../util/constants");
+const {
+	getStorageSync,
+	showLoading,
+	hideLoading
+} = require("../../util/util");
+
 // 获取应用实例
 const app = getApp()
 const INIT_MARKER = {
@@ -36,21 +45,26 @@ const INIT_MARKER2 = {
 
 Page({
 	data: {
-		markers: [{
-			...INIT_MARKER
-		}, {
-			...INIT_MARKER2
-		}],
+		markers: [],
 		showTaskModal: false,
 		showPackageModal: false,
 		navList: ['全部', '任务物品', '合成物品'],
 		nav_type: 0,
 		goodsList: [],
-		height: 60
+		height: 60,
+		currentTabKey: '3',
+		scenicDetal: {},
+		titleAnimation: false, // 标题是否滚动
+		showInput: false
 	},
 	onLoad() {
+		wx.startLocationUpdate({
+			complete: function (e) {
+				console.log(e)
+			}
+		})
 		let arr = new Array()
-		for (let index = 0; index < 70; index++) {
+		for (let index = 0; index < 7; index++) {
 			arr.push({
 				id: index
 			})
@@ -59,41 +73,83 @@ Page({
 			goodsList: arr
 		})
 		this.cloneList = JSON.parse(JSON.stringify(arr))
+		let detail = JSON.parse(getStorageSync('scenicDetail'))
+		this.setData({
+			scenicDetal: detail,
+			// titleAnimation: (detail.name.length * 34) > 302, //一个字体34rpx, 整个容器宽度302
+		})
+
+
+		setTimeout(() => {
+			this.setData({
+				markers: [{
+					...INIT_MARKER,
+					latitude: Number(detail.lat) - 0.001,
+					longitude: Number(detail.lng),
+					iconPath: 'https://uninote.com.cn/__pic/2023/01/a5/81/e31b8a4c05adf822ca77fa698370.png'
+				}, {
+					...INIT_MARKER2,
+					latitude: Number(detail.lat) - 0.004,
+					longitude: Number(detail.lng),
+					iconPath: mapIcon['normal']
+				}]
+			})
+		}, 1000)
 	},
 	handleFuncClick(event) {
 		const {
 			type,
-			name
 		} = event.detail
-		if (type === '3') {
-			this.setData({
-				showTaskModal: true
-			})
+		let dataObject = {}
+		if (type === this.data.currentTabKey) {
+			dataObject = {
+				showPackageModal: false,
+				showTaskModal: false,
+				currentTabKey: '3'
+			}
 		} else if (type === '4') {
-			this.setData({
-				showPackageModal: true
-			})
+			dataObject = {
+				showTaskModal: true,
+				showPackageModal: false,
+				currentTabKey: type
+			}
+		} else if (type === '5') {
+			dataObject = {
+				showPackageModal: true,
+				showTaskModal: false,
+				currentTabKey: type
+			}
+		} else if (type === '3') {
+			dataObject = {
+				showPackageModal: false,
+				showTaskModal: false,
+				currentTabKey: type
+			}
 		}
+		this.setData({
+			...dataObject,
+			showInput: false
+		})
 	},
 	marktap(e) {
 		//因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
 		let timer = setTimeout(() => {
 			this.setData({
-				showTaskModal: true
+				showTaskModal: true,
+				currentTabKey: '4'
 			})
 			clearTimeout(timer)
 		}, 160)
 	},
 	maptap(e) {
-		this.setData({
-			showTaskModal: false,
-			showPackageModal: false
-		})
+		this.closeModal()
 	},
 	closeModal() {
 		this.setData({
 			showTaskModal: false,
-			showPackageModal: false
+			showPackageModal: false,
+			showInput: false,
+			currentTabKey: '3'
 		})
 	},
 
@@ -138,5 +194,30 @@ Page({
 				itemData: detail.detail
 			})
 		}
+	},
+	toggleInput() {
+		this.setData({
+			showInput: !this.data.showInput
+		})
+	},
+	searchResult(event) {
+		let arr = []
+		for (let index = 0; index < 10; index++) {
+			arr.push({
+				id: Math.random().toFixed(2)
+			})
+		}
+		showLoading()
+		setTimeout(() => {
+			this.setData({
+				searchResults: event.detail.value ? arr : []
+			})
+			hideLoading()
+		}, 1000)
+	},
+	handleBlur() {
+		// this.setData({
+		// 	showInput: false
+		// })
 	}
 })

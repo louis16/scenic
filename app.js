@@ -1,28 +1,21 @@
-// app.js
 const {
-	request
-} = require('./util/http')
+	login
+} = require('./util/api')
 const {
 	TOKEN,
-	storageSync
+	storageSync,
 } = require('./util/util')
 App({
 	onLaunch() {
 		// 登录
 		wx.login({
 			success: res => {
-				console.log(res)
 				// 发送 res.code 到后台换取 openId, sessionKey, unionId
-				request({
-					url: "/auth/login",
-					method: "POST",
-					data: {
-						code: res.code,
-						gender: 1,
-						birthday: '2023-02-02'
-					}
+				login({
+					code: res.code,
 				}).then(res => {
 					storageSync(TOKEN, res.access_token)
+					this.globalData.token = res.access_token
 				}).catch(err => {
 					console.error(err)
 				})
@@ -50,6 +43,20 @@ App({
 			},
 			fail(err) {
 				console.log(err);
+			}
+		})
+		wx.loadFontFace({
+			global: true,
+			family: 'family',
+			source: 'url("http://file.ysr.uninote.com.cn/fronts/hycyj.ttf")',
+			success: function (res) {
+				console.log(res,'success')
+			},
+			fail: function (res) {
+				console.log(res,'fail')
+			},
+			complete: function (res) {
+				console.log(res,'comp')
 			}
 		})
 	},

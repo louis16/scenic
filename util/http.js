@@ -1,19 +1,23 @@
 import {
+	storageSync,
 	getStorageSync,
 	TOKEN
 } from "./util";
+import {
+	refreshToken
+} from "./api"
 
 //导入模块使用相对路径，不能使用绝对路径
-const base_url = 'http://api.ysr.uninote.com.cn'
-let HEADER_TOKEN = 'bearer '
+const base_url = 'https://api.ysr.uninote.com.cn'
 //定义错误码信息
 const tips = {
 	1: "亲:小E迷路了,请等等我"
 };
 
 
+
 function request(params) {
-	HEADER_TOKEN = `${HEADER_TOKEN} ${getStorageSync(TOKEN)}`
+	const HEADER_TOKEN = `Bearer ${getStorageSync(TOKEN)}`
 	return new Promise((resolve, reject) => {
 		wx.request({
 			url: base_url + params.url,
@@ -34,6 +38,11 @@ function request(params) {
 					} else { //请求失败
 						_showToas(res.data.msg.toString());
 					}
+				} else if (statusCode === '403') {
+					reject(403)
+					refreshToken().then(res => {
+						storageSync(TOKEN, res.access_token)
+					})
 				} else {
 					wx.showToast({
 						title: "网络请求错误(" + statusCode + ")",

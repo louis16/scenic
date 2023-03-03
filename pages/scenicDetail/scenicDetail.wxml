@@ -1,50 +1,46 @@
 <view class="wrap">
-	<topContainer hiddenBack="{{false}}" title="景区详情" />
-	<swiper class="swiper" autoplay interval="2000" easing-function="easeInOutCubic" circular>
-		<block wx:for="{{background}}" wx:key="*this">
-			<swiper-item>
-				<view class="swiper-item"> {{item}}</view>
-			</swiper-item>
-		</block>
-	</swiper>
-	<view class="container safeBottom">
-		<view class="logoView">
-			<image class="logo" src="{{logo}}" mode="" alt="logo" />
-			<text>{{detailData.name}}</text>
-		</view>
-		<view>
-			<view> 
-				<view class="titleView">
-					<text class="title">景区介绍</text>
-					<view class="line" />
-				</view>
-				<text class="descText">{{detailData.description}}</text>
-			</view>
-			<block wx:if="{{detailData.phones}}">
-				<view>
-					<view class="titleView">
-						<text class="title">联系电话</text>
-						<view class="line" />
-					</view>
-					<text wx:for="{{detailData.phones}}" wx:key="index" class="telephone" bindtap="callTele" data-phone="{{item}}">{{item}}</text>
-				</view>
-			</block>
-			<block wx:if="{{detailData.city}}">
-				<view>
-					<view class="titleView">
-						<text class="title">景区地址</text>
-						<view class="line" />
-					</view>
-					<view class="addressView" bindtap="openMapApp">
-						<image src="/static/icon/icon_navigation.png" mode="" class="addressIcon" />
-						<text class="address">{{detailData.city}}{{detailData.address}}</text>
-					</view>
-				</view>
-			</block>
-		</view>
-		<view class="enter" bindtap="onHomePage">
-			进入景区
-		</view>
-	</view>
-	<map longitude="" latitude="" hidden="true" id="map" />
+  <topContainer hiddenBack="{{false}}" title="景区详情" />
+  <swiper class="swiper" autoplay interval="2000" easing-function="easeInOutCubic" circular>
+    <swiper-item wx:for="{{images}}" wx:key="index">
+      <image class="swiper-item" src="{{item.path}}" mode="" />
+    </swiper-item>
+  </swiper>
+  <view class="container safeBottom">
+    <view class="logoView">
+      <image class="logo" src="{{logo}}" mode="" alt="logo" />
+      <text>{{detailData.name}}</text>
+    </view>
+    <view>
+      <view>
+        <view class="titleView">
+          <image class="titleIcon" src="/static/icon/scenicDesc.png" mode="" />
+          <text class="title">景区介绍</text>
+        </view>
+        <text class="descText">{{detailData.description}}</text>
+      </view>
+      <view wx:if="{{detailData.phones}}">
+        <view class="titleView topLine">
+          <image class="titleIcon" src="/static/icon/telephone.png" mode="" />
+          <text class="title">联系电话</text>
+        </view>
+        <view class="telephone">
+          <text wx:for="{{detailData.phones}}" wx:key="index" bindtap="callTele" data-phone="{{item}}">{{index!==0?'    、':''}}{{item}}</text>
+        </view>
+      </view>
+      <view wx:if="{{detailData.city}}">
+        <view class="titleView topLine">
+          <image class="titleIcon" src="/static/icon/location.png" mode="" />
+          <text class="title">景区地址</text>
+        </view>
+        <view class="addressView" bindtap="openMapApp">
+          <image src="/static/icon/icon_navigation.png" mode="" class="addressIcon" />
+          <text class="address">{{detailData.city}}{{detailData.address}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="enter" bindtap="onHomePage">
+      进入景区
+    </view>
+  </view>
+  <map longitude="" latitude="" hidden="true" id="map" />
 </view>

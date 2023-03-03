@@ -3,7 +3,7 @@
   "projectname": "scenic",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": true
   },
   "condition": {
     "miniprogram": {
@@ -18,7 +18,7 @@
         {
           "name": "",
           "pathName": "pages/scenicDetail/scenicDetail",
-          "query": "id=1",
+          "query": "id=7",
           "launchMode": "default",
           "scene": null
         },
@@ -30,8 +30,8 @@
           "scene": null
         },
         {
-          "name": "",
-          "pathName": "pages/panScroll/index",
+          "name": "选择景区",
+          "pathName": "pages/chooseScenic/chooseScenic",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -40,6 +40,27 @@
           "name": "",
           "pathName": "pages/testPage/test",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "game",
+          "pathName": "pages/game/game",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "选择景区",
+          "pathName": "pages/chooseScenic/chooseScenic",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "景区详情",
+          "pathName": "pages/scenicDetail/scenicDetail",
+          "query": "id=10",
           "launchMode": "default",
           "scene": null
         }

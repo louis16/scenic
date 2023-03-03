@@ -7,22 +7,79 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	width: 200px;
+	transition: width 0.5s;
 }
 
-.logoView>image {
+.hideLogoView {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 0px;
+	transition: width .5s;
+	/* visibility: hidden; */
+}
+
+.hideInput {
+	width: 0;
+	transition: width 0.5s;
+	/* visibility: hidden; */
+}
+
+.showInput {
+	padding: 16rpx 24rpx;
+	width: 200px;
+	transition: width 0.5s;
+	background-color: #FFFFFF;
+	border-radius: 28rpx;
+	font-family: 'PingFang SC Regular';
+	font-size: 28rpx;
+	font-weight: 400;
+	line-height: 40rpx;
+	display: flex;
+	flex-direction: row;
+	transform: translateX(60rpx);
+}
+
+.rightAngle {
+	width: 20rpx;
+	height: 20rpx;
+	position: absolute;
+	background-color: transparent;
+	border: 6rpx solid #ffffff;
+	border-left: none;
+	border-bottom: none;
+	left: -60rpx;
+	top: 0;
+	transform: translateY(80%) rotate(-135deg);
+}
+
+.logo {
 	width: 48rpx;
 	height: 48rpx;
-	background-color: rebeccapurple;
 	margin-right: 12rpx;
 }
 
-.logoView>text {
+.titleWrap {
 	font-family: 'PingFang SC Bold';
 	font-size: 34rpx;
 	font-weight: 400;
 	line-height: 34rpx;
-	text-align: center;
 	color: #ffffff;
+	position: relative;
+	width: 302rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.animation {
+	position: relative;
+	white-space: nowrap;
+	animation: 5s loop linear infinite normal;
+	display: inline-block;
 }
 
 .searchIcon {
@@ -57,7 +114,7 @@
 	bottom: 0;
 	width: 0%;
 	height: 6rpx;
-	background-image: linear-gradient(to right, #90ADD8 , #ffffff);
+	background-image: linear-gradient(to right, #90ADD8, #ffffff);
 	/* background   : #FA871E; */
 	border-radius: 3rpx;
 	left: 50%;
@@ -80,4 +137,14 @@
 .hd_flex_on::after {
 	width: 40%;
 	transition: .3s width linear;
+}
+
+@keyframes loop {
+	0% {
+		right: 0px;
+	}
+
+	100% {
+		right: 100%;
+	}
 }

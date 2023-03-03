@@ -1,0 +1,81 @@
+.wrap {
+	width: 100vw;
+	height: 100vh;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.chooseText {
+	display: block;
+	margin: 300rpx 0 56rpx 0;
+	font-family: 'PingFang SC Bold';
+	font-size: 40rpx;
+	font-weight: 400;
+	line-height: 40rpx;
+	text-align: center;
+}
+
+.iconWrap {
+	display: flex;
+	justify-content: center;
+}
+.iconItem{
+	/* position: relative; */
+	display: flex;
+	flex-direction: column;
+}
+
+.sexIcon {
+	width: 128rpx;
+	height: 128rpx;
+	margin-bottom: 22rpx;
+}
+.active{
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 28rpx;
+	color: #ffffff;
+}
+
+.margin {
+	margin-right: 144rpx;
+}
+
+.chooseData {
+	margin: 0 180rpx 280rpx 180rpx;
+}
+
+.picker {
+	position: relative;
+	padding-bottom: 10rpx;
+	border-bottom: 1rpx solid #F4F4F4;
+}
+
+.picker::after {
+	content: " ";
+	display: block;
+	width: 14rpx;
+	height: 14rpx;
+	position: absolute;
+	background-color: transparent;
+	border: 4rpx solid #999999;
+	border-left: none;
+	border-bottom: none;
+	right: 0;
+	top: 0;
+	transform: translate(-20%, 50%) rotate(45deg);
+}
+
+.start {
+	display: inline-block;
+	padding: 24rpx 140rpx;
+	background-color: #90ADD8;
+	border-radius: 28rpx;
+	font-family: 'PingFang SC Regular';
+	font-size: 32rpx;
+	font-weight: normal;
+	line-height: 32rpx;
+	color: #ffffff;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}

@@ -1,15 +1,13 @@
-
-  <view class="container">
-    <image src="/static/imgs/demoMark.jpg" mode="aspectFill" class="bgImg" />
-    <view class="bgmask">
-      <view class="descWrap">
-        <text user-select class="descText">自然保护区，位于四川省西北部岷山山脉南段的阿坝藏族羌族自治州九寨沟县种，鸟类93种，爬行类4种，两栖类4种。
-自然保护区，位于四川省西北部岷山山脉南段的阿坝藏族羌族自治州九寨沟县种，鸟类93种，爬行类4种，两栖类4种。
-        </text>
-      </view>
-    </view>
-    <view class="startNow">
-      <image src="/static/icon/icon_swip.png" style="transform: translateX({{scrollX}}rpx);" mode="aspectFill" class="icon" bindtap="startNow" bindtouchmove="moveIcon" bindtouchend="endMove"/>
-      <text class="goText">向右滑动出发</text>
-    </view>
-  </view>
+<view class="container">
+	<image src="{{data.img}}" mode="aspectFill" class="bgImg" />
+	<view wx:if="{{data.desc}}" class="bgmask">
+		<view class="descWrap">
+			<text user-select class="descText">{{data.desc}}</text>
+		</view>
+	</view>
+	<!-- <view class="startNow">
+		<image src="/static/icon/icon_swip.png" style="transform: translateX({{scrollX}}rpx);" mode="aspectFill" class="icon" bindtap="startNow" bindtouchmove="moveIcon" bindtouchend="endMove" />
+		<text class="goText">向右滑动出发</text>
+	</view> -->
+	<button class="goBtn" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">出发</button>
+</view>

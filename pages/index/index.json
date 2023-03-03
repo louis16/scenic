@@ -7,7 +7,8 @@
 		"topContainer": "/components/topContainer/topContainer",
 		"scrollnews": "/components/scrollnews/scrollnews",
 		"GoodsList": "./components/goodList/goodsList",
-		"ItemInfo": "./components/goodInfo/goodInfo"
+		"ItemInfo": "./components/goodInfo/goodInfo",
+		"ResultList": "./components/searchResultList/resultList"
 	},
 	"disableScroll": true
 }

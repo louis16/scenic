@@ -1,18 +1,27 @@
 <!--index.wxml-->
 <view class="container">
 	<topContainer absolute style="background: linear-gradient(180deg, rgba(144, 173, 216, 0.90) 0%, rgba(144, 173, 216, 0.76) 57%, rgba(144, 173, 216, 0.00) 100%);">
-		<view class="logoView">
-			<image src="" mode="" />
-			<text>名称</text>
-		</view>
-		<image class="searchIcon" src="/static/icon/search.png" mode="" />
+		<block wx:if="{{!showInput}}">
+			<view class="{{showInput ?'hideLogoView':'logoView'}}">
+				<image class="logo" src="{{scenicDetal.logo}}" mode="" />
+				<view class="titleWrap">
+					<text class="{{titleAnimation && 'animation'}}">{{scenicDetal.name}}</text>
+				</view>
+			</view>
+			<image bindtap="toggleInput" class="searchIcon" src="/static/icon/search.png" mode="" />
+		</block>
+		<block wx:else>
+			<view class="{{showInput ? 'showInput':'hideInput'}}">
+				<view bindtap="toggleInput" class="rightAngle" />
+				<input auto-focus="{{true}}" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" bindblur="handleBlur" />
+			</view>
+		</block>
 	</topContainer>
-	<scrollnews>
-	</scrollnews>
-	<map longitude="103.33020865186211" latitude="29.54261859112155" scale="15" max-scale="17" min-scale="13" markers="{{markers}}" style="width: 100vw;height: 100vh;" bindmarkertap="marktap" bindtap="maptap">
+	<scrollnews />
+	<map longitude="{{scenicDetal.lng}}" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" latitude="{{scenicDetal.lat}}" scale="15" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" bindmarkertap="marktap" bindtap="maptap">
 	</map>
 	<!-- enable-satellite  -->
-	<FunctinonBar bind:clickItem="handleFuncClick" />
+	<FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
 	<!-- <flicker/> -->
 	<!-- 任务 -->
 	<block wx:if="{{showTaskModal}}">
@@ -33,7 +42,7 @@
 	</block>
 	<!-- 物品点击后显示的详情 -->
 	<block wx:if="{{showItem}}">
-		<ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}"/>
+		<ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}" />
 	</block>
 	<!-- 背包 -->
 	<block wx:if="{{showPackageModal}}">
@@ -43,5 +52,9 @@
 			</view>
 			<accordion slot="body" />
 		</TaskList>
+	</block>
+	<!-- 搜索结果展示 -->
+	<block wx:if="{{showInput}}">
+		<ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />
 	</block>
 </view>

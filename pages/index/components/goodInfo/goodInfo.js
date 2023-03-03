@@ -9,8 +9,18 @@ Component({
 		}
 	},
 
+	lifetimes: {
+		attached() {
+			setTimeout(() => {
+				this.setData({
+					content: false
+				})
+			}, 800)
+		}
+	},
 	data: {
-
+		list: [{}, {}, {}, {}],
+		content: true
 	},
 
 	methods: {

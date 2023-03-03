@@ -9,7 +9,8 @@ Component({
 			value: "任务"
 		},
 		toggleExpand: {
-			type: Function
+			type: Function,
+			value: null
 		}
 	},
 
@@ -35,22 +36,22 @@ Component({
 	},
 
 	methods: {
-		openModal: function () {
-			const upScroll = wx.createAnimation({
-				duration: 200,
-				timingFunction: 'linear'
-			})
-			upScroll.translateY('-80vh').step();
-			this.setData({
-				upScroll: upScroll.export(),
-			})
-		},
+		// openModal: function () {
+		// 	const upScroll = wx.createAnimation({
+		// 		duration: 200,
+		// 		timingFunction: 'linear'
+		// 	})
+		// 	upScroll.translateY('-80vh').step();
+		// 	this.setData({
+		// 		upScroll: upScroll.export(),
+		// 	})
+		// },
 		closeModal: function () {
 			const upScroll = wx.createAnimation({
 				duration: 500,
 				timingFunction: 'linear'
 			})
-			upScroll.translateY('80vh').step();
+			upScroll.translateY('60vh').step();
 			this.setData({
 				upScroll: upScroll.export(),
 			})
@@ -71,7 +72,11 @@ Component({
 			})
 		},
 		changeModalStatus() {
-			this.triggerEvent("closeModal")
-		}
+			this.closeModal()
+			let timer = setTimeout(() => {
+				this.triggerEvent("closeModal")
+				clearTimeout(timer)
+			}, 160)
+		},
 	}
 })

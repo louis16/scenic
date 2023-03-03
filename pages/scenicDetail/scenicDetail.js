@@ -1,27 +1,34 @@
 const {
-	request
-} = require('../../util/http')
+	getScenicDetail
+} = require('../../util/api')
 const {
 	showLoading,
 	hideLoading,
-	compareVersion
+	compareVersion,
+	storageSync
 } = require('../../util/util')
 const app = getApp()
 Page({
 	data: {
 		detailData: {},
 		background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-		logo: ''
+		logo: '',
+		images:[]
 	},
 	onLoad(options) {
 		if (options.id) {
 			showLoading()
-			request({
-				url: `/sceneries/${options.id}`
-			}).then(detailResult => {
+			getScenicDetail(options.id).then(detailResult => {
+				detailResult.images = detailResult.images?.map(item => {
+					return {
+						...item,
+						path: `${app.globalData.fileUrl}/${item.path}`
+					}
+				})
 				this.setData({
 					detailData: detailResult,
-					logo: `${ app.globalData.fileUrl}/${detailResult.logo}`
+					images:detailResult.images,
+					logo: `${app.globalData.fileUrl}/${detailResult.logo}`
 				})
 			}).finally(() => hideLoading())
 		} else {
@@ -38,8 +45,13 @@ Page({
 	onReachBottom() {},
 	onShareAppMessage() {},
 	onHomePage() {
+		storageSync('scenicDetail', JSON.stringify({
+			...this.data.detailData,
+			logo: this.data.logo
+		}))
+		let img = `${app.globalData.fileUrl}/${this.data.detailData.welcome_background}`
 		wx.navigateTo({
-			url: '/pages/start/start',
+			url: `/pages/start/start?desc=${this.data.detailData.background_desc}&img=${img}`,
 		})
 	},
 	callTele(event) {
