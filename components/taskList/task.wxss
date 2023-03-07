@@ -2,20 +2,19 @@
 	/* position: absolute; */
 	width: 100vw;
 	background-color: #ffffff;
-	/* bottom: -80vh; */
 	z-index: 20;
 	overflow: hidden;
 	border-radius: 48rpx 48rpx 0 0;
 	padding-bottom: (122rpx +env(safe-area-inset-bottom));
 }
-.expand{
+/* .expand{
 	height: 80vh;
 	transition: .3s all linear;
 }
 .close{
 	height: 60vh;
 	transition: .3s all linear;
-}
+} */
 .expandBtn{
 	position: absolute;
 	left: 10px;

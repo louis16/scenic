@@ -1,7 +1,7 @@
 <!--components/taskList/task.wxml-->
-<view class="listContainer " animation="{{upScroll}}">
+<view class="listContainer"  animation="{{upScroll}}">
 	<view class="title">
-		<view bindtap="changeExpand" class="expandBtn">
+		<view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
 			<text>{{isExpand? '折叠': '展开'}}</text>
 		</view>
 		<text>{{title}}</text>

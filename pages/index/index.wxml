@@ -1,60 +1,86 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
-	<topContainer absolute style="background: linear-gradient(180deg, rgba(144, 173, 216, 0.90) 0%, rgba(144, 173, 216, 0.76) 57%, rgba(144, 173, 216, 0.00) 100%);">
-		<block wx:if="{{!showInput}}">
-			<view class="{{showInput ?'hideLogoView':'logoView'}}">
-				<image class="logo" src="{{scenicDetal.logo}}" mode="" />
-				<view class="titleWrap">
-					<text class="{{titleAnimation && 'animation'}}">{{scenicDetal.name}}</text>
-				</view>
-			</view>
-			<image bindtap="toggleInput" class="searchIcon" src="/static/icon/search.png" mode="" />
-		</block>
-		<block wx:else>
-			<view class="{{showInput ? 'showInput':'hideInput'}}">
-				<view bindtap="toggleInput" class="rightAngle" />
-				<input auto-focus="{{true}}" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" bindblur="handleBlur" />
-			</view>
-		</block>
-	</topContainer>
-	<scrollnews />
-	<map longitude="{{scenicDetal.lng}}" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" latitude="{{scenicDetal.lat}}" scale="15" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" bindmarkertap="marktap" bindtap="maptap">
-	</map>
-	<!-- enable-satellite  -->
-	<FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
-	<!-- <flicker/> -->
-	<!-- 任务 -->
-	<block wx:if="{{showTaskModal}}">
-		<TaskList bind:closeModal="closeModal" title="任务" bind:toggleExpand="toggleExpand">
-			<view class="head" slot="header">
-				<view class="hd">
-					<block wx:for="{{navList}}" wx:key="navList">
-						<view class="hd_flex {{nav_type == index ? 'hd_flex_on' : ''}}" catchtap="changeType" data-index="{{index}}">{{item}}
-						</view>
-					</block>
-				</view>
-			</view>
-			<view slot="body" style="height: {{height}}vh">
-				<GoodsList list="{{goodsList}}" bind:goodclick="toogleItemInfo" />
-			</view>
-			<!-- <accordion slot="body" />       -->
-		</TaskList>
-	</block>
-	<!-- 物品点击后显示的详情 -->
-	<block wx:if="{{showItem}}">
-		<ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}" />
-	</block>
-	<!-- 背包 -->
-	<block wx:if="{{showPackageModal}}">
-		<TaskList bind:closeModal="closeModal" title="背包">
-			<view slot="header" style="height: 10vh;background-color: red;">
-				<text>背包头部</text>
-			</view>
-			<accordion slot="body" />
-		</TaskList>
-	</block>
-	<!-- 搜索结果展示 -->
-	<block wx:if="{{showInput}}">
-		<ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />
-	</block>
+  <topContainer absolute style="background: linear-gradient(180deg, rgba(144, 173, 216, 0.90) 0%, rgba(144, 173, 216, 0.76) 57%, rgba(144, 173, 216, 0.00) 100%);">
+    <view class="logoView">
+      <image class="logo" src="{{scenicDetal.logo}}" mode="" />
+      <view class="titleWrap">
+        <text class="{{titleAnimation && 'animation'}}">{{scenicDetal.name}}</text>
+      </view>
+    </view>
+  </topContainer>
+  <map longitude="{{scenicDetal.lng}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" latitude="{{scenicDetal.lat}}" scale="15" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
+  <view class="showInput" style="top:{{navHeight + 10}}px">
+    <image class="searchIcon" src="/static/icon/search.png" mode="" />
+    <input auto-focus="{{true}}" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />
+  </view>
+  <!-- enable-satellite -->
+  <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
+  <scrollnews top="{{60}}" />
+  <!-- 右边操作栏 -->
+  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" />
+  <FixContainer right="{{false}}" top="{{110}}" height="{{230}}" />
+  <!-- 左边操作栏 -->
+  <!-- <flicker/> -->
+  <!-- 任务 -->
+  <block wx:if="{{showTaskModal}}">
+    <TaskList bind:closeModal="closeModal" title="任务" bind:toggleExpand="toggleExpand">
+      <view class="head" slot="header">
+        <view class="hd">
+          <block wx:for="{{navList}}" wx:key="navList">
+            <view class="hd_flex {{nav_type == index ? 'hd_flex_on' : ''}}" catchtap="changeType" data-index="{{index}}">
+              {{item}}
+            </view>
+          </block>
+        </view>
+      </view>
+      <view slot="body" style="height: {{height}}vh">
+        <GoodsList list="{{goodsList}}" bind:goodclick="toogleItemInfo" />
+      </view>
+      <!-- <accordion slot="body" /> -->
+    </TaskList>
+  </block>
+  <!-- 物品点击后显示的详情 -->
+  <block wx:if="{{showItem}}">
+    <ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}" />
+  </block>
+  <!-- 背包 -->
+  <block wx:if="{{showPackageModal}}">
+    <TaskList bind:closeModal="closeModal" title="背包">
+      <view slot="header" style="height: 10vh;background-color: red;">
+        <text>背包头部</text>
+      </view>
+      <accordion slot="body" />
+    </TaskList>
+  </block>
+  <block wx:if="{{showLayer}}">
+    <TaskList height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
+      <view slot="body" style="height: {{300}}rpx;display:flex;justify-content:space-around">
+        <view class="layer_control">
+          <view class="control_item" data-layer="1" bindtap="changeLayer">
+            <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <text class="item_text {{layerIndex == 1  && 'item_text_active'}}" selectable="false" space="false" decode="false">
+              2D
+            </text>
+          </view>
+          <view class="control_item" data-layer="2" bindtap="changeLayer">
+            <image class="item_icon {{layerIndex == 2  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <text class="item_text {{layerIndex == 2 && 'item_text_active'}}" selectable="false" space="false" decode="false">
+              3D
+            </text>
+          </view>
+          <view class="control_item" data-layer="3" bindtap="changeLayer">
+            <image class="item_icon {{layerIndex == 3  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <text class="item_text {{layerIndex == 3 && 'item_text_active'}}" selectable="false" space="false" decode="false">
+              卫星图层
+            </text>
+          </view>
+        </view>
+      </view>
+    </TaskList>
+  </block>
+  >
+  <!-- 搜索结果展示 -->
+  <!-- <block wx:if="{{true}}">
+    <ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />
+  </block> -->
 </view>

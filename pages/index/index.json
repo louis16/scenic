@@ -1,14 +1,15 @@
 {
-	"usingComponents": {
-		"FunctinonBar": "/components/functionBar/bar",
-		"TaskList": "/components/taskList/task",
-		"flicker": "/components/flicke/flicker",
-		"accordion": "/components/accordion/accordion",
-		"topContainer": "/components/topContainer/topContainer",
-		"scrollnews": "/components/scrollnews/scrollnews",
-		"GoodsList": "./components/goodList/goodsList",
-		"ItemInfo": "./components/goodInfo/goodInfo",
-		"ResultList": "./components/searchResultList/resultList"
-	},
-	"disableScroll": true
+  "usingComponents": {
+    "FunctinonBar": "/components/functionBar/bar",
+    "TaskList": "/components/taskList/task",
+    "flicker": "/components/flicke/flicker",
+    "accordion": "/components/accordion/accordion",
+    "topContainer": "/components/topContainer/topContainer",
+    "scrollnews": "./components/scrollnews/scrollnews",
+    "GoodsList": "./components/goodList/goodsList",
+    "ItemInfo": "./components/goodInfo/goodInfo",
+    "ResultList": "./components/searchResultList/resultList",
+    "FixContainer": "./components/fixContainer/fixContainer"
+  },
+  "disableScroll": true
 }

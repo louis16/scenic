@@ -2,7 +2,7 @@ const app = getApp()
 Component({
 	properties: {
 		list: {
-			type: Array
+      type: Array,
 		}
 	},
 
@@ -12,6 +12,7 @@ Component({
 
 	methods: {
 		itemClick(e) {
+      console.log(this.data.list)
 			wx.showToast({
 				icon: 'none',
 				title: `${e.currentTarget.dataset.index}`,

@@ -1,0 +1,9 @@
+<view class="box " style="top: {{navHeight + top}}px;">
+  <view class="iconView">
+    <image class="icon" src="/static/icon/notify.png" mode="" />
+  </view>
+  <view class="close">
+    <image class="closeIcon" src="/static/icon/close.png" mode="" />
+  </view>
+  <text class="r">15:00在天子奇石林的青石板道上有拔河1111___15:00在天子奇石林的青石板道上有拔河2222</text>
+</view>

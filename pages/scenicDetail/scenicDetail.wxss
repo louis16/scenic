@@ -84,14 +84,6 @@
   color: #333333;
 }
 
-.line {
-  position: absolute;
-  width: 112rpx;
-  height: 16rpx;
-  bottom: 0;
-  background-color: #C2D4EE;
-  z-index: 10;
-}
 
 .descText {
   display: inline-block;
