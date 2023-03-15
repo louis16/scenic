@@ -17,7 +17,7 @@ App({
 					storageSync(TOKEN, res.access_token)
 					this.globalData.token = res.access_token
 				}).catch(err => {
-					console.error(err)
+					// console.error(err)
 				})
 			}
 		})
@@ -50,10 +50,10 @@ App({
 			family: 'family',
 			source: 'url("http://file.ysr.uninote.com.cn/fronts/hycyj.ttf")',
 			success: function (res) {
-				console.log(res,'success')
+				// console.log(res,'success')
 			},
 			fail: function (res) {
-				console.log(res,'fail')
+				// console.log(res,'fail')
 			},
 			complete: function (res) {
 				console.log(res,'comp')

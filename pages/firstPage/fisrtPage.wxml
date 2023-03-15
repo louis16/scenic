@@ -1,22 +1,35 @@
-<view class="wrap">
-	<text class=" ">请选择您的性别</text>
-	<view class="iconWrap">
-		<view class="iconItem margin {{sex==='1' && 'active'}}" data-sex="1" bindtap="changeSex">
-			<image class="sexIcon" src="/static/icon/male.png" mode="" />
-			<text style="text-align: center;">男</text>
-		</view>
-		<view class="iconItem {{sex==='2' && 'active'}}" data-sex="2" bindtap="changeSex">
-			<image class="sexIcon" src="/static/icon/female.png" mode="" />
-			<text style="text-align: center;">女</text>
-		</view>
-	</view>
-	<view class="chooseData">
-		<text class="chooseText" style="margin-top:190rpx">请选择您生日</text>
-		<picker mode="date" value="{{date}}" bindchange="bindDateChange">
-			<view class="picker">
-				{{date ? date:'请选择日期' }}
-			</view>
-		</picker>
-	</view>
-	<text class="start" bindtap="nextPage">开始旅程 </text>
+<view class="pageWrap">
+  <swiper bindchange="handleChange" class="swiperWrap">
+    <swiper-item>
+      <topContainer title="请选择您的性别" absolute style="background-color: #ffffff;"></topContainer>
+      <view class="sexItem" style="background-color: #E5EFFF;" data-sex="1" bindtap="changeSex">
+        <image class="sexAvatar" src="/static/icon/man.png" style="border:{{sex == 1 ?  '':'none'}}" />
+        <image class="sexIcon" src="/static/icon/male.png" />
+      </view>
+      <view class="sexItem" style="background-color: #FFEEEE;" data-sex="0" bindtap="changeSex">
+        <image class="sexAvatar" src="/static/icon/woman.png" style="border:{{sex == 0 ? '' : 'none'}}" />
+        <image class="sexIcon" src="/static/icon/female.png" />
+      </view>
+      <text class="skipBtn" style="top:{{navHeight+40}}px" bindtap="skipPage">跳过</text>
+    </swiper-item>
+    <swiper-item>
+      <topContainer title="请选择您的性别" absolute style="background-color: #E5EFFF;"></topContainer>
+      <view class="dateChoose">
+        <text class="chooseText">请选择您生日</text>
+        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{date ? date:'请选择日期' }}
+          </view>
+        </picker>
+        <view class="start" bindtap="nextPage">
+          开始旅程
+        </view>
+      </view>
+      <text class="skipBtn" style="top:{{navHeight+40}}px" bindtap="skipPage">跳过</text>
+    </swiper-item>
+  </swiper>
+  <view class="dotWrap">
+    <view class="dotItem {{currentIndex===0 ? 'activeDot' : ''}}" />
+    <view class="dotItem {{currentIndex===1 ? 'activeDot' : ''}}" />
+  </view>
 </view>

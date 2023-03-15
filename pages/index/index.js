@@ -1,5 +1,5 @@
 // index.js
-const { getAllMarked } = require("../../util/api");
+const { getAllMarked, getAllTask } = require("../../util/api");
 const { mapIcon } = require("../../util/constants");
 const {
   getStorageSync,
@@ -46,7 +46,8 @@ const INIT_MARKER2 = {
 Page({
   data: {
     markers: [],
-    showTaskModal: false,
+    showTaskModal:false,
+    showGoodModal: false,
     showPackageModal: false,
     showLayer: false,
     is_3D: false,
@@ -67,7 +68,7 @@ Page({
   },
   onLoad() {
     let arr = new Array();
-    for (let index = 0; index < 7; index++) {
+    for (let index = 0; index < 17; index++) {
       arr.push({ id: index });
     }
     this.setData({ goodsList: arr });
@@ -83,42 +84,51 @@ Page({
         markers: [...this.facilities, ...this.landscapse],
       });
     });
+
+    getAllTask(detail.id).then((res) => {
+      console.log(res);
+    });
   },
   handleFuncClick(event) {
     const { type } = event.detail;
+    console.log(type,22222)
     let dataObject = {};
-    if (type === this.data.currentTabKey) {
+    if (type === "3") {
+      dataObject = {
+        showTaskModal:true,
+        showPackageModal: false,
+        showGoodModal: false,
+        currentTabKey: "3",
+      };
+    }else if (type === this.data.currentTabKey) {
       //重复点击当前，关闭所有，重置到中间项目。
       dataObject = {
+        showTaskModal:false,
         showPackageModal: false,
-        showTaskModal: false,
+        showGoodModal: false,
         currentTabKey: "3",
       };
     } else if (type === "4") {
       dataObject = {
-        showTaskModal: true,
+        showGoodModal: true,
+        showTaskModal:false,
         showPackageModal: false,
         currentTabKey: "4",
       };
     } else if (type === "5") {
       dataObject = {
         showPackageModal: true,
-        showTaskModal: false,
+        showTaskModal:false,
+        showGoodModal: false,
         currentTabKey: "5",
       };
-    } else if (type === "3") {
-      dataObject = {
-        showPackageModal: false,
-        showTaskModal: false,
-        currentTabKey: "3",
-      };
-    }
+    } 
     this.setData({ ...dataObject, showLayer: false });
   },
   marktap(e) {
     //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
     let timer = setTimeout(() => {
-      this.setData({ showTaskModal: true, currentTabKey: "4" });
+      this.setData({ showGoodModal: true, currentTabKey: "4" });
       clearTimeout(timer);
     }, 160);
   },
@@ -127,7 +137,8 @@ Page({
   },
   closeModal() {
     this.setData({
-      showTaskModal: false,
+      showGoodModal: false,
+      showTaskModal:false,
       showPackageModal: false,
       currentTabKey: "3",
       showLayer: false,
@@ -188,8 +199,9 @@ Page({
   openLayer(event) {
     if (event.detail.type === "layer") {
       this.setData({
+        showTaskModal:false,
         showPackageModal: false,
-        showTaskModal: false,
+        showGoodModal: false,
         showLayer: true,
       });
     }

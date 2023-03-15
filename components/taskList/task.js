@@ -72,7 +72,7 @@ Component({
         duration: 200,
         timingFunction: "linear",
       });
-      upScroll.translateY(value).step();
+      upScroll.translateY(value).height(`${value}vh`).step();
       this.triggerEvent("toggleExpand", {
         isExpand: !this.data.isExpand,
       });

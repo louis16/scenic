@@ -8,10 +8,11 @@
       </view>
     </view>
   </topContainer>
-  <map longitude="{{scenicDetal.lng}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" latitude="{{scenicDetal.lat}}" scale="15" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
+  <!-- subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" -->
+  <map longitude="{{scenicDetal.lng}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}"  latitude="{{scenicDetal.lat}}" scale="13" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
   <view class="showInput" style="top:{{navHeight + 10}}px">
     <image class="searchIcon" src="/static/icon/search.png" mode="" />
-    <input auto-focus="{{true}}" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />
+    <input placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />
   </view>
   <!-- enable-satellite -->
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
@@ -23,7 +24,15 @@
   <!-- <flicker/> -->
   <!-- 任务 -->
   <block wx:if="{{showTaskModal}}">
-    <TaskList bind:closeModal="closeModal" title="任务" bind:toggleExpand="toggleExpand">
+    <TaskList height="{{70}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
+      <view slot="header">
+        <text>任务头部</text>
+      </view>
+    </TaskList>
+  </block>
+  <!-- 背包 -->
+  <block wx:if="{{showGoodModal}}"> 
+    <TaskList bind:closeModal="closeModal" title="背包" bind:toggleExpand="toggleExpand">
       <view class="head" slot="header">
         <view class="hd">
           <block wx:for="{{navList}}" wx:key="navList">
@@ -43,9 +52,9 @@
   <block wx:if="{{showItem}}">
     <ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}" />
   </block>
-  <!-- 背包 -->
+  <!-- 我的 -->
   <block wx:if="{{showPackageModal}}">
-    <TaskList bind:closeModal="closeModal" title="背包">
+    <TaskList bind:closeModal="closeModal" title="我的">
       <view slot="header" style="height: 10vh;background-color: red;">
         <text>背包头部</text>
       </view>

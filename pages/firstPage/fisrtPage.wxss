@@ -1,81 +1,136 @@
-.wrap {
-	width: 100vw;
-	height: 100vh;
-	box-sizing: border-box;
-	overflow: hidden;
+.pageWrap {
+  position: relative;
+  width: 100vw;
+  overflow-y: hidden;
 }
 
-.chooseText {
-	display: block;
-	margin: 300rpx 0 56rpx 0;
-	font-family: 'PingFang SC Bold';
-	font-size: 40rpx;
-	font-weight: 400;
-	line-height: 40rpx;
-	text-align: center;
+.dotWrap {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60rpx;
 }
 
-.iconWrap {
-	display: flex;
-	justify-content: center;
+.dotItem {
+  width: 16rpx;
+  transition: width .5s;
+  height: 16rpx;
+  background-color: white;
+  margin-right: 20rpx;
+  border-radius: 8rpx;
 }
-.iconItem{
-	/* position: relative; */
-	display: flex;
-	flex-direction: column;
+
+.activeDot {
+  width: 44rpx;
+  transition: width .5s;
+  background-color: #90ADD8;
+}
+
+.swiperWrap {
+  width: 100vw;
+  height: 100vh;
+  /* overflow: hidden; */
+}
+
+.sexItem {
+  width: 50%;
+  float: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sexAvatar {
+  width: 320rpx;
+  height: 360rpx;
+  margin-bottom: 60rpx;
+  border: 2rpx dashed #333333;
+  box-sizing: border-box;
 }
 
 .sexIcon {
-	width: 128rpx;
-	height: 128rpx;
-	margin-bottom: 22rpx;
-}
-.active{
-	background-color: rgba(0, 0, 0, 0.2);
-	border-radius: 28rpx;
-	color: #ffffff;
+  width: 135rpx;
+  height: 135rpx;
 }
 
-.margin {
-	margin-right: 144rpx;
+.skipBtn {
+  display: inline-block;
+  position: absolute;
+  right: 32rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 24rpx;
+  font-weight: normal;
+  line-height: 24rpx;
+  color: #666666;
+  padding: 10rpx 20rpx;
+  z-index: 999;
 }
 
-.chooseData {
-	margin: 0 180rpx 280rpx 180rpx;
+.dateChoose {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #E5EFFF 0%, #E6EFFE 60%, #FFF2F2 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.chooseText {
+  font-family: 'PingFang SC';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 28rpx;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #333333;
+  margin-bottom: 86rpx;
+}
+
 
 .picker {
-	position: relative;
-	padding-bottom: 10rpx;
-	border-bottom: 1rpx solid #F4F4F4;
+  background-color: white;
+  position: relative;
+  border-radius: 36rpx;
+  /* padding-bottom: 10rpx; */
+  display: flex;
+  align-items: center;
+  width: 510rpx;
+  height: 80rpx;
+  padding-left: 24rpx;
+  /* border-bottom: 1rpx solid #F4F4F4; */
 }
 
 .picker::after {
-	content: " ";
-	display: block;
-	width: 14rpx;
-	height: 14rpx;
-	position: absolute;
-	background-color: transparent;
-	border: 4rpx solid #999999;
-	border-left: none;
-	border-bottom: none;
-	right: 0;
-	top: 0;
-	transform: translate(-20%, 50%) rotate(45deg);
+  content: " ";
+  display: block;
+  width: 14rpx;
+  height: 14rpx;
+  position: absolute;
+  background-color: transparent;
+  border: 4rpx solid #999999;
+  border-left: none;
+  border-bottom: none;
+  right: 0;
+  top: 0;
+  transform: translate(-200%, 200%) rotate(45deg);
 }
 
 .start {
-	display: inline-block;
-	padding: 24rpx 140rpx;
-	background-color: #90ADD8;
-	border-radius: 28rpx;
-	font-family: 'PingFang SC Regular';
-	font-size: 32rpx;
-	font-weight: normal;
-	line-height: 32rpx;
-	color: #ffffff;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
+  position: relative;
+  top: 400rpx;
+  background-color: #90ADD8;
+  border-radius: 28rpx;
+  width: 410rpx;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-family: 'PingFang SC Bold';
+  font-size: 32rpx;
+  font-weight: normal;
+  color: #ffffff;
 }

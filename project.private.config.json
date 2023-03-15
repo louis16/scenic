@@ -63,6 +63,13 @@
           "query": "id=10",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/scenicDetail/scenicDetail",
+          "query": "id=32",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

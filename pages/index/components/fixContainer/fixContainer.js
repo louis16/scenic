@@ -16,6 +16,7 @@ Component({
 
   data: {
     navHeight: app.globalData.navHeight, //导航栏高度
+    showTask: false
   },
   methods: {
     callPhone() {
@@ -25,12 +26,17 @@ Component({
     },
     itemClick(event) {
       const type = event.currentTarget.dataset.type;
-      this.triggerEvent("layerClick", { type });
+      this.triggerEvent("layerClick", {
+        type
+      });
     },
     progressClick() {
-      wx.showToast({
-        title: "任务",
-      });
+      // wx.showToast({
+      //   title: "任务",
+      // });
+      this.setData({
+        showTask: !this.data.showTask
+      })
     },
   },
 });

@@ -1,6 +1,7 @@
 .wrap {
   display: flex;
   flex-direction: column;
+  /* height: 100vh; */
 }
 
 .swiper {
@@ -13,29 +14,21 @@
   height: 460rpx;
   text-align: center;
   line-height: 460rpx;
-  background-color: #90ADD8;
+  /* background-color: #90ADD8; */
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  /* background-color: white; */
-  padding: 60rpx 40rpx 0 40rpx;
-  border-top: 2rpx solid white;
+  /* display: flex; */
+  /* flex-direction: column; */
+  padding: 60rpx 40rpx 100rpx 40rpx;
+  margin-bottom: -40rpx;
+  /* border-top: 2rpx solid white; */
   border-radius: 48rpx 48rpx 0 0;
-  transform: translateY(-60rpx);
+  box-sizing: content-box;
+  transform: translateY(-40rpx);
   backdrop-filter: blur(30px);
+  /* background-color: white; */
 }
-
-/* .container::before {
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 60rpx;
-  background-color: white;
-  transform: translate(-40rpx, -58rpx);
-  border-radius: 48rpx 48rpx 0 0;
-} */
 
 .logoView {
   height: 80rpx;
@@ -127,7 +120,6 @@
 .enter {
   width: 410rpx;
   height: 80rpx;
-  background-color: #90ADD8;
   text-align: center;
   position: relative;
   left: 50%;
@@ -139,5 +131,7 @@
   color: #ffffff;
   border-radius: 28rpx;
   margin-top: 72rpx;
+  background: linear-gradient(180deg, #C5DAF8 0%, #668FCC 100%);
+  box-shadow: 0px 3px 6px 0px #AFC4E3, inset 0px 4px 6px 0px #C5DDFF;
 
 }

@@ -59,3 +59,10 @@ export const getAllMarked = (id) => {
     url: `/common/position?scenery_id=${id}`
   })
 }
+//景区详情
+export const getAllTask = (id) => {
+  return request({
+    method: 'GET',
+    url: `/quests?scenery_id=${id}`
+  })
+}

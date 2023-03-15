@@ -24,7 +24,7 @@
           <text class="title">联系电话</text>
         </view>
         <view class="telephone">
-          <text wx:for="{{detailData.phones}}" wx:key="index" bindtap="callTele" data-phone="{{item}}">{{index!==0?'    、':''}}{{item}}</text>
+          <text wx:for="{{detailData.phones}}" wx:key="index" bindtap="callTele" data-phone="{{item}}">{{index!==0?' 、':''}}{{item}}</text>
         </view>
       </view>
       <view wx:if="{{detailData.city}}">
