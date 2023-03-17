@@ -1,12 +1,13 @@
 .listContainer {
-	/* position: absolute; */
-	width: 100vw;
-	background-color: #ffffff;
-	z-index: 20;
-	overflow: hidden;
-	border-radius: 48rpx 48rpx 0 0;
-	padding-bottom: (122rpx +env(safe-area-inset-bottom));
+  /* position: absolute; */
+  width: 100vw;
+  background-color: #F6F8FB;
+  z-index: 20;
+  overflow: hidden;
+  border-radius: 48rpx 48rpx 0 0;
+  padding-bottom: (122rpx +env(safe-area-inset-bottom));
 }
+
 /* .expand{
 	height: 80vh;
 	transition: .3s all linear;
@@ -15,30 +16,30 @@
 	height: 60vh;
 	transition: .3s all linear;
 } */
-.expandBtn{
-	position: absolute;
-	left: 10px;
+.expandBtn {
+  position: absolute;
+  left: 10px;
 }
 
 .closeBtn {
-	position: absolute;
-	right: 10px;
+  position: absolute;
+  right: 10px;
 }
 
 .title {
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	width: 100vw;
-	padding: 40rpx 32rpx;
-	line-height: 32rpx;
-	font-size: 32rpx;
-	font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  padding: 40rpx 32rpx;
+  line-height: 32rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  /* background: linear-gradient(180deg, #E5EFFF 0%, rgba(248, 251, 255, 0.64) 74%, rgba(255, 255, 255, 0.00) 100%); */
 }
 
 .body {
-	/* 相对于整个弹出框减去顶部固定位置的高度 */
-	/* height: 70vh; */
-	overflow-y: auto;
-	/* overflow: hidden; */
+  /* 相对于整个弹出框减去顶部固定位置的高度 */
+  overflow-y: auto;
+  /* overflow: hidden; */
 }

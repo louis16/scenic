@@ -1,0 +1,5 @@
+<block wx:if="{{show}}">
+  <view class="mask"></view>
+  <view class="dialog" bindtap="closeFullScreen">
+  </view>
+</block>

@@ -5,5 +5,7 @@
   <view hidden="{{!canClose}}" class="close" bindtap="closeMessage">
     <image class="closeIcon" src="/static/icon/close.png" mode="" />
   </view>
-  <text class="r">15:00在天子奇石林的青石板道上有拔河1111___15:00在天子奇石林的青石板道上有拔河2222</text>
+  <view class="messageWrap">
+    <view class="message">15:00在天子奇石林的青石板道上有拔河1111___15:00在天子奇石林的青石板道上有拔河2222</view>
+  </view>
 </view>

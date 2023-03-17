@@ -52,17 +52,31 @@ export const updateUser = (params) => request({
   method: 'PUT',
   data: params
 })
-//景区详情
+//获取首页所有marked的标点
 export const getAllMarked = (id) => {
   return request({
     method: 'GET',
     url: `/common/position?scenery_id=${id}`
   })
 }
-//景区详情
+//获取当前任务
 export const getAllTask = (id) => {
   return request({
     method: 'GET',
     url: `/quests?scenery_id=${id}`
+  })
+}
+//任务详情（定位or扫码触发后调用）
+export const getTaskDetail = (id) => {
+  return request({
+    method: 'GET',
+    url: `/quests/${id}`
+  })
+}
+//完成任务
+export const completeTask = (id) => {
+  return request({
+    method: 'GET',
+    url: `/quests/${id}/complete`
   })
 }

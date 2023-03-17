@@ -16,13 +16,6 @@
           "scene": null
         },
         {
-          "name": "",
-          "pathName": "pages/scenicDetail/scenicDetail",
-          "query": "id=7",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "首页",
           "pathName": "pages/index/index",
           "query": "",
@@ -66,8 +59,8 @@
         },
         {
           "name": "",
-          "pathName": "pages/scenicDetail/scenicDetail",
-          "query": "id=32",
+          "pathName": "pages/taskTrigger/taskTrigger",
+          "query": "",
           "launchMode": "default",
           "scene": null
         }

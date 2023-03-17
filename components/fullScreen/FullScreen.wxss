@@ -1,0 +1,46 @@
+@media screen and (min-height: 926px) {
+  .dialog {
+    height: 1100rpx;
+    border: 1px solid darkblue;
+  }
+}
+
+@media screen and (max-height: 896px) {
+  .dialog {
+    height: 1000rpx;
+    border: 1px solid pink;
+  }
+}
+
+@media screen and (max-height: 736px) {
+  .dialog {
+    height: 800rpx;
+    border: 1px solid yellow;
+  }
+}
+
+@media screen and (max-height: 568px) {
+  .dialog {
+    height: 600rpx;
+    border: 1px solid green;
+  }
+}
+
+.dialog {
+  width: 600rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: 20rpx;
+  background-color: #fff;
+  font-size: 400px;
+}
+.mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(29, 5, 5, 0.486);
+}

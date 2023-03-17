@@ -1,0 +1,104 @@
+.taskWrap {
+  height: 65vh;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EFF5FF 100%);
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+}
+
+.topText {
+  height: 64rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 64rpx;
+  color: #333333;
+}
+
+.showLandscape { 
+  transform: translateY(64rpx);
+  width: 100%;
+  height: 860rpx;
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  transition: height .2s;
+  box-shadow: 0 12rpx 12rpx 0 rgba(0, 0, 0, 0.06);
+  border-top: 2rpx solid rgba(0, 0, 0, 0.274);
+  border-radius: 0 0  28rpx 28rpx;
+  overflow: hidden;
+}
+.hideLandscape{
+  transform: translateY(64rpx);
+  width: 100%;
+  height: 0;
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  transition: height .2s;
+  overflow: hidden;
+}
+.landscapeItem{
+  display: block;
+  margin: 0 48rpx;
+  padding: 30rpx 0;
+}
+
+.headerStatus {
+  height: 56rpx;
+  box-sizing: border-box;
+  margin-top: 26rpx;
+  padding: 7rpx 24rpx;
+}
+
+.activeStatus {
+  background-color: #E9F2FE;
+  border-radius: 28rpx;
+  border: 2rpx solid #90ADD8;
+  color: #90ADD8;
+}
+
+.itemWrap {
+  margin: 40rpx 30rpx 0 30rpx;
+  border-radius: 28rpx;
+  padding: 0 30rpx 0 30rpx;
+  background-color: #F8FBFF;
+  box-shadow: 0px 0px 5px 0px #D5E1F2;
+}
+
+.landscapeName {
+  background-color: #DAE6F6;
+  margin: 0 -30rpx;
+  padding: 30rpx;
+  border-radius: 28rpx 28rpx 0 0;
+  display: flex;
+  align-content: center;
+}
+
+.taskContent {
+  max-height: 1240rpx;
+  overflow-y: scroll;
+}
+
+.showFilterView {
+  width: 100%;
+  height: 400rpx;
+  background-color: red;
+  transition: height .3s;
+}
+
+.hideFilterView {
+  height: 0;
+  transition: height .3s;
+}
+.appIcon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
+}

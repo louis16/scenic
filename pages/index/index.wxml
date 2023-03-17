@@ -8,8 +8,9 @@
       </view>
     </view>
   </topContainer>
+  <FullScreen />
   <!-- subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" -->
-  <map longitude="{{scenicDetal.lng}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}"  latitude="{{scenicDetal.lat}}" scale="13" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
+  <map longitude="{{scenicDetal.lng}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" latitude="{{scenicDetal.lat}}" scale="15" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
   <view class="showInput" style="top:{{navHeight + 10}}px">
     <image class="searchIcon" src="/static/icon/search.png" mode="" />
     <input placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />
@@ -18,21 +19,21 @@
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
   <scrollnews top="{{60}}" />
   <!-- 右边操作栏 -->
-  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" />
-  <FixContainer right="{{false}}" top="{{110}}" height="{{230}}" />
+  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" bind:openTaskList="openTaskLayer" />
   <!-- 左边操作栏 -->
+  <FixContainer right="{{false}}" top="{{110}}" height="{{230}}" />
   <!-- <flicker/> -->
   <!-- 任务 -->
   <block wx:if="{{showTaskModal}}">
-    <TaskList height="{{70}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
-      <view slot="header">
-        <text>任务头部</text>
+    <SlidePannel height="{{88}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
+      <view slot="body" style="height: 88vh">
+        <TaskList taskList="{{taskList}}" />
       </view>
-    </TaskList>
+    </SlidePannel>
   </block>
   <!-- 背包 -->
-  <block wx:if="{{showGoodModal}}"> 
-    <TaskList bind:closeModal="closeModal" title="背包" bind:toggleExpand="toggleExpand">
+  <block wx:if="{{showGoodModal}}">
+    <SlidePannel bind:closeModal="closeModal" title="背包" bind:toggleExpand="toggleExpand">
       <view class="head" slot="header">
         <view class="hd">
           <block wx:for="{{navList}}" wx:key="navList">
@@ -46,7 +47,7 @@
         <GoodsList list="{{goodsList}}" bind:goodclick="toogleItemInfo" />
       </view>
       <!-- <accordion slot="body" /> -->
-    </TaskList>
+    </SlidePannel>
   </block>
   <!-- 物品点击后显示的详情 -->
   <block wx:if="{{showItem}}">
@@ -54,15 +55,15 @@
   </block>
   <!-- 我的 -->
   <block wx:if="{{showPackageModal}}">
-    <TaskList bind:closeModal="closeModal" title="我的">
+    <SlidePannel bind:closeModal="closeModal" title="我的">
       <view slot="header" style="height: 10vh;background-color: red;">
         <text>背包头部</text>
       </view>
       <accordion slot="body" />
-    </TaskList>
+    </SlidePannel>
   </block>
   <block wx:if="{{showLayer}}">
-    <TaskList height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
+    <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
       <view slot="body" style="height: {{300}}rpx;display:flex;justify-content:space-around">
         <view class="layer_control">
           <view class="control_item" data-layer="1" bindtap="changeLayer">
@@ -85,9 +86,8 @@
           </view>
         </view>
       </view>
-    </TaskList>
+    </SlidePannel>
   </block>
-  >
   <!-- 搜索结果展示 -->
   <!-- <block wx:if="{{true}}">
     <ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />

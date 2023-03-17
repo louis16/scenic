@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "FunctinonBar": "/components/functionBar/bar",
-    "TaskList": "/components/taskList/task",
+    "SlidePannel": "/components/taskList/task",
     "flicker": "/components/flicke/flicker",
     "accordion": "/components/accordion/accordion",
     "topContainer": "/components/topContainer/topContainer",
@@ -9,7 +9,9 @@
     "GoodsList": "./components/goodList/goodsList",
     "ItemInfo": "./components/goodInfo/goodInfo",
     "ResultList": "./components/searchResultList/resultList",
-    "FixContainer": "./components/fixContainer/fixContainer"
+    "FixContainer": "./components/fixContainer/fixContainer",
+    "TaskList": "./components/task/TaskList",
+    "FullScreen":"/components/fullScreen/FullScreen"
   },
   "disableScroll": true
 }

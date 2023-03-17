@@ -1,0 +1,157 @@
+.list-content {
+  padding: 30rpx 0 30rpx;
+}
+
+.name {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 40rpx;
+  color: #333333;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statusView {
+  padding: 8rpx 12rpx;
+  border-radius: 20rpx 4rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 24rpx;
+  font-weight: 300;
+  line-height: 24rpx;
+}
+
+.rewards {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  color: #90ADD8;
+  margin-top: 30rpx;
+}
+
+.reward {
+  display: inline-block;
+  margin-right: 40rpx;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.groups {
+  font-family: 'PingFang SC Regular';
+  font-size: 20rpx;
+  font-weight: normal;
+  line-height: 20rpx;
+  margin-top: 30rpx;
+}
+
+.groupItem {
+  display: inline-block;
+  padding: 6rpx 8rpx;
+  border: 2rpx solid #999999;
+  border-radius: 6rpx;
+  margin-right: 8rpx;
+}
+
+.infos {
+  margin-top: 30rpx;
+}
+
+.list-text {
+  /* margin-top: 40rpx; */
+  height: 450rpx;
+  transition: height 0.3s;
+  /* text-indent: 30rpx; */
+  overflow-y: auto;
+  /* padding-top: 30rpx; */
+  padding-bottom: 40rpx;
+  border-bottom: 2rpx solid #E7EAF5;
+}
+
+.hidden-content {
+  height: 0;
+  transition: height 0.3s;
+  /* padding-top: 0; */
+  padding-bottom: 0;
+  border-bottom: none;
+  /* display: none; */
+}
+
+.itemTitle {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 28rpx;
+  color: #333333;
+}
+
+.itemTitle::before {
+  display: inline-block;
+  content: " ";
+  width: 8rpx;
+  height: 28rpx;
+  transform: translateY(6rpx);
+  background-color: #90ADD8;
+}
+
+.itemContent {
+  margin: 20rpx 0 54rpx;
+}
+
+.itemText {
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: 300;
+  line-height: 40rpx;
+}
+
+.itemLine {
+  display: flex;
+  justify-content: space-between;
+  height: 40rpx;
+  margin-top: 16rpx;
+}
+
+.imageWrap {
+  width: 216rpx;
+  height: 216rpx;
+  padding: 6rpx;
+  border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, #90ADD8 100%);
+  border-image-slice: 1;
+  border-width: 4rpx;
+  border-style: solid;
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.img {
+  width: 216rpx;
+  height: 216rpx;
+  background-color: #90ADD8;
+}
+
+.finishBtn {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 164rpx;
+  padding: 20rpx 40rpx;
+  color: #90ADD8;
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 28rpx;
+  border-radius: 28rpx;
+  border: 2rpx solid #90ADD8;
+  text-align: center;
+}
+
+.appIcon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
+}

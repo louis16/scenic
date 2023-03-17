@@ -1,0 +1,69 @@
+<!-- <view wx:for="{{quests}}" wx:for-index="idx" wx:for-item="task" wx:key="idx" class="contentWrap">
+  <view>{{task.name}}</view>
+  <view>奖励</view>
+  <view>任务组</view>
+  <view>完成人数</view>
+</view> -->
+<view wx:for="{{ quests }}" wx:key="index">
+  <view class="list-content" style="border-bottom:{{(index!==quests.length - 1 || selected[index]) && ' 1rpx solid #ddd'}};" bindtap="onListClick" data-index="{{ index }}">
+    <view class="name">
+      <view class="flex">
+        <image class="appIcon" wx:if="{{item.trigger_show !=0}}" src="{{taskType[item.trigger_show]}}" mode="" />
+        {{item.name}}
+      </view>
+      <view class="statusView" style="background-color: {{taskStatus[status].backgroundColor}};color: {{taskStatus[status].color}};">{{taskStatus[status].text}}</view>
+    </view>
+    <view wx:if="{{item.rewards && item.rewards.length > 0}}" class="rewards">
+      <view wx:for="{{item.rewards}}" wx:for-item="reward" wx:for-index="idx" wx:key="idx" class="reward">
+        <view wx:if="{{reward.points}}" class="flex">
+          <image class="appIcon" src="/static/icon/reward_point_icon.png" mode="" />{{reward.points}}{{rewwardsType[reward.type]}}
+        </view>
+        <view wx:if="{{reward.item_id}}" class="flex">
+          <image class="appIcon" src="/static/icon/reward_goods_icon.png" mode="" />
+          {{rewwardsType[reward.type]}}：{{reward.item_name}}
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{item.groups && item.groups.length > 0}}" class="groups">
+      <view wx:for="{{item.groups}}" wx:for-item="group" wx:key="group" class="groupItem">
+        {{group.name}}
+      </view>
+    </view>
+    <view class="infos">完成人数</view>
+  </view>
+  <block hidden="{{ !selected[index] && status === 'unfinished'}}">
+    <view data-index="{{ index }}" bindtap="onListClick" class="list-text  {{ ( selected[index] && status === 'unfinished') ? '' : 'hidden-content'}}">
+      <block>
+        <view class="itemTitle" style="margin-top: 30rpx;"> 任务简介</view>
+        <view class="itemContent itemText">
+          {{item.description}}
+        </view>
+      </block>
+      <block>
+        <view class="itemTitle"> 任务地点</view>
+        <view class="itemContent">
+          <view class="itemLine">
+            <text>{{landscape_name}}</text>
+            <text>定位图标</text>
+          </view>
+          <view class="itemLine" wx:if="{{facility_name}}">
+            <text>{{facility_name}}</text>
+            <text>定位图标</text>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{item.trigger_type == 0}}">
+        <view class="itemTitle"> 扫描素材</view>
+        <view class="itemContent">
+          <view class="itemLine" style="justify-content: flex-start;height: 216rpx;">
+            <view class="imageWrap">
+              <image class="img" />
+            </view>
+            <view class="itemText">请去武侯祠找到找到图中这棵树，打开“探索”扫描，即可获得奖励。 </view>
+          </view>
+        </view>
+      </block>
+      <view class="finishBtn" data-taskType="{{item.trigger_type}}" data-id="{{item.id}}" catchtap="goFinish">去完成</view>
+    </view>
+  </block>
+</view>

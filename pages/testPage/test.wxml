@@ -1,7 +1,4 @@
-<scroll-view>
-	<scrollnews />
-	<exam />
-	<exam />
-	<exam />
-	<exam />
-</scroll-view>
+  <view class="wrap">
+    <view>12312321</view>
+    <view>123123F</view>
+  </view>

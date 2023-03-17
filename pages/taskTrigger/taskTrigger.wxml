@@ -1,0 +1,22 @@
+<view class="pageWrap">
+  <topContainer hiddenBack="{{false}}" title="{{originData.name || ''}}"></topContainer>
+  <view wx:if="{{originData.complete_type == 2 }}">
+    <view>{{originData.questions[0].question}}</view>
+    <input maxlength="10" bindinput="bindKeyInput" style="background-color: #f8f8f8;" />
+    <view bindtap="submitData">
+      提交
+    </view>
+  </view>
+  <view wx:if="{{originData.complete_type == 3 }}">
+    <view>{{originData.questions[0].question}}</view>
+    <radio-group bindchange="radioChange">
+      <view wx:for="{{originData.questions[0].options}}" wx:key="index">
+        <radio value="{{item.value}}" />
+        <text>{{item.name}}</text>
+      </view>
+    </radio-group>
+    <view bindtap="submitData">
+      提交
+    </view>
+  </view>
+</view>

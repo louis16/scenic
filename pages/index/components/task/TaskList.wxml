@@ -1,0 +1,31 @@
+<view class="taskWrap">
+  <view>
+    <view class="flex-row">
+      <text class="topText">全部</text>
+      <text class="topText" bindtap="openLandscapeList">景观</text>
+      <view class="{{showLandscape?'showLandscape':'hideLandscape'}}">
+        <text class="landscapeItem" wx:for="{{landscapeList}}" wx:key="index">
+          {{item.name}}
+        </text>
+      </view>
+    </view>
+    <view class="flex-row">
+      <text data-status="unfinished" bindtap="changeStatus" class="headerStatus {{status==='unfinished' && 'activeStatus'}}">未完成</text>
+      <text data-status="finished" bindtap="changeStatus" class="headerStatus {{status==='finished' && 'activeStatus'}}">已完成</text>
+      <text data-status="expired" bindtap="changeStatus" class="headerStatus {{status==='expired' && 'activeStatus'}}">已过期</text>
+      <text class="headerStatus" bindtap="filterClick">筛选</text>
+    </view>
+  </view>
+  <view class="{{showFilter?'showFilterView':'hideFilterView'}}">
+
+  </view>
+  <view wx:for="{{taskList[status]}}" wx:key="index" class="itemWrap">
+    <view class="landscapeName">
+      <image class="appIcon" src="/static/icon/landscape_icon.png" mode="" />
+      {{item.landscape_name}}
+    </view>
+    <view class="taskContent">
+      <TaskItem facility_name="{{item.facility_name || ''}}" landscape_name="{{item.landscape_name}}" quests="{{item.quests}}" status="{{status}}" />
+    </view>
+  </view>
+</view>

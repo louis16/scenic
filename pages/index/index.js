@@ -1,6 +1,11 @@
 // index.js
-const { getAllMarked, getAllTask } = require("../../util/api");
-const { mapIcon } = require("../../util/constants");
+const {
+  getAllMarked,
+  getAllTask
+} = require("../../util/api");
+const {
+  mapIcon
+} = require("../../util/constants");
 const {
   getStorageSync,
   showLoading,
@@ -10,6 +15,7 @@ const {
 
 // 获取应用实例
 const app = getApp();
+const eventBus = app.globalData.bus
 const INIT_MARKER = {
   callout: {
     content: "腾讯总部大楼",
@@ -46,7 +52,7 @@ const INIT_MARKER2 = {
 Page({
   data: {
     markers: [],
-    showTaskModal:false,
+    showTaskModal: false,
     showGoodModal: false,
     showPackageModal: false,
     showLayer: false,
@@ -60,6 +66,7 @@ Page({
     navList: ["全部", "任务物品", "合成物品"],
     nav_type: 0,
     goodsList: [],
+    taskList: [],
     height: 60,
     currentTabKey: "3",
     scenicDetal: {},
@@ -69,41 +76,50 @@ Page({
   onLoad() {
     let arr = new Array();
     for (let index = 0; index < 17; index++) {
-      arr.push({ id: index });
+      arr.push({
+        id: index
+      });
     }
-    this.setData({ goodsList: arr });
+    this.setData({
+      goodsList: arr
+    });
     this.cloneList = JSON.parse(JSON.stringify(arr));
     let detail = JSON.parse(getStorageSync("scenicDetail"));
-    getAllMarked(detail.id).then((res) => {
+    this.getAllMarkedFunc(detail)
+    this.getAllTaskFunc(detail.id)
+    eventBus.on('refreshTask', ()=>this.getAllTaskFunc(detail.id))
+  },
+  getAllMarkedFunc(detailRef) {
+    getAllMarked(detailRef.id).then((res) => {
       //获取景观设施的定位，用以展示mark
       this.facilities = formatMarkData(res.facilities);
       this.landscapse = formatMarkData(res.landscapse);
       this.setData({
-        scenicDetal: detail,
-        // titleAnimation: (detail.name.length * 34) > 302, //一个字体34rpx, 整个容器宽度302
+        scenicDetal: detailRef,
+        // titleAnimation: (detailRef.name.length * 34) > 302, //一个字体34rpx, 整个容器宽度302
         markers: [...this.facilities, ...this.landscapse],
       });
+      app.globalData.landscapse = res.landscapse
     });
-
-    getAllTask(detail.id).then((res) => {
-      console.log(res);
+  },
+  getAllTaskFunc(id) {
+    getAllTask(id).then((res) => {
+      this.setData({
+        taskList: res.positions
+      })
+      app.globalData.positionWatchLists = res.positionWatchLists
+      app.globalData.qrCodeWatchLists = res.qrCodeWatchLists
     });
   },
   handleFuncClick(event) {
-    const { type } = event.detail;
-    console.log(type,22222)
+    const {
+      type
+    } = event.detail;
     let dataObject = {};
-    if (type === "3") {
-      dataObject = {
-        showTaskModal:true,
-        showPackageModal: false,
-        showGoodModal: false,
-        currentTabKey: "3",
-      };
-    }else if (type === this.data.currentTabKey) {
+    if (type === this.data.currentTabKey) {
       //重复点击当前，关闭所有，重置到中间项目。
       dataObject = {
-        showTaskModal:false,
+        showTaskModal: false,
         showPackageModal: false,
         showGoodModal: false,
         currentTabKey: "3",
@@ -111,24 +127,37 @@ Page({
     } else if (type === "4") {
       dataObject = {
         showGoodModal: true,
-        showTaskModal:false,
+        showTaskModal: false,
         showPackageModal: false,
         currentTabKey: "4",
       };
     } else if (type === "5") {
       dataObject = {
         showPackageModal: true,
-        showTaskModal:false,
+        showTaskModal: false,
         showGoodModal: false,
         currentTabKey: "5",
       };
-    } 
-    this.setData({ ...dataObject, showLayer: false });
+    } else if (type === "3") {
+      dataObject = {
+        showTaskModal: false,
+        showPackageModal: false,
+        showGoodModal: false,
+        currentTabKey: "3",
+      };
+    }
+    this.setData({
+      ...dataObject,
+      showLayer: false
+    });
   },
   marktap(e) {
     //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
     let timer = setTimeout(() => {
-      this.setData({ showGoodModal: true, currentTabKey: "4" });
+      this.setData({
+        showGoodModal: true,
+        currentTabKey: "4"
+      });
       clearTimeout(timer);
     }, 160);
   },
@@ -138,7 +167,7 @@ Page({
   closeModal() {
     this.setData({
       showGoodModal: false,
-      showTaskModal:false,
+      showTaskModal: false,
       showPackageModal: false,
       currentTabKey: "3",
       showLayer: false,
@@ -147,11 +176,15 @@ Page({
 
   //切换list高度
   toggleExpand(event) {
-    this.setData({ height: event?.detail?.isExpand ? "80" : "60" });
+    this.setData({
+      height: event?.detail?.isExpand ? "80" : "60"
+    });
   },
   //更改物品筛选
   changeType: function (e) {
-    let { index } = e.currentTarget.dataset;
+    let {
+      index
+    } = e.currentTarget.dataset;
     if (this.data.nav_type == index) {
       return false;
     }
@@ -199,12 +232,25 @@ Page({
   openLayer(event) {
     if (event.detail.type === "layer") {
       this.setData({
-        showTaskModal:false,
+        showTaskModal: false,
         showPackageModal: false,
         showGoodModal: false,
         showLayer: true,
       });
+    } else {
+      this.setData({
+        showTaskModal: false,
+        showPackageModal: false,
+        showGoodModal: false,
+        showLayer: false,
+      });
+      eventBus.emit('showFullScreen')
     }
+  },
+  openTaskLayer(event) {
+    this.setData({
+      showTaskModal: true
+    })
   },
   changeLayer(e) {
     const layer = e.currentTarget.dataset.layer;

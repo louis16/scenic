@@ -1,4 +1,3 @@
-<!--components/taskList/task.wxml-->
 <view class="listContainer"  animation="{{upScroll}}">
 	<view class="title">
 		<view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">

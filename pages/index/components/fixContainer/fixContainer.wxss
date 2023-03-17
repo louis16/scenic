@@ -96,7 +96,7 @@
   height: 40rpx;
   box-sizing: border-box;
   background-color: white;
-  transform: rotate(45deg) translateY(-20%);
+  transform: rotate(45deg) translateY(-25%);
   right: 0;
   top: 45%;
 }

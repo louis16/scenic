@@ -31,12 +31,12 @@ Component({
       });
     },
     progressClick() {
-      // wx.showToast({
-      //   title: "任务",
-      // });
       this.setData({
         showTask: !this.data.showTask
       })
     },
+    openTask() {
+      this.triggerEvent("openTaskList", {});
+    }
   },
 });

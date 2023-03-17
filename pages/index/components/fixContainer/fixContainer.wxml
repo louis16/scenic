@@ -10,10 +10,10 @@
         <text class="itemText">图层</text>
       </view>
     </view>
-    <view class="bottomWrap" id="bottomWrap" bindtap="progressClick">
-      <view class="progress">
+    <view class="bottomWrap">
+      <view class="progress" bindtap="progressClick">
       </view>
-      <view class="item">
+      <view class="item" bindtap="openTask">
         <image class="itemIcon" src="/static/icon/task.png" mode="" />
         <text class="itemText">任务</text>
       </view>
@@ -22,7 +22,7 @@
         <view class="line"> </view>
         <view class="line"> </view>
         <view class="line"> </view>
-        <view class="triangle"/>
+        <view class="triangle" />
       </view>
     </view>
   </view>

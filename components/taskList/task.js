@@ -1,4 +1,3 @@
-// components/taskList/task.js
 Component({
   options: {
     multipleSlots: true,
