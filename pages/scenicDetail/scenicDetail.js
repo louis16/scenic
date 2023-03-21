@@ -50,7 +50,7 @@ Page({
 			logo: this.data.logo
 		}))
 		let img = `${app.globalData.fileUrl}/${this.data.detailData.welcome_background}`
-		wx.navigateTo({
+		wx.redirectTo({
 			url: `/pages/start/start?desc=${this.data.detailData.background_desc}&img=${img}`,
 		})
 	},

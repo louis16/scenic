@@ -68,7 +68,7 @@ Page({
 				code: event.detail.code
 			}).then(res => {
 				if (res === null) {
-					wx.reLaunch({
+					wx.redirectTo({
 						url: '/pages/index/index',
 					})
 				}

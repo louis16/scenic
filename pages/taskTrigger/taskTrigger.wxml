@@ -1,10 +1,17 @@
 <view class="pageWrap">
   <topContainer hiddenBack="{{false}}" title="{{originData.name || ''}}"></topContainer>
-  <view wx:if="{{originData.complete_type == 2 }}">
-    <view>{{originData.questions[0].question}}</view>
-    <input maxlength="10" bindinput="bindKeyInput" style="background-color: #f8f8f8;" />
-    <view bindtap="submitData">
-      提交
+  <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
+    <image class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+    <view class="content">
+      <view class="title">{{originData.name}}</view>
+      <view class="desc">{{originData.description}}</view>
+      <view class="answerWrap">
+        <view>问题：{{originData.questions[0].question}}</view>
+        <input class="inputWrap" maxlength="10" bindinput="bindKeyInput" style="background-color: #f8f8f8;" />
+        <view bindtap="submitData" class="submit">
+          提交
+        </view>
+      </view>
     </view>
   </view>
   <view wx:if="{{originData.complete_type == 3 }}">

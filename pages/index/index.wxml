@@ -10,7 +10,7 @@
   </topContainer>
   <FullScreen />
   <!-- subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" -->
-  <map longitude="{{scenicDetal.lng}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" latitude="{{scenicDetal.lat}}" scale="15" max-scale="20" min-scale="12" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
+  <map id="myMap" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap" bindregionchange="regionChange"></map>
   <view class="showInput" style="top:{{navHeight + 10}}px">
     <image class="searchIcon" src="/static/icon/search.png" mode="" />
     <input placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />

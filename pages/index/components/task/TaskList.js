@@ -20,9 +20,15 @@ Component({
     status: 'unfinished',
     showFilter: false,
     showLandscape: false,
-    landscapeList: app.globalData.landscapse
+    landscapseList: []
   },
-
+  lifetimes: {
+    attached() {
+      this.setData({
+        landscapseList:app.globalData.landscapse
+      })
+    },
+  },
   /**
    * 组件的方法列表
    */

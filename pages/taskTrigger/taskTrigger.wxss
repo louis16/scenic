@@ -5,3 +5,71 @@
   overflow-y: hidden;
   background-color: white;
 }
+
+.contentWrap {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.img {
+  width: 100vw;
+  height: 460rpx;
+}
+
+.content {
+  flex: 1;
+  background-color: white;
+  padding: 40rpx 30rpx;
+  transform: translateY(-40rpx);
+  border-radius: 48rpx 48rpx 0 0;
+}
+
+.title {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 28rpx;
+  color: #333333;
+  margin-bottom: 40rpx;
+}
+
+.title::before {
+  display: inline-block;
+  content: " ";
+  width: 8rpx;
+  height: 28rpx;
+  transform: translateY(6rpx);
+  background-color: #90ADD8;
+}
+
+.desc {
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  color: rgb(102, 102, 102);
+}
+
+.answerWrap {
+  background-color: #F8FBFF;
+  box-shadow: 0 0 20rpx 0 #D6E3F3;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+.inputWrap {
+  background-color: red;
+}
+
+.submit {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  background: #FFFFFF;
+  box-shadow: 0 0 8rpx 0 #D6E3F3;
+}

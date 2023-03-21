@@ -74,6 +74,7 @@ Page({
     navHeight: app.globalData.navHeight, //导航栏高度
   },
   onLoad() {
+    this.mapContext = wx.createMapContext('myMap', this)
     let arr = new Array();
     for (let index = 0; index < 17; index++) {
       arr.push({
@@ -87,10 +88,17 @@ Page({
     let detail = JSON.parse(getStorageSync("scenicDetail"));
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
-    eventBus.on('refreshTask', ()=>this.getAllTaskFunc(detail.id))
+    eventBus.on('refreshTask', () => this.getAllTaskFunc(detail.id))
+  },
+  onReady() {
+    let detail = JSON.parse(getStorageSync("scenicDetail"));
+    this.mapContext.moveToLocation({
+      latitude: detail.lat * 1,
+      longitude: detail.lng * 1
+    })
   },
   getAllMarkedFunc(detailRef) {
-    getAllMarked(detailRef.id).then((res) => {
+    getAllMarked(detailRef.id).then((res) => { 
       //获取景观设施的定位，用以展示mark
       this.facilities = formatMarkData(res.facilities);
       this.landscapse = formatMarkData(res.landscapse);
@@ -98,12 +106,12 @@ Page({
         scenicDetal: detailRef,
         // titleAnimation: (detailRef.name.length * 34) > 302, //一个字体34rpx, 整个容器宽度302
         markers: [...this.facilities, ...this.landscapse],
-      });
+      }); 
       app.globalData.landscapse = res.landscapse
     });
   },
   getAllTaskFunc(id) {
-    getAllTask(id).then((res) => {
+    getAllTask(id).then((res) => { 
       this.setData({
         taskList: res.positions
       })
@@ -172,6 +180,9 @@ Page({
       currentTabKey: "3",
       showLayer: false,
     });
+  },
+  regionChange(e) {
+    console.log(e, 11)
   },
 
   //切换list高度

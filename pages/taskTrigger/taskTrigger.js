@@ -10,7 +10,8 @@ Page({
     eventChannelRef: null,
     originData: {},
     inputAnswer: '',
-    selectAnswer: ''
+    selectAnswer: '',
+    filePath:app.globalData.fileUrl
   },
 
   onLoad(options) {
