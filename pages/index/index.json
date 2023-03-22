@@ -11,6 +11,7 @@
     "ResultList": "./components/searchResultList/resultList",
     "FixContainer": "./components/fixContainer/fixContainer",
     "TaskList": "./components/task/TaskList",
+    "LandscapeDetail": "./components/landscapeDetail/landscapeDetail",
     "FullScreen":"/components/fullScreen/FullScreen"
   },
   "disableScroll": true

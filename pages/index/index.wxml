@@ -31,9 +31,9 @@
       </view>
     </SlidePannel>
   </block>
-  <!-- 背包 -->
+  <!-- 物品 -->
   <block wx:if="{{showGoodModal}}">
-    <SlidePannel bind:closeModal="closeModal" title="背包" bind:toggleExpand="toggleExpand">
+    <SlidePannel bind:closeModal="closeModal" title="物品" bind:toggleExpand="toggleExpand">
       <view class="head" slot="header">
         <view class="hd">
           <block wx:for="{{navList}}" wx:key="navList">
@@ -46,7 +46,6 @@
       <view slot="body" style="height: {{height}}vh">
         <GoodsList list="{{goodsList}}" bind:goodclick="toogleItemInfo" />
       </view>
-      <!-- <accordion slot="body" /> -->
     </SlidePannel>
   </block>
   <!-- 物品点击后显示的详情 -->
@@ -62,6 +61,7 @@
       <accordion slot="body" />
     </SlidePannel>
   </block>
+  <!-- 图层 -->
   <block wx:if="{{showLayer}}">
     <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
       <view slot="body" style="height: {{300}}rpx;display:flex;justify-content:space-around">
@@ -85,6 +85,14 @@
             </text>
           </view>
         </view>
+      </view>
+    </SlidePannel>
+  </block>
+  <!-- 景观详情 -->
+  <block wx:if="{{showLandscapeModal}}">
+    <SlidePannel bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand">
+      <view slot="body" style="height: {{height}}vh">
+        <LandscapeDetail item="{{currentItem}}" />
       </view>
     </SlidePannel>
   </block>

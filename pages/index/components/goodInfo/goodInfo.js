@@ -1,33 +1,34 @@
-// pages/index/components/goodInfo/goodInfo.js
+import commonBehavior from '../../../../behaviors/commonBehavior'
 Component({
-	/**
-	 * 组件的属性列表
-	 */
-	properties: {
-		itemData: {
-			type: Object
-		}
-	},
+  behaviors: [commonBehavior],
+  properties: {
+    itemData: {
+      type: Object
+    }
+  },
 
-	lifetimes: {
-		attached() {
-			setTimeout(() => {
-				this.setData({
-					content: false
-				})
-			}, 800)
-		}
-	},
-	data: {
-		list: [{}, {}, {}, {}],
-		content: true
-	},
-
-	methods: {
-		close() {
-			this.triggerEvent('closeItem', {
-				closeItem: true
-			})
-		},
-	}
+  lifetimes: {
+    attached() {
+      const {filePath,itemData} = this.data
+      this.setData({
+        imgPath:`${filePath}/${itemData.item.image}`
+      })
+      // setTimeout(() => {
+      // 	this.setData({
+      // 		content: false
+      // 	})
+      // }, 800)
+    }
+  },
+  data: {
+    list: [{}, {}, {}, {}],
+    content: true
+  },
+  methods: {
+    close() {
+      this.triggerEvent('closeItem', {
+        closeItem: true
+      })
+    },
+  }
 })

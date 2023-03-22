@@ -1,36 +1,37 @@
 <view class="mask" bindtap="close">
-	<block wx:if="{{content}}">
-		<view class="contentWrap" catchtap>
-			<view class="goodHeader">
-				<view class="iconWrap">
-					<image class="goodIcon" src="" mode="" alt="" />
-				</view>
-				<view class="goodInfo">
-					<text class="goodTitle">name</text>
-					<text class="goodDesc">desc</text>
-				</view>
-			</view>
-			<view class="goodContent" style="grid-template-columns: 267rpx 267rpx;">
-				<!-- <view class="goodContent" style="{{ff?'grid-template-columns: 1fr 1fr;':''}}"> -->
+  <block wx:if="{{itemData.item.type == 3}}">
+    <view class="contentWrap" catchtap>
+      <view class="goodHeader">
+        <view class="iconWrap">
+          <!-- <image class="goodIcon" src="{{imgPath}}" mode="" alt="" /> -->
+        </view>
+        <view class="goodInfo">
+          <text class="goodTitle">{{itemData.item.name}}</text>
+          <text class="goodDesc">x {{itemData.amount}}</text>
+        </view>
+      </view>
+      <!-- <view class="goodContent" style="grid-template-columns: 267rpx 267rpx;">
+				<view class="goodContent" style="{{ff?'grid-template-columns: 1fr 1fr;':''}}">
 				<view wx:for="{{list}}" wx:key="index" class="contentItem">
 					{{itemData.id}}
 				</view>
-			</view>
-			<view class="goodInfo">
-				<text class="goodTitle">name</text>
-				<text class="goodDesc">desc</text>
-			</view>
-			<view class="glassFilter" />
-		</view>
-	</block>
-	<block wx:else>
-		<view class="contentWrap" catchtap>
-			<view class="imageWrap">
-				<image class="goodIcon" src="" mode=""/>	
-			</view>
-			<text class="toast">恭喜您，您已成功合成碎片完成任务， 奖励您<text class="reward">50积分+任务</text></text>
-			<text class="knowBtn" bindtap="close" >我知道了</text>
-			<view class="glassFilter"style="transform: rotate(5deg);" />
-		</view>
-	</block>
+			</view> -->
+      <view wx:if="{{itemData.item.description}}" class="good_content">
+        <text>{{itemData.item.description}}</text>
+      </view>
+      <view wx:if="{{itemData.item.content}}" class="good_foot">
+        <text>{{itemData.item.content}}</text>
+      </view>
+    </view>
+  </block> 
+  <block wx:else>
+    <view class="contentWrap" catchtap>
+      <view class="imageWrap">
+        <image class="goodIcon" src="" mode="" />
+      </view>
+      <text class="toast">恭喜您，您已成功合成碎片完成任务， 奖励您<text class="reward">50积分+任务</text></text>
+      <text class="knowBtn" bindtap="close">我知道了</text>
+      <view class="glassFilter" style="transform: rotate(5deg);" />
+    </view>
+  </block>
 </view>

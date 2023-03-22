@@ -71,7 +71,8 @@ const formatMarkData = (arr) => {
       height: '34px',
       rotate: 0,
       alpha: 1,
-      id: item.id
+      id: item.id,
+      item: item
     }
   })
 }

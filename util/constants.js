@@ -20,7 +20,10 @@ export const taskType = {//trigger_show => '触发后的内容', //触发后的�
 export const taskStatus = {
   "unfinished":{backgroundColor:"#FFF1F1",color:"#FB9898",text:"未完成"},
   "finished":{backgroundColor:"#E2EEFF",color:"#90ADD8",text:"已完成"},
-  "expired":{backgroundColor:"#F2F2F2",color:"#999999",text:"已过期"}
+  "expired":{backgroundColor:"#F2F2F2",color:"#999999",text:"已过期"},
+  "1":{backgroundColor:"#FFF1F1",color:"#FB9898",text:"未完成"},
+  "2":{backgroundColor:"#E2EEFF",color:"#90ADD8",text:"已完成"},
+  "3":{backgroundColor:"#F2F2F2",color:"#999999",text:"已过期"}
 }
 export function getDistance(point1, point2) {
   let {

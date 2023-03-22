@@ -80,3 +80,10 @@ export const completeTask = (id) => {
     url: `/quests/${id}/complete`
   })
 }
+//获取用户物品
+export const getGoods = (id) => {
+  return request({
+    method: 'GET',
+    url: `/user/items?scenery_id=${id}`
+  })
+}

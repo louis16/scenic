@@ -13,7 +13,7 @@
 	</view>
 	<view class="funcItem {{currentTabKey==4 && 'activeItem'}}" bindtap="clickItem" data-type="4" data-name="我的">
 		<image class="itemIcon" src="/static/icon/package.png" mode="aspectFill" />
-		<text>背包</text>
+		<text>物品</text>
 	</view>
 	<view class="funcItem {{currentTabKey==5 && 'activeItem'}}" bindtap="clickItem" data-type="5" data-name="我的">
 		<image class="itemIcon" src="/static/icon/aboutMe.png" mode="aspectFill" />

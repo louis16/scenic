@@ -1,11 +1,9 @@
 // index.js
 const {
   getAllMarked,
-  getAllTask
+  getAllTask,
+  getGoods
 } = require("../../util/api");
-const {
-  mapIcon
-} = require("../../util/constants");
 const {
   getStorageSync,
   showLoading,
@@ -52,14 +50,14 @@ const INIT_MARKER2 = {
 Page({
   data: {
     markers: [],
-    showTaskModal: false,
-    showGoodModal: false,
-    showPackageModal: false,
-    showLayer: false,
+    showLandscapeModal: false, //景观详情
+    showTaskModal: false, //任务
+    showGoodModal: false, //物品
+    showPackageModal: false, //我的
+    showLayer: false, //图层
     is_3D: false,
     is_satellite: false,
-    setting: {
-      // 使用setting配置，方便统一还原
+    setting: { // 使用setting配置，方便统一还原
       skew: 0,
     },
     layerIndex: "1", //默认2D
@@ -75,43 +73,33 @@ Page({
   },
   onLoad() {
     this.mapContext = wx.createMapContext('myMap', this)
-    let arr = new Array();
-    for (let index = 0; index < 17; index++) {
-      arr.push({
-        id: index
-      });
-    }
-    this.setData({
-      goodsList: arr
-    });
-    this.cloneList = JSON.parse(JSON.stringify(arr));
     let detail = JSON.parse(getStorageSync("scenicDetail"));
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
+    this.getAllGoodsFunc(detail.id)
     eventBus.on('refreshTask', () => this.getAllTaskFunc(detail.id))
   },
-  onReady() {
+  onReady() { //动态更改经纬度
     let detail = JSON.parse(getStorageSync("scenicDetail"));
     this.mapContext.moveToLocation({
       latitude: detail.lat * 1,
       longitude: detail.lng * 1
     })
   },
-  getAllMarkedFunc(detailRef) {
-    getAllMarked(detailRef.id).then((res) => { 
-      //获取景观设施的定位，用以展示mark
+  getAllMarkedFunc(detailRef) { //获取景观设施的定位，用以展示mark
+    getAllMarked(detailRef.id).then((res) => {
       this.facilities = formatMarkData(res.facilities);
       this.landscapse = formatMarkData(res.landscapse);
       this.setData({
         scenicDetal: detailRef,
         // titleAnimation: (detailRef.name.length * 34) > 302, //一个字体34rpx, 整个容器宽度302
         markers: [...this.facilities, ...this.landscapse],
-      }); 
+      });
       app.globalData.landscapse = res.landscapse
     });
   },
-  getAllTaskFunc(id) {
-    getAllTask(id).then((res) => { 
+  getAllTaskFunc(id) { //获取所有任务
+    getAllTask(id).then((res) => {
       this.setData({
         taskList: res.positions
       })
@@ -119,7 +107,15 @@ Page({
       app.globalData.qrCodeWatchLists = res.qrCodeWatchLists
     });
   },
-  handleFuncClick(event) {
+  getAllGoodsFunc(id) {
+    getGoods(id).then(goodsListResult => {
+      this.cloneList = JSON.parse(JSON.stringify(goodsListResult));
+      this.setData({
+        goodsList: goodsListResult
+      });
+    })
+  },
+  handleFuncClick(event) { //底部功能区域点击
     const {
       type
     } = event.detail;
@@ -156,15 +152,18 @@ Page({
     }
     this.setData({
       ...dataObject,
-      showLayer: false
+      showLayer: false,
+      showLandscapeModal: false
     });
   },
-  marktap(e) {
-    //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
-    let timer = setTimeout(() => {
+  marktap(event) { //mark点击事件
+    const markerId = event.detail.markerId
+    let currentMarker = this.data.markers.filter(markerItem => markerItem.id == markerId)
+    console.log(currentMarker)
+    let timer = setTimeout(() => { //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
       this.setData({
-        showGoodModal: true,
-        currentTabKey: "4"
+        showLandscapeModal: true,
+        currentItem: currentMarker[0].item
       });
       clearTimeout(timer);
     }, 160);
@@ -172,27 +171,25 @@ Page({
   maptap(e) {
     this.closeModal();
   },
-  closeModal() {
+  closeModal() { //关闭屏幕所有弹窗
     this.setData({
       showGoodModal: false,
       showTaskModal: false,
       showPackageModal: false,
       currentTabKey: "3",
       showLayer: false,
+      showLandscapeModal: false
     });
   },
   regionChange(e) {
-    console.log(e, 11)
+    // console.log(e, 11)
   },
-
-  //切换list高度
-  toggleExpand(event) {
+  toggleExpand(event) { //切换list高度
     this.setData({
       height: event?.detail?.isExpand ? "80" : "60"
     });
   },
-  //更改物品筛选
-  changeType: function (e) {
+  changeType: function (e) { //更改物品筛选
     let {
       index
     } = e.currentTarget.dataset;
@@ -200,20 +197,19 @@ Page({
       return false;
     }
     let list = [];
-    if (index == 0) {
+    if (index == 0) { //全部
       list = this.cloneList;
-    } else if (index == 1) {
-      list = this.cloneList.filter((item) => item.id % 2 === 1);
-    } else if (index == 2) {
-      list = this.cloneList.filter((item) => item.id % 2 === 0);
+    } else if (index == 1) { //独立物品
+      list = this.cloneList.filter((good) => good.item.type == 3);
+    } else if (index == 2) { //合成物品组成
+      list = this.cloneList.filter((good) => good.item.type == 2);
     }
     this.setData({
       nav_type: index,
       goodsList: list,
     });
   },
-  //切换显示物品详情
-  toogleItemInfo(detail) {
+  toogleItemInfo(detail) { //切换显示物品详情
     if (detail.detail.closeItem) {
       this.setData({
         showItem: false,
@@ -240,13 +236,14 @@ Page({
       hideLoading();
     }, 1000);
   },
-  openLayer(event) {
+  openLayer(event) { //屏幕右侧，点击图层/消息弹出
     if (event.detail.type === "layer") {
       this.setData({
         showTaskModal: false,
         showPackageModal: false,
         showGoodModal: false,
         showLayer: true,
+        showLandscapeModal: false
       });
     } else {
       this.setData({
@@ -254,16 +251,17 @@ Page({
         showPackageModal: false,
         showGoodModal: false,
         showLayer: false,
+        showLandscapeModal: false
       });
       eventBus.emit('showFullScreen')
     }
   },
-  openTaskLayer(event) {
+  openTaskLayer(event) { //屏幕右侧，点击任务弹出
     this.setData({
       showTaskModal: true
     })
   },
-  changeLayer(e) {
+  changeLayer(e) { //图层弹窗，更改图层
     const layer = e.currentTarget.dataset.layer;
     this.setData({
       is_3D: layer === "3" ? true : layer === "2" ? true : false,

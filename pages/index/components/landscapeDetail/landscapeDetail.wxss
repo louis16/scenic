@@ -1,0 +1,114 @@
+.wrap {
+  padding: 30rpx 30rpx 376rpx 30rpx;
+  min-height: 60vh;
+  overflow-y: scroll;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header_img {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 28rpx;
+  margin-bottom: 32rpx;
+}
+
+.header_text {
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  color: rgb(102, 102, 102);
+}
+
+.itemTitle {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 28rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+
+.itemTitle::before {
+  display: inline-block;
+  content: " ";
+  width: 8rpx;
+  height: 28rpx;
+  transform: translateY(6rpx);
+  background-color: #90ADD8;
+}
+
+.quuest_view {
+  height: 176rpx;
+  border-bottom: 2rpx solid #E7EAF5;
+}
+
+.quest_title_wrap {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.quest_index {
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  text-align: center;
+  border: 2rpx solid #999999;
+  border-radius: 50%;
+  line-height: 32rpx;
+  color: #999999;
+  font-size: 20rpx;
+  font-weight: normal;
+  margin-right: 24rpx;
+}
+
+.quest_name {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 40rpx;
+  color: #333333;
+}
+
+.quest_status {
+  display: inline-block;
+  width: 96rpx;
+  height: 40rpx;
+  text-align: center;
+  padding: 8rpx 12rpx;
+  border-radius: 20rpx 4rpx 20rpx 4rpx;
+}
+
+.status_notFinish {
+  background-color: #FFF1F1;
+  color: #FB9898;
+}
+
+.status_finish {
+  background-color: #E2EEFF;
+  color: #90ADD8;
+}
+
+.status_expire {
+  background-color: #F2F2F2;
+  color: #999999;
+}
+
+.quest_reward {
+  display: flex;
+  flex-direction: row;
+}
+
+.quest_type {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}

@@ -1,13 +1,16 @@
 <block>
-	<view class="wrap">
-		<view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">
-			<view class="itemLine">
-				<text class="itemNum">{{item.id}}</text>
-				<image class="itemImg" src="" mode="" />
-				<view wx:if="{{index%2 === 0}}" class="viewMask">
-					合成
-				</view>
-			</view>
-		</view>
-	</view>
+  <view class="wrap" wx:if="{{list.length > 0}}">
+    <view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">
+      <view class="itemLine">
+        <text class="itemNum">{{item.amount}}</text>
+        <image class="itemImg" src="{{filePath}}/{{item.item.image}}" mode="" />
+        <view wx:if="{{item.item.type == 2}}" class="viewMask">
+          合成
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="goodEmpty">
+    <image src="/static/icon/good_empty.png" mode="" />
+  </view>
 </block>
