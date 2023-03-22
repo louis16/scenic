@@ -157,6 +157,22 @@ function permission_request(perName, perZhName) {
   })
 }
 
+const formatOption = (data) => {
+  if(data.complete_type == 3){
+    let temp = data.questions[0].options.map(item => {
+      return {
+        ...item,
+        name: item.k,
+        value: item.v
+      }
+    })
+    data.questions[0].options = temp
+    return data
+  }else if(data.complete_type ==2){
+    return data
+  }
+}
+
 const removeStorageSync = (key) => wx.removeStorageSync(key)
 const TOKEN = 'TOKEN'
 module.exports = {
@@ -170,5 +186,6 @@ module.exports = {
   removeStorageSync,
   formatMarkData,
   permission_request,
-  showToast
+  showToast,
+  formatOption
 };

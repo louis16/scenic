@@ -11,7 +11,8 @@ const {
   showLoading,
   hideLoading,
   permission_request,
-  showToast
+  showToast,
+  formatOption
 } = require("../../../../util/util");
 const app = getApp()
 const eventBus = app.globalData.bus
@@ -71,6 +72,34 @@ Component({
         });
       }
     },
+    handleQrCode(result, id) {
+      let temp = app.globalData.qrCodeWatchLists.filter(item => {
+        if (item.key == result) {
+          return item
+        }
+      })
+      if (temp.length === 0) {
+        showToast({
+          title: "二维码识别错误",
+          icon: "none"
+        })
+        return
+      }
+      getTaskDetail(temp[0].id).then(taskDetail => {
+        const data = formatOption(taskDetail)
+        wx.navigateTo({
+          url: '/pages/taskTrigger/taskTrigger',
+          success: function (res) {
+            res.eventChannel.emit('acceptDataFromOpenerPage', {
+              data: {
+                ...data,
+                complete_id: id
+              },
+            })
+          }
+        })
+      })
+    },
     async goFinish(event) {
       let type = event.currentTarget.dataset.tasktype;
       let id = event.currentTarget.dataset.id;
@@ -98,12 +127,14 @@ Component({
             if (dis < element.accuracy) {
               hasNear = true
               getTaskDetail(element.id).then(taskDetail => {
+
+                const data = formatOption(taskDetail)
                 wx.navigateTo({
                   url: '/pages/taskTrigger/taskTrigger',
                   success: function (res) {
                     res.eventChannel.emit('acceptDataFromOpenerPage', {
                       data: {
-                        ...taskDetail,
+                        ...data,
                         complete_id: id
                       },
                     })
@@ -130,26 +161,11 @@ Component({
           })
         }
       } else if (type == 3) {
-        getTaskDetail(id).then(taskDetail => {
-          let temp = taskDetail.questions[0].options.map(item => {
-            return {
-              ...item,
-              name: item.k,
-              value: item.v
-            }
-          })
-          taskDetail.questions[0].options = temp
-          wx.navigateTo({
-            url: '/pages/taskTrigger/taskTrigger',
-            success: function (res) {
-              res.eventChannel.emit('acceptDataFromOpenerPage', {
-                data: {
-                  ...taskDetail,
-                  complete_id: id
-                },
-              })
-            }
-          })
+        const _this = this
+        wx.scanCode({
+          success: function (res) {
+            _this.handleQrCode(res.result, id)
+          }
         })
       }
     }

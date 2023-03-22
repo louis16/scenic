@@ -6,7 +6,7 @@
     </view>
     <view wx:if="{{item.quests.length > 0}}" k>
       <view class="itemTitle" style="margin-top: 30rpx;"> 任务简介</view>
-      <view wx:for="{{item.quests}}" class="quuest_view" wx:key="index">
+      <view wx:for="{{item.quests}}" class="quuest_view" data-item="{{item}}" wx:key="index" bindtap="questTap">
         <view class="quest_title_wrap">
           <view>
             <text class="quest_index">{{index + 1}}</text>
@@ -15,10 +15,18 @@
           <text class="quest_status" style="background-color: {{taskStatus[item.status].backgroundColor}};color: {{taskStatus[item.status].color}};">{{taskStatus[item.status].text}}</text>
         </view>
         <view class="quest_reward">
-          <image class="quest_type" src="{{taskType[item.trigger_show]}}" mode="" />
-          <text>123</text>
-          <text>123</text>
-          <text>123</text>
+          <image class="quest_type" wx:if="{{item.trigger_show !=0}}" src="{{taskType[item.trigger_show]}}" mode="" />
+          <view wx:if="{{item.rewards && item.rewards.length > 0}}" class="rewards">
+            <view wx:for="{{item.rewards}}" wx:for-item="reward" wx:for-index="idx" wx:key="idx" class="reward">
+              <view wx:if="{{reward.points}}" class="flex">
+                <image class="appIcon" src="/static/icon/reward_point_icon.png" mode="" />{{reward.points}}{{rewwardsType[reward.type]}}
+              </view>
+              <view wx:if="{{reward.item_id}}" class="flex">
+                <image class="appIcon" src="/static/icon/reward_goods_icon.png" mode="" />
+                {{rewwardsType[reward.type]}}：{{reward.item_name}}
+              </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>

@@ -105,10 +105,33 @@
 .quest_reward {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .quest_type {
   width: 40rpx;
   height: 40rpx;
   margin-right: 16rpx;
+}
+.rewards {
+  display: flex;
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  color: #90ADD8;
+}
+.reward {
+  display: inline-block;
+  margin-right: 40rpx;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.appIcon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
 }

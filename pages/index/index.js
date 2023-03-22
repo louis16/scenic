@@ -77,7 +77,11 @@ Page({
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
     this.getAllGoodsFunc(detail.id)
-    eventBus.on('refreshTask', () => this.getAllTaskFunc(detail.id))
+    eventBus.on('refreshTask', () => {
+      this.getAllMarkedFunc(detail)
+      this.getAllTaskFunc(detail.id)
+      this.getAllGoodsFunc(detail.id)
+    })
   },
   onReady() { //动态更改经纬度
     let detail = JSON.parse(getStorageSync("scenicDetail"));
