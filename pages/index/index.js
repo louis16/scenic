@@ -9,6 +9,7 @@ const {
   showLoading,
   hideLoading,
   formatMarkData,
+  SCENICDETAIL
 } = require("../../util/util");
 
 // 获取应用实例
@@ -50,10 +51,12 @@ const INIT_MARKER2 = {
 Page({
   data: {
     markers: [],
-    showLandscapeModal: false, //景观详情
+    showSOS: false, //SOS
+    showMarkTapModal: false, //景观详情
     showTaskModal: false, //任务
     showGoodModal: false, //物品
     showPackageModal: false, //我的
+    showLandscapeModal: false, //景观
     showLayer: false, //图层
     is_3D: false,
     is_satellite: false,
@@ -73,7 +76,7 @@ Page({
   },
   onLoad() {
     this.mapContext = wx.createMapContext('myMap', this)
-    let detail = JSON.parse(getStorageSync("scenicDetail"));
+    let detail = JSON.parse(getStorageSync(SCENICDETAIL));
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
     this.getAllGoodsFunc(detail.id)
@@ -84,7 +87,7 @@ Page({
     })
   },
   onReady() { //动态更改经纬度
-    let detail = JSON.parse(getStorageSync("scenicDetail"));
+    let detail = JSON.parse(getStorageSync(SCENICDETAIL));
     this.mapContext.moveToLocation({
       latitude: detail.lat * 1,
       longitude: detail.lng * 1
@@ -98,8 +101,12 @@ Page({
         scenicDetal: detailRef,
         // titleAnimation: (detailRef.name.length * 34) > 302, //一个字体34rpx, 整个容器宽度302
         markers: [...this.facilities, ...this.landscapse],
+        landscapse: res.landscapse,
+        facilities: res.facilities,
+        list: res.landscapse
       });
       app.globalData.landscapse = res.landscapse
+      app.globalData.facilities = res.facilities
     });
   },
   getAllTaskFunc(id) { //获取所有任务
@@ -129,6 +136,7 @@ Page({
       dataObject = {
         showTaskModal: false,
         showPackageModal: false,
+        showLandscapeModal: false,
         showGoodModal: false,
         currentTabKey: "3",
       };
@@ -137,6 +145,7 @@ Page({
         showGoodModal: true,
         showTaskModal: false,
         showPackageModal: false,
+        showLandscapeModal: false,
         currentTabKey: "4",
       };
     } else if (type === "5") {
@@ -144,6 +153,7 @@ Page({
         showPackageModal: true,
         showTaskModal: false,
         showGoodModal: false,
+        showLandscapeModal: false,
         currentTabKey: "5",
       };
     } else if (type === "3") {
@@ -151,13 +161,23 @@ Page({
         showTaskModal: false,
         showPackageModal: false,
         showGoodModal: false,
+        showLandscapeModal: false,
         currentTabKey: "3",
+      };
+    } else if (type === '1') {
+      dataObject = {
+        showTaskModal: false,
+        showPackageModal: false,
+        showGoodModal: false,
+        showLandscapeModal: true,
+        currentTabKey: "1",
       };
     }
     this.setData({
       ...dataObject,
       showLayer: false,
-      showLandscapeModal: false
+      showMarkTapModal: false,
+      showSOS: false
     });
   },
   marktap(event) { //mark点击事件
@@ -166,7 +186,7 @@ Page({
     console.log(currentMarker)
     let timer = setTimeout(() => { //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
       this.setData({
-        showLandscapeModal: true,
+        showMarkTapModal: true,
         currentItem: currentMarker[0].item
       });
       clearTimeout(timer);
@@ -180,9 +200,11 @@ Page({
       showGoodModal: false,
       showTaskModal: false,
       showPackageModal: false,
+      showLandscapeModal: false,
       currentTabKey: "3",
       showLayer: false,
-      showLandscapeModal: false
+      showSOS: false,
+      showMarkTapModal: false
     });
   },
   regionChange(e) {
@@ -192,6 +214,11 @@ Page({
     this.setData({
       height: event?.detail?.isExpand ? "80" : "60"
     });
+  },
+  changeData(event) { // 切换景观,设施
+    this.setData({
+      list: event.detail.index === 1 ? this.data.facilities : this.data.landscapse
+    })
   },
   changeType: function (e) { //更改物品筛选
     let {
@@ -245,20 +272,42 @@ Page({
       this.setData({
         showTaskModal: false,
         showPackageModal: false,
+        showLandscapeModal: false,
         showGoodModal: false,
         showLayer: true,
-        showLandscapeModal: false
+        showMarkTapModal: false
       });
     } else {
       this.setData({
         showTaskModal: false,
         showPackageModal: false,
+        showLandscapeModal: false,
         showGoodModal: false,
         showLayer: false,
-        showLandscapeModal: false
+        showMarkTapModal: false
       });
       eventBus.emit('showFullScreen')
     }
+  },
+  openSOS() {
+    this.closeModal()
+    this.setData({
+      showSOS: true
+    })
+  },
+  callPhone(event) {
+    const phone = event.currentTarget.dataset.phone
+    wx.showModal({
+      title: '',
+      content: `确定拨打：${phone}`,
+      complete: (res) => {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: phone,
+          });
+        }
+      }
+    })
   },
   openTaskLayer(event) { //屏幕右侧，点击任务弹出
     this.setData({

@@ -112,14 +112,16 @@
   width: 40%;
   transition: 0.3s width linear;
 }
+
 .layer_control {
   width: 690rpx;
-  height: 280rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background-color: white;
+  border-radius: 28rpx;
 }
+
 .control_item {
   background-color: white;
   display: flex;
@@ -127,6 +129,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .item_icon {
   width: 120rpx;
   height: 120rpx;
@@ -134,9 +137,11 @@
   background-color: #1c64d041;
   margin-bottom: 20rpx;
 }
+
 .item_icon_active {
   border: 4rpx solid #90add8;
 }
+
 .item_text {
   font-family: "PingFang SC Bold";
   font-size: 28rpx;
@@ -144,7 +149,28 @@
   line-height: 28rpx;
   color: #333333;
 }
+
 .item_text_active {
+  color: #90add8;
+}
+
+.sos_layer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sos_item {
+  font-family: 'PingFang SC Regular';
+  font-size: 32rpx;
+  font-weight: normal;
+  line-height: 32rpx;
+  color: #333333;
+}
+
+.sos_phone_num {
   color: #90add8;
 }
 

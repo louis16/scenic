@@ -21,13 +21,21 @@
   <!-- 右边操作栏 -->
   <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" bind:openTaskList="openTaskLayer" />
   <!-- 左边操作栏 -->
-  <FixContainer right="{{false}}" top="{{110}}" height="{{230}}" />
+  <FixContainer right="{{false}}" top="{{110}}" height="{{230}}" bind:showSoS="openSOS" />
   <!-- <flicker/> -->
   <!-- 任务 -->
   <block wx:if="{{showTaskModal}}">
     <SlidePannel height="{{88}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
       <view slot="body" style="height: 88vh">
         <TaskList taskList="{{taskList}}" />
+      </view>
+    </SlidePannel>
+  </block>
+  <!-- 景点 -->
+  <block wx:if="{{showLandscapeModal}}">
+    <SlidePannel bind:closeModal="closeModal" titleArray="{{['景观','设施']}}" bind:changeTitle="changeData" bind:toggleExpand="toggleExpand">
+      <view slot="body" style="height: {{height}}vh">
+        <LandscapeList list="{{list}}"/>
       </view>
     </SlidePannel>
   </block>
@@ -64,7 +72,7 @@
   <!-- 图层 -->
   <block wx:if="{{showLayer}}">
     <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
-      <view slot="body" style="height: {{300}}rpx;display:flex;justify-content:space-around">
+      <view slot="body" style="height: {{400}}rpx;display:flex;justify-content:space-around">
         <view class="layer_control">
           <view class="control_item" data-layer="1" bindtap="changeLayer">
             <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
@@ -89,10 +97,34 @@
     </SlidePannel>
   </block>
   <!-- 景观详情 -->
-  <block wx:if="{{showLandscapeModal}}">
+  <block wx:if="{{showMarkTapModal}}">
     <SlidePannel bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand">
       <view slot="body" style="height: {{height}}vh">
         <LandscapeDetail item="{{currentItem}}" />
+      </view>
+    </SlidePannel>
+  </block>
+  <!-- SOS -->
+  <block wx:if="{{showSOS}}">
+    <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="拨打紧急救援电话">
+      <view slot="body" style="height: {{350}}rpx;display:flex;justify-content:space-around">
+        <view class="sos_layer">
+          <view class="sos_item" data-phone="56558952" bindtap="callPhone">
+            景区值班室（
+            <text class="sos_phone_num">028-56558952</text>
+            ）
+          </view>
+          <view class="sos_item" data-phone="78513654" bindtap="callPhone">
+            景区保卫科（
+            <text class="sos_phone_num">028-78513654</text>
+            ）
+          </view>
+          <view class="sos_item" data-phone="18925652322" bindtap="callPhone">
+            景区负责人（
+            <text class="sos_phone_num">18925652322</text>
+            ）
+          </view>
+        </view>
       </view>
     </SlidePannel>
   </block>

@@ -1,0 +1,8 @@
+<view class="landscapeListWrap">
+  <view wx:for="{{list}}" class="landscapeItem" wx:key="index">
+    <image src="{{filePath}}/{{item.image}}" mode="" class="img" />
+    <view class="title">
+      {{item.name}}
+    </view>
+  </view>
+</view>

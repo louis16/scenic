@@ -9,13 +9,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "立即出发",
-          "pathName": "pages/start/start",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "首页",
           "pathName": "pages/index/index",
           "query": "",
@@ -54,13 +47,6 @@
           "name": "景区详情",
           "pathName": "pages/scenicDetail/scenicDetail",
           "query": "id=10",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/taskTrigger/taskTrigger",
-          "query": "",
           "launchMode": "default",
           "scene": null
         }

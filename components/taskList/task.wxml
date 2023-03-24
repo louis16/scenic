@@ -1,15 +1,24 @@
-<view class="listContainer"  animation="{{upScroll}}">
-	<view class="title">
-		<view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
-			<text>{{isExpand? '折叠': '展开'}}</text>
-		</view>
-		<text>{{title}}</text>
-		<view bindtap="changeModalStatus" class="closeBtn">
-			<text>关闭</text>
-		</view>
-	</view>
-	<view class="body">
-		<slot name="header"></slot>
-		<slot name="body"></slot>
-	</view>
+<view class="listContainer" animation="{{upScroll}}">
+  <view class="titleView" bindtouchmove="handleMove">
+    <view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
+      <text>{{isExpand? '折叠': '展开'}}</text>
+    </view>
+    <view class="titleWrap">
+      <block wx:if="{{titleArray.length>0}}">
+        <view wx:for="{{titleArray}}" wx:key="index" class="{{currentIndex == index && 'activeTitle'}}" data-index="{{index}}" bindtap="changeTitle"> {{item}}
+          <view wx:if="{{currentIndex == index}}" class="activeLine" />
+        </view>
+      </block>
+      <block wx:else>
+        <text style="color: #333333;">{{title}}</text>
+      </block>
+    </view>
+    <view bindtap="changeModalStatus" class="closeBtn">
+      <text>关闭</text>
+    </view>
+  </view>
+  <view class="body">
+    <slot name="header"></slot>
+    <slot name="body"></slot>
+  </view>
 </view>

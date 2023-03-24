@@ -1,13 +1,14 @@
 <view class="container">
-	<image src="{{data.img}}" mode="aspectFill" class="bgImg" />
-	<view wx:if="{{data.desc}}" class="bgmask">
-		<view class="descWrap">
-			<text user-select class="descText">{{data.desc}}</text>
-		</view>
-	</view>
-	<!-- <view class="startNow">
+  <image src="{{data.img}}" mode="aspectFill" class="bgImg" />
+  <view wx:if="{{data.desc}}" class="bgmask">
+    <view class="descWrap">
+      <text user-select class="descText">{{data.desc}}</text>
+    </view>
+  </view>
+  <!-- <view class="startNow">
 		<image src="/static/icon/icon_swip.png" style="transform: translateX({{scrollX}}rpx);" mode="aspectFill" class="icon" bindtap="startNow" bindtouchmove="moveIcon" bindtouchend="endMove" />
 		<text class="goText">向右滑动出发</text>
 	</view> -->
-	<button class="goBtn" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">出发</button>
+  <button wx:if="{{hasLogin}}" class="goBtn" bindtap="goToHomePage">出发</button>
+  <button wx:else class="goBtn" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">出发</button>
 </view>

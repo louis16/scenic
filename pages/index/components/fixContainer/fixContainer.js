@@ -20,9 +20,7 @@ Component({
   },
   methods: {
     callPhone() {
-      wx.makePhoneCall({
-        phoneNumber: "23456789",
-      });
+      this.triggerEvent("showSoS")
     },
     itemClick(event) {
       const type = event.currentTarget.dataset.type;

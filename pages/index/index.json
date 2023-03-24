@@ -12,7 +12,8 @@
     "FixContainer": "./components/fixContainer/fixContainer",
     "TaskList": "./components/task/TaskList",
     "LandscapeDetail": "./components/landscapeDetail/landscapeDetail",
-    "FullScreen":"/components/fullScreen/FullScreen"
+    "FullScreen":"/components/fullScreen/FullScreen",
+    "LandscapeList":"./components/landscape/LandscapeList"
   },
   "disableScroll": true
 }

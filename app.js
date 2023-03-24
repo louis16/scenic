@@ -3,6 +3,7 @@ const {
 } = require('./util/api')
 const {
   TOKEN,
+  PHONE,
   storageSync,
   permission_request
 } = require('./util/util')
@@ -17,6 +18,7 @@ App({
           code: res.code,
         }).then(res => {
           storageSync(TOKEN, res.access_token)
+          storageSync(PHONE, res?.phone)
           this.globalData.token = res.access_token
         }).catch(err => {
           // console.error(err)

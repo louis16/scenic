@@ -1,7 +1,7 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .swiper {
@@ -14,20 +14,16 @@
   height: 460rpx;
   text-align: center;
   line-height: 460rpx;
-  /* background-color: #90ADD8; */
 }
 
 .container {
-  /* display: flex; */
-  /* flex-direction: column; */
+  flex: 1;
   padding: 60rpx 40rpx 100rpx 40rpx;
   margin-bottom: -40rpx;
-  /* border-top: 2rpx solid white; */
   border-radius: 48rpx 48rpx 0 0;
   box-sizing: content-box;
   transform: translateY(-40rpx);
   backdrop-filter: blur(30px);
-  /* background-color: white; */
 }
 
 .logoView {
@@ -49,11 +45,8 @@
 }
 
 .topLine {
-  /* width: 100%; */
   border-top: 2rpx solid #D8E3F6;
   padding-top: 32rpx;
-  /*padding-top: 46rpx;
-  margin-top: 46rpx; */
 }
 
 .titleView {
@@ -133,5 +126,4 @@
   margin-top: 72rpx;
   background: linear-gradient(180deg, #C5DAF8 0%, #668FCC 100%);
   box-shadow: 0px 3px 6px 0px #AFC4E3, inset 0px 4px 6px 0px #C5DDFF;
-
 }

@@ -175,6 +175,8 @@ const formatOption = (data) => {
 
 const removeStorageSync = (key) => wx.removeStorageSync(key)
 const TOKEN = 'TOKEN'
+const SCENICDETAIL = 'scenicDetail'
+const PHONE = "PHONE"
 module.exports = {
   compareVersion,
   showLoading,
@@ -187,5 +189,7 @@ module.exports = {
   formatMarkData,
   permission_request,
   showToast,
-  formatOption
+  formatOption,
+  SCENICDETAIL,
+  PHONE
 };

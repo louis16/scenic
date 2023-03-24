@@ -47,7 +47,6 @@
 .itemImg {
   width: 88rpx;
   height: 73rpx;
-  background-color: royalblue;
   position: relative;
   left: 50%;
   top: 50%;

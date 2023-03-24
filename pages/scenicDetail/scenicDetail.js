@@ -5,7 +5,8 @@ const {
 	showLoading,
 	hideLoading,
 	compareVersion,
-	storageSync
+  storageSync,
+  SCENICDETAIL
 } = require('../../util/util')
 const app = getApp()
 Page({
@@ -45,7 +46,7 @@ Page({
 	onReachBottom() {},
 	onShareAppMessage() {},
 	onHomePage() {
-		storageSync('scenicDetail', JSON.stringify({
+		storageSync(SCENICDETAIL, JSON.stringify({
 			...this.data.detailData,
 			logo: this.data.logo
 		}))

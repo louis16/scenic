@@ -3,43 +3,71 @@
   width: 100vw;
   background-color: #F6F8FB;
   z-index: 20;
-  overflow: hidden;
-  border-radius: 48rpx 48rpx 0 0;
   padding-bottom: (122rpx +env(safe-area-inset-bottom));
 }
 
-/* .expand{
-	height: 80vh;
-	transition: .3s all linear;
-}
-.close{
-	height: 60vh;
-	transition: .3s all linear;
-} */
 .expandBtn {
-  position: absolute;
   left: 10px;
 }
 
 .closeBtn {
-  position: absolute;
   right: 10px;
 }
 
-.title {
+.titleWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-family: 'PingFang SC Regular';
+  font-size: 32rpx;
+  font-weight: normal;
+  line-height: 32rpx;
+  color: #999999;
+}
+
+.titleView {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 100vw;
-  padding: 40rpx 32rpx;
+  padding: 34rpx 32rpx;
   line-height: 32rpx;
   font-size: 32rpx;
   font-weight: 400;
-  /* background: linear-gradient(180deg, #E5EFFF 0%, rgba(248, 251, 255, 0.64) 74%, rgba(255, 255, 255, 0.00) 100%); */
+  border-radius: 48rpx 48rpx 0 0;
+  background: linear-gradient(180deg, #E5EFFF 0%, rgba(248, 251, 255, 0.64) 74%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+/* .titleView::before{
+  content: '  ';
+  display: block;
+  width: 60rpx;
+  height: 10rpx;
+  background-color: #999999;
+  border-radius: 28rpx;
+  position: absolute;
+  top: 0;
+  transform: translateY(-200%);
+} */
+.activeTitle {
+  font-family: 'PingFang SC Bold';
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 40rpx;
+  color: #333333;
+  position: relative;
+}
+
+.activeLine {
+  width: 100%;
+  height: 16rpx;
+  border-radius: 12rpx;
+  opacity: 0.8;
+  background: linear-gradient(0deg, #FFD7C5 0%, #FF9060 100%);
+  transform: translateY(-50%);
 }
 
 .body {
-  /* 相对于整个弹出框减去顶部固定位置的高度 */
   overflow-y: auto;
   /* overflow: hidden; */
 }

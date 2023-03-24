@@ -19,11 +19,16 @@ Component({
       type: Boolean,
       value: true,
     },
+    titleArray: {
+      type: Array,
+      value: []
+    }
   },
 
   data: {
     upScroll: {},
     isExpand: false,
+    currentIndex: 0
   },
   lifetimes: {
     attached() {
@@ -43,6 +48,15 @@ Component({
   },
 
   methods: {
+    changeTitle(evnet) {
+      const index = evnet.currentTarget.dataset.index
+      this.setData({
+        currentIndex: index
+      })
+      this.triggerEvent('changeTitle', {
+        index: index
+      })
+    },
     // openModal: function () {
     // 	const upScroll = wx.createAnimation({
     // 		duration: 200,
@@ -64,9 +78,9 @@ Component({
       });
     },
     changeExpand(flag) {
-      const value = this.data.isExpand
-        ? `-${this.data.height}vh`
-        : `-${this.data.height + 20}vh`;
+      const value = this.data.isExpand ?
+        `-${this.data.height}vh` :
+        `-${this.data.height + 20}vh`;
       const upScroll = wx.createAnimation({
         duration: 200,
         timingFunction: "linear",
@@ -87,5 +101,8 @@ Component({
         clearTimeout(timer);
       }, 160);
     },
+    handleMove(ev) {
+      console.log(ev)
+    }
   },
 });
