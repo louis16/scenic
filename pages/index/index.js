@@ -171,6 +171,7 @@ Page({
         showGoodModal: false,
         showLandscapeModal: true,
         currentTabKey: "1",
+        list: this.data.landscapse
       };
     }
     this.setData({
@@ -179,6 +180,11 @@ Page({
       showMarkTapModal: false,
       showSOS: false
     });
+  },
+  hideNews(event) {
+    this.setData({
+      leftTop: event.detail.closed ? 60 : 100
+    })
   },
   marktap(event) { //mark点击事件
     const markerId = event.detail.markerId

@@ -1,5 +1,6 @@
 // components/scrollnews/scrollnews.js
 const app = getApp();
+const eventBus = app.globalData.bus
 Component({
   properties: {
     top: {
@@ -12,15 +13,33 @@ Component({
     }
   },
 
+  lifetimes: {
+    attached() {
+      eventBus.on('showNews', () => {
+        this.setData({
+          hidden: true
+        })
+        this.triggerEvent("toggleShowNews", {
+          closed: false
+        })
+      })
+    },
+    detached() {
+      eventBus.off('showNews')
+    }
+  },
   data: {
     navHeight: app.globalData.navHeight, //导航栏高度
-    hidden: false
+    hidden: true
   },
 
   methods: {
     closeMessage() {
       this.setData({
-        hidden: true
+        hidden: false
+      })
+      this.triggerEvent("toggleShowNews", {
+        closed: true
       })
     }
   },

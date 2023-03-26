@@ -49,6 +49,13 @@
           "query": "id=10",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/game/game",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -33,6 +33,24 @@ Component({
   lifetimes: {
     attached() {
       console.log("初始化组件", this.data.height);
+      this.openModal()
+    },
+    detached: function () {
+      console.log("卸载组件");
+    },
+  },
+
+  methods: {
+    changeTitle(evnet) { //如果是多选的标题,则对应暴露出选中的index
+      const index = evnet.currentTarget.dataset.index
+      this.setData({
+        currentIndex: index
+      })
+      this.triggerEvent('changeTitle', {
+        index: index
+      })
+    },
+    openModal: function () {
       const upScroll = wx.createAnimation({
         duration: 200,
         timingFunction: "linear",
@@ -42,31 +60,6 @@ Component({
         upScroll: upScroll.export(),
       });
     },
-    detached: function () {
-      console.log("卸载组件");
-    },
-  },
-
-  methods: {
-    changeTitle(evnet) {
-      const index = evnet.currentTarget.dataset.index
-      this.setData({
-        currentIndex: index
-      })
-      this.triggerEvent('changeTitle', {
-        index: index
-      })
-    },
-    // openModal: function () {
-    // 	const upScroll = wx.createAnimation({
-    // 		duration: 200,
-    // 		timingFunction: 'linear'
-    // 	})
-    // 	upScroll.translateY('-80vh').step();
-    // 	this.setData({
-    // 		upScroll: upScroll.export(),
-    // 	})
-    // },
     closeModal: function () {
       const upScroll = wx.createAnimation({
         duration: 500,
@@ -101,8 +94,24 @@ Component({
         clearTimeout(timer);
       }, 160);
     },
-    handleMove(ev) {
-      console.log(ev)
+    touchStart(ev) {
+      if (!this.data.closeExpand) return
+      const {
+        pageY
+      } = ev.changedTouches[0]
+      this.pageY = pageY
+    },
+    touchEnd(ev) {
+      if (!this.data.closeExpand) return
+      const {
+        pageY
+      } = ev.changedTouches[0]
+      if (pageY - this.pageY > 30) {
+        this.changeExpand()
+      } else if (pageY - this.pageY < -30) {
+        this.changeExpand()
+      }
+      this.pageY = 0
     }
   },
 });

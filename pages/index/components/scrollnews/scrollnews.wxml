@@ -1,4 +1,4 @@
-<view hidden="{{hidden}}" class="box " style="top: {{navHeight + top}}px;">
+<view wx:if="{{hidden}}" class="box " style="top: {{navHeight + top}}px;">
   <view class="iconView">
     <image class="icon" src="/static/icon/notify.png" mode="" />
   </view>

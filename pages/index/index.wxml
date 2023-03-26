@@ -17,11 +17,11 @@
   </view>
   <!-- enable-satellite -->
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
-  <scrollnews top="{{60}}" />
+  <scrollnews top="{{60}}" bind:toggleShowNews="hideNews" />
   <!-- 右边操作栏 -->
   <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" bind:openTaskList="openTaskLayer" />
   <!-- 左边操作栏 -->
-  <FixContainer right="{{false}}" top="{{110}}" height="{{230}}" bind:showSoS="openSOS" />
+  <FixContainer right="{{false}}" top="{{leftTop ? leftTop : 100 }}" height="{{230}}" bind:showSoS="openSOS" />
   <!-- <flicker/> -->
   <!-- 任务 -->
   <block wx:if="{{showTaskModal}}">

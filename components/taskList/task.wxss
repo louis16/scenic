@@ -38,7 +38,7 @@
   background: linear-gradient(180deg, #E5EFFF 0%, rgba(248, 251, 255, 0.64) 74%, rgba(255, 255, 255, 0.00) 100%);
 }
 
-/* .titleView::before{
+.expandView::before{
   content: '  ';
   display: block;
   width: 60rpx;
@@ -48,7 +48,7 @@
   position: absolute;
   top: 0;
   transform: translateY(-200%);
-} */
+}
 .activeTitle {
   font-family: 'PingFang SC Bold';
   font-size: 40rpx;

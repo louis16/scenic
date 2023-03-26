@@ -1,8 +1,8 @@
 <view class="listContainer" animation="{{upScroll}}">
-  <view class="titleView" bindtouchmove="handleMove">
-    <view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
+  <view class="titleView {{closeExpand && 'expandView'}}" capture-bind:touchstart="touchStart" capture-bind:touchend="touchEnd">
+    <!-- <view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
       <text>{{isExpand? '折叠': '展开'}}</text>
-    </view>
+    </view> -->
     <view class="titleWrap">
       <block wx:if="{{titleArray.length>0}}">
         <view wx:for="{{titleArray}}" wx:key="index" class="{{currentIndex == index && 'activeTitle'}}" data-index="{{index}}" bindtap="changeTitle"> {{item}}
