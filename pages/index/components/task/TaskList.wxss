@@ -55,9 +55,15 @@
   box-sizing: border-box;
   margin-top: 26rpx;
   padding: 7rpx 24rpx;
+  text-align: center;
+  border: 2rpx solid transparent;
 }
 
 .activeStatus {
+  height: 56rpx;
+  box-sizing: border-box;
+  margin-top: 26rpx;
+  padding: 7rpx 24rpx;
   background-color: #E9F2FE;
   border-radius: 28rpx;
   border: 2rpx solid #90ADD8;

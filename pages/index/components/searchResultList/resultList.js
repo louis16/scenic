@@ -12,7 +12,6 @@ Component({
 
 	methods: {
 		itemClick(e) {
-      console.log(this.data.list)
 			wx.showToast({
 				icon: 'none',
 				title: `${e.currentTarget.dataset.index}`,

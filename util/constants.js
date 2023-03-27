@@ -1,6 +1,7 @@
 export const mapIcon = {
   "normal": "/static/imgs/Marker1_Activated@3x.png",
   "customer": "/static/imgs/demoMark.jpg",
+  'landscape': "/static/imgs/landscape.png"
 }
 export const rewwardsType = {
   "0": "无",
@@ -10,7 +11,7 @@ export const rewwardsType = {
   "4": "合成物品组件",
   "5": "电子券",
 }
-export const taskType = {//trigger_show => '触发后的内容', //触发后的内容：0-》不显示，1-》图文，2-》视频，3-》音频，4-》AR视频
+export const taskType = { //trigger_show => '触发后的内容', //触发后的内容：0-》不显示，1-》图文，2-》视频，3-》音频，4-》AR视频
   "0": "",
   "1": "/static/icon/pic_icon.png",
   "2": "/static/icon/ar_icon.png",
@@ -18,12 +19,36 @@ export const taskType = {//trigger_show => '触发后的内容', //触发后的�
   "4": "/static/icon/audio_icon.png",
 }
 export const taskStatus = {
-  "unfinished":{backgroundColor:"#FFF1F1",color:"#FB9898",text:"未完成"},
-  "finished":{backgroundColor:"#E2EEFF",color:"#90ADD8",text:"已完成"},
-  "expired":{backgroundColor:"#F2F2F2",color:"#999999",text:"已过期"},
-  "1":{backgroundColor:"#FFF1F1",color:"#FB9898",text:"未完成"},
-  "2":{backgroundColor:"#E2EEFF",color:"#90ADD8",text:"已完成"},
-  "3":{backgroundColor:"#F2F2F2",color:"#999999",text:"已过期"}
+  "unfinished": {
+    backgroundColor: "#FFF1F1",
+    color: "#FB9898",
+    text: "未完成"
+  },
+  "finished": {
+    backgroundColor: "#E2EEFF",
+    color: "#90ADD8",
+    text: "已完成"
+  },
+  "expired": {
+    backgroundColor: "#F2F2F2",
+    color: "#999999",
+    text: "已过期"
+  },
+  "1": {
+    backgroundColor: "#FFF1F1",
+    color: "#FB9898",
+    text: "未完成"
+  },
+  "2": {
+    backgroundColor: "#E2EEFF",
+    color: "#90ADD8",
+    text: "已完成"
+  },
+  "3": {
+    backgroundColor: "#F2F2F2",
+    color: "#999999",
+    text: "已过期"
+  }
 }
 export function getDistance(point1, point2) {
   let {

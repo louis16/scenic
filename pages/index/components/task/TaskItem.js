@@ -103,7 +103,6 @@ Component({
     async goFinish(event) {
       let type = event.currentTarget.dataset.tasktype;
       let id = event.currentTarget.dataset.id;
-      console.log(type, id)
       //type 1:AR识别，2：定位，3：扫码
       if (type == 1) {
         showToast({
@@ -124,10 +123,9 @@ Component({
               lat: 30.7400153,
               lng: 104.0825747
             })
-            if (dis < element.accuracy) {
+            if (dis < element.accuracy * 1000) {
               hasNear = true
               getTaskDetail(element.id).then(taskDetail => {
-
                 const data = formatOption(taskDetail)
                 wx.navigateTo({
                   url: '/pages/taskTrigger/taskTrigger',
@@ -144,11 +142,8 @@ Component({
               break
             }
           }
-          hideLoading()
-          hasNear ? showToast({
-            title: 'doneeee',
-            icon: 'none'
-          }) : showToast({
+          hideLoading();
+          !hasNear && showToast({
             title: '暂未到达任务地点',
             icon: 'none'
           })

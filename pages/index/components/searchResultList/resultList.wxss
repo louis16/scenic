@@ -1,8 +1,6 @@
 .resultWrap {
 	width: 100vw;
-	/* height: calc(80vh-300rpx); */
-  /* height: calc(100% - 400rpx); */
-  height: 70%;
+  height: 100%;
 	background-color: #ffffff;
 	position: absolute;
   z-index: 999;

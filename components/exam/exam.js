@@ -63,14 +63,12 @@ Component({
   methods: {
     //单选
     radioChange(e) {
-      console.log(e.detail.value)
     },
     //多选
     checkboxChange(e) {
       var list = this.data.list
       var index = e.currentTarget.dataset.index
       var values = e.detail.value
-      console.log(index, values)
       for (let i = 0, lenI = list.length; i < lenI; ++i) {
         for (let j = 0; j < list[i].option_list.length; j++) {
           if (i == index) {
@@ -87,7 +85,6 @@ Component({
           
         }
       }
-      console.log(list, 'list')
       this.setData({
         list: list
       })

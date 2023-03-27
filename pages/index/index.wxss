@@ -71,16 +71,16 @@
   height: 88rpx;
   line-height: 88rpx;
   display: flex;
-  background: #fff;
+  /* background: */
 }
 
 .hd_flex {
   flex: 1;
   text-align: center;
   font-size: 28rpx;
-  font-family: PingFang SC;
+  font-family: 'PingFang SC';
   font-weight: 500;
-  /* color: #333333; */
+  color: #333333;
 }
 
 .hd_flex::after {

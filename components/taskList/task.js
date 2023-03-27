@@ -1,3 +1,5 @@
+const app = getApp()
+const eventBus = app.globalData.bus
 Component({
   options: {
     multipleSlots: true,
@@ -22,6 +24,10 @@ Component({
     titleArray: {
       type: Array,
       value: []
+    },
+    isLandscapeDetail:{
+      type: Boolean,
+      value: false,
     }
   },
 
@@ -32,11 +38,12 @@ Component({
   },
   lifetimes: {
     attached() {
-      console.log("初始化组件", this.data.height);
       this.openModal()
     },
     detached: function () {
-      console.log("卸载组件");
+      if(this.data.isLandscapeDetail){//景观详情，关闭通知map更新marker的样式
+        eventBus.emit('closeLandScape')
+      }
     },
   },
 

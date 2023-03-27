@@ -1,4 +1,4 @@
-<view class="resultWrap {{list.length === 0 && 'opcacity'}}" style="top: {{navHeight + 50}}px;">
+<view class="resultWrap {{list.length === 0 && 'opcacity'}}" style="top: {{navHeight + 60}}px;">
 	<view class="resultItem" bindtap="itemClick" data-index="{{index}}" style="{{index === 0 && 'border-top:none'}}" wx:for="{{list}}" wx:key="index">
 		<text>{{item.id}}</text>
 	</view>

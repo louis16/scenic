@@ -12,7 +12,6 @@ Page({
     sex: null,
     currentIndex: 0,
     navHeight: app.globalData.navHeight, //导航栏高度
-    windowHeight: app.globalData.windowHeight, //windowHeight
   },
   onHide() {},
   onUnload() {},

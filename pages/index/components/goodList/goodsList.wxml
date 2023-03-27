@@ -1,11 +1,11 @@
 <block>
   <view class="wrap" wx:if="{{list.length > 0}}">
+        <!-- <image class="itemImg" src="/static/icon/goodIcon/{{test}}.png" mode=""/> -->
     <view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">
       <view class="itemLine">
         <text class="itemNum">{{item.amount}}</text>
-        <!-- <image class="itemImg" src="/static/icon/goodIcon/{{test}}.png" mode=""/> -->
         <image class="itemImg" src="{{filePath}}/{{item.item.image}}" mode="" />
-        <view wx:if="{{item.item.type == 2}}" class="viewMask">
+        <view wx:if="{{item.item.type == 1}}" class="viewMask">
           合成
         </view>
       </view>

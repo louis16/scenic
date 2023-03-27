@@ -12,16 +12,53 @@
     </view>
     <view class="bottomWrap">
       <view class="progress" bindtap="progressClick">
+        <view style="transform: translateX(-10rpx);">
+          <view style="position:relative;width: 8rpx;background-color: #E9E9E9;height: {{unlock_h}}%">
+            <text wx:if="{{overview.total_unlock}}" class="progressText">{{overview.total_unlock}}</text>
+          </view>
+          <view style="position:relative;width: 8rpx;background-color: #FB9898;height: {{unfinish_h}}%">
+            <text wx:if="{{overview.total_unfinish}}" class="progressText">{{overview.total_unfinish}}</text>
+          </view>
+          <view style="position:relative;width: 8rpx;background-color: #90ADD8;height: {{finished_h}}%">
+            <text wx:if="{{overview.total_finished}}" class="progressText">{{overview.total_finished}}</text>
+          </view>
+        </view>
       </view>
       <view class="item" bindtap="openTask">
         <image class="itemIcon" src="/static/icon/task.png" mode="" />
         <text class="itemText">任务</text>
       </view>
       <view class="taskWrap {{!showTask && 'hideTaskWrap'}}">
-        <view catchtap class="line"> </view>
-        <view class="line"> </view>
-        <view class="line"> </view>
-        <view class="line"> </view>
+        <block wx:if="{{showContent}}">
+          <view catchtap class="line">
+            <view class="lineTitle">
+              <image class="lineIcon" src="/static/icon/task_total.png" mode="" />
+              任务总数：
+            </view>
+            <text class="lineNum">{{overview.total_quests}}条</text>
+          </view>
+          <view class="line">
+            <view class="lineTitle">
+              <image class="lineIcon" src="/static/icon/task_unlocked.png" mode="" />
+              未解锁任务：
+            </view>
+            <text class="lineNum">{{overview.total_unlock}}条</text>
+          </view>
+          <view class="line">
+            <view class="lineTitle">
+              <image class="lineIcon" src="/static/icon/task_unfinished.png" mode="" />
+              未完成任务：
+            </view>
+            <text class="lineNum">{{overview.total_unfinish}}条</text>
+          </view>
+          <view class="line">
+            <view class="lineTitle">
+              <image class="lineIcon" src="/static/icon/task_complete.png" mode="" />
+              已完成任务：
+            </view>
+            <text class="lineNum">{{overview.total_finished}}条</text>
+          </view>
+        </block>
         <view class="triangle" />
       </view>
     </view>

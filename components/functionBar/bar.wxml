@@ -1,7 +1,7 @@
 <view class="barContainer safeBottom">
 	<view class="funcItem {{currentTabKey==1 && 'activeItem'}}" bindtap="clickItem" data-type="1" data-name="景点">
 		<image class="itemIcon" src="/static/icon/scenic.png" mode="aspectFill" />
-		<text>景点</text>
+		<text>景观</text>
 	</view>
 	<view class=" funcItem {{currentTabKey==2 && 'activeItem'}}" bindtap="clickItem" data-type="2" data-name="电子券">
 		<image class="itemIcon" src="/static/icon/ticket.png" mode="aspectFill" />
@@ -13,7 +13,7 @@
 	</view>
 	<view class="funcItem {{currentTabKey==4 && 'activeItem'}}" bindtap="clickItem" data-type="4" data-name="我的">
 		<image class="itemIcon" src="/static/icon/package.png" mode="aspectFill" />
-		<text>物品</text>
+		<text>背包 </text>
 	</view>
 	<view class="funcItem {{currentTabKey==5 && 'activeItem'}}" bindtap="clickItem" data-type="5" data-name="我的">
 		<image class="itemIcon" src="/static/icon/aboutMe.png" mode="aspectFill" />

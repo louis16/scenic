@@ -9,8 +9,8 @@
     </view>
   </topContainer>
   <FullScreen />
-  <!-- subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" -->
-  <map id="myMap" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap" bindregionchange="regionChange"></map>
+  <!--  -->
+  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
   <view class="showInput" style="top:{{navHeight + 10}}px">
     <image class="searchIcon" src="/static/icon/search.png" mode="" />
     <input placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />
@@ -19,7 +19,7 @@
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
   <scrollnews top="{{60}}" bind:toggleShowNews="hideNews" />
   <!-- 右边操作栏 -->
-  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" bind:openTaskList="openTaskLayer" />
+  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" overview="{{overview}}" bind:openTaskList="openTaskLayer" />
   <!-- 左边操作栏 -->
   <FixContainer right="{{false}}" top="{{leftTop ? leftTop : 100 }}" height="{{230}}" bind:showSoS="openSOS" />
   <!-- <flicker/> -->
@@ -35,7 +35,7 @@
   <block wx:if="{{showLandscapeModal}}">
     <SlidePannel bind:closeModal="closeModal" titleArray="{{['景观','设施']}}" bind:changeTitle="changeData" bind:toggleExpand="toggleExpand">
       <view slot="body" style="height: {{height}}vh">
-        <LandscapeList list="{{list}}"/>
+        <LandscapeList list="{{list}}" bind:showLandScapeDetail="openLandscapeDetail" />
       </view>
     </SlidePannel>
   </block>
@@ -63,9 +63,6 @@
   <!-- 我的 -->
   <block wx:if="{{showPackageModal}}">
     <SlidePannel bind:closeModal="closeModal" title="我的">
-      <view slot="header" style="height: 10vh;background-color: red;">
-        <text>背包头部</text>
-      </view>
       <accordion slot="body" />
     </SlidePannel>
   </block>
@@ -75,19 +72,19 @@
       <view slot="body" style="height: {{400}}rpx;display:flex;justify-content:space-around">
         <view class="layer_control">
           <view class="control_item" data-layer="1" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="/static/icon/2D.png" mode="aspectFit" lazy-load="false" />
             <text class="item_text {{layerIndex == 1  && 'item_text_active'}}" selectable="false" space="false" decode="false">
               2D
             </text>
           </view>
           <view class="control_item" data-layer="2" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 2  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <image class="item_icon {{layerIndex == 2  && 'item_icon_active'}}" src="/static/icon/3D.png" mode="aspectFit" lazy-load="false" />
             <text class="item_text {{layerIndex == 2 && 'item_text_active'}}" selectable="false" space="false" decode="false">
               3D
             </text>
           </view>
           <view class="control_item" data-layer="3" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 3  && 'item_icon_active'}}" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+            <image class="item_icon {{layerIndex == 3  && 'item_icon_active'}}" src="/static/icon/siteLite.png" mode="aspectFit" lazy-load="false" />
             <text class="item_text {{layerIndex == 3 && 'item_text_active'}}" selectable="false" space="false" decode="false">
               卫星图层
             </text>
@@ -98,7 +95,7 @@
   </block>
   <!-- 景观详情 -->
   <block wx:if="{{showMarkTapModal}}">
-    <SlidePannel bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand">
+    <SlidePannel isLandscapeDetail="{{true}}" bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand">
       <view slot="body" style="height: {{height}}vh">
         <LandscapeDetail item="{{currentItem}}" />
       </view>
@@ -129,7 +126,7 @@
     </SlidePannel>
   </block>
   <!-- 搜索结果展示 -->
-  <!-- <block wx:if="{{true}}">
+  <block wx:if="{{searchResults.length > 0}}">
     <ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />
-  </block> -->
+  </block>
 </view>

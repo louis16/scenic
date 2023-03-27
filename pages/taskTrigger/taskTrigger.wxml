@@ -1,29 +1,58 @@
 <view class="pageWrap">
   <topContainer hiddenBack="{{false}}" title="{{originData.name || ''}}"></topContainer>
   <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
-    <image class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+    <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
     <view class="content">
       <view class="title">{{originData.name}}</view>
       <view class="desc">{{originData.description}}</view>
       <view class="answerWrap">
         <view>问题：{{originData.questions[0].question}}</view>
-        <input class="inputWrap" maxlength="10" bindinput="bindKeyInput" style="background-color: #f8f8f8;" />
+        <input class="inputWrap" maxlength="10" bindinput="bindKeyInput" />
         <view bindtap="submitData" class="submit">
           提交
         </view>
       </view>
     </view>
   </view>
-  <view wx:if="{{originData.complete_type == 3 }}">
-    <view>{{originData.questions[0].question}}</view>
-    <radio-group bindchange="radioChange">
-      <view wx:for="{{originData.questions[0].options}}" wx:key="index">
-        <radio value="{{item.value}}" />
-        <text>{{item.name}}</text>
+  <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
+    <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+    <view class="content">
+      <view class="title">{{originData.name}}</view>
+      <view class="desc">{{originData.description}}</view>
+      <view class="answerWrap">
+        <image src="/static/icon/question.png" mode="" class="questionIcon" />
+        <view class="question">{{originData.questions[0].question}}</view>
+        <view wx:for="{{originData.questions[0].options}}" data-value="{{item.value}}" bindtap="radioChange" wx:key="index" class="radioItem">
+          <view class="chooseText">{{item.name}}</view>
+        </view>
       </view>
-    </radio-group>
-    <view bindtap="submitData">
-      提交
+    </view>
+  </view>
+  <!-- 错误弹窗 -->
+  <view class="mask" catchtouchmove='true' wx:if="{{showError}}">
+    <view class="ResultWrap blur">
+      <view class="notRightWrap">
+        <text>回答错误</text>
+        <image class="notRightIcon" src="/static/icon/not_right.png" mode="" />
+        <text>很遗憾，回答错误</text>
+        <view class="reAnswer" bindtap="reAnswer">
+          重新回答
+        </view>
+      </view>
+    </view>
+    <view class="ResultWrap" />
+  </view>
+  <!-- 正确弹窗 -->
+  <view class="mask" catchtouchmove='true' wx:if="{{showRight}}">
+    <view class="goodContent">
+      <text style="color: #FFF49B;">回答正确</text>
+      <text class="rewardText">恭喜获得10积分+钥匙</text>
+      <view style="position: relative;">
+        <image class="backImg" src="/static/icon/golden_back.png" mode="" />
+        <image class="goodIcon" src="/static/icon/goodIcon/icon1.png" mode="" />
+      </view>
+      <text style="color: #ffffff;">解锁一条新任务：去奇石林找到一封信</text>
+      <image bindtap="closePage" class="closeBtn" src="/static/icon/close_btn.png" mode="" />
     </view>
   </view>
 </view>

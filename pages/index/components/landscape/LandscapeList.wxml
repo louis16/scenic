@@ -1,5 +1,5 @@
 <view class="landscapeListWrap">
-  <view wx:for="{{list}}" class="landscapeItem" wx:key="index">
+  <view wx:for="{{list}}" class="landscapeItem" wx:key="index" data-item="{{item}}" bindtap="goLandscapeDetail">
     <image src="{{filePath}}/{{item.image}}" mode="" class="img" />
     <view class="title">
       {{item.name}}

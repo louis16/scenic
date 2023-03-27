@@ -4,7 +4,8 @@ import {
 } from '../../../../util/api';
 import {
   permission_request,
-  showToast
+  showToast,
+  formatOption
 } from '../../../../util/util';
 const {
   taskType,
@@ -23,7 +24,6 @@ Component({
   },
   lifetimes: {
     attached() {
-      console.log(this.data.item.quests)
       this.setData({
         imgUrl: `${this.data.filePath}/${this.data.item.image}`
       })
@@ -37,7 +37,6 @@ Component({
   methods: {
     questTap(event) {
       const item = event.currentTarget.dataset.item
-      console.log(item)
       const questStatus = item.status //任务完成状态 1>未完成，2>已完成，3>已过期
       const type = item.trigger_type //任务类型 1>AR，2>定位，3>扫码
       if (questStatus == 1) {
@@ -58,7 +57,6 @@ Component({
       } else if (type == 2) {
         let hasPermission = await permission_request("scope.userLocation", "地理位置")
         let hasNear = false
-        console.log(hasPermission, 111111)
         if (hasPermission) {
           let temp = app.globalData.positionWatchLists.filter(item => item.id == id)
           for (let index = 0; index < temp.length; index++) {
@@ -70,12 +68,13 @@ Component({
             if (dis < element.accuracy * 1000) {
               hasNear = true
               getTaskDetail(element.id).then(taskDetail => {
+                const data = formatOption(taskDetail)
                 wx.navigateTo({
                   url: '/pages/taskTrigger/taskTrigger',
                   success: function (res) {
                     res.eventChannel.emit('acceptDataFromOpenerPage', {
                       data: {
-                        ...taskDetail,
+                        ...data,
                         complete_id: id
                       },
                     })

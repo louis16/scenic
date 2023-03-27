@@ -72,7 +72,6 @@ Page({
     })
   },
   onGetPhoneNumber(event) {
-    console.log(event)
     if (event.detail.errMsg = 'getPhoneNumber:ok' && event.detail.encryptedData) {
       showLoading()
       getUserPhone({
@@ -82,7 +81,6 @@ Page({
           this.goToHomePage()
         }
       }).finally((e) => {
-        console.log('getUserPhone Error', e)
         hideLoading()
       })
     } else {

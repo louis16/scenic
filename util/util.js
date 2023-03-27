@@ -61,12 +61,15 @@ const formatMarkData = (arr) => {
         content: item.name,
         padding: 10,
         borderRadius: 2,
-        display: 'ALWAYS'
+        display: 'ALWAYS',
+        borderRadius: 8,
+        padding: 5,
+        fontSize: 12
       },
       latitude: Number(item.lat),
       longitude: Number(item.lng),
       // iconPath:'https://uninote.com.cn/__pic/2023/01/a5/81/e31b8a4c05adf822ca77fa698370.png',
-      iconPath: mapIcon['normal'],
+      iconPath: mapIcon[item?.type ? 'normal' : 'landscape'],
       width: '34px',
       height: '34px',
       rotate: 0,
@@ -158,7 +161,7 @@ function permission_request(perName, perZhName) {
 }
 
 const formatOption = (data) => {
-  if(data.complete_type == 3){
+  if (data.complete_type == 3) {
     let temp = data.questions[0].options.map(item => {
       return {
         ...item,
@@ -168,7 +171,7 @@ const formatOption = (data) => {
     })
     data.questions[0].options = temp
     return data
-  }else if(data.complete_type ==2){
+  } else if (data.complete_type == 2) {
     return data
   }
 }

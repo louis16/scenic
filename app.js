@@ -43,26 +43,15 @@ App({
         this.globalData.navWidth = navWidth;
         this.globalData.windowHeight = res.windowHeight;
         this.globalData.windowWidth = res.windowWidth;
-        this.globalData.fileUrl = 'http://file.ysr.uninote.com.cn';
+        this.globalData.fileUrl = 'https://file.ysr.uninote.com.cn';
       },
-      fail(err) {
-        console.log(err);
-      }
     })
-    // wx.loadFontFace({
-    //   global: true,
-    //   family: 'family',
-    //   source: 'url("http://file.ysr.uninote.com.cn/fronts/hycyj.ttf")',
-    //   success: function (res) {
-    //     // console.log(res,'success')
-    //   },
-    //   fail: function (res) {
-    //     // console.log(res,'fail')
-    //   },
-    //   complete: function (res) {
-    //     console.log(res, 'comp')
-    //   }
-    // })
+    wx.loadFontFace({
+      global: true,
+      family: 'DIN-Bold',
+      source: 'url("https://file.ysr.uninote.com.cn/fronts/din-bold-2.ttf")',
+      scopes: ['webview', 'native'],
+    })
   },
   onShow() {
     if (!this.bus) {

@@ -12,5 +12,11 @@ Component({
   data: {},
 
   methods: {
+    goLandscapeDetail(event) {
+      const item = event.currentTarget.dataset.item
+      this.triggerEvent('showLandScapeDetail', {
+        item
+      })
+    }
   }
 })

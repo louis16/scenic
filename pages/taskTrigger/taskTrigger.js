@@ -10,8 +10,7 @@ Page({
     eventChannelRef: null,
     originData: {},
     inputAnswer: '',
-    selectAnswer: '',
-    filePath:app.globalData.fileUrl
+    filePath: app.globalData.fileUrl,
   },
 
   onLoad(options) {
@@ -38,23 +37,17 @@ Page({
     const answer = this.data.originData.questions[0].answer
     if (this.data.originData.complete_type == 2) {
       if (answer == this.data.inputAnswer) {
-        console.log('正确')
         completeTask(this.data.originData.complete_id).then(res => {
           eventBus.emit('refreshTask')
-          wx.navigateBack()
+          // wx.navigateBack()
+          this.setData({
+            showRight: true
+          })
         })
       } else {
-        console.log('错误')
-      }
-    } else if (this.data.originData.complete_type == 3) {
-      if (answer == this.data.selectAnswer) {
-        console.log('选择正确')
-        completeTask(this.data.originData.complete_id).then(res => {
-          eventBus.emit('refreshTask')
-          wx.navigateBack()
+        this.setData({
+          showError: true
         })
-      } else {
-        console.log('选择错误')
       }
     }
   },
@@ -64,8 +57,34 @@ Page({
     })
   },
   radioChange(e) {
+    const RightAnswer = this.data.originData.questions[0].answer
+    const SelectAnswer = e.currentTarget.dataset.value
+    if (SelectAnswer == RightAnswer) {
+      completeTask(this.data.originData.complete_id).then(res => {
+        eventBus.emit('refreshTask')
+        this.setData({
+          showRight: true
+        })
+      })
+    } else {
+      this.setData({
+        showError: true
+      })
+    }
+  },
+  reAnswer() {
     this.setData({
-      selectAnswer: e.detail.value
+      showError: false
+    })
+  },
+  closePage() {
+    this.setData({
+      showRight: false
+    }, () => {
+      let timer = setTimeout(() => {
+        wx.navigateBack()
+        clearTimeout(timer)
+      }, 500)
     })
   }
 })
