@@ -42,13 +42,13 @@
       <block>
         <view class="itemTitle"> 任务地点</view>
         <view class="itemContent">
-          <view class="itemLine">
+          <view class="itemLine" catchtap="startNavigate">
             <text>{{landscape_name}}</text>
-            <text>定位图标</text>
+            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode=""/>
           </view>
-          <view class="itemLine" wx:if="{{facility_name}}">
+          <view wx:if="{{facility_name}}" class="itemLine" catchtap="startNavigate">
             <text>{{facility_name}}</text>
-            <text>定位图标</text>
+            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode=""/>
           </view>
         </view>
       </block>

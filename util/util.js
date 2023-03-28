@@ -69,6 +69,7 @@ const formatMarkData = (arr) => {
       latitude: Number(item.lat),
       longitude: Number(item.lng),
       // iconPath:'https://uninote.com.cn/__pic/2023/01/a5/81/e31b8a4c05adf822ca77fa698370.png',
+      // iconPath:'https://pic.rmb.bdstatic.com/bjh/down/6f65655c5d8f74d304309e3092c968f2.gif',
       iconPath: mapIcon[item?.type ? 'normal' : 'landscape'],
       width: '34px',
       height: '34px',

@@ -17,6 +17,12 @@
       "desc": "你的位置信息将用于应用进行导航服务"
     }
   },
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.18",
+      "provider": "wx50b5593e81dd937a"
+    }
+  },
   "window": {
     "navigationStyle": "custom"
   },

@@ -14,6 +14,9 @@ const {
   showToast,
   formatOption
 } = require("../../../../util/util");
+const plugin = requirePlugin('routePlan');
+let key = 'WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT'; //使用在腾讯位置服务申请的key
+let referer = '游界原始人'; //调用插件的app的名称
 const app = getApp()
 const eventBus = app.globalData.bus
 Component({
@@ -163,6 +166,17 @@ Component({
           }
         })
       }
+    },
+    startNavigate() {
+      let endPoint = JSON.stringify({ //终点
+        'name': '四川省成都市武侯区人民南路四段48号29号',
+        'latitude': 30.612929,
+        'longitude': 104.066319
+      });
+      let mode = 'walking'
+      wx.navigateTo({
+        url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode=' + mode
+      });
     }
   }
 })

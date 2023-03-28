@@ -19,7 +19,7 @@
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
   <scrollnews top="{{60}}" bind:toggleShowNews="hideNews" />
   <!-- 右边操作栏 -->
-  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" overview="{{overview}}" bind:openTaskList="openTaskLayer" />
+  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" overview="{{overview || null}}" bind:openTaskList="openTaskLayer" />
   <!-- 左边操作栏 -->
   <FixContainer right="{{false}}" top="{{leftTop ? leftTop : 100 }}" height="{{230}}" bind:showSoS="openSOS" />
   <!-- <flicker/> -->

@@ -103,7 +103,8 @@
 }
 
 .inputWrap {
-  background-color: red;
+  margin-top: 10rpx;
+  background-color: #D6E3F3;
 }
 
 .submit {
@@ -115,7 +116,7 @@
   font-weight: 500;
   color: #333333;
   background: #FFFFFF;
-  box-shadow: 0 0 8rpx 0 #D6E3F3;
+  /* box-shadow: 0 0 8rpx 0 #D6E3F3; */
 }
 
 .mask {

@@ -11,7 +11,7 @@ Component({
     },
     toggleExpand: {
       type: Function,
-      value: null,
+      value: () => {},
     },
     height: {
       type: Number,
@@ -25,7 +25,7 @@ Component({
       type: Array,
       value: []
     },
-    isLandscapeDetail:{
+    isLandscapeDetail: {
       type: Boolean,
       value: false,
     }
@@ -41,7 +41,7 @@ Component({
       this.openModal()
     },
     detached: function () {
-      if(this.data.isLandscapeDetail){//景观详情，关闭通知map更新marker的样式
+      if (this.data.isLandscapeDetail) { //景观详情，关闭通知map更新marker的样式
         eventBus.emit('closeLandScape')
       }
     },

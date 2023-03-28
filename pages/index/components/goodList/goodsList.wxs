@@ -1,0 +1,7 @@
+var isSystemIcon = function (icon) {
+  return icon == 'icon0' || icon == 'icon1' || icon == 'icon2' || icon == 'icon3' || icon == 'icon4' || icon == 'icon5' || icon == 'icon6' || icon == 'icon7' || icon == 'icon8' || icon == 'icon9' || icon == 'icon10' || icon == 'icon11' || icon == 'icon12' || icon == 'icon13' || icon == 'icon14'
+};
+
+module.exports = {
+  isSystemIcon: isSystemIcon,
+};

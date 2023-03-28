@@ -13,7 +13,7 @@ Component({
     },
     overview: {
       type: Object,
-      value: {},
+      value: null,
       observer: function (n) {
         if (n) {
           const total = n.total_unlock * 1 + n.total_unfinish * 1 + n.total_finished * 1;

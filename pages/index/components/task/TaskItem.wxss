@@ -115,6 +115,10 @@
   height: 40rpx;
   margin-top: 16rpx;
 }
+.itemIcon{
+  width: 40rpx;
+  height: 40rpx;
+}
 
 .imageWrap {
   width: 216rpx;

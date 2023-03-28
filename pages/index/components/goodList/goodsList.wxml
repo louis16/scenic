@@ -1,10 +1,11 @@
+<wxs module="handler" src="./goodsList.wxs"></wxs>
 <block>
   <view class="wrap" wx:if="{{list.length > 0}}">
-        <!-- <image class="itemImg" src="/static/icon/goodIcon/{{test}}.png" mode=""/> -->
     <view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">
       <view class="itemLine">
         <text class="itemNum">{{item.amount}}</text>
-        <image class="itemImg" src="{{filePath}}/{{item.item.image}}" mode="" />
+        <image wx:if='{{handler.isSystemIcon(item.item.icon)}}' class="itemImg" src="/static/icon/goodIcon/{{item.item.icon}}.png" mode="" />
+        <image wx:else class="itemImg" src="{{filePath}}/{{item.item.icon}}" mode="" />
         <view wx:if="{{item.item.type == 1}}" class="viewMask">
           合成
         </view>
