@@ -1,36 +1,274 @@
-.wrap {
-  width: 300px;
-  height: 470px;
-  background-color: whitesmoke;
+@import "/pages/commonTemplate/templateComp.wxss";
+
+.pageWrap {
   position: relative;
-  left: 10%;
-  transform: translateY(200px);
-  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  display: flex;
 }
 
-.wrap::before {
-  content: " ";
-  display: inline-block;
+.contentWrap {
+  display: flex;
+  flex: 1;
+  /* height: 100vh; */
+  flex-direction: column;
+}
+
+.img {
+  width: 100vw;
+  height: 460rpx;
+}
+
+.videoContent {
+  flex: 1;
+  background-color: #D8D8D8;
+  padding-top: 40rpx;
+  padding-right: 30rpx;
+  padding-left: 30rpx;
+}
+
+.videoContentChoose {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.videoDescWrap {
+  background: #FFFFFF10;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 28rpx;
+  position: relative;
+  padding-bottom: 48rpx;
+  padding-top: 40rpx;
+  padding-right: 30rpx;
+  padding-left: 30rpx;
+}
+
+.content {
+  flex: 1;
+  width: 100vw;
+  /* height: 100vh; */
+  background-color: white;
+  position: absolute;
+}
+
+.title {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 28rpx;
+  color: #333333;
+  margin-bottom: 40rpx;
+}
+
+.title::before {
+  display: inline-block;
+  content: " ";
+  width: 8rpx;
+  height: 28rpx;
+  transform: translate(0rpx, 6rpx);
+  margin-right: 8rpx;
+  background-color: #90ADD8;
+}
+
+.desc {
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  color: rgb(102, 102, 102);
+}
+
+.answerWrap {
+  /* background-color: #F8FBFF; */
+  box-shadow: 0 0 20rpx 0 #D6E3F3;
+  align-self: center;
+  margin-top: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 28rpx;
+  position: relative;
+  padding-bottom: 48rpx;
+}
+
+.videoChoose {
+  position: relative;
+  align-self: center;
+  margin-top: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: red;
+  padding: 60rpx;
+}
+
+.question {
+  font-family: 'PingFang SC Bold';
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 32rpx;
+  margin-bottom: 54rpx;
+  margin-top: 100rpx;
+}
+
+.questionIcon {
+  width: 96rpx;
+  height: 96rpx;
+  position: absolute;
+  top: 0;
   transform: translateY(-50%);
-  width: 100%;
-  height: 200px;
-  border-radius: 50%;
-  backdrop-filter: blur(34px);
-  box-shadow: 0px 0px 16px 0px rgba(235, 91, 91, 0.356);
-  /* backdrop-filter: blur(5px); */
-  background-color: transparent;
-  /* box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px; */
 }
 
-.wrap::after {
-  content: " ";
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 20px;
-  background: #D8D8D8;
-  backdrop-filter: blur(34px);
+.radioItem {
+  width: 510rpx;
+  height: 80rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 20rpx;
+  border: 2rpx solid #D6E3F3;
+  box-shadow: 0px 0px 4px 0px #D6E3F3;
+  margin-top: 16rpx;
+  padding: 0 16rpx;
+  box-sizing: border-box;
+}
+
+.chooseText {
+  flex: 1;
+  text-align: center;
+}
+
+.inputWrap {
+  margin-top: 10rpx;
+  background-color: #D6E3F3;
+}
+
+.submit {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  background: #FFFFFF;
+  /* box-shadow: 0 0 8rpx 0 #D6E3F3; */
+}
+
+.mask {
+  width: 100vw;
+  height: 100%;
+  background-color: #000000e0;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ResultWrap {
+  width: 570rpx;
+  height: 492rpx;
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 32rpx;
+  background: #D8D8D8;
+}
+
+.blur {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.01);
+  transform: rotate(6deg);
+  backdrop-filter: blur(6px);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.notRightWrap {
+  transform: rotate(-6deg);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.backImg {
+  width: 434rpx;
+  height: 440rpx;
+  -webkit-animation: changeright 30s linear infinite;
+}
+
+.goodIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -60%);
+  width: 120rpx;
+  height: 120rpx;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.closeBtn {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 80rpx;
+}
+
+.notRightIcon {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 54rpx 0 40rpx 0;
+}
+
+.reAnswer {
+  padding: 24rpx 64rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 32rpx;
+  /* font-weight: normal; */
+  color: #FFFFFF;
+  line-height: 32rpx;
+  background-color: #90ADD8;
+  border-radius: 28rpx;
+  margin-top: 64rpx;
+}
+
+.goodContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rewardText {
+  display: inline;
+  background: linear-gradient(180deg, #FBF388 5%, #FFFBD8 49%, #F8A955 99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'PingFang SC Regular';
+  font-weight: 500;
+  font-size: 40rpx;
+}
+
+/*自定义动画类----顺时针旋转（使用这个动画的时候才设置动画执行时间）*/
+@-webkit-keyframes changeright {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }

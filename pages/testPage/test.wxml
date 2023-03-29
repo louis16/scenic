@@ -1,4 +1,14 @@
-  <view class="wrap">
-    <view>12312321</view>
-    <view>123123F</view>
+<import src="/pages/commonTemplate/templateComp" />
+<view class="pageWrap">
+  <topContainer hiddenBack="{{false}}" title="{{'originData.name' || ''}}"></topContainer>
+  <view class="contentWrap">
+    <video id="" src="https://file.ysr.uninote.com.cn/images/resource/79d63e7b04789435dbf5c115e4bbe00e.mp4" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height:{{height}}px;" />
+    <!-- <view class="content">
+        <template is="choose" data="" />
+        <view class="blur">
+        </view>
+        <view class="background">
+        </view>
+      </view> -->
   </view>
+</view>

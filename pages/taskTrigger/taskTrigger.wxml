@@ -1,30 +1,61 @@
+<import src="/pages/commonTemplate/templateComp" />
 <view class="pageWrap">
   <topContainer hiddenBack="{{false}}" title="{{originData.name || ''}}"></topContainer>
-  <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
-    <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
-    <view class="content">
-      <view class="title">{{originData.name}}</view>
-      <view class="desc">{{originData.description}}</view>
-      <view class="answerWrap">
-        <view>问题：{{originData.questions[0].question}}</view>
-        <input class="inputWrap" maxlength="10" bindinput="bindKeyInput" />
-        <view bindtap="submitData" class="submit">
-          提交
-        </view>
-      </view>
+  <view wx:if="{{resourceType === 'mp4'}}">
+    <!--视频 ___ 直接获得奖励 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 1 }}">
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+    </view>
+    <!-- 视频 ___填空题 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+      <template wx:if="{{videoEnd}}" is="videoFillBlanks" data="{{question:originData.questions[0].question }}" />
+    </view>
+    <!--视频 ___ 选择题 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+      <template wx:if="{{videoEnd}}" is="videoChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
     </view>
   </view>
-  <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
-    <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
-    <view class="content">
-      <view class="title">{{originData.name}}</view>
-      <view class="desc">{{originData.description}}</view>
-      <view class="answerWrap">
-        <image src="/static/icon/question.png" mode="" class="questionIcon" />
-        <view class="question">{{originData.questions[0].question}}</view>
-        <view wx:for="{{originData.questions[0].options}}" data-value="{{item.value}}" bindtap="radioChange" wx:key="index" class="radioItem">
-          <view class="chooseText">{{item.name}}</view>
-        </view>
+  <view wx:elif="{{resourceType === 'mp3'}}">
+    <view class="audioWrap">
+      <view class="audioRow">
+        <text>{{progressText}} / {{durationText}}</text>
+        <image bindtap="playAudio" class="playIcon" src="{{isPlaying?'/static/icon/play.png':'/static/icon/pause.png'}}" mode="" />
+      </view>
+      <slider disabled="{{!isPlaying}}" bindchange="sliderChange" value="{{progress}}" step="1" min="0" max='{{duration}}' activeColor="#90ADD8" block-size="12" block-color="#F3F6FF" />
+    </view>
+    <view class="descWrap">
+      <view class="title">景观简介</view>
+      <text>{{originData. description}}</text>
+    </view>
+    <template wx:if="{{audioEnd}}" is="{{originData.complete_type == 2 ? 'audioFillBlanks' : originData.complete_type == 3 ? 'audioChoose':'' }}" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
+  </view>
+  <view wx:else>
+    <!--图文 ___ 直接获得奖励 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 1 }}">
+      <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+      <view class="content">
+        <view class="title">{{originData.name}}</view>
+        <view class="desc">{{originData.description}}</view>
+      </view>
+    </view>
+    <!--图文 ___ 填空题 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
+      <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+      <view class="content">
+        <view class="title">{{originData.name}}</view>
+        <view class="desc">{{originData.description}}</view>
+        <template is="fillBlanks" data="{{question:originData.questions[0].question }}" />
+      </view>
+    </view>
+    <!--图文 ___ 选择题 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
+      <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+      <view class="content">
+        <view class="title">{{originData.name}}</view>
+        <view class="desc">{{originData.description}}</view>
+        <template is="choose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
       </view>
     </view>
   </view>
@@ -43,16 +74,5 @@
     <view class="ResultWrap" />
   </view>
   <!-- 正确弹窗 -->
-  <view class="mask" catchtouchmove='true' wx:if="{{showRight}}">
-    <view class="goodContent">
-      <text style="color: #FFF49B;">回答正确</text>
-      <text class="rewardText">恭喜获得10积分+钥匙</text>
-      <view style="position: relative;">
-        <image class="backImg" src="/static/icon/golden_back.png" mode="" />
-        <image class="goodIcon" src="/static/icon/goodIcon/icon1.png" mode="" />
-      </view>
-      <text style="color: #ffffff;">解锁一条新任务：去奇石林找到一封信</text>
-      <image bindtap="closePage" class="closeBtn" src="/static/icon/close_btn.png" mode="" />
-    </view>
-  </view>
+  <template wx:if="{{ showRight}}" is="rewardsPage" data="{{rewards:rewards}}" />
 </view>

@@ -139,7 +139,7 @@
 }
 
 .item_icon_active {
-  border: 4rpx solid #90add8;
+  border: 6rpx solid #90add8;
 }
 
 .item_text {

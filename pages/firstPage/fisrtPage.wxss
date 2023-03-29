@@ -102,7 +102,7 @@
   width: 510rpx;
   height: 80rpx;
   padding-left: 24rpx;
-  /* border-bottom: 1rpx solid #F4F4F4; */
+  box-shadow: 0px 8px 16px 0px #D5DFF2;
 }
 
 .picker::after {
@@ -131,6 +131,6 @@
   line-height: 88rpx;
   font-family: 'PingFang SC Bold';
   font-size: 32rpx;
-  font-weight: normal;
+  font-weight: 600;
   color: #ffffff;
 }

@@ -33,6 +33,9 @@
 .reward {
   display: inline-block;
   margin-right: 40rpx;
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: 600;
 }
 
 .flex {
@@ -55,6 +58,7 @@
   border: 2rpx solid #999999;
   border-radius: 6rpx;
   margin-right: 8rpx;
+  color: #999999 ;
 }
 
 .infos {
@@ -115,7 +119,8 @@
   height: 40rpx;
   margin-top: 16rpx;
 }
-.itemIcon{
+
+.itemIcon {
   width: 40rpx;
   height: 40rpx;
 }

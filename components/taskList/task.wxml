@@ -3,7 +3,7 @@
     <!-- <view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
       <text>{{isExpand? '折叠': '展开'}}</text>
     </view> -->
-    <view class="titleWrap">
+    <view class="titleWrap" style="justify-content: {{titleArray.length === 0 && isLandscapeDetail?'flex-start':'space-around'}};">
       <block wx:if="{{titleArray.length>0}}">
         <view wx:for="{{titleArray}}" wx:key="index" class="{{currentIndex == index && 'activeTitle'}}" data-index="{{index}}" bindtap="changeTitle"> {{item}}
           <view wx:if="{{currentIndex == index}}" class="activeLine" />
@@ -14,7 +14,7 @@
       </block>
     </view>
     <view bindtap="changeModalStatus" class="closeBtn">
-      <text>关闭</text>
+      <image class="closeIcon" src="/static/icon/close.png" mode="" />
     </view>
   </view>
   <view class="body">

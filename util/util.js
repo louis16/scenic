@@ -172,7 +172,7 @@ const formatOption = (data) => {
     })
     data.questions[0].options = temp
     return data
-  } else if (data.complete_type == 2) {
+  } else  {
     return data
   }
 }

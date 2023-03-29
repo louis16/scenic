@@ -1,0 +1,103 @@
+<template name="choose">
+  <view class="chooseWrap">
+    <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
+    <view class="questionTemp">{{question}}</view>
+    <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
+      <view class="chooseTextTemp">{{item.k}}</view>
+    </view>
+  </view>
+</template>
+<template name="fillBlanks">
+  <view class="chooseWrap">
+    <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
+    <view class="questionTemp">{{question}}</view>
+    <input class="inputWrapTemp" bindinput="bindKeyInput" />
+    <view class="submitTemp" bindtap="submitData">
+      提交
+    </view>
+  </view>
+</template>
+<template name="videoChoose">
+  <view class="maskTemp">
+    <view class="v_c_container  ">
+    </view>
+    <view class="v_c_container blurTemp">
+      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
+      <view class="questionTemp">{{question}}</view>
+      <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
+        <view class="chooseTextTemp">{{item.k}}</view>
+      </view>
+      <view class="replayTemp" bindtap="rePlay">
+        再次播放
+      </view>
+    </view>
+  </view>
+</template>
+<template name="videoFillBlanks">
+  <view class="maskTemp">
+    <view class="v_c_container  ">
+    </view>
+    <view class="v_c_container blurTemp">
+      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
+      <view class="questionTemp">{{question}}</view>
+      <input class="inputWrapTemp" bindinput="bindKeyInput" />
+      <view class="submitTemp" bindtap="submitData">
+        提交
+      </view>
+      <view class="replay" bindtap="rePlay">
+        再次播放
+      </view>
+    </view>
+  </view>
+</template>
+<template name="audioFillBlanks">
+  <view class="maskTemp">
+    <view class="v_c_container  ">
+    </view>
+    <view class="v_c_container blurTemp">
+      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
+      <view class="questionTemp">{{question}}</view>
+      <input class="inputWrapTemp" bindinput="bindKeyInput" />
+      <view class="submitTemp" bindtap="submitData">
+        提交
+      </view>
+      <view class="replay" bindtap="rePlayAudio">
+        再次播放
+      </view>
+    </view>
+  </view>
+</template>
+<template name="audioChoose">
+  <view class="maskTemp">
+    <view class="v_c_container  ">
+    </view>
+    <view class="v_c_container blurTemp">
+      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
+      <view class="questionTemp">{{question}}</view>
+      <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
+        <view class="chooseTextTemp">{{item.k}}</view>
+      </view>
+      <view class="replay" bindtap="rePlayAudio">
+        再次播放
+      </view>
+    </view>
+  </view>
+</template>
+<template name="rewardsPage">
+  <view class="mask" catchtouchmove='true'>
+    <view class="goodContentTemp">
+      <view class="detailTextTemp" wx:if="{{rewards.length > 0}}">奖励明细</view>
+      <view class="rewardWrapTemp" wx:for="{{rewards}}" wx:key="index">
+        <view class="rewardItemTemp">
+          <view class="imgBackTemp">
+          </view>
+          <text>{{item.points? item.points + '积分' : item.item_name}}</text>
+        </view>
+      </view>
+      <view wx:for="{{quests}}" wx:key="index">
+        <text style="color: #ffffff;">解锁了新任务</text>
+      </view>
+      <image bindtap="closePage" class="closeBtn" src="/static/icon/close_btn.png" mode="" />
+    </view>
+  </view>
+</template>

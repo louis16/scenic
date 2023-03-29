@@ -28,7 +28,7 @@ Component({
     isLandscapeDetail: {
       type: Boolean,
       value: false,
-    }
+    },
   },
 
   data: {

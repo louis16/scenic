@@ -12,6 +12,10 @@
   position: relative;
 }
 
+.margin26 {
+  margin-top: 26rpx;
+}
+
 .topText {
   height: 64rpx;
   font-family: 'PingFang SC Regular';
@@ -21,7 +25,7 @@
   color: #333333;
 }
 
-.showLandscape { 
+.showLandscape {
   transform: translateY(64rpx);
   width: 100%;
   height: 860rpx;
@@ -31,10 +35,11 @@
   transition: height .2s;
   box-shadow: 0 12rpx 12rpx 0 rgba(0, 0, 0, 0.06);
   border-top: 2rpx solid rgba(0, 0, 0, 0.274);
-  border-radius: 0 0  28rpx 28rpx;
+  border-radius: 0 0 28rpx 28rpx;
   overflow: hidden;
 }
-.hideLandscape{
+
+.hideLandscape {
   transform: translateY(64rpx);
   width: 100%;
   height: 0;
@@ -44,28 +49,36 @@
   transition: height .2s;
   overflow: hidden;
 }
-.landscapeItem{
+
+.landscapeItem {
   display: block;
   margin: 0 48rpx;
   padding: 30rpx 0;
 }
 
+.filterView {
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  color: #999999;
+}
+
 .headerStatus {
   height: 56rpx;
   box-sizing: border-box;
-  margin-top: 26rpx;
   padding: 7rpx 24rpx;
   text-align: center;
   border: 2rpx solid transparent;
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  color: #999999;
 }
 
 .activeStatus {
-  height: 56rpx;
-  box-sizing: border-box;
-  margin-top: 26rpx;
-  padding: 7rpx 24rpx;
   background-color: #E9F2FE;
   border-radius: 28rpx;
+  font-size: 600;
   border: 2rpx solid #90ADD8;
   color: #90ADD8;
 }
@@ -78,11 +91,17 @@
   box-shadow: 0px 0px 5px 0px #D5E1F2;
 }
 
-.landscapeName {
+.nameRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #DAE6F6;
-  margin: 0 -30rpx;
   padding: 30rpx;
   border-radius: 28rpx 28rpx 0 0;
+  margin: 0 -30rpx;
+}
+
+.landscapeName {
   display: flex;
   align-content: center;
 }
@@ -103,8 +122,16 @@
   height: 0;
   transition: height .3s;
 }
-.appIcon{
+
+.appIcon {
   width: 40rpx;
   height: 40rpx;
   margin-right: 8rpx;
+}
+
+.filterIcon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 4rpx;
+  transform: translate(0, 4rpx);
 }

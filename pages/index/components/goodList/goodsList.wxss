@@ -10,7 +10,11 @@
 .goodEmpty {
   display: flex;
   justify-content: center;
-  transform: translateY(15%);
+  transform: translateY(40%);
+}
+.goodEmptyIcon{
+  width: 480rpx;
+  height: 360rpx;
 }
 
 .emptyIcon {

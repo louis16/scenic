@@ -13,6 +13,6 @@
     </view>
   </view>
   <view wx:else class="goodEmpty">
-    <image src="/static/icon/good_empty.png" mode="" />
+    <image class="goodEmptyIcon" src="/static/icon/good_empty.png" mode="" />
   </view>
 </block>

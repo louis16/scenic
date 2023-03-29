@@ -9,20 +9,28 @@
         </text>
       </view>
     </view>
-    <view class="flex-row">
-      <text data-status="unfinished" bindtap="changeStatus" class="headerStatus {{status==='unfinished' && 'activeStatus'}}">未完成</text>
-      <text data-status="finished" bindtap="changeStatus" class="headerStatus {{status==='finished' && 'activeStatus'}}">已完成</text>
-      <text data-status="expired" bindtap="changeStatus" class="headerStatus {{status==='expired' && 'activeStatus'}}">已过期</text>
-      <text class="headerStatus" bindtap="filterClick">筛选</text>
+    <view class="flex-row margin26 ">
+      <view data-status="unfinished" bindtap="changeStatus" class="headerStatus {{status==='unfinished' && 'activeStatus'}}">未完成</view>
+      <view data-status="finished" bindtap="changeStatus" class="headerStatus {{status==='finished' && 'activeStatus'}}">已完成</view>
+      <view data-status="expired" bindtap="changeStatus" class="headerStatus {{status==='expired' && 'activeStatus'}}">已过期</view>
+      <view class="filterView">
+        <text bindtap="filterClick">筛选</text>
+        <image class="filterIcon" src="/static/icon/filter.png" mode="" />
+      </view>
     </view>
   </view>
   <view class="{{showFilter?'showFilterView':'hideFilterView'}}">
 
   </view>
   <view wx:for="{{taskList[status]}}" wx:key="index" class="itemWrap">
-    <view class="landscapeName">
-      <image class="appIcon" src="/static/icon/landscape_icon.png" mode="" />
-      {{item.landscape_name}}
+    <view class="nameRow">
+      <view class="landscapeName">
+        <image class="appIcon" src="/static/icon/landscape_icon.png" mode="" />
+        {{item.landscape_name}}
+      </view>
+      <!-- <view>
+        xxx
+      </view> -->
     </view>
     <view class="taskContent">
       <TaskItem facility_name="{{item.facility_name || ''}}" landscape_name="{{item.landscape_name}}" quests="{{item.quests}}" status="{{status}}" />

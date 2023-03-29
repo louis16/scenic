@@ -1,15 +1,51 @@
+@import "/pages/commonTemplate/templateComp.wxss";
+
 .pageWrap {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   background-color: white;
 }
 
 .contentWrap {
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
   flex-direction: column;
+}
+
+.audioWrap {
+  margin: 0 30rpx;
+  border-radius: 48rpx;
+  padding: 30rpx;
+  background-color: white;
+  backdrop-filter: blur(24px);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+}
+
+.audioRow {
+  display: flex;
+  justify-content: space-between;
+  color: #333333;
+}
+
+.descWrap {
+  margin: 40rpx 30rpx 0 30rpx;
+  border-radius: 48rpx;
+  padding: 40rpx 30rpx;
+  background: #FFFFFF;
+  backdrop-filter: blur(24px);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  /* font-weight: normal; */
+  line-height: 40rpx;
+}
+
+.playIcon {
+  width: 56rpx;
+  height: 56rpx;
 }
 
 .img {
@@ -52,19 +88,6 @@
   color: rgb(102, 102, 102);
 }
 
-.answerWrap {
-  /* background-color: #F8FBFF; */
-  box-shadow: 0 0 20rpx 0 #D6E3F3;
-  align-self: center;
-  margin-top: 120rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 28rpx;
-  position: relative;
-  padding-bottom: 48rpx;
-}
 
 .question {
   font-family: 'PingFang SC Bold';
@@ -75,49 +98,7 @@
   margin-top: 100rpx;
 }
 
-.questionIcon {
-  width: 96rpx;
-  height: 96rpx;
-  position: absolute;
-  top: 0;
-  transform: translateY(-50%);
-}
 
-.radioItem {
-  width: 510rpx;
-  height: 80rpx;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  border-radius: 20rpx;
-  border: 2rpx solid #D6E3F3;
-  box-shadow: 0px 0px 4px 0px #D6E3F3;
-  margin-top: 16rpx;
-  padding: 0 16rpx;
-  box-sizing: border-box;
-}
-
-.chooseText {
-  flex: 1;
-  text-align: center;
-}
-
-.inputWrap {
-  margin-top: 10rpx;
-  background-color: #D6E3F3;
-}
-
-.submit {
-  text-align: center;
-  height: 80rpx;
-  line-height: 80rpx;
-  font-family: 'PingFang SC Bold';
-  font-size: 28rpx;
-  font-weight: 500;
-  color: #333333;
-  background: #FFFFFF;
-  /* box-shadow: 0 0 8rpx 0 #D6E3F3; */
-}
 
 .mask {
   width: 100vw;
@@ -204,6 +185,7 @@
 }
 
 .rewardText {
+  display: inline;
   background: linear-gradient(180deg, #FBF388 5%, #FFFBD8 49%, #F8A955 99%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

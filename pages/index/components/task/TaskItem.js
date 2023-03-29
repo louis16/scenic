@@ -126,10 +126,12 @@ Component({
               lat: 30.7400153,
               lng: 104.0825747
             })
-            if (dis < element.accuracy * 1000) {
+            console.log(dis < element.accuracy * 10000000, dis)
+            if (dis < element.accuracy * 10000000) {
               hasNear = true
               getTaskDetail(element.id).then(taskDetail => {
                 const data = formatOption(taskDetail)
+                console.log(data, 11111)
                 wx.navigateTo({
                   url: '/pages/taskTrigger/taskTrigger',
                   success: function (res) {

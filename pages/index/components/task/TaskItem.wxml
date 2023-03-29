@@ -1,9 +1,3 @@
-<!-- <view wx:for="{{quests}}" wx:for-index="idx" wx:for-item="task" wx:key="idx" class="contentWrap">
-  <view>{{task.name}}</view>
-  <view>奖励</view>
-  <view>任务组</view>
-  <view>完成人数</view>
-</view> -->
 <view wx:for="{{ quests }}" wx:key="index">
   <view class="list-content" style="border-bottom:{{(index!==quests.length - 1 || selected[index]) && ' 1rpx solid #ddd'}};" bindtap="onListClick" data-index="{{ index }}">
     <view class="name">
@@ -12,11 +6,12 @@
         {{item.name}}
       </view>
       <view class="statusView" style="background-color: {{taskStatus[status].backgroundColor}};color: {{taskStatus[status].color}};">{{taskStatus[status].text}}</view>
-    </view>
+    </view> 
     <view wx:if="{{item.rewards && item.rewards.length > 0}}" class="rewards">
       <view wx:for="{{item.rewards}}" wx:for-item="reward" wx:for-index="idx" wx:key="idx" class="reward">
         <view wx:if="{{reward.points}}" class="flex">
-          <image class="appIcon" src="/static/icon/reward_point_icon.png" mode="" />{{reward.points}}{{rewwardsType[reward.type]}}
+          <image class="appIcon" src="/static/icon/reward_point_icon.png" mode="" />
+          {{reward.points}}{{rewwardsType[reward.type]}}
         </view>
         <view wx:if="{{reward.item_id}}" class="flex">
           <image class="appIcon" src="/static/icon/reward_goods_icon.png" mode="" />
@@ -29,7 +24,7 @@
         {{group.name}}
       </view>
     </view>
-    <view class="infos">完成人数</view>
+    <!-- <view class="infos">完成人数</view> -->
   </view>
   <block hidden="{{ !selected[index] && status === 'unfinished'}}">
     <view data-index="{{ index }}" bindtap="onListClick" class="list-text  {{ ( selected[index] && status === 'unfinished') ? '' : 'hidden-content'}}">
@@ -44,11 +39,11 @@
         <view class="itemContent">
           <view class="itemLine" catchtap="startNavigate">
             <text>{{landscape_name}}</text>
-            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode=""/>
+            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode="" />
           </view>
           <view wx:if="{{facility_name}}" class="itemLine" catchtap="startNavigate">
             <text>{{facility_name}}</text>
-            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode=""/>
+            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode="" />
           </view>
         </view>
       </block>
