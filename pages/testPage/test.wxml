@@ -1,14 +1,21 @@
-<import src="/pages/commonTemplate/templateComp" />
-<view class="pageWrap">
-  <topContainer hiddenBack="{{false}}" title="{{'originData.name' || ''}}"></topContainer>
-  <view class="contentWrap">
-    <video id="" src="https://file.ysr.uninote.com.cn/images/resource/79d63e7b04789435dbf5c115e4bbe00e.mp4" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height:{{height}}px;" />
-    <!-- <view class="content">
-        <template is="choose" data="" />
-        <view class="blur">
-        </view>
-        <view class="background">
-        </view>
-      </view> -->
+<view class="page-body">
+
+  <view class="page-section page-section-gap">
+
+    <map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" show-location></map>
+
   </view>
+
+  <view class="btn-area">
+
+    <button bindtap="getCenterLocation" class="page-body-button" type="primary">获取位置</button>
+
+    <button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button>
+
+    <button bindtap="translateMarker" class="page-body-button" type="primary">移动标注</button>
+
+    <button bindtap="includePoints" class="page-body-button" type="primary">缩放视野展示所有经纬度</button>
+
+  </view>
+
 </view>

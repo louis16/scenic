@@ -12,6 +12,7 @@ Page({
     filePath: app.globalData.fileUrl,
     resourceType: '',
     rewards: [],
+    quests: [],
     navHeight: app.globalData.navHeight + 18, //导航栏高度
     windownHeight: app.globalData.windowHeight,
 
@@ -26,37 +27,38 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     if (Object.keys(eventChannel).length) {
       eventChannel.on('acceptDataFromOpenerPage', (data) => {
-        let show_resource = data.data.show_resource
-        let type = show_resource?.endsWith('mp4') ? 'mp4' : show_resource?.endsWith('mp3') ? 'mp3' : 'jpg'
-        this.setData({
-          originData: data.data,
-          resourceType: type
-        })
-        if (data.data.complete_type == 1) { //直接获取奖励
-          let timer = setTimeout(() => {
-            completeTask(this.data.originData.complete_id).then(res => {
-              eventBus.emit('refreshTask')
-              this.setData({
-                rewards: res.rewards || [],
-                showRight: true,
-              })
-            })
-            clearTimeout(timer)
-          }, 1500)
-        }
-        if (type == 'mp3') {
-          this.innerAudioContext = wx.createInnerAudioContext({
-            useWebAudioImplement: false
-          })
-          this.innerAudioContext.src = this.data.filePath + '/' + data.data.show_resource
-          this.innerAudioContext.onEnded((e) => {
-            this.innerAudioContext.stop()
+      let show_resource = data.data.show_resource
+      let type = show_resource?.endsWith('mp4') ? 'mp4' : show_resource?.endsWith('mp3') ? 'mp3' : 'jpg'
+      this.setData({
+        originData: data.data,
+        resourceType: type
+      })
+      if (data.data.complete_type == 1) { //直接获取奖励
+        let timer = setTimeout(() => {
+          completeTask(this.data.originData.complete_id).then(res => {
+            eventBus.emit('refreshTask')
             this.setData({
-              audioEnd: true,
-              isPlaying: false
+              rewards: res.rewards || [],
+              quests: res.quests || [],
+              showRight: true,
             })
           })
-        }
+          clearTimeout(timer)
+        }, 1500)
+      }
+      if (type == 'mp3') {
+        this.innerAudioContext = wx.createInnerAudioContext({
+          useWebAudioImplement: false
+        })
+        this.innerAudioContext.src = this.data.filePath + '/' + data.data.show_resource
+        this.innerAudioContext.onEnded((e) => {
+          this.innerAudioContext.stop()
+          this.setData({
+            audioEnd: true,
+            isPlaying: false
+          })
+        })
+      }
       })
     } else {
       //直接到了这个页面？ TODO 如何处理？
@@ -82,12 +84,14 @@ Page({
           // wx.navigateBack()
           this.setData({
             rewards: res.rewards || [],
+            quests: res.quests || [],
             showRight: true,
           })
         })
       } else {
         this.setData({
-          showError: true
+          showError: true,
+          inputAnswer: ''
         })
       }
     }
@@ -105,6 +109,7 @@ Page({
         eventBus.emit('refreshTask')
         this.setData({
           rewards: res.rewards || [],
+          quests: res.quests || [],
           showRight: true,
         })
       })
@@ -212,5 +217,10 @@ Page({
     })
     this.innerAudioContext.play()
     this.audioPlayTime(this.innerAudioContext)
+  },
+  handleUseFocus(event) {
+    this.setData({
+      isFocus: event.type === 'focus'
+    })
   }
 })

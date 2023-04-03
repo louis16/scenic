@@ -1,3 +1,4 @@
+@import "/pages/commonTemplate/templateComp.wxss";
 .mask {
   width: 100vw;
   height: 100vh;
@@ -62,12 +63,82 @@
   line-height: 34rpx;
   display: flex;
   flex-direction: column;
-  padding-bottom: 40rpx; 
+  padding-bottom: 40rpx;
   border-bottom: 1px solid rgba(144, 173, 216, 0.5);
 }
-.good_foot{
+
+.componentWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 40rpx;
+  border-bottom: 1px solid rgba(144, 173, 216, 0.5);
+}
+
+.componentIcon {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.puzzleWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.puzzleIconWrap {
+  position: relative;
+}
+
+.puzzleNotCollecte {
+  width: 100%;
+  height: 100%;
+  background-color: #223A5A80;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+}
+
+.puzzleLock {
+  width: 48rpx;
+  height: 48rpx;
+  left: 50%;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.puzzleIcon {
+  width: 266rpx;
+  height: 266rpx;
+}
+.puzzleIconNine{
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.good_foot {
   padding-top: 40rpx;
   color: #BCD7FF;
+}
+
+.compositon {
+  width: 280rpx;
+  padding: 26rpx 84rpx;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  border-radius: 28rpx;
+  background: linear-gradient(180deg, #C5DAF8 0%, #668FCC 100%);
+  box-shadow: 0px 3px 6px 0px #AFC4E3, inset 0px 4px 6px 0px #C5DDFF;
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #ffffff;
+  margin-top: 56rpx;
 }
 
 .goodTitle {
@@ -163,5 +234,8 @@
   bottom: 48rpx;
   left: 50%;
   transform: translateX(-50%);
-
+}
+.itemImg{
+  width: 100rpx;
+  height: 100rpx;
 }

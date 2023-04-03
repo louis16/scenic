@@ -13,12 +13,13 @@
 }
 
 .statusView {
-  padding: 8rpx 12rpx;
+  padding: 0 12rpx;
+  height: 40rpx;
   border-radius: 20rpx 4rpx;
   font-family: 'PingFang SC Regular';
   font-size: 24rpx;
   font-weight: 300;
-  line-height: 24rpx;
+  line-height: 40rpx;
 }
 
 .rewards {
@@ -39,8 +40,10 @@
 }
 
 .flex {
+  flex: 1;
+  /* background-color: red; */
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
 }
 
@@ -58,11 +61,63 @@
   border: 2rpx solid #999999;
   border-radius: 6rpx;
   margin-right: 8rpx;
-  color: #999999 ;
+  color: #999999;
 }
 
 .infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top: 30rpx;
+  font-family: 'DIN-Medium';
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+
+.progress {
+  display: flex;
+  flex: 1;
+  margin-left: 8rpx;
+  justify-self: flex-start;
+  align-items: center;
+}
+
+.progressLine {
+  width: 200rpx;
+  height: 20rpx;
+  margin-right: 8rpx;
+  background-color: #F5F5F5;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  padding: 2rpx;
+  display: flex;
+}
+
+.activeProgress {
+  background: linear-gradient(180deg, #BBD1F2 0%, #5778A7 100%);
+  border-radius: 20rpx;
+  height: 12rpx;
+  align-self: center;
+  border: 4rpx solid white;
+  position: relative;
+}
+
+.activeProgress::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #ffffff;
+  border-radius: 8rpx;
+  transform: translate(-4rpx, 2rpx);
+}
+
+
+.activeText {
+  color: #90ADD8;
 }
 
 .list-text {

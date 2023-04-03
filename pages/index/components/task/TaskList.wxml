@@ -14,7 +14,7 @@
       <view data-status="finished" bindtap="changeStatus" class="headerStatus {{status==='finished' && 'activeStatus'}}">已完成</view>
       <view data-status="expired" bindtap="changeStatus" class="headerStatus {{status==='expired' && 'activeStatus'}}">已过期</view>
       <view class="filterView">
-        <text bindtap="filterClick">筛选</text>
+        <text class="headerStatus" bindtap="filterClick" style="padding-right: 0;">筛选</text>
         <image class="filterIcon" src="/static/icon/filter.png" mode="" />
       </view>
     </view>

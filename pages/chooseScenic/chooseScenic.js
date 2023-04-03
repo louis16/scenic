@@ -3,7 +3,9 @@ const {
 } = require('../../util/api')
 const {
   showLoading,
-  hideLoading
+  hideLoading,
+  permission_request,
+  getMyLocation
 } = require('../../util/util')
 const app = getApp()
 Page({
@@ -85,7 +87,28 @@ Page({
     const {
       filter
     } = event.target.dataset
-    this.getScenicListFun(true)
+    if (filter === 'all') {
+      this.getScenicListFun(true)
+      this.setData({
+        currentFilter: 'all'
+      })
+    } else if (filter === 'closest') {
+      permission_request("scope.userLocation", "地理位置").then(granted => {
+        if (granted) {
+          getMyLocation().then(res => {
+            if (res) {
+              this.getScenicListFun(true, {
+                lat: res.latitude,
+                lng: res.longitude,
+              })
+            }
+          })
+          this.setData({
+            currentFilter: 'closest'
+          })
+        }
+      })
+    }
   },
 
   searchInput(event) {

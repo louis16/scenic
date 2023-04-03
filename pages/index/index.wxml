@@ -63,7 +63,7 @@
   <!-- 我的 -->
   <block wx:if="{{showPackageModal}}">
     <SlidePannel bind:closeModal="closeModal" title="我的">
-      <accordion slot="body" />
+      <text>我的</text>
     </SlidePannel>
   </block>
   <!-- 图层 -->

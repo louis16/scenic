@@ -54,6 +54,20 @@ const storage = (key, data, callback) => {
 const getStorageSync = (key) => {
   return wx.getStorageSync(key)
 }
+const getMyLocation = () => {
+  return new Promise((resolve) => {
+    wx.getLocation({
+      type: "gcj02",
+      complete: (res) => {
+        if (res.errMsg == "getLocation:ok") {
+          resolve(res)
+        } else {
+          resolve(null)
+        }
+      }
+    })
+  })
+}
 const formatMarkData = (arr) => {
   return arr.map(item => {
     return {
@@ -172,7 +186,7 @@ const formatOption = (data) => {
     })
     data.questions[0].options = temp
     return data
-  } else  {
+  } else {
     return data
   }
 }
@@ -195,5 +209,6 @@ module.exports = {
   showToast,
   formatOption,
   SCENICDETAIL,
-  PHONE
+  PHONE,
+  getMyLocation
 };

@@ -30,7 +30,10 @@
   font-weight: 600;
   line-height: 28rpx;
   color: #333333;
+  margin-top: 40rpx;
   margin-bottom: 20rpx;
+  transform: translateX(6rpx);
+
 }
 
 .itemTitle::before {
@@ -38,7 +41,7 @@
   content: " ";
   width: 8rpx;
   height: 28rpx;
-  transform: translateY(6rpx);
+  transform: translate(-6rpx,6rpx);
   background-color: #90ADD8;
 }
 
@@ -85,22 +88,12 @@
   text-align: center;
   padding: 8rpx 12rpx;
   border-radius: 20rpx 4rpx 20rpx 4rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 24rpx;
+  font-weight: normal;
+  line-height: 40rpx;
 }
 
-.status_notFinish {
-  background-color: #FFF1F1;
-  color: #FB9898;
-}
-
-.status_finish {
-  background-color: #E2EEFF;
-  color: #90ADD8;
-}
-
-.status_expire {
-  background-color: #F2F2F2;
-  color: #999999;
-}
 
 .quest_reward {
   display: flex;
@@ -113,6 +106,7 @@
   height: 40rpx;
   margin-right: 16rpx;
 }
+
 .rewards {
   display: flex;
   font-family: 'PingFang SC Bold';
@@ -121,15 +115,18 @@
   line-height: 40rpx;
   color: #90ADD8;
 }
+
 .reward {
   display: inline-block;
   margin-right: 40rpx;
 }
+
 .flex {
   display: flex;
   justify-content: center;
   align-content: center;
 }
+
 .appIcon {
   width: 40rpx;
   height: 40rpx;

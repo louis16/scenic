@@ -4,11 +4,15 @@
       <image class="header_img" src="{{imgUrl}}" mode="" />
       <text class="header_text ">{{item.description}}</text>
     </view>
-    <view wx:if="{{item.quests.length > 0}}" k>
+    <view style="max-height: 1240rpx;overflow-y: scroll ">
+      <view class="itemTitle">任务</view>
+      <TaskItem showMoreInfo="{{false}}" facility_name="{{item.name || ''}}" quests="{{item.quests}}" />
+    </view>
+    <!-- <view wx:if="{{item.quests.length > 0}}" k>
       <view class="itemTitle" style="margin-top: 30rpx;"> 任务简介</view>
       <view wx:for="{{item.quests}}" class="quuest_view" data-item="{{item}}" wx:key="index" bindtap="questTap">
         <view class="quest_title_wrap">
-          <view>
+          <view style="flex: 1">
             <text class="quest_index">{{index + 1}}</text>
             <text class="quest_name">{{item.name}}</text>
           </view>
@@ -29,6 +33,6 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 </block>

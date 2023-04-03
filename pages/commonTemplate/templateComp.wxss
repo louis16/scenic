@@ -29,6 +29,46 @@
   margin-bottom: 54rpx;
 }
 
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input_item {
+  width: 65rpx;
+  height: 65rpx;
+  border: 1rpx solid #90ADD8;
+  margin-left: 4rpx;
+  text-align: center;
+  line-height: 65rpx;
+  background-color: greenyellow;
+}
+
+.input_code {
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0.267);
+  font-size: 28rpx;
+  color: #90ADD8;
+  position: absolute;
+  /* left: 35rpx; */
+  /* letter-spacing: 60rpx; */
+}
+
+.input_text {
+  position: absolute;
+  height: 65rpx;
+  opacity: 0;
+  color: transparent;
+}
+
+.hide_input_text {
+  opacity: 0;
+  position: fixed;
+  bottom: 0;
+  color: transparent;
+}
+
 .radioItemTemp {
   width: 80%;
   height: 80rpx;
@@ -85,7 +125,7 @@
   background-color: white;
 }
 
-.blurTemp {
+.blur_temp {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -104,17 +144,19 @@
   bottom: 28rpx;
   color: #666666;
 }
-.goodContentTemp{
+
+.good_contents {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.detailTextTemp {
+
+.detail_text {
   color: #FFF49B;
 }
 
-.detailTextTemp::after {
+.detail_text::after {
   content: ' ';
   display: inline-block;
   width: 40px;
@@ -124,7 +166,7 @@
   background: linear-gradient(270deg, rgba(255, 215, 148, 0.00) 0%, rgba(255, 215, 148, 0.52) 34%, rgba(255, 215, 148, 0.52) 64%, rgba(255, 215, 148, 0.00) 100%);
 }
 
-.detailTextTemp::before {
+.detail_text::before {
   content: ' ';
   display: inline-block;
   width: 40px;
@@ -133,13 +175,13 @@
   background: linear-gradient(270deg, rgba(255, 215, 148, 0.00) 0%, rgba(255, 215, 148, 0.52) 34%, rgba(255, 215, 148, 0.52) 64%, rgba(255, 215, 148, 0.00) 100%);
 }
 
-.rewardItemTemp {
+.reward_item {
   margin-top: 56rpx;
   color: #FFD794;
   text-align: center;
 }
 
-.imgBackTemp {
+.img_back {
   width: 120rpx;
   height: 120rpx;
   border-radius: 20rpx;
@@ -147,9 +189,22 @@
   margin-bottom: 20rpx;
 }
 
-.rewardWrapTemp {
+.item_icon {
+  width: 100%;
+  height: 100%;
+}
+
+
+.reward_wrap {
   display: flex;
   width: 90%;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: 80rpx;
 }
+.close_btn {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 40rpx;
+}
+ 
