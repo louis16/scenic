@@ -1,8 +1,8 @@
 <view class="topMenu {{absolute? 'absolute': ''}} " style="width: {{width}}px; height:{{navHeight}}px;padding-right: {{navObjWid}}px;{{style}}">
 	<!-- <view class="topMenu" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;"> -->
 	<view class="topWrap" style="height: {{titleHeight}}px;top: {{statusBarHeight}}px;padding-right: {{navObjWid}}px;">
-		<view hidden="{{hiddenBack}}" bindtap="goBack" class="backIcon"/>
-		<view wx:if="title" class="titleWrap">
+		<view hidden="{{hiddenBack}}" bindtap="goBack" class="backIcon {{ titleWhite ? 'borderWhite' : '' }}"/>
+		<view wx:if="title" class="titleWrap {{ titleWhite ? 'white' : '' }}">
 			<text>{{title}}</text>
 		</view>
 		<slot></slot>

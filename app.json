@@ -7,7 +7,10 @@
     "pages/game/game",
     "pages/testPage/test",
     "pages/start/start",
-    "pages/taskTrigger/taskTrigger"
+    "pages/taskTrigger/taskTrigger",
+    "pages/user/user",
+    "pages/user/integralmall/integralmall"
+    
   ],
   "requiredPrivateInfos": [
     "onLocationChange"

@@ -30,3 +30,9 @@
 	right: 50%;
 	transform: translateX(50%);
 }
+.white{
+  color: white;
+}
+.borderWhite{
+  border-color: white;
+}

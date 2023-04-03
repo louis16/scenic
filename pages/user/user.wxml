@@ -1,0 +1,118 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <view class="user-bg">
+    <image src="/static/imgs/user/user-bg.png" class="image"></image>
+  </view>
+  <view class="userinfo">
+    <view class="userinfo-head">
+      <image src="/static/imgs/user/temp-1.png" class="image"></image>
+    </view>
+    <view class="userinfo-content">
+        <text class="uname">沉默的小王子</text>
+        <view class="uinfo">
+          <view class="uother {{ userdata.sex == 1 ? 'ufemale' : 'umale' }}" wx:if="{{userdata.age > 0}}" bindtap="showEditInfo">
+             <view class="uother_sex">
+              <image src="{{ userdata.sex == 1 ? '/static/imgs/user/female.png' : '/static/imgs/user/male.png' }}" class="image"></image>    
+            </view>   
+            <text class="uother_age">23岁</text>
+          </view>
+          <view wx:else class="uother_edit" bindtap="showEditInfo">
+            <image src="/static/imgs/user/icon/u-edit.png" class="image"></image>
+            <text>完善个人信息</text>
+          </view>  
+          <view class="uhonour arror-right">       
+              <view class="uhonour_item">
+                <image src="/static/imgs/user/icon1.png" class="image"></image>  
+              </view>       
+              <view class="uhonour_item">
+                <image src="/static/imgs/user/icon1.png" class="image"></image>  
+              </view>
+              <view class="uhonour_item">
+                <image src="/static/imgs/user/icon1.png" class="image"></image>  
+              </view>
+              <view class="uhonour_item">
+                <image src="/static/imgs/user/icon1.png" class="image"></image>  
+              </view>
+              <view class="uhonour_item">
+                <image src="/static/imgs/user/icon1.png" class="image"></image>  
+              </view>
+              <view class="uhonour_item">
+                <image src="/static/imgs/user/icon1.png" class="image"></image>  
+              </view>
+          </view>
+        </view>    
+    </view>
+  </view>
+    <view class="userinfo-integral">
+      <view>
+        <view>300</view>
+        <text>积分</text>
+      </view>
+      <view>
+        <view>8</view>
+        <text>待完成任务</text>
+      </view>
+    </view>
+   <view class="user-nav">
+    <view class="unav-item arror-right" bindtap="gotoPage" data-url="integralmall/integralmall">
+      <image src="/static/imgs/user/icon/u-nav-1.png"></image>
+      <view class="unav-item__titel">积分商城</view>
+      <view class="unav-item__value">113</view>
+    </view>
+    <view class="unav-item arror-right">
+      <image src="/static/imgs/user/icon/u-nav-2.png"></image>
+      <view class="unav-item__titel">个人荣誉</view>
+      <view class="unav-item__value">3</view>
+    </view>
+    <view class="unav-item arror-right">
+      <image src="/static/imgs/user/icon/u-nav-3.png"></image>
+      <view class="unav-item__titel">排行榜</view>
+      <view class="unav-item__value">223</view>
+      
+    </view>
+    <view class="unav-item arror-right">
+      <image src="/static/imgs/user/icon/u-nav-4.png"></image>
+      <view class="unav-item__titel">电子券</view>
+      <view class="unav-item__value">223</view>
+    </view>
+    <view class="unav-item arror-right">
+      <image src="/static/imgs/user/icon/u-nav-5.png"></image>
+      <view class="unav-item__titel">退出登录</view>
+    </view>
+   </view> 
+    <block wx:if="{{isshowUslide}}">
+    <Uslide id="uslide" height="-1200rpx" bind:shUslide="shUslide">
+      <view slot="body">
+          <view class="uedit-title">请选择你的性别</view>
+          <view class="uedit-sxe">
+            <view>
+                <view class="{{sex == 1 ? 'imgfilter' : ''}}" bindtap="setSelectSex" data-value='0'>
+                    <image src="/static/imgs/user/man.png" class="uedit-sxe__head"></image>
+                    <view class="uedit-sxe__select"><image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image></view>
+                </view>
+                <text>男</text>
+            </view>
+            <view>
+            <view class="{{ sex == 0 ? 'imgfilter' : ''}}" bindtap="setSelectSex" data-value='1'>
+              <image src="/static/imgs/user/woman.png" class="uedit-sxe__head"></image>
+              <view class="uedit-sxe__select"><image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image></view>
+            </view>
+            <text>女</text>
+            </view>
+          </view>
+          <view class="uedit-title">请选择你的生日</view>
+          <view class="udeid-date">
+            <picker mode="date" value="{{date}}"  bindchange="bindDateChange">
+              <view class="picker arror-right">
+                <text>{{date}}</text> 
+              </view>
+            </picker>
+          </view>
+          <view class="uedid-button">
+            <button bindtap="setUserInfo">保存</button>
+          </view>
+      </view>
+    </Uslide>
+    </block>
+  <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="5" />
+</view>
