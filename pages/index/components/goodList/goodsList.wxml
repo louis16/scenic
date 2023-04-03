@@ -6,7 +6,7 @@
         <text class="itemNum">{{item.amount}}</text>
         <image wx:if='{{handler.isSystemIcon(item.item.icon)}}' class="itemImg" src="/static/icon/goodIcon/{{item.item.icon}}.png" mode="" />
         <image wx:else class="itemImg" src="{{filePath}}/{{item.item.icon}}" mode="" />
-        <view wx:if="{{item.item.type == 1}}" class="viewMask">
+        <view wx:if="{{item.item.type == 2}}" class="viewMask">
           合成
         </view>
       </view>

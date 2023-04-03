@@ -1,9 +1,8 @@
 {
   "usingComponents": {
     "FunctinonBar": "/components/functionBar/bar",
-    "SlidePannel": "/components/taskList/task",
+    "SlidePannel": "/components/slidePannel/task",
     "flicker": "/components/flicke/flicker",
-    "accordion": "/components/accordion/accordion",
     "topContainer": "/components/topContainer/topContainer",
     "scrollnews": "./components/scrollnews/scrollnews",
     "GoodsList": "./components/goodList/goodsList",

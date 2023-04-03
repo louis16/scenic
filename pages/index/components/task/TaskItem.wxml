@@ -5,8 +5,10 @@
         <image class="appIcon" wx:if="{{item.trigger_show !=0}}" src="{{taskType[item.trigger_show]}}" mode="" />
         {{item.name}}
       </view>
-      <view class="statusView" style="background-color: {{taskStatus[status].backgroundColor}};color: {{taskStatus[status].color}};">{{taskStatus[status].text}}</view>
-    </view> 
+      <view class="statusView" style="background-color: {{taskStatus[status] ? taskStatus[status].backgroundColor : taskStatus[item.status].backgroundColor}};color: {{taskStatus[status] ? taskStatus[status].color : taskStatus[item.status].color}};">
+        {{taskStatus[status] ? taskStatus[status].text : taskStatus[item.status].text}}
+      </view>
+    </view>
     <view wx:if="{{item.rewards && item.rewards.length > 0}}" class="rewards">
       <view wx:for="{{item.rewards}}" wx:for-item="reward" wx:for-index="idx" wx:key="idx" class="reward">
         <view wx:if="{{reward.points}}" class="flex">
@@ -19,15 +21,24 @@
         </view>
       </view>
     </view>
-    <view wx:if="{{item.groups && item.groups.length > 0}}" class="groups">
+    <view wx:if="{{showMoreInfo && item.groups && item.groups.length > 0}}" class="groups">
       <view wx:for="{{item.groups}}" wx:for-item="group" wx:key="group" class="groupItem">
         {{group.name}}
       </view>
     </view>
-    <!-- <view class="infos">完成人数</view> -->
+    <view wx:if="{{showMoreInfo}}" class="infos">
+      <text style="color: #666666;">完成人数</text>
+      <view class="progress">
+        <view class="progressLine">
+          <view class="activeProgress" style="width: {{50 / 90 * 100}}%;" />
+        </view>
+        <text><text class="activeText">50</text> / 90</text>
+      </view>
+      <text style="color: #333333;">05:56:22</text>
+    </view>
   </view>
-  <block hidden="{{ !selected[index] && status === 'unfinished'}}">
-    <view data-index="{{ index }}" bindtap="onListClick" class="list-text  {{ ( selected[index] && status === 'unfinished') ? '' : 'hidden-content'}}">
+  <block hidden="{{ !selected[index] && (status === 'unfinished' || item.status == '1') }}">
+    <view data-index="{{ index }}" bindtap="onListClick" class="list-text  {{ ( selected[index] &&  (status === 'unfinished' || item.status == '1')) ? '' : 'hidden-content'}}">
       <block>
         <view class="itemTitle" style="margin-top: 30rpx;"> 任务简介</view>
         <view class="itemContent itemText">

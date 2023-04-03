@@ -12,7 +12,8 @@ const {
   hideLoading,
   permission_request,
   showToast,
-  formatOption
+  formatOption,
+  getMyLocation
 } = require("../../../../util/util");
 const plugin = requirePlugin('routePlan');
 let key = 'WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT'; //使用在腾讯位置服务申请的key
@@ -39,6 +40,10 @@ Component({
     facility_name: {
       type: String,
       value: ""
+    },
+    showMoreInfo: {
+      type: Boolean,
+      value: true
     }
   },
 
@@ -83,7 +88,7 @@ Component({
       })
       if (temp.length === 0) {
         showToast({
-          title: "二维码识别错误",
+          title: "未匹配到任务数据",
           icon: "none"
         })
         return
@@ -120,46 +125,54 @@ Component({
         let hasNear = false
         if (hasPermission) {
           let temp = app.globalData.positionWatchLists.filter(item => item.id == id)
-          for (let index = 0; index < temp.length; index++) {
-            const element = temp[index];
-            let dis = getDistance(element, {
-              lat: 30.7400153,
-              lng: 104.0825747
-            })
-            console.log(dis < element.accuracy * 10000000, dis)
-            if (dis < element.accuracy * 10000000) {
-              hasNear = true
-              getTaskDetail(element.id).then(taskDetail => {
-                const data = formatOption(taskDetail)
-                console.log(data, 11111)
-                wx.navigateTo({
-                  url: '/pages/taskTrigger/taskTrigger',
-                  success: function (res) {
-                    res.eventChannel.emit('acceptDataFromOpenerPage', {
-                      data: {
-                        ...data,
-                        complete_id: id
-                      },
-                    })
-                  }
+          getMyLocation().then(res => {
+            if (res) {
+              for (let index = 0; index < temp.length; index++) {
+                const element = temp[index];
+                let dis = getDistance(element, {
+                  lat: res.latitude,
+                  lng: res.longitude,
                 })
+                if (dis < element.accuracy) {
+                  hasNear = true
+                  getTaskDetail(element.id).then(taskDetail => {
+                    const data = formatOption(taskDetail)
+                    console.log(data, 11111)
+                    wx.navigateTo({
+                      url: '/pages/taskTrigger/taskTrigger',
+                      success: function (res) {
+                        res.eventChannel.emit('acceptDataFromOpenerPage', {
+                          data: {
+                            ...data,
+                            complete_id: id
+                          },
+                        })
+                      }
+                    })
+                  })
+                  break
+                }
+              }
+            } else {
+              showToast({
+                title: '暂未获取到当前位置信息',
+                icon: 'none'
               })
-              break
+              return
             }
-          }
-          hideLoading();
-          !hasNear && showToast({
-            title: '暂未到达任务地点',
-            icon: 'none'
           })
         } else {
-          hideLoading()
           //没有权限，并拒绝了申请权限
           showToast({
             title: '暂无定位权限，无法计算位置信息',
             icon: 'none'
           })
         }
+        hideLoading();
+        !hasNear && showToast({
+          title: '暂未到达任务地点',
+          icon: 'none'
+        })
       } else if (type == 3) {
         const _this = this
         wx.scanCode({

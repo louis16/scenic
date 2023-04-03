@@ -87,3 +87,19 @@ export const getGoods = (id) => {
     url: `/user/items?scenery_id=${id}`
   })
 }
+//用户在线
+export const userOnline = (params) => {
+  return request({
+    url: '/user/online',
+    method: 'POST',
+    data: params
+  })
+}
+//物品合成
+export const goodComposition = (params) => {
+  return request({
+    url: `/user/items/${params.id}/composite`,
+    method: 'POST',
+    data: params
+  })
+}

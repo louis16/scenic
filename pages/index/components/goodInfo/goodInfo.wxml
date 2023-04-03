@@ -1,21 +1,17 @@
+<import src="/pages/commonTemplate/templateComp" />
 <view class="mask" bindtap="close">
-  <block wx:if="{{itemData.item.type == 3}}">
+  <!-- 任务物品，合成物品 -->
+  <block wx:if="{{ !showRewards && (itemData.item.type == 1 || itemData.item.type == 3) }}">
     <view class="contentWrap" catchtap>
       <view class="goodHeader">
         <view class="iconWrap">
-          <!-- <image class="goodIcon" src="{{imgPath}}" mode="" alt="" /> -->
+          <image class="goodIcon" src="{{imgPath}}" mode="" alt="" />
         </view>
         <view class="goodInfo">
           <text class="goodTitle">{{itemData.item.name}}</text>
           <text class="goodDesc">x {{itemData.amount}}</text>
         </view>
       </view>
-      <!-- <view class="goodContent" style="grid-template-columns: 267rpx 267rpx;">
-				<view class="goodContent" style="{{ff?'grid-template-columns: 1fr 1fr;':''}}">
-				<view wx:for="{{list}}" wx:key="index" class="contentItem">
-					{{itemData.id}}
-				</view>
-			</view> -->
       <view wx:if="{{itemData.item.description}}" class="good_content">
         <text>{{itemData.item.description}}</text>
       </view>
@@ -23,8 +19,46 @@
         <text>{{itemData.item.content}}</text>
       </view>
     </view>
-  </block> 
-  <block wx:else>
+  </block>
+  <!-- 合成物品组件 -->
+  <block wx:if="{{itemData.item.type == 2 && !showRewards}}">
+    <view class="contentWrap" catchtap>
+      <view class="goodHeader">
+        <view class="iconWrap">
+          <image class="goodIcon" src="{{imgPath}}" mode="" alt="" />
+        </view>
+        <view class="goodInfo">
+          <text class="goodTitle">{{itemData.item.name}}</text>
+          <text class="goodDesc">x {{itemData.amount}}</text>
+        </view>
+      </view>
+      <block wx:if="{{itemData.components.length > 0}}">
+        <!-- 收集展示 -->
+        <view wx:if="{{itemData.composite_type  == 1}}" class="componentWrap">
+          <image class="componentIcon" wx:for="{{itemData.components}}" wx:key="index" src="{{filePath}}/{{item.image}}" />
+        </view>
+        <!-- 拼图展示   -->
+        <view wx:if="{{itemData.composite_type  == 2}}" class="puzzleWrap">
+          <view wx:for="{{itemData.components}}" wx:key="index" class="puzzleIconWrap">
+            <image class="{{itemData.components.length == 9 ? 'puzzleIconNine' : 'puzzleIcon'}}" src="{{filePath}}/{{item.image}}" />
+            <view wx:if="{{!item.has_collected}}" class="puzzleNotCollecte">
+              <image class="puzzleLock" src="/static/icon/lock.png" mode="" />
+            </view>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{itemData.item.description}}" class="good_foot">
+        <text>{{itemData.item.description}}</text>
+      </view>
+      <view wx:if="{{itemData.complete_collected}}" class="compositon" data-pid="{{itemData.pid}}" bindtap="composition">
+        立即合成
+      </view>
+    </view>
+  </block>
+
+  <!-- 正确弹窗 -->
+  <template wx:if="{{ showRewards }}" is="rewardsPage" data="{{rewards:rewards }}" />
+  <!-- <block wx:else>
     <view class="contentWrap" catchtap>
       <view class="imageWrap">
         <image class="goodIcon" src="" mode="" />
@@ -33,5 +67,5 @@
       <text class="knowBtn" bindtap="close">我知道了</text>
       <view class="glassFilter" style="transform: rotate(5deg);" />
     </view>
-  </block>
+  </block> -->
 </view>

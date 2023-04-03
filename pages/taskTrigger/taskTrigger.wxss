@@ -156,7 +156,7 @@
 .closeBtn {
   width: 64rpx;
   height: 64rpx;
-  margin-top: 80rpx;
+  margin-top: 40rpx;
 }
 
 .notRightIcon {

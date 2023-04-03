@@ -2,7 +2,8 @@
 const {
   getAllMarked,
   getAllTask,
-  getGoods
+  getGoods,
+  userOnline
 } = require("../../util/api");
 const {
   getStorageSync,
@@ -18,22 +19,6 @@ const {
 // 获取应用实例
 const app = getApp();
 const eventBus = app.globalData.bus
-const INIT_MARKER = {
-  callout: {
-    content: "腾讯总部大楼",
-    padding: 5,
-    borderRadius: 10,
-    display: "ALWAYS",
-  },
-  latitude: 29.54261859112155,
-  longitude: 103.33020865186211,
-  iconPath: "../../static/imgs/Marker1_Activated@3x.png",
-  width: "34px",
-  height: "34px",
-  rotate: 0,
-  alpha: 1,
-  id: 1,
-};
 
 Page({
   data: {
@@ -49,9 +34,10 @@ Page({
     is_satellite: false,
     setting: { // 使用setting配置，方便统一还原
       skew: 0,
+      scale: 15,
     },
     layerIndex: "1", //默认2D
-    navList: ["全部", "任务物品", "合成物品"],
+    navList: ["全部", "任务物品", "合成物品组件"],
     nav_type: 0,
     goodsList: [],
     taskList: [],
@@ -93,6 +79,14 @@ Page({
       latitude: detail.lat * 1,
       longitude: detail.lng * 1
     })
+    this.interval = setInterval(() => {
+      userOnline({
+        scenery_id: detail.id
+      })
+    }, 1000 * 60 * 10)
+  },
+  onUnload() {
+    this.interval && clearInterval(this.interval)
   },
   getAllMarkedFunc(detailRef) { //获取景观设施的定位，用以展示mark
     getAllMarked(detailRef.id).then((res) => {
@@ -170,10 +164,17 @@ Page({
     this.closeModal()
     const markerId = event.detail.markerId
     let currentMarker = this.data.markers.filter(markerItem => markerItem.id == markerId)
+    this.mapContext.includePoints({
+      padding: [100],
+      points: [{
+        latitude: currentMarker[0].latitude * 1 - 0.0002,
+        longitude: currentMarker[0].longitude,
+      }]
+    })
     let timer = setTimeout(() => { //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
       this.setData({
         showMarkTapModal: true,
-        currentItem: currentMarker[0].item
+        currentItem: currentMarker[0].item,
       });
       this.changeMarkLable(false, markerId, '#FFAD88', '#FFFFFF')
       clearTimeout(timer);
@@ -186,6 +187,13 @@ Page({
       showMarkTapModal: true,
       currentItem: item
     });
+    this.mapContext.includePoints({
+      padding: [100],
+      points: [{
+        latitude: item.lat * 1 - 0.0002,
+        longitude: item.lng,
+      }]
+    })
     this.changeMarkLable(false, item.id, '#FFAD88', '#FFFFFF')
   },
   changeMarkLable(reset, markerId, bgColor = '#ffffff', fontColor = '#000000', ) {
@@ -200,7 +208,7 @@ Page({
           ...{
             [`markers[${i}].callout.bgColor`]: bgColor,
             [`markers[${i}].callout.color`]: fontColor,
-            [`markers[${i}].iconPath`]:mapIcon[element?.type ? 'normal' : 'landscape']
+            [`markers[${i}].iconPath`]: mapIcon[element.item?.type ? 'normal' : 'landscape']
           }
         }
       }
@@ -213,7 +221,7 @@ Page({
           this.setData({
             [`markers[${i}].callout.bgColor`]: bgColor,
             [`markers[${i}].callout.color`]: fontColor,
-            [`markers[${i}].iconPath`]:mapIcon['customer']
+            [`markers[${i}].iconPath`]: mapIcon['customer']
           })
           break
         }
@@ -266,6 +274,9 @@ Page({
       showLayer: false,
       showSOS: false,
       showMarkTapModal: false,
+      setting: {
+        scale: 15
+      }
     });
   },
   toggleExpand(event) { //切换list高度
@@ -290,8 +301,8 @@ Page({
       list = this.cloneList;
     } else if (index == 1) { //独立物品
       list = this.cloneList.filter((good) => good.item.type == 3);
-    } else if (index == 2) { //合成物品
-      list = this.cloneList.filter((good) => good.item.type == 1);
+    } else if (index == 2) { //合成物品组件
+      list = this.cloneList.filter((good) => good.item.type == 2);
     }
     this.setData({
       nav_type: index,

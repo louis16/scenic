@@ -10,7 +10,9 @@
     "pages/taskTrigger/taskTrigger"
   ],
   "requiredPrivateInfos": [
-    "onLocationChange"
+    "onLocationChange",
+    "getLocation",
+    "startLocationUpdate"
   ],
   "permission": {
     "scope.userLocation": {
@@ -19,7 +21,7 @@
   },
   "plugins": {
     "routePlan": {
-      "version": "1.0.18",
+      "version": "1.0.19",
       "provider": "wx50b5593e81dd937a"
     }
   },

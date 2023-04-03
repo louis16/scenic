@@ -1,3 +1,4 @@
+<wxs module="handler" src="/pages/index/components/goodList/goodsList.wxs"></wxs>
 <template name="choose">
   <view class="chooseWrap">
     <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
@@ -21,7 +22,7 @@
   <view class="maskTemp">
     <view class="v_c_container  ">
     </view>
-    <view class="v_c_container blurTemp">
+    <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
       <view class="questionTemp">{{question}}</view>
       <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
@@ -37,14 +38,23 @@
   <view class="maskTemp">
     <view class="v_c_container  ">
     </view>
-    <view class="v_c_container blurTemp">
+    <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
       <view class="questionTemp">{{question}}</view>
-      <input class="inputWrapTemp" bindinput="bindKeyInput" />
+      <view class="flex_row " style="position: relative;">
+        <block wx:for="{{answer.length}}" wx:key="index">
+          <view class="input_item">{{code[index]}}</view>
+        </block>
+        <!-- 输入内容 -->
+        <!-- <view class="input_code">{{code}}</view> -->
+        <!-- input输入框 -->
+        <input class="input_text {{isFocus?'hide_input_text':''}}" focus="{{isFocus}}" selection-start="100" adjust-position="{{false}}" selection-end="100" confirm-type="done" maxlength="{{answer.length}}" value="{{code}}" bindinput="bindKeyInput" bindfocus="handleUseFocus" bindblur="handleUseFocus" />
+      </view>
+      <!-- <input class="inputWrapTemp" bindinput="bindKeyInput" /> -->
       <view class="submitTemp" bindtap="submitData">
         提交
       </view>
-      <view class="replay" bindtap="rePlay">
+      <view class="replayTemp" bindtap="rePlay">
         再次播放
       </view>
     </view>
@@ -54,14 +64,14 @@
   <view class="maskTemp">
     <view class="v_c_container  ">
     </view>
-    <view class="v_c_container blurTemp">
+    <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
       <view class="questionTemp">{{question}}</view>
       <input class="inputWrapTemp" bindinput="bindKeyInput" />
       <view class="submitTemp" bindtap="submitData">
         提交
       </view>
-      <view class="replay" bindtap="rePlayAudio">
+      <view class="replayTemp" bindtap="rePlayAudio">
         再次播放
       </view>
     </view>
@@ -71,33 +81,37 @@
   <view class="maskTemp">
     <view class="v_c_container  ">
     </view>
-    <view class="v_c_container blurTemp">
+    <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
       <view class="questionTemp">{{question}}</view>
       <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
         <view class="chooseTextTemp">{{item.k}}</view>
       </view>
-      <view class="replay" bindtap="rePlayAudio">
+      <view class="replayTemp" bindtap="rePlayAudio">
         再次播放
       </view>
     </view>
   </view>
 </template>
 <template name="rewardsPage">
-  <view class="mask" catchtouchmove='true'>
-    <view class="goodContentTemp">
-      <view class="detailTextTemp" wx:if="{{rewards.length > 0}}">奖励明细</view>
-      <view class="rewardWrapTemp" wx:for="{{rewards}}" wx:key="index">
-        <view class="rewardItemTemp">
-          <view class="imgBackTemp">
+  <view class="maskTemp" catchtouchmove='true'>
+    <view class="good_contents">
+      <view class="detail_text" wx:if="{{rewards.length > 0}}">奖励明细</view>
+      <view class="reward_wrap">
+        <view class="reward_item" wx:for="{{rewards}}" wx:key="index">
+          <view class="img_back">
+            <image wx:if='{{handler.isSystemIcon(item.item_icon)}}' class="itemImg" src="/static/icon/goodIcon/{{item.item_icon}}.png" mode="" />
+            <image wx:else class="item_icon" src="https://file.ysr.uninote.com.cn/{{item.item_icon}}" mode="" />
           </view>
           <text>{{item.points? item.points + '积分' : item.item_name}}</text>
         </view>
       </view>
-      <view wx:for="{{quests}}" wx:key="index">
-        <text style="color: #ffffff;">解锁了新任务</text>
-      </view>
-      <image bindtap="closePage" class="closeBtn" src="/static/icon/close_btn.png" mode="" />
+      <block wx:if="{{quests && quests.length > 0}}">
+        <view wx:for="{{quests}}" wx:key="index" style="margin-bottom: 20rpx;color: #FFFFFF;font-size: 28rpx;line-height: 34rpx;">
+          <text style="color: #ffffff;">解锁新任务：<text style="color: #FFF49B;">{{item.name}}</text></text>
+        </view>
+      </block>
+      <image bindtap="closePage" class="close_btn" src="/static/icon/close_btn.png" mode="" />
     </view>
   </view>
 </template>

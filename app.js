@@ -59,6 +59,7 @@ App({
     }
     permission_request("scope.userLocation", "地理位置").then(granted => {
       if (granted) {
+        console.log(111,granted)
         wx.onLocationChange(this._locationChangeFn)
       }
     })
