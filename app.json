@@ -7,7 +7,8 @@
     "pages/game/game",
     "pages/testPage/test",
     "pages/start/start",
-    "pages/taskTrigger/taskTrigger"
+    "pages/taskTrigger/taskTrigger",
+    "components/ar_wrap/ar_wrap"
   ],
   "requiredPrivateInfos": [
     "onLocationChange",

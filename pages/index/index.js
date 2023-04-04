@@ -127,7 +127,12 @@ Page({
       type
     } = event.detail;
     let dataObject = {};
-    if (type === this.data.currentTabKey) {
+    if (type === this.data.currentTabKey) { //多次点击当前tab或者点击为3
+      if (type === "3") {
+        wx.navigateTo({
+          url: '/components/ar_wrap/ar_wrap',
+        })
+      }
       this.closeModal()
     } else if (type === "4") {
       this.closeModal()
@@ -142,6 +147,9 @@ Page({
         currentTabKey: "5",
       };
     } else if (type === "3") {
+      wx.navigateTo({
+        url: '/components/ar_wrap/ar_wrap',
+      })
       this.closeModal()
     } else if (type === '1') {
       this.closeModal()

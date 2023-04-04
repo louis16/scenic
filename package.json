@@ -1,0 +1,18 @@
+{
+  "name": "scenic",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.uninote.com.cn:zhuziheng/scenic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "threejs-miniprogram": "^0.0.8"
+  }
+}

@@ -1,7 +1,4 @@
 {
-  "usingComponents": {
-    "exam":"/components/exam/exam",
-    "topContainer":"/components/topContainer/topContainer"
-  },
+  "usingComponents": {},
   "disableScroll": true
 }

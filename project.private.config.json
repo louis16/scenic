@@ -3,7 +3,7 @@
   "projectname": "scenic",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": true
+    "urlCheck": false
   },
   "condition": {
     "miniprogram": {
@@ -52,7 +52,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/game/game",
+          "pathName": "components/ar_wrap/ar_wrap",
           "query": "",
           "launchMode": "default",
           "scene": null

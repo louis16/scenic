@@ -139,6 +139,7 @@
 .backImg {
   width: 434rpx;
   height: 440rpx;
+  animation: changeright 30s linear infinite;
   -webkit-animation: changeright 30s linear infinite;
 }
 
@@ -187,6 +188,7 @@
 .rewardText {
   display: inline;
   background: linear-gradient(180deg, #FBF388 5%, #FFFBD8 49%, #F8A955 99%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'PingFang SC Regular';
@@ -195,6 +197,19 @@
 }
 
 /*自定义动画类----顺时针旋转（使用这个动画的时候才设置动画执行时间）*/
+@keyframes changeright {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
 @-webkit-keyframes changeright {
   0% {
     -webkit-transform: rotate(0deg);

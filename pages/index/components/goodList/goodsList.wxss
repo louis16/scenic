@@ -12,7 +12,8 @@
   justify-content: center;
   transform: translateY(40%);
 }
-.goodEmptyIcon{
+
+.goodEmptyIcon {
   width: 480rpx;
   height: 360rpx;
 }
@@ -48,9 +49,8 @@
   font-family: 'DIN-Bold';
   font-size: 26rpx;
   line-height: 26rpx;
-  /* 设置描边宽度及颜色 默认为字体内外描边 */
-  text-stroke: 1rpx #567DB5;
-  /* 兼容Webkit(Chrome/Safari)内核浏览器的写法 */
+  -webkit-text-stroke-width: 1rpx;
+  -webkit-text-stroke-color: #567DB5;
   -webkit-text-stroke: 1rpx #567DB5;
   color: #fff;
 }
