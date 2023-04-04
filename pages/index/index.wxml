@@ -95,7 +95,7 @@
   </block>
   <!-- 景观详情 -->
   <block wx:if="{{showMarkTapModal}}">
-    <SlidePannel isLandscapeDetail="{{true}}" bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand">
+    <SlidePannel isLandscapeDetail="{{true}}" bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand" location="{{currentItem}}">
       <view slot="body" style="height: {{height}}vh">
         <LandscapeDetail item="{{currentItem}}" />
       </view>

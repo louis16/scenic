@@ -1,17 +1,18 @@
-// pages/user/user.js
+const app = getApp()
+const eventBus = app.globalData.bus
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     usersex: false,
-    date:'2002-09-01',
-    selectSex:0,
-    isshowUslide:false,
-    sex:1,
-    userdata:{
-      sex:1,
-      age:0
+    date: '2002-09-01',
+    selectSex: 0,
+    isshowUslide: false,
+    sex: 1,
+    userdata: {
+      sex: 1,
+      age: 0
     }
   },
 
@@ -19,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-  //  this.getUserInfo()
+    //  this.getUserInfo()
   },
 
   /**
@@ -71,42 +72,53 @@ Page({
 
   },
   gotoPage(e) {
-    const url= e.currentTarget.dataset['url'];
+    const url = e.currentTarget.dataset['url'];
     wx.navigateTo({
-      url: '/pages/user/'+url,
+      url: '/pages/user/' + url,
     })
   },
-  shUslide(o){
+  shUslide(o) {
     this.setData({
-      isshowUslide:o.detail.isshowSlide
+      isshowUslide: o.detail.isshowSlide
     })
   },
-  showEditInfo(){
+  showEditInfo() {
     this.setData({
-      isshowUslide:true
+      isshowUslide: true
     })
     const uslide = this.selectComponent('#uslide')
     uslide.showUslide()
   },
-  bindDateChange(e){
+  bindDateChange(e) {
     this.setData({
       date: e.detail.value
     })
   },
-  setSelectSex(e){
+  setSelectSex(e) {
     const value = e.currentTarget.dataset['value'];
     this.setData({
-      sex : value
+      sex: value
     })
   },
-  setUserInfo(){
+  setUserInfo() {
     const uslide = this.selectComponent('#uslide')
     uslide.showUslide()
     this.setData({
-      userdata : {
-        sex:this.data.sex,
-        age:23
+      userdata: {
+        sex: this.data.sex,
+        age: 23
       }
     })
   },
+  handleFuncClick(event) {
+    const {
+      type
+    } = event.detail;
+    if (type == '5') return
+    wx.navigateBack({
+      success: function () {
+        eventBus.emit('changeTab', type)
+      }
+    })
+  }
 })

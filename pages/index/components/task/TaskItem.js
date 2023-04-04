@@ -19,37 +19,21 @@ const plugin = requirePlugin('routePlan');
 let key = 'WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT'; //使用在腾讯位置服务申请的key
 let referer = '游界原始人'; //调用插件的app的名称
 const app = getApp()
-const eventBus = app.globalData.bus
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
-    quests: {
-      type: Array,
-      value: []
-    },
     status: {
-      type: String,
-      value: ""
-    },
-    landscape_name: {
-      type: String,
-      value: ""
-    },
-    facility_name: {
       type: String,
       value: ""
     },
     showMoreInfo: {
       type: Boolean,
       value: true
+    },
+    location: {
+      type: Object,
+      value: {}
     }
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
     selected: [false, false, false, false, false], // // 这里表示列表项是否展开，默认初始时此数组的元素全为fasle，表示都没展开
     active: null, // 当前展开的项的index值
@@ -58,9 +42,6 @@ Component({
     taskType: taskType
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     // 点击列表,收缩与展示
     onListClick(event) {
@@ -71,7 +52,6 @@ Component({
         [`selected[${index}]`]: !this.data.selected[`${index}`],
         active: index,
       });
-
       // 如果点击的不是当前展开的项，则关闭当前展开的项
       // 这里就实现了点击一项，隐藏另一项
       if (active !== null && active !== index) {
@@ -137,7 +117,6 @@ Component({
                   hasNear = true
                   getTaskDetail(element.id).then(taskDetail => {
                     const data = formatOption(taskDetail)
-                    console.log(data, 11111)
                     wx.navigateTo({
                       url: '/pages/taskTrigger/taskTrigger',
                       success: function (res) {
@@ -183,15 +162,17 @@ Component({
       }
     },
     startNavigate() {
-      let endPoint = JSON.stringify({ //终点
-        'name': '四川省成都市武侯区人民南路四段48号29号',
-        'latitude': 30.612929,
-        'longitude': 104.066319
-      });
-      let mode = 'walking'
-      wx.navigateTo({
-        url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode=' + mode
-      });
+      if (this.data.location) {
+        let endPoint = JSON.stringify({ //终点
+          'name': this.data.location.name || this.data.location.landscape_name,
+          'latitude': this.data.location.lat,
+          'longitude': this.data.location.lng
+        });
+        let mode = 'walking'
+        wx.navigateTo({
+          url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode=' + mode
+        });
+      }
     }
   }
 })

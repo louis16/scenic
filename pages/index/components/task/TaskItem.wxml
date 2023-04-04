@@ -1,5 +1,5 @@
-<view wx:for="{{ quests }}" wx:key="index">
-  <view class="list-content" style="border-bottom:{{(index!==quests.length - 1 || selected[index]) && ' 1rpx solid #ddd'}};" bindtap="onListClick" data-index="{{ index }}">
+<view wx:for="{{ location.quests }}" wx:key="index">
+  <view class="list-content" style="border-bottom:{{(index!== location.quests.length - 1 || selected[index]) && ' 1rpx solid #ddd'}};" bindtap="onListClick" data-index="{{ index }}">
     <view class="name">
       <view class="flex">
         <image class="appIcon" wx:if="{{item.trigger_show !=0}}" src="{{taskType[item.trigger_show]}}" mode="" />
@@ -54,11 +54,7 @@
         <view class="itemTitle"> 任务地点</view>
         <view class="itemContent">
           <view class="itemLine" catchtap="startNavigate">
-            <text>{{landscape_name}}</text>
-            <image class="itemIcon" src="/static/icon/icon_navigation.png" mode="" />
-          </view>
-          <view wx:if="{{facility_name}}" class="itemLine" catchtap="startNavigate">
-            <text>{{facility_name}}</text>
+            <text>{{location.landscape_name || location.name}}</text>
             <image class="itemIcon" src="/static/icon/icon_navigation.png" mode="" />
           </view>
         </view>

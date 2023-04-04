@@ -27,7 +27,6 @@ Component({
   },
   lifetimes: {
     attached() {
-      console.log(this.data.item)
       this.setData({
         imgUrl: `${this.data.filePath}/${this.data.item.image}`
       })

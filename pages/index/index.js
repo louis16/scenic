@@ -47,13 +47,7 @@ Page({
     titleAnimation: false, // 标题是否滚动
     navHeight: app.globalData.navHeight, //导航栏高度
     polyline: [{
-      points: [{
-        longitude: '104.0834963',
-        latitude: '30.7381979'
-      }, {
-        longitude: '104.0797949',
-        latitude: '30.7359524'
-      }],
+      points: null,
       color: '#3875FF',
       width: 2,
     }]
@@ -71,6 +65,32 @@ Page({
     })
     eventBus.on('closeLandScape', () => {
       this.changeMarkLable(true)
+      this.setData({
+        polyline: [{
+          points: null,
+          color: '#3875FF',
+          width: 2,
+        }]
+      })
+    })
+    eventBus.on('changeTab', (value) => {
+      this.handleFuncClick({
+        detail: {
+          type: value
+        }
+      })
+    })
+    eventBus.on('drawLine', value => {
+      this.setData({
+        polyline: [{
+          points: [
+            {latitude: value.slat, longitude: value.slng},
+            {latitude: value.elat, longitude: value.elng}
+          ],
+          color: '#3875FF',
+          width: 2,
+        }]
+      })
     })
   },
   onReady() { //动态更改经纬度
@@ -86,6 +106,10 @@ Page({
     }, 1000 * 60 * 10)
   },
   onUnload() {
+    eventBus.off('refreshTask')
+    eventBus.off('closeLandScape')
+    eventBus.off('changeTab')
+    eventBus.off('drawLine')
     this.interval && clearInterval(this.interval)
   },
   getAllMarkedFunc(detailRef) { //获取景观设施的定位，用以展示mark
@@ -142,10 +166,9 @@ Page({
       };
     } else if (type === "5") {
       this.closeModal()
-      dataObject = {
-        showPackageModal: true,
-        currentTabKey: "5",
-      };
+      wx.navigateTo({
+        url: '/pages/user/user',
+      })
     } else if (type === "3") {
       wx.navigateTo({
         url: '/components/ar_wrap/ar_wrap',

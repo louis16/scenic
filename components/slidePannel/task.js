@@ -1,3 +1,10 @@
+import {
+  getDistance
+} from "../../util/constants";
+import {
+  getMyLocation
+} from "../../util/util";
+
 const app = getApp()
 const eventBus = app.globalData.bus
 Component({
@@ -29,6 +36,10 @@ Component({
       type: Boolean,
       value: false,
     },
+    location: {
+      type: Object,
+      value: {}
+    }
   },
 
   data: {
@@ -38,6 +49,28 @@ Component({
   },
   lifetimes: {
     attached() {
+      if (this.data.isLandscapeDetail) {
+        getMyLocation().then(res => {
+          if (res) {
+            eventBus.emit('drawLine', {
+              slat: res.latitude,
+              slng: res.longitude,
+              elat: this.data.location.lat,
+              elng: this.data.location.lng
+            })
+            let distance = getDistance({
+              lat: res.latitude,
+              lng: res.longitude
+            }, {
+              lat: this.data.location.lat,
+              lng: this.data.location.lng
+            })
+            this.setData({
+              distance: distance.toFixed(0)
+            })
+          }
+        })
+      }
       this.openModal()
     },
     detached: function () {

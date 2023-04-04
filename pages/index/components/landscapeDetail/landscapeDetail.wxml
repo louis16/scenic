@@ -6,7 +6,7 @@
     </view>
     <view style="max-height: 1240rpx;overflow-y: scroll ">
       <view class="itemTitle">任务</view>
-      <TaskItem showMoreInfo="{{false}}" facility_name="{{item.name || ''}}" quests="{{item.quests}}" />
+      <TaskItem showMoreInfo="{{false}}" location="{{item}}" />
     </view>
     <!-- <view wx:if="{{item.quests.length > 0}}" k>
       <view class="itemTitle" style="margin-top: 30rpx;"> 任务简介</view>

@@ -28,12 +28,9 @@
         <image class="appIcon" src="/static/icon/landscape_icon.png" mode="" />
         {{item.landscape_name}}
       </view>
-      <!-- <view>
-        xxx
-      </view> -->
     </view>
     <view class="taskContent">
-      <TaskItem facility_name="{{item.facility_name || ''}}" landscape_name="{{item.landscape_name}}" quests="{{item.quests}}" status="{{status}}" />
+      <TaskItem status="{{status}}" location="{{item}}" />
     </view>
   </view>
 </view>

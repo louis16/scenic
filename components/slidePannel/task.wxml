@@ -10,7 +10,9 @@
         </view>
       </block>
       <block wx:else>
-        <text style="color: #333333;">{{title}}</text>
+        <text style="color: #333333;">
+          {{title}} <text wx:if="{{distance}}">({{distance}}m)</text>
+        </text>
       </block>
     </view>
     <view bindtap="changeModalStatus" class="closeBtn">
