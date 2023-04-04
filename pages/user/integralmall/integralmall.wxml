@@ -1,0 +1,138 @@
+<!--pages/user/integralmall/integralmall.wxml-->
+<view class="container linearBg">
+  <topContainer hiddenBack="{{false}}" title="积分商城" titleWhite />
+  <view class="main">
+    <view class="userinfo">
+    <view class="userinfo-content">
+      <view class="userinfo-head">
+      <image src="/static/imgs/user/temp-1.png" class="image"></image>
+      </view>   
+       <view class="uinfo">
+        <text class="uname">沉默的小王子</text>
+          <view class="uother">
+            <view class="uother_sex ">
+              <image src="/static/imgs/user/female.png" class="image"></image>      
+            </view>  
+            <view class="uother_age ufemale">23岁</view> 
+           
+            <!-- <view class="uother_sex">
+              <image src="/static/imgs/user/male.png" class="image"></image>      
+            </view> 
+            <view class="uother_age umale">23岁</view> -->
+          </view>     
+        </view>
+        <view class="uintegral">
+            <view class="ucount">1005</view>
+            <view class="utext">
+            <text>我的积分</text>
+            <image src="/static/imgs/user/temp-2.png"></image>
+            </view>
+        </view>    
+    </view>
+    <view class="userinfo-news">
+        <view>【明媚的小桃子】兑换了 1张 麻辣烤肠券</view>
+    </view>
+  </view>
+  <view class="ptitle">
+    <view>
+      <text>积分商城</text>
+    </view>
+  </view>
+  <view class="infolists">
+    <block wx:for="{{datalist}}" wx:for-item="item" wx:key="{{ item.id }}">
+    <view class="infolists-item" bindtap="showEditInfo">    
+        <image src="{{ item.src }}" class="imgs"></image>
+        <view class="item__title">{{ item.title }}</view>
+        <view class="item-info">
+          <image src="/static/imgs/user/temp-2.png"></image>
+          <view class="p">{{ item.integralPrice }}</view>
+          <view class="e">兑</view>
+        </view>
+    </view>
+    </block>
+  </view>
+</view>
+<block wx:if="{{isshowUslide}}">
+<Uslide id="uslide" height="-1200rpx"  bind:shUslide="shUslide">
+      <view slot="body">
+        <view class="showitem">
+          <view class="iteminfo">
+            <image src="/static/imgs/user/temp-3.png" class="imgs"></image>
+            <view class="iteminfo__text">
+              <text class="n">烤肠卷</text>
+              <text class="i">100积分</text>
+            </view>
+            <view class="iteminfo__but">
+                <view class="but disabled">-</view>
+                <view class="count">1</view>
+                <view class="but">+</view>
+            </view>      
+          </view>
+          <view class="showitem-intro">特色火山烤肠，蘸独有的川味烧烤料，咬一口肉质紧实饱满，绝对满足你的味蕾。</view>
+          <view class="showitem-content">
+            <view>
+              <text>使用说明：</text><text>仅限于指定店铺使用，在商家允许的情况下可兑换同等价位的其他商品。</text>
+            </view>
+            <view>
+              <text>适用店铺：</text><text>景区直通车、景区特产超市、景区直通车景区直通车、景区直通车、景区直通车。</text>
+            </view>
+            <view>
+              <text>截止时间：</text><text>2023年02月12日 12:56:25</text>
+            </view>  
+          </view>
+        </view> 
+        <view class="exchange">
+            <view class="exchange-price">共计：<text>100</text>积分</view>
+            <view class="exchange-button" bindtap="showconfirm">立即兑换</view>
+        </view>   
+      </view>
+    </Uslide>
+  </block>
+  <!-- <Umessage wx:if="{{ isshowMessage }}" isshowconfirm="{{isshowconfirm}}"  -->
+  <block wx:if="{{ isshowMessage }}">
+  <Umessage isshowconfirm="{{ true }}" message="{{ message }}" messagetype="{{ messagetype }}" showtype="{{ showtype }}" bindcloseMessage="closeMessage">
+    <view wx:if="{{ showtype == 'confirm' }}">
+       <view class="messbody">
+       <view class="messbody-content">
+        <image src="/static/imgs/user/temp-3.png" class="imgs"></image>
+        <view class="text">您是否确认消耗100积分兑换1张烤肠券？</view>
+       </view>
+        <view class="messbody-button">
+          <!-- <view class="mcancel" bindtap="closeMessage">取消</view> -->
+          <view class="mcancel" bindtap="setMessage">取消</view>
+          <view class="msubmit" bindtap="submitExchange">确认</view>
+        </view>
+       </view>
+      </view>
+      <view class="umessage-success" wx:if="{{ showtype == 'success' }}">
+      <view class="s-title">
+        <image src="/static/imgs/user/u-m-umessage-title.png" class="image" mode="" />
+      </view>
+        <view class="s-content">
+        <view class="s-content__bg"><image src="/static/imgs/user/u-m-umessage-bg.png" class="image" mode="" /></view>
+        <view class="s-content__bg"><image src="/static/imgs/user/u-m-umessage-bg.png" class="image" mode="" /></view>
+          <view class="s-content__item">   
+                <image src="/static/imgs/user/temp-3.png" class="item-img"></image>
+              <view class="s-content__info">
+                <view class="s-content__infoname">
+                <view>烤肠卷烤肠卷烤肠卷烤肠卷</view>
+                <text>×2</text>
+                </view>
+                <view class="s-content__infocount">
+                    <view>消耗</view>
+                    <text>200积分</text>
+                </view>
+              </view>    
+            </view>    
+          </view>
+        <view class="umessage-showtext">
+          请在“电子券”中查看
+        </view>
+        <view class="umessage-but">
+          <view bindtap="closeMessage">我知道了</view>
+        </view>
+      </view>
+      
+    </Umessage>
+  </block>
+</view>

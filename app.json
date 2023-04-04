@@ -8,7 +8,9 @@
     "pages/testPage/test",
     "pages/start/start",
     "pages/taskTrigger/taskTrigger",
-    "components/ar_wrap/ar_wrap"
+    "components/ar_wrap/ar_wrap",
+    "pages/user/user",
+    "pages/user/integralmall/integralmall"
   ],
   "requiredPrivateInfos": [
     "onLocationChange",

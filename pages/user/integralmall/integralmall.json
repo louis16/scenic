@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "topContainer": "/components/topContainer/topContainer",
+    "Uslide": "../components/uslide/uslide",
+    "Umessage": "../components/umessage/umessage"
+  }
+}

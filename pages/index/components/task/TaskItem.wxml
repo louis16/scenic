@@ -29,10 +29,15 @@
     <view wx:if="{{showMoreInfo}}" class="infos">
       <text style="color: #666666;">完成人数</text>
       <view class="progress">
-        <view class="progressLine">
-          <view class="activeProgress" style="width: {{50 / 90 * 100}}%;" />
-        </view>
-        <text><text class="activeText">50</text> / 90</text>
+        <block wx:if="{{item.max_complete_number > 0}}">
+          <view class="progressLine">
+            <view class="activeProgress" style="width: {{item.finished / item.max_complete_number * 100}}%;" />
+          </view>
+          <text><text class="activeText">{{item.finished}}</text> / {{item.max_complete_number}}</text>
+        </block>
+        <block wx:else>
+          <text><text class="activeText">{{item.finished}}</text> </text>
+        </block>
       </view>
       <text style="color: #333333;">05:56:22</text>
     </view>

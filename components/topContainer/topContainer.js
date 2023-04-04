@@ -17,6 +17,10 @@ Component({
             type: String,
             value: ""
         },
+        titleWhite:{
+          type:Boolean,
+          value:false
+        }
     },
     data: {
         navHeight: app.globalData.navHeight + 18, //导航栏高度

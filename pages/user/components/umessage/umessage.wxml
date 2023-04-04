@@ -1,0 +1,35 @@
+<view class="umessagecontainer">
+  <view wx:if="{{ showtype == 'success'  }}">
+    <slot></slot>   
+  </view>
+  <view class="umessage-main" wx:elif="{{ showtype == 'confirm'  }}">
+    <view class="umessage-bg"></view>
+    <view class="umessage-img">
+      <image src="/static/imgs/user/umessage-bg.png" mode="buttom" />
+    </view>
+    <view bindtap="closeumessage" class="closeBtn">
+      <image class="closeIcon" src="/static/imgs/user/icon/uclose.png" mode="" />   
+    </view>
+    <view class="umessage-content" >
+      <slot></slot>   
+    </view> 
+  </view>
+  <view class="umessage-main" wx:else>
+    <view class="umessage-bg"></view>
+    <view class="umessage-img">
+      <image src="/static/imgs/user/umessage-bg.png" mode="buttom" />
+    </view>
+    <view bindtap="closeumessage" class="closeBtn">
+      <image class="closeIcon" src="/static/imgs/user/icon/uclose.png" mode="" />   
+    </view>
+    <view class="umessage-content" >
+    <view>
+      <view class="umessage-content__icon">
+        <image class="closeIcon" src="{{ messagetype == 'ok' ? '/static/imgs/user/icon/u-m-s.png' : '/static/imgs/user/icon/u-m-e.png' }}" mode="" />
+      </view>
+        <view class="umessage-content__text">{{ message }}</view>
+      </view>
+      <slot></slot>    
+    </view>   
+  </view>
+</view>

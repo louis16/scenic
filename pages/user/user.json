@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "FunctinonBar": "/components/functionBar/bar",
+    "Uslide": "./components/uslide/uslide"
+
+  }
+}
