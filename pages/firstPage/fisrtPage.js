@@ -28,7 +28,7 @@ Page({
   },
   skipPage() {
     wx.reLaunch({
-      url: '/pages/chooseScenic/chooseScenic',
+      url: '/pages/scenicSpot/chooseScenic/chooseScenic',
     })
   },
   nextPage() {
@@ -40,7 +40,7 @@ Page({
       }).finally(() => {
         hideLoading()
         wx.reLaunch({
-          url: '/pages/chooseScenic/chooseScenic',
+          url: '/pages/scenicSpot/chooseScenic/chooseScenic',
         })
       })
     } else {

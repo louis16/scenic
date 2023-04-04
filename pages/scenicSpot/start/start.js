@@ -2,13 +2,13 @@ const scrollWidth = 225;
 const iconWidth = 58;
 const {
   getUserPhone
-} = require('../../util/api');
+} = require('../../../util/api');
 const {
   showLoading,
   hideLoading,
   PHONE,
   getStorageSync
-} = require('../../util/util');
+} = require('../../../util/util');
 Page({
   data: {
     scrollX: 0,

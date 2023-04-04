@@ -1,12 +1,12 @@
 const {
   getScenicList,
-} = require('../../util/api')
+} = require('../../../util/api')
 const {
   showLoading,
   hideLoading,
   permission_request,
   getMyLocation
-} = require('../../util/util')
+} = require('../../../util/util')
 const app = getApp()
 Page({
   data: {
@@ -39,7 +39,7 @@ Page({
       id
     } = event.currentTarget.dataset
     wx.navigateTo({
-      url: `/pages/scenicDetail/scenicDetail?id=${id}`,
+      url: `/pages/scenicSpot/scenicDetail/scenicDetail?id=${id}`,
     })
   },
   getScenicListFun(refresh, params) {

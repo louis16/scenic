@@ -1,13 +1,13 @@
 const {
 	getScenicDetail
-} = require('../../util/api')
+} = require('../../../util/api')
 const {
 	showLoading,
 	hideLoading,
 	compareVersion,
   storageSync,
   SCENICDETAIL
-} = require('../../util/util')
+} = require('../../../util/util')
 const app = getApp()
 Page({
 	data: {
@@ -52,7 +52,7 @@ Page({
 		}))
 		let img = `${app.globalData.fileUrl}/${this.data.detailData.welcome_background}`
 		wx.redirectTo({
-			url: `/pages/start/start?desc=${this.data.detailData.background_desc}&img=${img}`,
+			url: `/pages/scenicSpot/start/start?desc=${this.data.detailData.background_desc}&img=${img}`,
 		})
 	},
 	callTele(event) {

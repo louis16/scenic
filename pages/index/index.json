@@ -2,7 +2,6 @@
   "usingComponents": {
     "FunctinonBar": "/components/functionBar/bar",
     "SlidePannel": "/components/slidePannel/task",
-    "flicker": "/components/flicke/flicker",
     "topContainer": "/components/topContainer/topContainer",
     "scrollnews": "./components/scrollnews/scrollnews",
     "GoodsList": "./components/goodList/goodsList",

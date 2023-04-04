@@ -1,4 +1,4 @@
-<wxs module="handler" src="/pages/index/components/goodList/goodsList.wxs"></wxs>
+<wxs module="handler" src="/pages/commonTemplate/common.wxs"></wxs>
 <template name="choose">
   <view class="chooseWrap">
     <image src="/static/icon/question.png" mode="" class="questionIconTemp" />

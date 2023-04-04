@@ -1,4 +1,4 @@
-<wxs module="handler" src="./goodsList.wxs"></wxs>
+<wxs module="handler" src="/pages/commonTemplate/common.wxs"></wxs>
 <block>
   <view class="wrap" wx:if="{{list.length > 0}}">
     <view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">

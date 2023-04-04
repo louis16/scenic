@@ -1,16 +1,36 @@
 {
   "pages": [
     "pages/firstPage/fisrtPage",
-    "pages/chooseScenic/chooseScenic",
-    "pages/scenicDetail/scenicDetail",
     "pages/index/index",
-    "pages/game/game",
-    "pages/testPage/test",
-    "pages/start/start",
-    "pages/taskTrigger/taskTrigger",
-    "components/ar_wrap/ar_wrap",
-    "pages/user/user",
-    "pages/user/integralmall/integralmall"
+    "pages/commonTemplate/templateComp"
+  ],
+  "subPackages": [{
+      "root": "pages/scenicSpot/",
+      "pages": [
+        "chooseScenic/chooseScenic",
+        "scenicDetail/scenicDetail",
+        "start/start"
+      ]
+    },
+    {
+      "root": "pages/user/",
+      "pages": [
+        "user",
+        "integralmall/integralmall"
+      ]
+    },
+    {
+      "root": "pages/taskTrigger/",
+      "pages": [
+        "taskTrigger"
+      ]
+    },
+    {
+      "root": "components/ar_wrap/",
+      "pages": [
+        "ar_wrap"
+      ]
+    }
   ],
   "requiredPrivateInfos": [
     "onLocationChange",
