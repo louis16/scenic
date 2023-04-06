@@ -1,4 +1,4 @@
-.listContainer {
+.slide-wrap {
   /* position: absolute; */
   width: 100vw;
   background-color: #F6F8FB;
@@ -12,13 +12,13 @@
   left: 10px;
 }
 
-.closeBtn {
+.s-close-btn {
   position: absolute;
   right: 10px;
 
 }
 
-.titleWrap {
+.s-title-view {
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -29,7 +29,7 @@
   color: #999999;
 }
 
-.titleView {
+.slide-title {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -41,7 +41,7 @@
   background: linear-gradient(180deg, #E5EFFF 0%, rgba(248, 251, 255, 0.64) 74%, rgba(255, 255, 255, 0.00) 100%);
 }
 
-.expandView::before {
+.expand-slide-title::before {
   content: '  ';
   display: block;
   width: 60rpx;
@@ -76,7 +76,7 @@
   /* overflow: hidden; */
 }
 
-.closeIcon {
+.s-close-icon {
   width: 32rpx;
   height: 32rpx;
 }

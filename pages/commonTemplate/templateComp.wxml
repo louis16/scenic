@@ -1,100 +1,118 @@
 <wxs module="handler" src="/pages/commonTemplate/common.wxs"></wxs>
 <template name="choose">
-  <view class="chooseWrap">
-    <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
-    <view class="questionTemp">{{question}}</view>
-    <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
-      <view class="chooseTextTemp">{{item.k}}</view>
+  <view class="choose_wrap">
+    <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+    <view class="question_temp">{{question}}</view>
+    <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
+      <view class="choose_text_temp">{{item.k}}</view>
     </view>
   </view>
 </template>
 <template name="fillBlanks">
-  <view class="chooseWrap">
-    <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
-    <view class="questionTemp">{{question}}</view>
-    <input class="inputWrapTemp" bindinput="bindKeyInput" />
-    <view class="submitTemp" bindtap="submitData">
-      提交
+  <view class="mask_temp">
+    <view class="v_c_container  ">
+      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
+    </view>
+    <view class="v_c_container blur_temp">
+      <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+      <view class="question_temp">{{question}}</view>
+      <view class="flex_row " style="position: relative;">
+        <block wx:for="{{answer.length}}" wx:key="index">
+          <view class="input_item">{{code[index]}}</view>
+        </block>
+        <!-- input输入框 -->
+        <input class="input_text {{isFocus?'hide_input_text':''}}" focus="{{isFocus}}" selection-start="100" adjust-position="{{false}}" selection-end="100" confirm-type="done" maxlength="{{answer.length}}" value="{{code}}" bindinput="bindKeyInput" bindfocus="handleUseFocus" bindblur="handleUseFocus" />
+      </view>
+      <view class="submit_temp" bindtap="submitData">
+        提交
+      </view>
     </view>
   </view>
 </template>
 <template name="videoChoose">
-  <view class="maskTemp">
+  <view class="mask_temp">
     <view class="v_c_container  ">
+      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
     </view>
     <view class="v_c_container blur_temp">
-      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
-      <view class="questionTemp">{{question}}</view>
-      <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
-        <view class="chooseTextTemp">{{item.k}}</view>
+      <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+      <view class="question_temp">{{question}}</view>
+      <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
+        <view class="choose_text_temp">{{item.k}}</view>
       </view>
-      <view class="replayTemp" bindtap="rePlay">
+      <view class="replay_temp" bindtap="rePlay">
         再次播放
       </view>
     </view>
   </view>
 </template>
 <template name="videoFillBlanks">
-  <view class="maskTemp">
+  <view class="mask_temp">
     <view class="v_c_container  ">
+      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
     </view>
     <view class="v_c_container blur_temp">
-      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
-      <view class="questionTemp">{{question}}</view>
+      <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+      <view class="question_temp">{{question}}</view>
       <view class="flex_row " style="position: relative;">
         <block wx:for="{{answer.length}}" wx:key="index">
           <view class="input_item">{{code[index]}}</view>
         </block>
-        <!-- 输入内容 -->
-        <!-- <view class="input_code">{{code}}</view> -->
         <!-- input输入框 -->
         <input class="input_text {{isFocus?'hide_input_text':''}}" focus="{{isFocus}}" selection-start="100" adjust-position="{{false}}" selection-end="100" confirm-type="done" maxlength="{{answer.length}}" value="{{code}}" bindinput="bindKeyInput" bindfocus="handleUseFocus" bindblur="handleUseFocus" />
       </view>
-      <!-- <input class="inputWrapTemp" bindinput="bindKeyInput" /> -->
-      <view class="submitTemp" bindtap="submitData">
+      <view class="submit_temp" bindtap="submitData">
         提交
       </view>
-      <view class="replayTemp" bindtap="rePlay">
+      <view class="replay_temp" bindtap="rePlay">
         再次播放
       </view>
     </view>
   </view>
 </template>
 <template name="audioFillBlanks">
-  <view class="maskTemp">
+  <view class="mask_temp">
     <view class="v_c_container  ">
+      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
     </view>
     <view class="v_c_container blur_temp">
-      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
-      <view class="questionTemp">{{question}}</view>
-      <input class="inputWrapTemp" bindinput="bindKeyInput" />
-      <view class="submitTemp" bindtap="submitData">
+      <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+      <view class="question_temp">{{question}}</view>
+      <view class="flex_row " style="position: relative;">
+        <block wx:for="{{answer.length}}" wx:key="index">
+          <view class="input_item">{{code[index]}}</view>
+        </block>
+        <!-- input输入框 -->
+        <input class="input_text {{isFocus?'hide_input_text':''}}" focus="{{isFocus}}" selection-start="100" adjust-position="{{false}}" selection-end="100" confirm-type="done" maxlength="{{answer.length}}" value="{{code}}" bindinput="bindKeyInput" bindfocus="handleUseFocus" bindblur="handleUseFocus" />
+      </view>
+      <view class="submit_temp" bindtap="submitData">
         提交
       </view>
-      <view class="replayTemp" bindtap="rePlayAudio">
+      <view class="replay_temp" bindtap="rePlayAudio">
         再次播放
       </view>
     </view>
   </view>
 </template>
 <template name="audioChoose">
-  <view class="maskTemp">
+  <view class="mask_temp">
     <view class="v_c_container  ">
+      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
     </view>
     <view class="v_c_container blur_temp">
-      <image src="/static/icon/question.png" mode="" class="questionIconTemp" />
-      <view class="questionTemp">{{question}}</view>
-      <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItemTemp">
-        <view class="chooseTextTemp">{{item.k}}</view>
+      <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+      <view class="question_temp">{{question}}</view>
+      <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
+        <view class="choose_text_temp">{{item.k}}</view>
       </view>
-      <view class="replayTemp" bindtap="rePlayAudio">
+      <view class="replay_temp" bindtap="rePlayAudio">
         再次播放
       </view>
     </view>
   </view>
 </template>
 <template name="rewardsPage">
-  <view class="maskTemp" catchtouchmove='true'>
+  <view class="mask_temp" catchtouchmove='true'>
     <view class="good_contents">
       <view class="detail_text" wx:if="{{rewards.length > 0}}">奖励明细</view>
       <view class="reward_wrap">

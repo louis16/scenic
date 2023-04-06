@@ -29,7 +29,13 @@
       <view class="title">景观简介</view>
       <text>{{originData. description}}</text>
     </view>
-    <template wx:if="{{audioEnd}}" is="{{originData.complete_type == 2 ? 'audioFillBlanks' : originData.complete_type == 3 ? 'audioChoose':'' }}" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
+
+    <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
+      <template wx:if="{{audioEnd}}" is="audioFillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
+    </view>
+    <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
+      <template wx:if="{{audioEnd}}" is="audioChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
+    </view>
   </view>
   <view wx:else>
     <!--图文 ___ 直接获得奖励 -->
@@ -46,7 +52,7 @@
       <view class="content">
         <view class="title">{{originData.name}}</view>
         <view class="desc">{{originData.description}}</view>
-        <template is="fillBlanks" data="{{question:originData.questions[0].question }}" />
+        <template is="fillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
       </view>
     </view>
     <!--图文 ___ 选择题 -->

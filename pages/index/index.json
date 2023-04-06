@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "FunctinonBar": "/components/functionBar/bar",
-    "SlidePannel": "/components/slidePannel/task",
+    "SlidePannel": "/components/slidePannel/slidePannel",
     "topContainer": "/components/topContainer/topContainer",
     "scrollnews": "./components/scrollnews/scrollnews",
     "GoodsList": "./components/goodList/goodsList",
