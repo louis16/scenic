@@ -1,31 +1,25 @@
-.wrap {
+.good-list-wrap {
   padding: 44rpx 34rpx 400rpx 34rpx;
   display: grid;
   grid-template-columns: 120rpx 120rpx 120rpx 120rpx 120rpx;
-  grid-column-gap: 22rpx;
-  grid-template-rows: 120rpx;
-  grid-row-gap: 34rpx;
+  grid-column-gap: 24rpx;
+  grid-row-gap: 32rpx;
 }
 
-.goodEmpty {
+.good-empty {
   display: flex;
   justify-content: center;
   transform: translateY(40%);
 }
 
-.goodEmptyIcon {
+.good-empty-icon {
   width: 480rpx;
   height: 360rpx;
 }
 
-.emptyIcon {
-  width: 480rpx;
-  height: 360rpx;
-  align-self: center;
-}
-
-.goodItem {
+.good-item-wrap {
   position: relative;
+  width: 120rpx;
   height: 120rpx;
   background-color: #90ADD8;
   border-radius: 0 20rpx 0 20rpx;
@@ -33,16 +27,30 @@
   box-sizing: border-box;
 }
 
-.itemLine {
+.good-item {
   position: relative;
-  height: 97%;
-  border: 2rpx solid white;
-  border-radius: 16rpx 16rpx 16rpx 16rpx;
+  width: 100%;
+  height: 100%;
+  border: 1rpx solid white;
+  border-radius: 0 16rpx 0 16rpx;
+  box-sizing: border-box;
   overflow: hidden;
 }
 
+.good-item::after {
+  content: ' ';
+  position: absolute;
+  left: -1rpx;
+  top: -1rpx;
+  width: 100%;
+  height: 100%;
+  border: 1rpx solid white;
+  box-sizing: content-box;
+  border-radius: 16rpx 0 16rpx 0;
+}
 
-.itemNum {
+
+.good-item-num {
   position: absolute;
   z-index: 99;
   right: 0;
@@ -55,7 +63,7 @@
   color: #fff;
 }
 
-.itemImg {
+.good-item-img {
   width: 80rpx;
   height: 80rpx;
   position: relative;
@@ -63,8 +71,12 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+.good-item-img-net{
+  border: 1rpx solid white;
+  border-radius: 8rpx;
+}
 
-.viewMask {
+.good-composition-mask {
   position: absolute;
   z-index: 99;
   height: 32rpx;

@@ -1,0 +1,31 @@
+<view class="message-wrap">
+  <view class="message-clear">一键已读</view>
+  <view class="message-title">
+    <view style="position: relative;margin-right: 140rpx;">
+      <text class="title {{currentType === 'inform' &&  'active-title'}}" data-type="inform" bindtap="changeTab">通知</text>
+      <view class="red-dot title-dot" />
+    </view>
+    <view style="position: relative;">
+      <text class="title {{currentType === 'notice' &&  'active-title'}}" data-type="notice" bindtap="changeTab">公告</text>
+      <view class="red-dot title-dot" />
+    </view>
+  </view>
+  <view wx:for="{{list}}" wx:key="index" class="message-item">
+    <view style="position: relative;">
+      <image class="message-item-icon" src="/static/icon/reward_goods_icon.png" mode="" />
+      <view class="red-dot message-dot" />
+    </view>
+    <view class="message-view">
+      <view class="item-title">
+        <text class="item-name">新荣誉获得</text>
+        <text class="item-time">时间</text>
+      </view>
+      <view style="display: flex;flex-direction: row;position: relative;flex: 1;">
+        <view class="content-wrap {{index !== currentIndex && 'show-more'}}" data-index="{{currentIndex===index ? -1 :index}}" bindtap="changeExpand">
+          <text class="message-content">{{item.text}}</text>
+        </view>
+        <!-- <view wx:if="{{showMore[index]}}" class="toggle-icon top-arrow" data-index="{{currentIndex===index ? -1 :index}}" bindtap="changeExpand" /> -->
+      </view>
+    </view>
+  </view>
+</view>

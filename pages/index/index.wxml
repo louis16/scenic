@@ -10,10 +10,10 @@
   </topContainer>
   <FullScreen />
   <!--  -->
-  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
-  <view class="showInput" style="top:{{navHeight + 10}}px">
-    <image class="searchIcon" src="/static/icon/search.png" mode="" />
-    <input placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindconfirm="searchResult" />
+  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" show-compass setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
+  <view class="show-input" style="top:{{navHeight + 10}}px">
+    <image class="input-search-icon" src="/static/icon/search.png" mode="" />
+    <input value="{{searchInputValue}}" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindinput="inputHandle" bindconfirm="searchResult" />
   </view>
   <!-- enable-satellite -->
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
@@ -21,11 +21,11 @@
   <!-- 右边操作栏 -->
   <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" overview="{{overview || null}}" bind:openTaskList="openTaskLayer" />
   <!-- 左边操作栏 -->
-  <FixContainer right="{{false}}" top="{{leftTop ? leftTop : 100 }}" height="{{230}}" bind:showSoS="openSOS" />
+  <FixContainer wx:if="{{sosArray.length > 0}}" right="{{false}}" top="{{leftTop ? leftTop : 100 }}" height="{{230}}" bind:showSoS="openSOS" bind:currentLocation="currentLocation" />
   <!-- <flicker/> -->
   <!-- 任务 -->
   <block wx:if="{{showTaskModal}}">
-    <SlidePannel height="{{88}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
+    <SlidePannel height="{{88}}" closeExpand="{{false}} " bind:closeModal="closeModal" title="任务">
       <view slot="body" style="height: 88vh">
         <TaskList taskList="{{taskList}}" />
       </view>
@@ -93,6 +93,15 @@
       </view>
     </SlidePannel>
   </block>
+
+  <!-- 消息 -->
+  <block wx:if="{{showMessage}}">
+    <SlidePannel leftTitle="{{true}}"  bind:closeModal="closeModal" title="消息" bind:toggleExpand="toggleExpand">
+      <view slot="body" style="height: {{height}}vh">
+        <Message></Message>
+      </view>
+    </SlidePannel>
+  </block>
   <!-- 景观详情 -->
   <block wx:if="{{showMarkTapModal}}">
     <SlidePannel isLandscapeDetail="{{true}}" bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand" location="{{currentItem}}">
@@ -106,19 +115,9 @@
     <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="拨打紧急救援电话">
       <view slot="body" style="height: {{350}}rpx;display:flex;justify-content:space-around">
         <view class="sos_layer">
-          <view class="sos_item" data-phone="56558952" bindtap="callPhone">
-            景区值班室（
-            <text class="sos_phone_num">028-56558952</text>
-            ）
-          </view>
-          <view class="sos_item" data-phone="78513654" bindtap="callPhone">
-            景区保卫科（
-            <text class="sos_phone_num">028-78513654</text>
-            ）
-          </view>
-          <view class="sos_item" data-phone="18925652322" bindtap="callPhone">
-            景区负责人（
-            <text class="sos_phone_num">18925652322</text>
+          <view wx:for="{{sosArray}}" class="sos_item" wx:key="index" data-phone="{{item.phone}}" bindtap="callPhone">
+            {{item.name}}（
+            <text class="sos_phone_num">{{item.phone}}</text>
             ）
           </view>
         </view>
@@ -128,5 +127,11 @@
   <!-- 搜索结果展示 -->
   <block wx:if="{{searchResults.length > 0}}">
     <ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />
+  </block>
+  <block wx:if="{{showEmptyResult}}">
+    <view class="empty-search-view">
+      <image src="/static/icon/search_empty.png" mode="" />
+      <text>搜索无结果，换个词试试</text>
+    </view>
   </block>
 </view>

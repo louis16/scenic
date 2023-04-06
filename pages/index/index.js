@@ -10,7 +10,9 @@ const {
   showLoading,
   hideLoading,
   formatMarkData,
-  SCENICDETAIL
+  SCENICDETAIL,
+  SOS,
+  getMyLocation
 } = require("../../util/util");
 const {
   mapIcon
@@ -30,6 +32,7 @@ Page({
     showPackageModal: false, //我的
     showLandscapeModal: false, //景观
     showLayer: false, //图层
+    showMessage: false, //消息
     is_3D: false,
     is_satellite: false,
     setting: { // 使用setting配置，方便统一还原
@@ -55,6 +58,11 @@ Page({
   onLoad() {
     this.mapContext = wx.createMapContext('myMap', this)
     let detail = JSON.parse(getStorageSync(SCENICDETAIL));
+    this.detail = detail
+    let sosData = JSON.parse(getStorageSync(SOS));
+    this.setData({
+      sosArray: sosData.sos || []
+    })
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
     this.getAllGoodsFunc(detail.id)
@@ -70,7 +78,7 @@ Page({
           points: null,
           color: '#3875FF',
           width: 2,
-        }]
+        }],
       })
     })
     eventBus.on('changeTab', (value) => {
@@ -83,9 +91,14 @@ Page({
     eventBus.on('drawLine', value => {
       this.setData({
         polyline: [{
-          points: [
-            {latitude: value.slat, longitude: value.slng},
-            {latitude: value.elat, longitude: value.elng}
+          points: [{
+              latitude: value.slat,
+              longitude: value.slng
+            },
+            {
+              latitude: value.elat,
+              longitude: value.elng
+            }
           ],
           color: '#3875FF',
           width: 2,
@@ -303,6 +316,7 @@ Page({
       showLandscapeModal: false,
       currentTabKey: "3",
       showLayer: false,
+      showMessage: false,
       showSOS: false,
       showMarkTapModal: false,
       setting: {
@@ -352,20 +366,44 @@ Page({
       });
     }
   },
-  searchResult(event) {
-    let arr = [];
-    for (let index = 0; index < 10; index++) {
-      arr.push({
-        id: Math.random().toFixed(2),
-      });
-    }
-    showLoading();
-    setTimeout(() => {
+  inputHandle(e) {
+    if (!e.detail.value) { //空值
       this.setData({
-        searchResults: event.detail.value ? arr : [],
-      });
+        searchResults: []
+      })
+      return
+    }
+    clearTimeout(this.timeId)
+    this.timeId = setTimeout(() => { //防抖请求数据
+      this.searchResult({
+        detail: {
+          value: e.detail.value
+        }
+      })
+    }, 800)
+  },
+  searchResult(event) {
+    showLoading();
+    getAllMarked(this.detail.id, event.detail.value).then(res => {
+      let restult = [...res.facilities, ...res.landscapse]
+      if (restult.length === 0) {
+        this.setData({
+          searchResults: [],
+          showEmptyResult: true
+        })
+        setTimeout(() => {
+          this.setData({
+            showEmptyResult: false
+          })
+        }, 1000)
+      } else {
+        this.setData({
+          searchResults: restult,
+        })
+      }
+    }).finally(() => {
       hideLoading();
-    }, 1000);
+    })
   },
   openLayer(event) { //屏幕右侧，点击图层/消息弹出
     if (event.detail.type === "layer") {
@@ -375,13 +413,28 @@ Page({
       });
     } else {
       this.closeModal()
-      eventBus.emit('showFullScreen')
+      this.setData({
+        showMessage: true,
+      });
+      // eventBus.emit('showFullScreen')
     }
   },
   openSOS() {
     this.closeModal()
     this.setData({
       showSOS: true
+    })
+  },
+  currentLocation() {
+    showLoading()
+    getMyLocation().then(res => {
+      if (res) {
+        this.mapContext.moveToLocation({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+      }
+      hideLoading()
     })
   },
   callPhone(event) {
@@ -415,4 +468,10 @@ Page({
       },
     });
   },
+  toggleInput() {
+    this.setData({
+      searchResults: [],
+      searchInputValue: ''
+    })
+  }
 });

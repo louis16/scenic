@@ -113,12 +113,12 @@
 </template>
 <template name="rewardsPage">
   <view class="mask_temp" catchtouchmove='true'>
-    <view class="good_contents">
+    <view class="good_contents"> 
       <view class="detail_text" wx:if="{{rewards.length > 0}}">奖励明细</view>
       <view class="reward_wrap">
         <view class="reward_item" wx:for="{{rewards}}" wx:key="index">
           <view class="img_back">
-            <image wx:if='{{handler.isSystemIcon(item.item_icon)}}' class="itemImg" src="/static/icon/goodIcon/{{item.item_icon}}.png" mode="" />
+            <image wx:if='{{handler.isSystemIcon(item.item_icon)}}' class="item_icon" src="/static/icon/goodIcon/{{item.item_icon}}.png" mode="" />
             <image wx:else class="item_icon" src="https://file.ysr.uninote.com.cn/{{item.item_icon}}" mode="" />
           </view>
           <text>{{item.points? item.points + '积分' : item.item_name}}</text>

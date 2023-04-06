@@ -10,8 +10,9 @@
     "FixContainer": "./components/fixContainer/fixContainer",
     "TaskList": "./components/task/TaskList",
     "LandscapeDetail": "./components/landscapeDetail/landscapeDetail",
-    "FullScreen":"/components/fullScreen/FullScreen",
-    "LandscapeList":"./components/landscape/LandscapeList"
+    "FullScreen": "/components/fullScreen/FullScreen",
+    "LandscapeList": "./components/landscape/LandscapeList",
+    "Message": "./components/message/message"
   },
   "disableScroll": true
 }

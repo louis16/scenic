@@ -1,7 +1,7 @@
 <view style="height: 100vh;">
   <topContainer title="选择景区" style="background-color: #F1F2F6;" />
   <view class="wrap">
-    <input type="text" class="inputWrap" placeholder="输入景区名称" confirm-type="search" bindconfirm="searchInput" />
+    <input type="text" class="inputWrap" value="{{name}}" placeholder="输入景区名称" confirm-type="search" bindconfirm="searchInput" />
     <view class="filterView">
       <view style="display: flex;">
         <view class="filter {{currentFilter ==='all' ? 'activeFilter' : ''}}" data-filter="all" bindtap="changeFilter">全部景区</view>
@@ -11,7 +11,7 @@
         {{currentLocation}}
         <image class="closeIcon" src="/static/icon/close.png" mode=""/>
       </view>
-      <picker wx:else mode="region" level="sub-district" bindchange="bindRegionChange" value="{{region}}">
+      <picker wx:else mode="region" level="city" bindchange="bindRegionChange" value="{{region}}">
         <view class="chooseDistric">
           地区筛选
           <view class="rightAngle" />

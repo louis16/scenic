@@ -39,6 +39,10 @@ Component({
     location: {
       type: Object,
       value: {}
+    },
+    leftTitle: {
+      type: Boolean,
+      value: false
     }
   },
 

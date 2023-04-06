@@ -72,6 +72,7 @@
   font-family: 'DIN-Medium';
   font-size: 24rpx;
   line-height: 24rpx;
+  align-items: center;
 }
 
 .progress {
@@ -118,6 +119,26 @@
 
 .activeText {
   color: #90ADD8;
+}
+
+.top-arrow {
+  display: inline-block;
+  margin-right: 20rpx;
+  margin-left: 10rpx;
+  border-top: 4rpx solid #999999;
+  border-right: 4rpx solid #999999;
+  border-bottom: none;
+  width: 16rpx;
+  height: 16rpx;
+  transform: rotate(-45deg) translateY(8rpx);
+  transition: transform;
+}
+
+.change-top-arrow {
+  border-top: none;
+  border-bottom: 4rpx solid #999999;
+  border-right: 4rpx solid #999999;
+  transform: rotate(45deg) translateY(-8rpx);
 }
 
 .list-text {

@@ -1,18 +1,18 @@
 <wxs module="handler" src="/pages/commonTemplate/common.wxs"></wxs>
 <block>
-  <view class="wrap" wx:if="{{list.length > 0}}">
-    <view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="goodItem" bindtap="goodItemClick">
-      <view class="itemLine">
-        <text class="itemNum">{{item.amount}}</text>
-        <image wx:if='{{handler.isSystemIcon(item.item.icon)}}' class="itemImg" src="/static/icon/goodIcon/{{item.item.icon}}.png" mode="" />
-        <image wx:else class="itemImg" src="{{filePath}}/{{item.item.icon}}" mode="" />
-        <view wx:if="{{item.item.type == 2}}" class="viewMask">
+  <view class="good-list-wrap" wx:if="{{list.length > 0}}">
+    <view wx:for="{{list}}" wx:key="index" data-item="{{item}}" class="good-item-wrap" bindtap="goodItemClick">
+      <view class="good-item">
+        <text class="good-item-num">{{item.amount}}</text>
+        <image wx:if='{{handler.isSystemIcon(item.item.icon)}}' class="good-item-img" src="/static/icon/goodIcon/{{item.item.icon}}.png" mode="" />
+        <image wx:else class="good-item-img good-item-img-net" src="{{filePath}}/{{item.item.icon}}" mode="" />
+        <view wx:if="{{item.item.type == 2}}" class="good-composition-mask">
           合成
         </view>
       </view>
     </view>
   </view>
-  <view wx:else class="goodEmpty">
-    <image class="goodEmptyIcon" src="/static/icon/good_empty.png" mode="" />
+  <view wx:else class="good-empty">
+    <image class="good-empty-icon" src="/static/icon/good_empty.png" mode="" />
   </view>
 </block>

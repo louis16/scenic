@@ -6,7 +6,8 @@ const {
 	hideLoading,
 	compareVersion,
   storageSync,
-  SCENICDETAIL
+  SCENICDETAIL,
+  SOS
 } = require('../../../util/util')
 const app = getApp()
 Page({
@@ -25,7 +26,10 @@ Page({
 						...item,
 						path: `${app.globalData.fileUrl}/${item.path}`
 					}
-				})
+        })
+        storageSync(SOS, JSON.stringify({
+          sos: detailResult.sos_contacts
+        }))
 				this.setData({
 					detailData: detailResult,
 					images:detailResult.images,

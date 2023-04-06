@@ -16,37 +16,9 @@
           "scene": null
         },
         {
-          "name": "选择景区",
-          "pathName": "pages/chooseScenic/chooseScenic",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/testPage/test",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "game",
           "pathName": "pages/game/game",
           "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "选择景区",
-          "pathName": "pages/chooseScenic/chooseScenic",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "景区详情",
-          "pathName": "pages/scenicDetail/scenicDetail",
-          "query": "id=10",
           "launchMode": "default",
           "scene": null
         },
@@ -67,6 +39,13 @@
         {
           "name": "",
           "pathName": "pages/user/user",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "选择景区",
+          "pathName": "pages/scenicSpot/chooseScenic/chooseScenic",
           "query": "",
           "launchMode": "default",
           "scene": null

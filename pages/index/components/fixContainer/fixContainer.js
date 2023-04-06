@@ -35,6 +35,9 @@ Component({
     callPhone() {
       this.triggerEvent("showSoS")
     },
+    currentLocation(){
+      this.triggerEvent("currentLocation")
+    },
     itemClick(event) {
       const type = event.currentTarget.dataset.type;
       this.triggerEvent("layerClick", {
