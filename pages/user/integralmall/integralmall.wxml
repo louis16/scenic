@@ -39,9 +39,13 @@
     </view>
   </view>
   <view class="infolists">
-    <block wx:for="{{datalist}}" wx:for-item="item" wx:key="{{ item.id }}">
-    <view class="infolists-item" bindtap="showEditInfo">    
+    <block wx:for="{{datalist}}" wx:for-item="item" wx:key="index">
+    <view class="infolists-item {{ item.isnull ? 'item-null' : '' }}" bindtap="showEditInfo" data-item="{{ item }}">
+
         <image src="{{ item.src }}" class="imgs"></image>
+        <view class="item-null__image">
+          <image src="/static/imgs/user/u-i-null.png" class="image"></image>
+        </view>
         <view class="item__title">{{ item.title }}</view>
         <view class="item-info">
           <image src="/static/imgs/user/temp-2.png"></image>
@@ -63,9 +67,9 @@
               <text class="i">100积分</text>
             </view>
             <view class="iteminfo__but">
-                <view class="but disabled">-</view>
-                <view class="count">1</view>
-                <view class="but">+</view>
+                <view class="but {{ count == 1 ? 'disabled' : '' }}" bindtap="setExchangeCount" data-type="0">-</view>
+                <view class="count">{{ count }}</view>
+                <view class="but" bindtap="setExchangeCount" data-type="1">+</view>
             </view>      
           </view>
           <view class="showitem-intro">特色火山烤肠，蘸独有的川味烧烤料，咬一口肉质紧实饱满，绝对满足你的味蕾。</view>
@@ -90,7 +94,7 @@
   </block>
   <!-- <Umessage wx:if="{{ isshowMessage }}" isshowconfirm="{{isshowconfirm}}"  -->
   <block wx:if="{{ isshowMessage }}">
-  <Umessage isshowconfirm="{{ true }}" message="{{ message }}" messagetype="{{ messagetype }}" showtype="{{ showtype }}" bindcloseMessage="closeMessage">
+  <Umessage isshowconfirm="{{ isshowconfirm }}" message="{{ message }}" messagetype="{{ messagetype }}" showtype="{{ showtype }}" bindcloseMessage="closeMessage">
     <view wx:if="{{ showtype == 'confirm' }}">
        <view class="messbody">
        <view class="messbody-content">
@@ -106,7 +110,7 @@
       </view>
       <view class="umessage-success" wx:if="{{ showtype == 'success' }}">
       <view class="s-title">
-        <image src="/static/imgs/user/u-m-umessage-title.png" class="image" mode="" />
+        <image src="{{ umessageTitle }}" class="image" mode="" />
       </view>
         <view class="s-content">
         <view class="s-content__bg"><image src="/static/imgs/user/u-m-umessage-bg.png" class="image" mode="" /></view>
@@ -120,7 +124,7 @@
                 </view>
                 <view class="s-content__infocount">
                     <view>消耗</view>
-                    <text>200积分</text>
+                    <view>200积分</view>
                 </view>
               </view>    
             </view>    

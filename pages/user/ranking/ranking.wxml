@@ -1,0 +1,241 @@
+<view class="container linearBg">
+  <topContainer hiddenBack="{{false}}" title="排行榜" titleWhite />
+  <view class="ranking">
+    <view class="ranking-notice">
+      <view>本轮排行结束，即将开始下一轮</view>
+    </view>
+    <view class="rankingnav">
+        <view class="rankingmain">
+          <view class="rankingnav_items" style="{{ navitemsStyle }}">
+            <block wx:for="{{ tempitem }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
+            </block>
+            
+            <!-- <view class="tab {{ sindex == 1 ? 'active' : '' }}" bindtap="changeNav" data-index='1'><text class="navtext">获得积分</text></view>
+            <view class="tab {{ sindex == 2 ? 'active' : '' }}" bindtap="changeNav" data-index='2'><text class="navtext">获得分</text></view>
+            <view class="tab {{ index == 3 ? 'active' : '' }}" bindtap="changeNav" data-index='3'><text class="navtext">排行名</text></view>
+            <view class="tab {{ index == 4 ? 'active' : '' }}" bindtap="changeNav" data-index='4'><text class="navtext">获得积分</text></view>
+            <view class="tab {{ index == 5 ? 'active' : '' }}" bindtap="changeNav" data-index='5'><text class="navtext">积分消耗</text></view>
+            <view class="tab {{ index == 6 ? 'active' : '' }}" bindtap="changeNav" data-index='6'><text class="navtext">个人荣誉</text></view>     -->
+            <!-- <view class="nav-line" style="{{ linestyle }}"></view> -->
+          </view> 
+        </view>
+       
+      <view class="navmoreBut" bindtap="showMoreTypeWrap">
+        <view></view>
+        <view></view>
+        <view></view>
+      </view>  
+    </view>
+  
+    <view class="rankingnav-main">
+      <view class="ranking-top__item" bindtap="openNoticeBody">
+        <view class="r__item-content top1">
+        <view class="headimgs">
+          <image src="/static/imgs/user/temp-1.png"  mode=""></image>
+        </view>   
+          <view class="r__userhot-head">
+              <image src="/static/imgs/user/rankin-1.png" class="image" mode=""></image>
+          </view>
+          <view class="r__userhot-number">NO.1</view> 
+          <view class="r__name">一个好人是我</view>
+          <view class="r__count">2.5<text>W</text></view>
+        </view>
+        <view class="r__item-content top2">
+        <view class="headimgs">
+          <image src="/static/imgs/user/man.png"  mode=""></image>
+        </view>   
+         
+          <view class="r__userhot-head">
+              <image src="/static/imgs/user/rankin-2.png" class="image" mode=""></image>
+          </view>
+          <view class="r__userhot-number">NO.2</view> 
+          <view class="r__name">我是好人一个</view>
+          <view class="r__count">9999</view>
+        </view>
+        <view class="r__item-content top3">
+        <view class="headimgs">
+          <image src="/static/imgs/user/woman.png"  mode=""></image>
+        </view>   
+        <view class="r__userhot-head">
+              <image src="/static/imgs/user/rankin-3.png" class="image" mode=""></image>
+          </view>
+          <view class="r__userhot-number">NO.3</view> 
+          <view class="r__name">好人是我</view>
+          <view class="r__count">99</view>
+        </view>
+      </view>
+      <view class="ranking-list">
+        <view class="r-l-item">
+            <text class="r-l-item__number">4</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚的小桃子明媚的小桃子明媚的小桃子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item">
+            <text class="r-l-item__number">5</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item">
+            <text class="r-l-item__number">6</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚的小桃子明媚的小桃子明媚的小桃子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item">
+            <text class="r-l-item__number">7</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item">
+            <text class="r-l-item__number">8</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚的小桃子明媚的小桃子明媚的小桃子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item">
+            <text class="r-l-item__number">9</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item">
+            <text class="r-l-item__number">10</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚的小桃子明媚的小桃子明媚的小桃子</text>
+              <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view>
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+        <view class="r-l-item myranking">
+            <text class="r-l-item__number">未上榜</text>
+            <view class="r-l-item__head">
+              <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
+            </view>
+            <view class="r-l-item__name">
+              <text>明媚的小桃子明媚的小桃子明媚的小桃子</text>
+              <!-- <view class="r-l-item__honour">
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+                <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
+              </view> -->
+            </view>
+            <view class="r-l-item__count">1100</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="ranking-moretype" wx:if="{{showMoreTypes}}" bindtap="closeMoreType" catchtouchmove="{{true}}">
+        <view class="m-moretype__main" catchtap="stopEvent">
+          <view class="m-moretype__main-icon">
+            <image src="/static/imgs/user/rankingmoretypebg.png" class="image" mode=""/>
+          </view>
+          <view class="m-moretype__items">
+            <block wx:for="{{ tempitem }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
+            </block>
+               
+          </view> 
+        </view>
+    </view>
+    <view class="noticeBody" wx:if="{{ shownoticeBody }}" catchtouchmove="{{true}}">
+      <view class="noticeBody-success">
+      <view class="s-title">
+        <image src="/static/imgs/user/notice-title.png" class="image" mode="" />
+      </view>
+        <view class="s-content">
+        <view class="s-content__bg"><image src="{{ noticeContentBg }}" class="image" mode="" /></view>
+          <view class="s-content__item">
+            <view class="sitem-header">
+                <view>
+                <image src="/static/imgs/user/temp-1.png"  mode=""></image>
+                </view>
+            </view>       
+            <view class="item-r-num">NO.1</view>       
+            </view>  
+            <view class="s-content__text">获得“打卡”排行榜第一名</view>  
+          </view>
+        <view class="noticeBody-showtext1">
+          奖励明细
+        </view>
+        <view class="awardList">
+          <view>
+            <view><image src="/static/imgs/user/notice-c-icon.png"  mode="widthFix"></image></view>
+            <text>20积分</text>
+          </view>
+         <view>
+          <view><image src="/static/imgs/user/notice-c-icon1.png"  mode="widthFix"></image></view>
+          <text>烤肠券×1</text>
+         </view>
+          
+        </view>
+        <view class="noticeBody-but">
+          <view bindtap="closenNotice">查看榜单</view>
+        </view>
+      </view>
+    </view>
+</view>

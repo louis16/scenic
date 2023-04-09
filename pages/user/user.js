@@ -6,10 +6,16 @@ Page({
    */
   data: {
     usersex: false,
-    date: '2002-09-01',
+    date: '请选择日期',
     selectSex: 0,
     isshowUslide: false,
+    isshowMessage:false,
+    isshowconfirm:false,
+    showtype:'confirm',
+    messagetype:'noicon',
+    message:'',
     sex: 1,
+    userbgurl:app.globalData.fileUserUrl+'e-page-bg.png',
     userdata: {
       sex: 1,
       age: 0
@@ -21,6 +27,7 @@ Page({
    */
   onLoad(options) {
     //  this.getUserInfo()
+    this.setData()
   },
 
   /**
@@ -108,6 +115,26 @@ Page({
         sex: this.data.sex,
         age: 23
       }
+    })
+  },
+  openloginOut(){
+    this.setData({
+      isshowMessage:true,
+      isshowconfirm:true,
+      showtype:'confirm',
+      messagetype:'noicon'
+    })
+  },
+  closeMessage(){
+    this.setData({
+      isshowMessage:false,
+      isshowconfirm:false
+    })
+  },
+  loginout(){
+    this.setData({
+      isshowMessage:false,
+      isshowconfirm:false
     })
   },
   handleFuncClick(event) {

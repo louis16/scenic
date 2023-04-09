@@ -6,14 +6,6 @@
   overflow: hidden;
 }
 
-.user-bg{
-  position: fixed;
-  z-index: -999;
-  left: 0px;
-  top: 0px;
-  height: 100%;
-  width: 100%;
-}
 .userinfo{
     padding: 190rpx 0rpx 0rpx 24rpx;
     display: flex;
@@ -30,7 +22,7 @@
   background-size: 100% 100%;
   width: 120rpx;
   height: 62rpx;
-  left: 4rpx;
+  left: 8rpx;
   bottom: -40rpx;
   z-index: -1;
 }
@@ -99,6 +91,9 @@
   width: 32rpx;
   height: 32rpx;
 }
+.uhonour::before{
+  top:12rpx!important;
+}
 .userinfo-integral{
   display: flex;
   height: 132rpx;
@@ -117,6 +112,9 @@
   font-weight: bold;
   position: relative;
 }
+.userinfo-integral > view > view:nth-child(1){
+ font-weight: DIN-Bold;
+}
 .userinfo-integral > view > view::before{
   position: absolute;
   content: '';
@@ -133,7 +131,7 @@
 .user-nav{
   width: 650rpx;
   border-radius: 16rpx;
-  box-shadow: 4rpx 4rpx 10rpx #ccc;
+  box-shadow: 0px 8rpx 16rpx 0px rgba(0, 0, 0, 0.08);
   margin-left: 30rpx;
   margin-top: 40rpx;
   padding:0px 20rpx;
@@ -157,6 +155,7 @@
   text-align: right;
   line-height: 55rpx;
   padding-left: 14rpx;
+  font-family: Roboto;
   color: #999999;
 }
 .unav-item image{
@@ -164,7 +163,7 @@
   height: 56rpx;
 }
 .unav-item::before{
-  top:44rpx!important;
+  top:36rpx!important;
 }
 .unav-item{
   font-size:28rpx;
@@ -193,26 +192,49 @@
   margin-left: 75rpx;
   width: 144rpx;
   height: 144rpx;
-  background-color:#FBC3C3;
+  
+  
   margin-bottom: 14rpx;
-  border-radius: 114rpx;
+  border-radius: 144rpx;
   position:relative;
 }
-.uedit-sxe image.uedit-sxe__head{
-  margin-left:0rpx ;
-  margin-top: 46rpx;
-  width: 80rpx;
-  height: 98rpx; 
+.uedit-sxe .uedit-sxe__head{
+  width: 144rpx;
+  height: 144rpx; 
+  position: relative;
+  border-radius: 144rpx;
+  background: #D8D8D8;
+  overflow: hidden;
+}
+.uedit-sxe .uedit-sxe__head image{
+  position: absolute;
+  left: 27.84rpx;
+  top: 30rpx;
+  width: 91.7rpx;
+  height: 114.84rpx; 
 }
 .uedit-sxe .uedit-sxe__select{
   width: 24rpx;
   height: 24rpx;
   position: absolute;
   bottom: 0rpx;
+  background: #D8D8D8;
+  text-align: center;
   right: 22rpx;
+  border-radius: 24rpx;
 }
-.imgfilter{
-    background-color: #D8D8D8!important;
+.uedit-sxe .uedit-sxe__select image{
+  position: absolute;
+  left: 6rpx;
+  top: 10rpx;
+  width: 13.5rpx;
+  height: 9rpx;
+}
+.imgfilter1{
+  background-color: #FC7474!important;
+}
+.imgfilter2{
+  background-color: #D8D8D8!important;
 }
 .imgfilter .uedit-sxe__select{
   display: none;
@@ -238,6 +260,9 @@
   right: 30rpx;
   top: 26rpx;
 }
+.udeid-date__select{
+  color: #333333!important;
+}
 .uedid-button{
   margin-top: 130rpx;
   padding: 16rpx;
@@ -249,10 +274,48 @@
   height: 80rpx;
   line-height: 80rpx;
   font-size: 28rpx;
+  font-weight: bold;
   color: white;
-  font-weight: normal;
   padding: 0rpx;
   border-radius: 28rpx;
-  background: -webkit-linear-gradient(top,#C5DAF8,#668FCC);
+  background: linear-gradient(180deg, #C5DAF8 0%, #668FCC 100%);
+  box-shadow: 0px 3px 6px 0px #AFC4E3,inset 0px 4px 6px 0px #C5DDFF;
 }
-
+.messbody{
+  padding-top: 120rpx;
+}
+.messbody-content .text{
+  width: 490rpx;
+  padding-left: 40rpx;
+  line-height: 40rpx; 
+  margin-bottom: 64rpx;
+  font-size: 28rpx;
+  letter-spacing:3rpx;
+  text-align: center;
+  font-family: PingFang SC Bold;
+}
+.messbody-button{
+  display: flex;
+}
+.messbody-button view{
+  border-radius: 14px;
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.messbody-button view.mcancel{
+  border-radius: 14px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  color: #90ADD8;
+  border: 1px solid #CCCCCC;
+  margin: 0rpx 90rpx 0rpx 30rpx;
+}
+.messbody-button view.msubmit{
+  border-radius: 14px;
+  box-sizing: border-box;
+  color: white;
+  background: #90ADD8;
+}

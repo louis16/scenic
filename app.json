@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/commonTemplate/templateComp"
   ],
-  "subPackages": [{
+  "subPackages": [
+    {
       "root": "pages/scenicSpot/",
       "pages": [
         "chooseScenic/chooseScenic",
@@ -16,7 +17,11 @@
       "root": "pages/user/",
       "pages": [
         "user",
-        "integralmall/integralmall"
+        "integralmall/integralmall",
+        "ecoupon/ecoupon",
+        "ecoupondetail/ecoupondetail",
+        "ranking/ranking",
+        "honour/honour"
       ]
     },
     {

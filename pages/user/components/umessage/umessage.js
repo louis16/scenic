@@ -1,4 +1,5 @@
 // pages/user/components/umessage/umessage.js
+const app = getApp()
 Component({
   options: {
     multipleSlots: true,
@@ -25,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+    umessagebg:app.globalData.fileUserUrl+'umessage-bg.png',
   },
   created() {
   
