@@ -1,22 +1,22 @@
 <view class="barContainer safeBottom">
-  <view class="funcItem {{currentTabKey==1 && 'activeItem'}}" bindtap="clickItem" data-type="1" data-name="景点">
-    <image class="itemIcon" src="{{currentTabKey==1 ? '/static/icon/active_scenic.png':'/static/icon/scenic.png'}}" mode="aspectFill" />
+  <view class="bar-item {{currentTabKey==1 && 'active-bar-item'}}" bindtap="clickItem" data-type="1" data-name="景点">
+    <image class="bar-icon" src="{{currentTabKey==1 ? '/static/icon/active_scenic.png':'/static/icon/scenic.png'}}" mode="aspectFill" />
     <text>景观</text>
   </view>
-  <view class=" funcItem {{currentTabKey==2 && 'activeItem'}}" bindtap="clickItem" data-type="2" data-name="电子券">
-    <image class="itemIcon" src="/static/icon/ticket.png" mode="aspectFill" />
+  <view class=" bar-item {{currentTabKey==2 && 'active-bar-item'}}" bindtap="clickItem" data-type="2" data-name="电子券">
+    <image class="bar-icon" src="/static/icon/ticket.png" mode="aspectFill" />
     <text>电子券</text>
   </view>
-  <view class="funcItem {{currentTabKey ==3 && 'activeMidItem'}}" bindtap="clickItem" data-type="3" data-name="探索">
-    <image class="midItemIcon" src="/static/icon/discover.png" mode="aspectFill" />
-    <text style="transform: translateY(70%);">探索</text>
+  <view class="bar-item {{currentTabKey ==3 && 'active-mid-item'}}" bindtap="clickItem" data-type="3" data-name="探索">
+    <image class="mid-item-icon" src="/static/icon/discover.png" mode="aspectFill" />
+    <text style="transform: translateY(100%);">探索</text>
   </view>
-  <view class="funcItem {{currentTabKey==4 && 'activeItem'}}" bindtap="clickItem" data-type="4" data-name="我的">
-    <image class="itemIcon" src="{{currentTabKey==4 ? '/static/icon/active_package.png':'/static/icon/package.png'}}"  mode="aspectFill" />
+  <view class="bar-item {{currentTabKey==4 && 'active-bar-item'}}" bindtap="clickItem" data-type="4" data-name="我的">
+    <image class="bar-icon" src="{{currentTabKey==4 ? '/static/icon/active_package.png':'/static/icon/package.png'}}" mode="aspectFill" />
     <text>背包 </text>
   </view>
-  <view class="funcItem {{currentTabKey==5 && 'activeItem'}}" bindtap="clickItem" data-type="5" data-name="我的">
-    <image class="itemIcon" src="{{currentTabKey==5 ? '/static/icon/active_aboutMe.png':'/static/icon/aboutMe.png'}}"  mode="aspectFill" />
+  <view class="bar-item {{currentTabKey==5 && 'active-bar-item'}}" bindtap="clickItem" data-type="5" data-name="我的">
+    <image class="bar-icon" src="{{currentTabKey==5 ? '/static/icon/active_aboutMe.png':'/static/icon/aboutMe.png'}}" mode="aspectFill" />
     <text>我的</text>
   </view>
 </view>

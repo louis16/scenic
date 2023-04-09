@@ -40,6 +40,8 @@
         </block>
       </view>
       <text style="color: #333333;">05:56:22</text>
+      <text class="top-arrow {{ !selected[index] && (status === 'unfinished' || item.status == '1')  && 'change-top-arrow'}} ">
+      </text>
     </view>
   </view>
   <block hidden="{{ !selected[index] && (status === 'unfinished' || item.status == '1') }}">

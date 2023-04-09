@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "FunctinonBar": "/components/functionBar/bar",
-    "SlidePannel": "/components/slidePannel/task",
+    "SlidePannel": "/components/slidePannel/slidePannel",
     "topContainer": "/components/topContainer/topContainer",
     "scrollnews": "./components/scrollnews/scrollnews",
     "GoodsList": "./components/goodList/goodsList",
@@ -10,8 +10,9 @@
     "FixContainer": "./components/fixContainer/fixContainer",
     "TaskList": "./components/task/TaskList",
     "LandscapeDetail": "./components/landscapeDetail/landscapeDetail",
-    "FullScreen":"/components/fullScreen/FullScreen",
-    "LandscapeList":"./components/landscape/LandscapeList"
+    "FullScreen": "/components/fullScreen/FullScreen",
+    "LandscapeList": "./components/landscape/LandscapeList",
+    "Message": "./components/message/message"
   },
   "disableScroll": true
 }

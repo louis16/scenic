@@ -1,9 +1,9 @@
-<view class="listContainer" animation="{{upScroll}}">
-  <view class="titleView {{closeExpand && 'expandView'}}" capture-bind:touchstart="touchStart" capture-bind:touchend="touchEnd">
+<view class="slide-wrap" animation="{{upScroll}}">
+  <view class="slide-title {{closeExpand && 'expand-slide-title'}}" capture-bind:touchstart="touchStart" capture-bind:touchend="touchEnd">
     <!-- <view wx:if="{{closeExpand}}" bindtap="changeExpand" class="expandBtn">
       <text>{{isExpand? '折叠': '展开'}}</text>
     </view> -->
-    <view class="titleWrap" style="justify-content: {{titleArray.length === 0 && isLandscapeDetail?'flex-start':'space-around'}};">
+    <view class="s-title-view" style="justify-content: {{titleArray.length === 0 && (leftTitle || isLandscapeDetail)?'flex-start':'space-around'}};">
       <block wx:if="{{titleArray.length>0}}">
         <view wx:for="{{titleArray}}" wx:key="index" class="{{currentIndex == index && 'activeTitle'}}" data-index="{{index}}" bindtap="changeTitle"> {{item}}
           <view wx:if="{{currentIndex == index}}" class="activeLine" />
@@ -15,8 +15,8 @@
         </text>
       </block>
     </view>
-    <view bindtap="changeModalStatus" class="closeBtn">
-      <image class="closeIcon" src="/static/icon/close.png" mode="" />
+    <view bindtap="changeModalStatus" class="s-close-btn">
+      <image class="s-close-icon" src="/static/icon/close.png" mode="" />
     </view>
   </view>
   <view class="body">

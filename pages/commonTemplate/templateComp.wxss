@@ -1,4 +1,4 @@
-.chooseWrap {
+.choose_wrap {
   background-color: #F8FBFF;
   box-shadow: 0 0 20rpx 0 #D6E3F3;
   display: flex;
@@ -13,15 +13,15 @@
   padding-top: 100rpx;
 }
 
-.questionIconTemp {
-  width: 96rpx;
-  height: 96rpx;
+.question_icon_temp {
+  width: 126rpx;
+  height: 126rpx;
   position: absolute;
   top: 0;
-  transform: translateY(-50%);
+  transform: translateY(-30%);
 }
 
-.questionTemp {
+.question_temp {
   font-family: 'PingFang SC Bold';
   font-size: 32rpx;
   font-weight: 600;
@@ -42,7 +42,6 @@
   margin-left: 4rpx;
   text-align: center;
   line-height: 65rpx;
-  background-color: greenyellow;
 }
 
 .input_code {
@@ -69,7 +68,7 @@
   color: transparent;
 }
 
-.radioItemTemp {
+.radioItem_temp {
   width: 80%;
   height: 80rpx;
   background-color: white;
@@ -83,17 +82,17 @@
   box-sizing: border-box;
 }
 
-.chooseTextTemp {
+.choose_text_temp {
   flex: 1;
   text-align: center;
 }
 
-.inputWrapTemp {
+.input_wrap_temp {
   margin-top: 10rpx;
   background-color: #D6E3F3;
 }
 
-.submitTemp {
+.submit_temp {
   text-align: center;
   line-height: 32rpx;
   font-family: 'PingFang SC Bold';
@@ -105,7 +104,7 @@
   border-radius: 28rpx;
 }
 
-.maskTemp {
+.mask_temp {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -124,6 +123,10 @@
   position: absolute;
   background-color: white;
 }
+.v_c_container_bg{
+  width: 100%;
+  height: 100%;
+}
 
 .blur_temp {
   display: flex;
@@ -139,7 +142,7 @@
   transform: translate(-24rpx, -24rpx);
 }
 
-.replayTemp {
+.replay_temp {
   position: absolute;
   bottom: 28rpx;
   color: #666666;
@@ -187,11 +190,15 @@
   border-radius: 20rpx;
   background: rgba(255, 255, 255, 0.15);
   margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item_icon {
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
+  border-radius: 8rpx;
 }
 
 

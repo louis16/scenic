@@ -53,10 +53,10 @@ export const updateUser = (params) => request({
   data: params
 })
 //获取首页所有marked的标点
-export const getAllMarked = (id) => {
+export const getAllMarked = (id, name) => {
   return request({
     method: 'GET',
-    url: `/common/position?scenery_id=${id}`
+    url: `/common/position?scenery_id=${id}&name=${name}`
   })
 }
 //获取当前任务

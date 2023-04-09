@@ -195,6 +195,7 @@ const removeStorageSync = (key) => wx.removeStorageSync(key)
 const TOKEN = 'TOKEN'
 const SCENICDETAIL = 'scenicDetail'
 const PHONE = "PHONE"
+const SOS = 'SOS'
 module.exports = {
   compareVersion,
   showLoading,
@@ -210,5 +211,6 @@ module.exports = {
   formatOption,
   SCENICDETAIL,
   PHONE,
-  getMyLocation
+  getMyLocation,
+  SOS
 };

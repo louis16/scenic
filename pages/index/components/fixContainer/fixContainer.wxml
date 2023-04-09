@@ -1,62 +1,62 @@
 <block wx:if="{{right}}">
-  <view class="containerWrap" style="top: {{navHeight + top}}px">
-    <view class="topWrap">
-      <view class="item" data-type="message" bindtap="itemClick">
-        <image class="itemIcon" src="/static/icon/message.png" mode="" />
-        <text class="itemText">消息</text>
+  <view class="fix-container-wrap" style="top: {{navHeight + top}}px">
+    <view class="top-right-wrap">
+      <view class="right-item" data-type="message" bindtap="itemClick">
+        <image class="right-item-icon" src="/static/icon/message.png" mode="" />
+        <text class="right-item-text">消息</text>
       </view>
-      <view class="item" data-type="layer" bindtap="itemClick" style="margin-top: 20rpx;">
-        <image class="itemIcon" src="/static/icon/layer.png" mode="" />
-        <text class="itemText">图层</text>
+      <view class="right-item" data-type="layer" bindtap="itemClick" style="margin-top: 20rpx;">
+        <image class="right-item-icon" src="/static/icon/layer.png" mode="" />
+        <text class="right-item-text">图层</text>
       </view>
     </view>
-    <view class="bottomWrap">
+    <view class="right-bottom-wrap">
       <view class="progress" bindtap="progressClick">
         <view style="transform: translateX(-10rpx);">
           <view style="position:relative;width: 8rpx;background-color: #E9E9E9;height: {{unlock_h}}%">
-            <text wx:if="{{overview.total_unlock}}" class="progressText">{{overview.total_unlock}}</text>
+            <text wx:if="{{overview.total_unlock}}" class="progress-text">{{overview.total_unlock}}</text>
           </view>
           <view style="position:relative;width: 8rpx;background-color: #FB9898;height: {{unfinish_h}}%">
-            <text wx:if="{{overview.total_unfinish}}" class="progressText">{{overview.total_unfinish}}</text>
+            <text wx:if="{{overview.total_unfinish}}" class="progress-text">{{overview.total_unfinish}}</text>
           </view>
           <view style="position:relative;width: 8rpx;background-color: #90ADD8;height: {{finished_h}}%">
-            <text wx:if="{{overview.total_finished}}" class="progressText">{{overview.total_finished}}</text>
+            <text wx:if="{{overview.total_finished}}" class="progress-text">{{overview.total_finished}}</text>
           </view>
         </view>
       </view>
-      <view class="item" bindtap="openTask">
-        <image class="itemIcon" src="/static/icon/task.png" mode="" />
-        <text class="itemText">任务</text>
+      <view class="right-item" bindtap="openTask">
+        <image class="right-item-icon" src="/static/icon/task.png" mode="" />
+        <text class="right-item-text">任务</text>
       </view>
-      <view class="taskWrap {{!showTask && 'hideTaskWrap'}}">
+      <view class="task-wrap {{!showTask && 'hide-task-wrap'}}">
         <block wx:if="{{showContent}}">
           <view catchtap class="line">
-            <view class="lineTitle">
-              <image class="lineIcon" src="/static/icon/task_total.png" mode="" />
+            <view class="line-title">
+              <image class="line-icon" src="/static/icon/task_total.png" mode="" />
               任务总数：
             </view>
-            <text class="lineNum">{{overview.total_quests}}条</text>
+            <text class="line-num">{{overview.total_quests}}条</text>
           </view>
           <view class="line">
-            <view class="lineTitle">
-              <image class="lineIcon" src="/static/icon/task_unlocked.png" mode="" />
+            <view class="line-title">
+              <image class="line-icon" src="/static/icon/task_unlocked.png" mode="" />
               未解锁任务：
             </view>
-            <text class="lineNum">{{overview.total_unlock}}条</text>
+            <text class="line-num">{{overview.total_unlock}}条</text>
           </view>
           <view class="line">
-            <view class="lineTitle">
-              <image class="lineIcon" src="/static/icon/task_unfinished.png" mode="" />
+            <view class="line-title">
+              <image class="line-icon" src="/static/icon/task_unfinished.png" mode="" />
               未完成任务：
             </view>
-            <text class="lineNum">{{overview.total_unfinish}}条</text>
+            <text class="line-num">{{overview.total_unfinish}}条</text>
           </view>
           <view class="line">
-            <view class="lineTitle">
-              <image class="lineIcon" src="/static/icon/task_complete.png" mode="" />
+            <view class="line-title">
+              <image class="line-icon" src="/static/icon/task_complete.png" mode="" />
               已完成任务：
             </view>
-            <text class="lineNum">{{overview.total_finished}}条</text>
+            <text class="line-num">{{overview.total_finished}}条</text>
           </view>
         </block>
         <view class="triangle" />
@@ -65,7 +65,10 @@
   </view>
 </block>
 <block wx:else>
-  <view class="leftWrap" style="top: {{navHeight + top}}px" bindtap="callPhone">
+  <view class="left-wrap" style="top: {{navHeight + top}}px" bindtap="callPhone">
     <text>SOS</text>
+  </view>
+  <view class="left-wrap" style="top: {{navHeight + top + 50}}px" bindtap="currentLocation">
+    <image  src="/static/icon/myLocation.png" mode="" />
   </view>
 </block>

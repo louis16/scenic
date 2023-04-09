@@ -35,7 +35,7 @@ Component({
     }
   },
   data: {
-    selected: [false, false, false, false, false], // // 这里表示列表项是否展开，默认初始时此数组的元素全为fasle，表示都没展开
+    selected: [], // // 这里表示列表项是否展开，默认初始时此数组的元素全为fasle，表示都没展开
     active: null, // 当前展开的项的index值
     rewwardsType: rewwardsType,
     taskStatus: taskStatus,
@@ -47,7 +47,6 @@ Component({
     onListClick(event) {
       let index = event.currentTarget.dataset.index;
       let active = this.data.active;
-
       this.setData({
         [`selected[${index}]`]: !this.data.selected[`${index}`],
         active: index,
@@ -113,7 +112,7 @@ Component({
                   lat: res.latitude,
                   lng: res.longitude,
                 })
-                if (dis < element.accuracy) {
+                if (dis < element.accuracy * 100000) {
                   hasNear = true
                   getTaskDetail(element.id).then(taskDetail => {
                     const data = formatOption(taskDetail)

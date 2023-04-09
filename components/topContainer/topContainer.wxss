@@ -1,4 +1,4 @@
-.topMenu {
+.top-container {
 	z-index: 9999;
 }
 
@@ -7,7 +7,7 @@
 }
 
 
-.topWrap {
+.top-content {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -16,7 +16,7 @@
 	position: relative;
 }
 
-.backIcon {
+.top-back-icon {
 	width: 28rpx;
 	height: 28rpx;
 	border: 4rpx solid #333333;
@@ -25,7 +25,7 @@
 	border-right: none;
 }
 
-.titleWrap {
+.top-title {
 	position: absolute;
 	right: 50%;
 	transform: translateX(50%);

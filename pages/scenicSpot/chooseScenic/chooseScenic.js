@@ -5,7 +5,7 @@ const {
   showLoading,
   hideLoading,
   permission_request,
-  getMyLocation
+  getMyLocation,
 } = require('../../../util/util')
 const app = getApp()
 Page({
@@ -36,7 +36,7 @@ Page({
   onShareAppMessage() {},
   goToScenicDetail(event) {
     const {
-      id
+      id,
     } = event.currentTarget.dataset
     wx.navigateTo({
       url: `/pages/scenicSpot/scenicDetail/scenicDetail?id=${id}`,
@@ -90,7 +90,8 @@ Page({
     if (filter === 'all') {
       this.getScenicListFun(true)
       this.setData({
-        currentFilter: 'all'
+        currentFilter: 'all',
+        name: ''
       })
     } else if (filter === 'closest') {
       permission_request("scope.userLocation", "地理位置").then(granted => {
@@ -101,10 +102,11 @@ Page({
                 lat: res.latitude,
                 lng: res.longitude,
               })
+              this.setData({
+                currentFilter: 'closest',
+                name: ''
+              })
             }
-          })
-          this.setData({
-            currentFilter: 'closest'
           })
         }
       })
@@ -117,11 +119,12 @@ Page({
     })
   },
   bindRegionChange(e) {
+    console.log(e.detail, 1111)
     this.setData({
-      currentLocation: e.detail.value[3] || e.detail.value[2]
+      currentLocation: e.detail.value[2] || e.detail.value[1]
     })
     this.getScenicListFun(true, {
-      street_id: e.detail.code.pop()
+      area_id: e.detail.code[2]
     })
   },
   clearCurrent() {

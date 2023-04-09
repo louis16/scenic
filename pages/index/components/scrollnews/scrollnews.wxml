@@ -1,11 +1,11 @@
 <view wx:if="{{hidden}}" class="box " style="top: {{navHeight + top}}px;">
-  <view class="iconView">
-    <image class="icon" src="/static/icon/notify.png" mode="" />
+  <view class="notify-icon-view">
+    <image class="notify-icon" src="/static/icon/notify.png" mode="" />
   </view>
-  <view hidden="{{!canClose}}" class="close" bindtap="closeMessage">
-    <image class="closeIcon" src="/static/icon/close.png" mode="" />
+  <view hidden="{{!canClose}}" class="close-icon-view" bindtap="closeMessage">
+    <image class="close-icon" src="/static/icon/close.png" mode="" />
   </view>
-  <view class="messageWrap">
+  <view class="message-view">
     <view class="message">15:00在天子奇石林的青石板道上有拔河1111___15:00在天子奇石林的青石板道上有拔河2222</view>
   </view>
 </view>

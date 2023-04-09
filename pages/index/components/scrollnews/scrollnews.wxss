@@ -14,35 +14,37 @@
   align-content: center;
 }
 
-.iconView {
+.notify-icon-view {
   background-color: white;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
 }
 
-.icon {
+.notify-icon {
   width: 32rpx;
   height: 32rpx;
+  transform: scale(1.3);
+  padding-right: 8rpx;
   /* transform: translateX(32rpx); */
 }
 
-.closeIcon {
-  width: 32rpx;
-  height: 32rpx;
+.close-icon {
+  width: 26rpx;
+  height: 26rpx;
 }
 
-.close {
+.close-icon-view {
   position: absolute;
   width: 48rpx;
   height: 32rpx;
   right: 0;
   background-color: white;
   display: flex;
-  align-self: center;
+  align-items: center;
 }
 
-.messageWrap {
+.message-view {
   width: 500rpx;
   overflow: hidden;
 }
