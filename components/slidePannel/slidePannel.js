@@ -70,7 +70,7 @@ Component({
               lng: this.data.location.lng
             })
             this.setData({
-              distance: distance.toFixed(0)
+              distance: distance > 1000 ? `${String(distance).slice(0,3)}km` : `${distance}m`
             })
           }
         })
@@ -117,7 +117,7 @@ Component({
     changeExpand(flag) {
       const value = this.data.isExpand ?
         `-${this.data.height}vh` :
-        `-${this.data.height + 20}vh`;
+        `-${89}vh`;
       const upScroll = wx.createAnimation({
         duration: 200,
         timingFunction: "linear",

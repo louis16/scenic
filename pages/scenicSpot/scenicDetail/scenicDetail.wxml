@@ -6,7 +6,7 @@
     </swiper-item>
   </swiper>
   <view class="container safeBottom">
-     <view class="titleView">
+    <view class="titleView">
       <image class="titleIcon" src="/static/icon/scenicDesc.png" mode="" />
       <text class="title">景区介绍</text>
     </view>
@@ -17,8 +17,9 @@
         <text class="title">联系电话</text>
       </view>
       <view class="telephone">
-        <text wx:for="{{detailData.phones}}" wx:key="index" bindtap="callTele" data-phone="{{item}}">{{index!==0?' 、':''}}{{item}}</text>
-        <image class="titleIcon" src="/static/icon/contact.png" mode="" />
+        <!-- <text wx:for="{{detailData.phones}}" wx:key="index" bindtap="callTele" data-phone="{{item}}">{{index!==0?' 、':''}}{{item}}</text> -->
+        <text bindtap="callTele" data-phone="{{detailData.phones[0]}}">{{detailData.phones[0]}}</text>
+        <image src="/static/icon/contact.png" class="titleIcon" mode="" bindtap="callTele" data-phone="{{detailData.phones[0]}}" />
       </view>
     </block>
     <block wx:if="{{detailData.city}}">
@@ -31,7 +32,7 @@
         <text class="address">{{detailData.city}}{{detailData.address}}</text>
       </view>
     </block>
-    <view class="logoView topLine">
+    <view class="logoView logo-view-line">
       <image class="logo" src="{{logo}}" mode="" alt="logo" />
       <text>{{detailData.name}}</text>
     </view>

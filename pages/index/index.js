@@ -126,7 +126,7 @@ Page({
     this.interval && clearInterval(this.interval)
   },
   getAllMarkedFunc(detailRef) { //获取景观设施的定位，用以展示mark
-    getAllMarked(detailRef.id).then((res) => {
+    getAllMarked(detailRef.id, '').then((res) => {
       this.facilities = formatMarkData(res.facilities);
       this.landscapse = formatMarkData(res.landscapse);
       this.setData({
@@ -380,7 +380,7 @@ Page({
           value: e.detail.value
         }
       })
-    }, 800)
+    }, 1800)
   },
   searchResult(event) {
     showLoading();
@@ -391,11 +391,12 @@ Page({
           searchResults: [],
           showEmptyResult: true
         })
-        setTimeout(() => {
+        let timer = setTimeout(() => {
           this.setData({
             showEmptyResult: false
           })
-        }, 1000)
+          clearTimeout(timer)
+        }, 2000)
       } else {
         this.setData({
           searchResults: restult,

@@ -52,8 +52,9 @@
       <view class="content">
         <view class="title">{{originData.name}}</view>
         <view class="desc">{{originData.description}}</view>
-        <template is="fillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
+        <!-- <template is="fillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" /> -->
       </view>
+      <template is="fillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
     </view>
     <!--图文 ___ 选择题 -->
     <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">

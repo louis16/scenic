@@ -7,14 +7,18 @@
 }
 
 .good-empty {
+  height: 100%;
   display: flex;
   justify-content: center;
-  transform: translateY(40%);
+  align-items: center;
+  top: 0;
 }
 
 .good-empty-icon {
   width: 480rpx;
   height: 360rpx;
+  transform: scale(.8);
+  transform: translateY(-60%);
 }
 
 .good-item-wrap {
@@ -53,7 +57,7 @@
 .good-item-num {
   position: absolute;
   z-index: 99;
-  right: 0;
+  right: 2rpx;
   font-family: 'DIN-Bold';
   font-size: 26rpx;
   line-height: 26rpx;
@@ -72,8 +76,10 @@
   transform: translate(-50%, -50%);
 }
 .good-item-img-net{
+  width: 60rpx;
+  height: 60rpx;
   border: 1rpx solid white;
-  border-radius: 8rpx;
+  border-radius: 16rpx;
 }
 
 .good-composition-mask {
@@ -81,7 +87,7 @@
   z-index: 99;
   height: 32rpx;
   width: 100%;
-  transform: translateY(-10rpx);
+  bottom: 0;
   background: linear-gradient(269deg, rgba(0, 0, 0, 0.10) 0%, rgba(14, 14, 14, 0.60) 28%, rgba(28, 28, 28, 0.60) 71%, rgba(84, 84, 84, 0.10) 99%);
   color: white;
   text-align: center;

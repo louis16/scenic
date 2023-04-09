@@ -1,30 +1,38 @@
 // pages/index/components/message/message.js
 Component({
   properties: {
-    list: {
-      type: Array,
-      value: [{
-        text: '亲爱的游客'
-      }, {
-        text: '亲爱的游客，为了感谢您光临天子奇石景亲爱的游客'
-      }, {
-        text: '亲爱的游客，，为了感谢您光临天子奇石景亲爱了感谢您光临天子奇石景'
-      }, {
-        text: '亲爱的游客，为了感谢'
-      }, {
-        text: '亲爱的游客，为了感谢您光临天子奇石景亲爱的游客了感谢您光临天子奇石景亲爱的游客了感谢您光临天子奇石景'
-      }, ]
-    }
+
   },
 
   data: {
     currentType: 'inform',
     showMore: [],
-    currentIndex: -1
+    currentIndex: -1,
+    list: []
   },
   lifetimes: {
     ready() {
       // this.checkFold()
+    },
+    attached() {
+      this.setData({
+        list: [{
+          hasRead: true,
+          text: '亲爱的游客'
+        }, {
+          hasRead: false,
+          text: '亲爱的游客，为了感谢您光临天子奇石景亲爱的游客'
+        }, {
+          hasRead: true,
+          text: '亲爱的游客，，为了感谢您光临天子奇石景亲爱了感谢您光临天子奇石景'
+        }, {
+          hasRead: false,
+          text: '亲爱的游客，为了感谢'
+        }, {
+          hasRead: false,
+          text: '亲爱的游客，为了感谢您光临天子奇石景亲爱的游客了感谢您光临天子奇石景亲爱的游客了感谢您光临天子奇石景'
+        }, ]
+      })
     }
   },
   methods: {
@@ -53,6 +61,12 @@ Component({
     },
     changeExpand(event) {
       const index = event.currentTarget.dataset.index
+      const item = this.data.list[index]
+      if (item) {
+        this.setData({
+          [`list[${index}].hasRead`]: true
+        })
+      }
       this.setData({
         currentIndex: index
       })

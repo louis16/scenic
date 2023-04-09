@@ -114,6 +114,7 @@
 <template name="rewardsPage">
   <view class="mask_temp" catchtouchmove='true'>
     <view class="good_contents"> 
+      <image src="/static/icon/congrats.png" mode="aspectFit" class="good_header_icon" />
       <view class="detail_text" wx:if="{{rewards.length > 0}}">奖励明细</view>
       <view class="reward_wrap">
         <view class="reward_item" wx:for="{{rewards}}" wx:key="index">

@@ -13,7 +13,7 @@
   <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" show-compass setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
   <view class="show-input" style="top:{{navHeight + 10}}px">
     <image class="input-search-icon" src="/static/icon/search.png" mode="" />
-    <input value="{{searchInputValue}}" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindinput="inputHandle" bindconfirm="searchResult" />
+    <input value="{{searchInputValue}}" placeholder-class="placeholder-text" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindinput="inputHandle" bindconfirm="searchResult" />
   </view>
   <!-- enable-satellite -->
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
@@ -25,8 +25,8 @@
   <!-- <flicker/> -->
   <!-- 任务 -->
   <block wx:if="{{showTaskModal}}">
-    <SlidePannel height="{{88}}" closeExpand="{{false}} " bind:closeModal="closeModal" title="任务">
-      <view slot="body" style="height: 88vh">
+    <SlidePannel height="{{89}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
+      <view slot="body" style="height: 89vh">
         <TaskList taskList="{{taskList}}" />
       </view>
     </SlidePannel>
@@ -68,8 +68,8 @@
   </block>
   <!-- 图层 -->
   <block wx:if="{{showLayer}}">
-    <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
-      <view slot="body" style="height: {{400}}rpx;display:flex;justify-content:space-around">
+    <SlidePannel height="{{40}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
+      <view slot="body" style="height: {{280}}rpx;display:flex;justify-content:space-around">
         <view class="layer_control">
           <view class="control_item" data-layer="1" bindtap="changeLayer">
             <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="/static/icon/2D.png" mode="aspectFit" lazy-load="false" />
@@ -96,7 +96,7 @@
 
   <!-- 消息 -->
   <block wx:if="{{showMessage}}">
-    <SlidePannel leftTitle="{{true}}"  bind:closeModal="closeModal" title="消息" bind:toggleExpand="toggleExpand">
+    <SlidePannel leftTitle="{{true}}" bind:closeModal="closeModal" title="消息" bind:toggleExpand="toggleExpand">
       <view slot="body" style="height: {{height}}vh">
         <Message></Message>
       </view>
@@ -113,7 +113,7 @@
   <!-- SOS -->
   <block wx:if="{{showSOS}}">
     <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="拨打紧急救援电话">
-      <view slot="body" style="height: {{350}}rpx;display:flex;justify-content:space-around">
+      <view slot="body" style="height: {{25}}vh;display:flex;justify-content:space-around">
         <view class="sos_layer">
           <view wx:for="{{sosArray}}" class="sos_item" wx:key="index" data-phone="{{item.phone}}" bindtap="callPhone">
             {{item.name}}（

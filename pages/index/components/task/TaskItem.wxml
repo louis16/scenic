@@ -17,7 +17,8 @@
         </view>
         <view wx:if="{{reward.item_id}}" class="flex">
           <image class="appIcon" src="/static/icon/reward_goods_icon.png" mode="" />
-          {{rewwardsType[reward.type]}}：{{reward.item_name}}
+          奖励
+          <!-- {{rewwardsType[reward.type]}}：{{reward.item_name}} -->
         </view>
       </view>
     </view>
@@ -39,7 +40,8 @@
           <text><text class="activeText">{{item.finished}}</text> </text>
         </block>
       </view>
-      <text style="color: #333333;">05:56:22</text>
+      <count expireTime="{{item.time_finish_at}}" />
+      <!-- <text style="color: #333333;">{{item.time_finish_at}}</text> -->
       <text class="top-arrow {{ !selected[index] && (status === 'unfinished' || item.status == '1')  && 'change-top-arrow'}} ">
       </text>
     </view>
@@ -72,7 +74,7 @@
           </view>
         </view>
       </block>
-      <view class="finishBtn" data-taskType="{{item.trigger_type}}" data-id="{{item.id}}" catchtap="goFinish">去完成</view>
+      <view class="finishBtn" data-taskType="{{item.trigger_type}}" data-id="{{item.id}}" data-finished="{{item.finished}}" data-max="{{item.max_complete_number}}" data-alert="{{item.alert}}" catchtap="goFinish">去完成</view>
     </view>
   </block>
 </view>

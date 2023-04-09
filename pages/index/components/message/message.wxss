@@ -4,13 +4,19 @@
 
 .message-clear {
   position: absolute;
-  top: 70rpx;
+  top: 40rpx;
   left: 120rpx;
   font-family: 'PingFang SC Regular';
   font-size: 20rpx;
   font-weight: normal;
   line-height: 20rpx;
   color: #999999;
+}
+
+.message-clear image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
 }
 
 .message-title {
@@ -24,7 +30,10 @@
   flex-direction: row;
 }
 
-
+.active-title {
+  font-weight: 600;
+  color: #90ADD8;
+}
 
 .active-title::before {
   content: ' ';
@@ -33,7 +42,8 @@
   height: 8rpx;
   background-color: #90ADD8;
   position: absolute;
-  bottom: -10rpx;
+  bottom: -18rpx;
+  /* bottom: -10rpx; */
   border-radius: 4rpx;
 }
 
@@ -93,7 +103,7 @@
   font-size: 28rpx;
   font-weight: 600;
   line-height: 40rpx;
-  color: #333333
+  color: #333333;
 }
 
 .item-time {
@@ -119,6 +129,14 @@
   display: inline-block;
   position: absolute;
   right: 0;
+}
+
+.message-content {
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  color: #999999;
 }
 
 .top-arrow {

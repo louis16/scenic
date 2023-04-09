@@ -1,5 +1,8 @@
 <view class="message-wrap">
-  <view class="message-clear">一键已读</view>
+  <view class="message-clear">
+    <image src="/static/icon/clear.png" mode="" />
+    <text>一键已读</text>
+  </view>
   <view class="message-title">
     <view style="position: relative;margin-right: 140rpx;">
       <text class="title {{currentType === 'inform' &&  'active-title'}}" data-type="inform" bindtap="changeTab">通知</text>
@@ -13,15 +16,15 @@
   <view wx:for="{{list}}" wx:key="index" class="message-item">
     <view style="position: relative;">
       <image class="message-item-icon" src="/static/icon/reward_goods_icon.png" mode="" />
-      <view class="red-dot message-dot" />
+      <view wx:if="{{!item.hasRead}}" data-index="{{index}}" class="red-dot message-dot" />
     </view>
-    <view class="message-view">
+    <view class="message-view" data-index="{{currentIndex===index ? -1 :index}}" bindtap="changeExpand">
       <view class="item-title">
         <text class="item-name">新荣誉获得</text>
-        <text class="item-time">时间</text>
+        <text class="item-time">2023.03.08 14:00</text>
       </view>
       <view style="display: flex;flex-direction: row;position: relative;flex: 1;">
-        <view class="content-wrap {{index !== currentIndex && 'show-more'}}" data-index="{{currentIndex===index ? -1 :index}}" bindtap="changeExpand">
+        <view class="content-wrap {{index !== currentIndex && 'show-more'}}">
           <text class="message-content">{{item.text}}</text>
         </view>
         <!-- <view wx:if="{{showMore[index]}}" class="toggle-icon top-arrow" data-index="{{currentIndex===index ? -1 :index}}" bindtap="changeExpand" /> -->

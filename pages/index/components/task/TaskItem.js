@@ -90,6 +90,16 @@ Component({
     async goFinish(event) {
       let type = event.currentTarget.dataset.tasktype;
       let id = event.currentTarget.dataset.id;
+      let finished = event.currentTarget.dataset.finished;
+      let max = event.currentTarget.dataset.max;
+      let alert = event.currentTarget.dataset.alert;
+      if (finished >= max) {
+        showToast({
+          title: alert || '当前任务完成数以达到最大,无法继续参与',
+          icon: 'none'
+        })
+        return
+      }
       //type 1:AR识别，2：定位，3：扫码
       if (type == 1) {
         showToast({

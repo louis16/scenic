@@ -13,7 +13,7 @@ Page({
     resourceType: '',
     rewards: [],
     quests: [],
-    navHeight: app.globalData.navHeight + 18, //导航栏高度
+    navHeight: app.globalData.navHeight , //导航栏高度
     windownHeight: app.globalData.windowHeight,
 
     isPlaying: false,

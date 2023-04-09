@@ -3,16 +3,41 @@ page {
 }
 
 .wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   background-color: #F1F2F6;
   padding: 0 30rpx;
 }
 
-.inputWrap {
+.search-input-wrap {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
   border: 2rpx solid #90ADD8;
   border-radius: 28rpx;
   height: 80rpx;
+}
+
+.search-input-wrap image {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 50%;
+  transform: translate(28rpx, -50%);
+}
+
+.inputWrap {
+  margin-left: 60rpx;
+  height: 80rpx;
   outline: none;
   padding-left: 1em;
+}
+
+.placeholderInput {
+  font-size: 28rpx;
+  color: #CCCCCC;
 }
 
 .filterView {
@@ -50,7 +75,7 @@ page {
   height: 14rpx;
   position: absolute;
   background-color: transparent;
-  border: 6rpx solid #999999;
+  border: 2rpx solid #999999;
   border-left: none;
   border-bottom: none;
   right: 0;
@@ -63,7 +88,7 @@ page {
   font-size: 28rpx;
   font-weight: 400;
   line-height: 28rpx;
-  padding: 18rpx 24rpx;
+  padding: 18rpx 0 18rpx 24rpx ;
   position: relative;
   display: flex;
   align-items: center;
@@ -72,6 +97,7 @@ page {
 .closeIcon {
   width: 32rpx;
   height: 32rpx;
+  transform: scale(.7);
 }
 
 .item {
@@ -88,7 +114,7 @@ page {
   width: 160rpx;
   height: 160rpx;
   /* background-color: rebeccapurple; */
-  border-radius: 10rpx;
+  border-radius: 28rpx;
   box-shadow: 0 0 20rpx 20rpx rgba(0, 0, 0, 0.03);
   margin-right: 24rpx;
 }
@@ -103,9 +129,10 @@ page {
   display: block;
   font-family: 'PingFang SC Bold';
   font-size: 32rpx;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 32rpx;
   margin-bottom: 42rpx;
+  color: #333333;
 }
 
 .desc {
@@ -120,12 +147,14 @@ page {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  color: #666666;
 }
 
 .emptyView {
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
+  top: 50%;
+  transform: translate(-50%, -70%);
 }
 
 .emptyView>text {
@@ -139,6 +168,6 @@ page {
 }
 
 .emptyView>image {
-  width: 632rpx;
-  height: 480rpx;
+  width: 480rpx;
+  height: 360rpx;
 }

@@ -3,6 +3,7 @@
 }
 
 .name {
+  width: 100%;
   font-family: 'PingFang SC Bold';
   font-size: 28rpx;
   font-weight: 600;
@@ -26,7 +27,7 @@
   font-family: 'PingFang SC Bold';
   font-size: 28rpx;
   font-weight: normal;
-  line-height: 40rpx;
+  /* line-height: 40rpx; */
   color: #90ADD8;
   margin-top: 30rpx;
 }
@@ -52,7 +53,7 @@
   font-size: 20rpx;
   font-weight: normal;
   line-height: 20rpx;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
 }
 
 .groupItem {
@@ -124,7 +125,7 @@
 .top-arrow {
   display: inline-block;
   margin-right: 20rpx;
-  margin-left: 10rpx;
+  margin-left: 34rpx;
   border-top: 4rpx solid #999999;
   border-right: 4rpx solid #999999;
   border-bottom: none;
@@ -194,6 +195,12 @@
   justify-content: space-between;
   height: 40rpx;
   margin-top: 16rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  letter-spacing: 0em;
+  color: #333333;
 }
 
 .itemIcon {

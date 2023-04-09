@@ -1,7 +1,10 @@
-<view style="height: 100vh;">
+<view style="height: 100vh;overflow-x: hidden;display: flex;flex-direction: column;">
   <topContainer title="选择景区" style="background-color: #F1F2F6;" />
   <view class="wrap">
-    <input type="text" class="inputWrap" value="{{name}}" placeholder="输入景区名称" confirm-type="search" bindconfirm="searchInput" />
+    <view class="search-input-wrap">
+      <image src="/static/icon/searchGrey.png" mode="" />
+      <input type="text" class="inputWrap" placeholder-class="placeholderInput" value="{{name}}" placeholder="输入景区名称" confirm-type="search" bindconfirm="searchInput" />
+    </view>
     <view class="filterView">
       <view style="display: flex;">
         <view class="filter {{currentFilter ==='all' ? 'activeFilter' : ''}}" data-filter="all" bindtap="changeFilter">全部景区</view>
@@ -9,11 +12,11 @@
       </view>
       <view wx:if="{{currentLocation}}" class="distric" bindtap="clearCurrent">
         {{currentLocation}}
-        <image class="closeIcon" src="/static/icon/close.png" mode=""/>
+        <image class="closeIcon" src="/static/icon/close.png" mode="" />
       </view>
-      <picker wx:else mode="region" level="city" bindchange="bindRegionChange" value="{{region}}">
+      <picker wx:else mode="region" level="region" bindchange="bindRegionChange">
         <view class="chooseDistric">
-          地区筛选
+          <text>地区筛选</text>
           <view class="rightAngle" />
         </view>
       </picker>
@@ -30,7 +33,7 @@
       </scroll-view>
     </block>
     <block wx:else>
-      <view class="safeBottom" style="position:relative">
+      <view class="safeBottom" style="position:relative;flex: 1;">
         <view class="emptyView ">
           <image src="/static/icon/img_null.png" mode="" />
           <text>什么都没有搜到哦</text>

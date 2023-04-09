@@ -5,10 +5,10 @@
       <text user-select class="descText">{{data.desc}}</text>
     </view>
   </view>
-  <!-- <view class="startNow">
-		<image src="/static/icon/icon_swip.png" style="transform: translateX({{scrollX}}rpx);" mode="aspectFill" class="icon" bindtap="startNow" bindtouchmove="moveIcon" bindtouchend="endMove" />
+  <view class="startNow"  wx:if="{{hasLogin}}">
+		<image src="/static/icon/icon_swip.png" style="transform: translateX({{scrollX}}rpx);" mode="aspectFill" class="icon"  bindtouchmove="moveIcon" bindtouchend="endMove" />
 		<text class="goText">向右滑动出发</text>
-	</view> -->
-  <button wx:if="{{hasLogin}}" class="goBtn" bindtap="goToHomePage">出发</button>
+	</view>
+  <!-- <button wx:if="{{hasLogin}}" class="goBtn" bindtap="goToHomePage">出发</button> -->
   <button wx:else class="goBtn" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">出发</button>
 </view>

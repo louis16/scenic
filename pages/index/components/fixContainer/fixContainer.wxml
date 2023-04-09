@@ -69,6 +69,6 @@
     <text>SOS</text>
   </view>
   <view class="left-wrap" style="top: {{navHeight + top + 50}}px" bindtap="currentLocation">
-    <image  src="/static/icon/myLocation.png" mode="" />
+    <image  src="/static/icon/myLocation.png" mode="" class="my-location" />
   </view>
 </block>

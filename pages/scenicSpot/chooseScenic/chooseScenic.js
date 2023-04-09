@@ -29,7 +29,9 @@ Page({
     this.getScenicListFun(true)
   },
   onReachBottom() {
+    console.log(111)
     if ((this.data.pagenation.current_page <= this.data.pagenation.total_page) && (this.data.scenicList.length < this.data.pagenation.total_results)) {
+      console.log(222)
       this.getScenicListFun(false)
     }
   },
@@ -91,7 +93,8 @@ Page({
       this.getScenicListFun(true)
       this.setData({
         currentFilter: 'all',
-        name: ''
+        name: '',
+        currentLocation: null
       })
     } else if (filter === 'closest') {
       permission_request("scope.userLocation", "地理位置").then(granted => {
@@ -104,7 +107,8 @@ Page({
               })
               this.setData({
                 currentFilter: 'closest',
-                name: ''
+                name: '',
+                currentLocation: null
               })
             }
           })

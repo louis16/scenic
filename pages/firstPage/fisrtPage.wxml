@@ -1,31 +1,34 @@
-<view class="pageWrap">
-  <swiper bindchange="handleChange" class="swiperWrap">
+<view wx:if="{{showPage}}" class="pageWrap">
+  <swiper bindchange="handleChange" class="swiperWrap" current="{{currentPage}}">
     <swiper-item>
       <topContainer title="请选择您的性别" absolute style="background-color: #ffffff;"></topContainer>
       <view class="sexItem" style="background-color: #E5EFFF;" data-sex="1" bindtap="changeSex">
-        <image class="sexAvatar" src="/static/icon/man.png" style="border:{{sex == 1 ?  '':'none'}}" />
+        <image class="sexAvatar" src="/static/icon/man.png" />
         <image class="sexIcon" src="/static/icon/male.png" />
       </view>
       <view class="sexItem" style="background-color: #FFEEEE;" data-sex="0" bindtap="changeSex">
-        <image class="sexAvatar" src="/static/icon/woman.png" style="border:{{sex == 0 ? '' : 'none'}}" />
+        <image class="sexAvatar" src="/static/icon/woman.png" />
         <image class="sexIcon" src="/static/icon/female.png" />
       </view>
-      <text class="skipBtn" style="top:{{navHeight+40}}px" bindtap="skipPage">跳过</text>
+      <text class="skipBtn" style="top:{{navHeight + 20}}px" bindtap="skipPage">跳过</text>
     </swiper-item>
     <swiper-item>
       <topContainer title="请选择您的生日" absolute style="background-color: #E5EFFF;"></topContainer>
       <view class="dateChoose">
         <text class="chooseText">完善您的生日信息，有惊喜</text>
         <picker mode="date" value="{{date}}" bindchange="bindDateChange">
-          <view class="picker">
-            {{date ? date:'请选择日期' }}
+          <view wx:if="{{date}}" class="picker">
+            {{date}}
+          </view>
+          <view wx:else class="picker placeholder-text">
+            请选择日期
           </view>
         </picker>
         <view class="start" bindtap="nextPage">
           开始旅程
         </view>
       </view>
-      <text class="skipBtn" style="top:{{navHeight+40}}px" bindtap="skipPage">跳过</text>
+      <text class="skipBtn" style="top:{{navHeight+20}}px" bindtap="skipPage">跳过</text>
     </swiper-item>
   </swiper>
   <view class="dotWrap">

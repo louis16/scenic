@@ -1,11 +1,11 @@
 .slide-wrap {
-  /* position: absolute; */
+  position: absolute;
   width: 100vw;
   background-color: #F6F8FB;
-  z-index: 20;
+  z-index: 100;
   border-radius: 48rpx 48rpx 0 0;
   padding-bottom: (122rpx +env(safe-area-inset-bottom));
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08); 
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
 }
 
 .expandBtn {
@@ -33,6 +33,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
   padding: 34rpx 32rpx;
   line-height: 32rpx;
   font-size: 32rpx;
@@ -53,21 +54,49 @@
   transform: translateY(-200%);
 }
 
+.dd {
+  width: 96rpx;
+  position: relative;
+  z-index: 9;
+}
+
 .activeTitle {
   font-family: 'PingFang SC Bold';
   font-size: 40rpx;
   font-weight: 600;
   line-height: 40rpx;
   color: #333333;
+  z-index: 99;
   position: relative;
 }
 
-.activeLine {
+.activeTitle view {
+  position: relative;
+  display: inline-block;
+}
+
+.activeTitle text {
+  z-index: 1;
+}
+
+.activeTitle::before {
+  z-index: 0;
+  content: ' ';
+  background: linear-gradient(0deg, #FFD7C5 0%, #FF9060 100%);
+  position: absolute;
+  display: inline-block;
+  width: 96rpx;
+  height: 16rpx;
+  bottom: 0;
+  transform: translate(-10%, 20%);
+  border-radius: 12rpx;
+}
+
+.activeLines {
   width: 100%;
   height: 16rpx;
   border-radius: 12rpx;
   opacity: 0.8;
-  background: linear-gradient(0deg, #FFD7C5 0%, #FF9060 100%);
   transform: translateY(-50%);
 }
 
@@ -79,4 +108,5 @@
 .s-close-icon {
   width: 32rpx;
   height: 32rpx;
+  transform: scale(.7);
 }

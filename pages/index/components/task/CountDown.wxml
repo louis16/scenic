@@ -1,0 +1,1 @@
+<view style="color: #333333;">{{left_time_list[1]}}:{{left_time_list[2]}}:{{left_time_list[3]}}</view>

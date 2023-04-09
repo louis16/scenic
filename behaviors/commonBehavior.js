@@ -4,7 +4,7 @@ const commonBehavior = Behavior({
     filePath: app.globalData.fileUrl,
     windowHeight: app.globalData.windowHeight,
     windowWidth: app.globalData.windowWidth,
-    navHeight: app.globalData.navHeight + 18,
+    navHeight: app.globalData.navHeight ,
   },
   methods: {},
 })

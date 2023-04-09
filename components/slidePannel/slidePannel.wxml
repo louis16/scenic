@@ -5,14 +5,17 @@
     </view> -->
     <view class="s-title-view" style="justify-content: {{titleArray.length === 0 && (leftTitle || isLandscapeDetail)?'flex-start':'space-around'}};">
       <block wx:if="{{titleArray.length>0}}">
-        <view wx:for="{{titleArray}}" wx:key="index" class="{{currentIndex == index && 'activeTitle'}}" data-index="{{index}}" bindtap="changeTitle"> {{item}}
-          <view wx:if="{{currentIndex == index}}" class="activeLine" />
+        <view wx:for="{{titleArray}}" wx:key="index" class="dd {{currentIndex == index && 'activeTitle'}}" data-index="{{index}}" bindtap="changeTitle">
+          <view>
+            <text>{{item}}</text>
+          </view>
+          <!-- <view wx:if="{{currentIndex == index}}" class="activeLine" /> -->
         </view>
       </block>
       <block wx:else>
-        <text style="color: #333333;">
-          {{title}} <text wx:if="{{distance}}">({{distance}}m)</text>
-        </text>
+        <view style="color: #333333;display: flex;align-items: center;justify-content: center;">
+          {{title}} <text wx:if="{{distance}}">( {{distance}} )</text>
+        </view>
       </block>
     </view>
     <view bindtap="changeModalStatus" class="s-close-btn">

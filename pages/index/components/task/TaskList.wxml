@@ -4,9 +4,11 @@
       <text class="topText">全部</text>
       <text class="topText" bindtap="openLandscapeList">景观</text>
       <view class="{{showLandscape?'showLandscape':'hideLandscape'}}">
-        <text class="landscapeItem" wx:for="{{landscapseList}}" wx:key="index">
-          {{item.name}}
-        </text>
+        <view class="content">
+          <text class="landscapeItem" wx:for="{{landscapseList}}" wx:key="index">
+            {{item.name}}
+          </text>
+        </view>
       </view>
     </view>
     <view class="flex-row margin26 ">

@@ -29,24 +29,6 @@ Page({
   onPullDownRefresh() {},
   onReachBottom() {},
   onShareAppMessage() {},
-  startNow() {
-    const _this = this
-    wx.showModal({
-      title: '提示',
-      content: '点击请求用户数据',
-      success(res) {
-        if (res.confirm) {
-          wx.reLaunch({
-            url: '/pages/index/index',
-          })
-        } else if (res.cancel) {
-          _this.setData({
-            scrollX: 0
-          })
-        }
-      }
-    })
-  },
   moveIcon(e) {
     let mTouch = e.changedTouches[0]
     if (mTouch.pageX - iconWidth * 2.5 > 250) return
@@ -59,7 +41,9 @@ Page({
   endMove(e) {
     let mTouch = e.changedTouches[0]
     if (mTouch.pageX > scrollWidth + iconWidth) {
-      this.startNow()
+      wx.redirectTo({
+        url: '/pages/index/index',
+      })
     } else {
       this.setData({
         scrollX: 0

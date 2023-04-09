@@ -20,6 +20,11 @@ App({
           storageSync(TOKEN, res.access_token)
           storageSync(PHONE, res?.phone)
           this.globalData.token = res.access_token
+          if (res?.gender && res?.birthday) {
+            eventBus.eventBus.emit('hasRegister', true)
+          } else {
+            eventBus.eventBus.emit('hasRegister', false)
+          }
         }).catch(err => {
           // console.error(err)
         })
@@ -59,7 +64,7 @@ App({
     }
     permission_request("scope.userLocation", "地理位置").then(granted => {
       if (granted) {
-        console.log(111,granted)
+        console.log(111, granted)
         wx.onLocationChange(this._locationChangeFn)
       }
     })
