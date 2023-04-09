@@ -80,6 +80,8 @@
 
 .hd_flex {
   flex: 1;
+  font-family: 'PingFang SC Regular';
+  font-weight: normal;
   text-align: center;
   font-size: 28rpx;
   font-family: 'PingFang SC';
@@ -88,33 +90,46 @@
 }
 
 .hd_flex::after {
-  content: "";
+  /* content: "";
   position: absolute;
   bottom: 0;
   width: 0%;
   height: 6rpx;
   background-image: linear-gradient(to right, #90add8, #ffffff);
-  /* background   : #FA871E; */
   border-radius: 3rpx;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 }
 
 .hd_flex_on {
-  font-size: 30rpx;
-  color: #90add8;
+  display: inline;
+  font-family: 'PingFang SC Bold';
+  color: #90ADD8;
+  position: relative;
+  /* font-size: 30rpx;
   background-clip: text;
   -webkit-background-clip: text;
-  /* color: transparent; */
-  /* background-image: linear-gradient(to right, #ff4b1f, #1fddff); */
   position: relative;
   transition: 0.3s all linear;
-  transition-delay: 0.1s;
+  transition-delay: 0.1s; */
+  /* color: transparent; */
+  /* background-image: linear-gradient(to right, #ff4b1f, #1fddff); */
 }
 
 .hd_flex_on::after {
-  width: 40%;
-  transition: 0.3s width linear;
+  content: ' ';
+  display: inline-block;
+  background: linear-gradient(270deg, #FFFFFF 0%, #90ADD8 100%);
+  width: 100rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+  position: absolute;
+  bottom: -18rpx;
+  left: 0;
+  /* left: 50%; */
+  /* transform: translate(-50%); */
+  /* width: 40%;
+  transition: 0.3s width linear; */
 }
 
 .layer_control {

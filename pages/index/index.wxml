@@ -45,8 +45,10 @@
       <view class="head" slot="header">
         <view class="hd">
           <block wx:for="{{navList}}" wx:key="navList">
-            <view class="hd_flex {{nav_type == index ? 'hd_flex_on' : ''}}" catchtap="changeType" data-index="{{index}}">
-              {{item}}
+            <view class="hd_flex " catchtap="changeType" data-index="{{index}}">
+              <view class="{{nav_type == index ? 'hd_flex_on' : ''}}">
+                {{item}}
+              </view>
             </view>
           </block>
         </view>
