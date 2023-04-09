@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "topContainer": "/components/topContainer/topContainer",
+    "Umessage": "../components/umessage/umessage"
+  }
+}

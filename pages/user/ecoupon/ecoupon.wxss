@@ -1,0 +1,211 @@
+/* pages/user/ecoupon/ecoupon.wxss */
+@import "../style/users.wxss";
+.linearBg{
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EFF5FF 100%);
+  
+}
+.topbg{
+  width: 100%;
+  background: linear-gradient(180deg, #E5EFFF 0%, rgba(248,251,255,0.64) 74%, rgba(255,255,255,0.00) 100%);
+}
+.ecoupon-main{
+  width: 726rpx;
+  margin-left: 12rpx;
+}
+.ecoupon-main__nav{
+  display: flex;
+  position: relative;
+  padding-bottom: 14rpx;
+  /* padding-top: 34rpx; */
+}
+.ecoupon-main__nav view{
+  width: 25%;
+  text-align: center;
+  font-size: 28rpx;
+   color: #666666;
+}
+.ecoupon-main__nav view text{
+  display: inline-block;
+  
+}
+.ecoupon-main__nav view.active{
+  font-weight: bold;
+  color: #90ADD8;
+}
+.ecoupon-main__nav .nav-line{
+  position: absolute;
+  width: 100%;
+  height:8rpx ;
+  width: 84rpx;
+  background: #90ADD8;
+  bottom: 0rpx;
+  left: 58.25rpx;
+  border-radius: 4rpx;
+}
+.ecoupon-main__list{
+  padding-top: 10rpx;
+}
+.eitem{
+  width: 726rpx;
+  height: 224rpx;
+  margin-top: 32rpx;
+  border-radius: 24rpx;
+  position: relative;
+  display: flex;
+}
+.eitem .eitembg{
+  width: 726rpx;
+  height: 224rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  z-index: 1;
+}
+.eitem  .lefticon{
+  z-index: 26;
+  position: absolute;
+  width: 28rpx;
+  height: 28rpx;
+  left: 0rpx;
+  top: 40rpx;
+
+}
+.eitem-status{
+  font-family: PingFang SC Regular;
+  padding-left: 17rpx;
+  width:24rpx ;
+  height: 100%;
+  color: white;
+  position: relative;
+  z-index: 2;
+  font-size: 24rpx;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  
+}
+.eitem-status view{ 
+  display: inline-block;
+  line-height: 28rpx;
+}
+.eitem-content{
+  width: 632rpx;
+  height: 188rpx;
+  /* border-radius: 24rpx; */
+  margin-left: 21rpx;
+  margin-top: 18rpx;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  z-index: 2;
+}
+/* .eitem-content::before{
+  position: absolute;
+  content: '';
+  width: 28rpx;
+  height: 28rpx;
+  left: -14rpx;
+  bottom: 80rpx;
+ border-radius: 28rpx;
+} */
+/* .eitem-content::after{
+  position: absolute;
+  content: '';
+  width: 28rpx;
+  height: 28rpx;
+  right: -14rpx;
+  bottom: 80rpx;
+ border-radius: 24rpx;
+} */
+.eitem-content__left{
+  width: 188rpx;
+  height: 64rpx;
+ text-align: center;
+ 
+}
+.eitem-content__left .e-left__pic{
+  margin: 62rpx;
+  width: 64rpx;
+  height: 64rpx;
+}
+.eitem-content__left .e-left__pic image{
+  border-radius: 64rpx;
+}
+.e-left__text1{
+  color: #FB9898;
+  padding-top: 14rpx;
+}
+.e-left__text1 view:nth-child(1){
+  font-size: 32rpx;
+}
+.e-left__text1 view:nth-child(1) text{
+  font-size: 88rpx;
+  font-weight: bold;
+}
+.e-left__text1 view:nth-child(2){
+  font-size: 20rpx;
+}
+.e-left__text2{
+  padding-top: 36rpx;
+  color: #70D6BF;
+  font-size: 32rpx;
+}
+.e-left__text2 text{
+  font-size: 88rpx;
+  padding-right: 2rpx;
+  font-weight: bold;
+}
+.eitem-content__intro{
+  width: 380rpx;
+  padding-left: 22rpx;
+  position: relative;
+}
+.eitem-content__intro::before{
+  content: "";
+  width: 2rpx;
+  height: 124rpx;
+  position: absolute;
+  left: 0rpx;
+  top: 32rpx;
+}
+.eitem-content__intro view:nth-child(1){
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  padding-top: 30rpx;
+}
+.eitem-content__intro view:nth-child(2){
+  color: #999999;
+  font-size: 24rpx;
+  overflow: hidden;
+  line-height: 28rpx;
+  padding: 20rpx 0rpx 18rpx 0rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.eitem-content__intro view:nth-child(3){
+  color: #999999;
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.eitem-0 .eitem-content__intro::before{
+  border-left: 2rpx dashed rgba(144, 173, 216, 0.3);
+}
+
+
+.eitem-1 .eitem-content__intro::before{
+  border-left: 2rpx dashed rgba(251, 152, 152, 0.3);
+}
+.eitem-2 .eitem-content__intro::before{
+  border-left: 2rpx dashed rgba(112, 214, 191, 0.3);
+}
+
+.eitem-3 .eitem-content__intro::before{
+  border-left: 2rpx dashed rgba(144, 173, 216, 0.3);
+}
+.eitem-3 .e-left__text1,.eitem-3 .e-left__text2{
+  color: #D2D2D2;
+}

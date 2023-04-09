@@ -1,0 +1,82 @@
+<view class="container linearBg">
+    <view class="topbg">
+      <topContainer hiddenBack="{{false}}" title="个人荣誉" />
+    </view>
+    <view class="honourmain">
+      <view class="honournav">
+        <view class="honournavmain">
+          <view class="honournav_items" style="{{ navitemsStyle }}">
+            <block wx:for="{{ tempitem }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
+            </block>     
+          </view> 
+        </view>     
+        <view class="navmoreBut" bindtap="showMoreTypeWrap">
+          <view></view>
+          <view></view>
+          <view></view>
+        </view>  
+      </view>
+      <view class="honourlist">
+        <block wx:for="{{ tempitems}}" wx:key="index">
+          <view class="honour-item" bindtap="openNoticeBody">
+            <view>
+                <image src="/static/imgs/user/temp03.png" mode=""/>
+            </view>
+            <text>获得30积分</text>
+          </view>
+      </block>
+      
+      
+        
+       
+      </view>
+    </view>
+    <view class="ranking-moretype" wx:if="{{showMoreTypes}}" bindtap="closeMoreType" catchtouchmove="{{true}}">
+        <view class="m-moretype__main" catchtap="stopEvent">
+          <view class="m-moretype__main-icon">
+            <image src="/static/imgs/user/rankingmoretypebg.png" class="image" mode=""/>
+          </view>
+          <view class="m-moretype__items">
+            <block wx:for="{{ tempitem }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
+            </block>
+               
+          </view> 
+        </view>
+    </view>
+    <view class="noticeBody" wx:if="{{ shownoticeBody }}"  catchtouchmove="{{true}}">
+      <view class="noticeBody-bg">
+        <image src="{{ noticeBodybg }}" mode="widthFix"/>
+      </view>
+      <view class="noticeBody-success">
+      <view class="s-title">
+        <image src="{{ honournewttitle }}" mode="" />
+      </view>
+        <view class="s-content">
+            <view class="s-content__honour">
+              <image src="{{ temp04 }}" class="image" mode=""/>
+            </view>
+            <view class="s-content__text">“个人荣誉”排行榜第一名</view>  
+          </view>
+        <view class="noticeBody-showtext1">
+          奖励明细
+        </view>
+        <view class="awardList">
+          <view>
+            <view><image src="/static/imgs/user/notice-c-icon.png"  mode="widthFix"></image></view>
+            <text>20积分</text>
+          </view>
+         <view>
+          <view><image src="/static/imgs/user/notice-c-icon1.png"  mode="widthFix"></image></view>
+          <text>烤肠券×1</text>
+         </view>
+          
+        </view>
+        <view class="noticeBody-but">
+          <view bindtap="closenNotice">我收下了</view>
+        </view>
+      </view>
+    </view>
+  </view>
+

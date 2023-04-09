@@ -1,8 +1,8 @@
-<view class="uslidecontainer">
+<view class="uslidecontainer" catchtouchmove="{{true}}">
   <!-- bindtransitionend="animationCall" -->
   <view class="uslide-main" style="bottom: {{ offsetHeight }};" animation="{{slideAnimation}}">
     <view bindtap="showUslide" class="closeBtn">
-      <image class="closeIcon" src="/static/imgs/user/icon/uclose.png" mode="" />  
+    <image src="/static/imgs/user/icon/uclose-but.png" mode="" />
     </view>
     <slot name="body"></slot>
   </view>

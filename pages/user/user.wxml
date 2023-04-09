@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
 <view class="container">
-  <view class="user-bg">
-    <image src="/static/imgs/user/user-bg.png" class="image"></image>
+  <view class="page-bg">
+    <image src="{{ userbgurl }}" class="image"></image>
   </view>
   <view class="userinfo">
     <view class="userinfo-head">
@@ -20,7 +20,7 @@
             <image src="/static/imgs/user/icon/u-edit.png" class="image"></image>
             <text>完善个人信息</text>
           </view>  
-          <view class="uhonour arror-right">       
+          <view class="uhonour arror-right" bindtap="gotoPage" data-url="honour/honour">       
               <view class="uhonour_item">
                 <image src="/static/imgs/user/icon1.png" class="image"></image>  
               </view>       
@@ -57,25 +57,25 @@
     <view class="unav-item arror-right" bindtap="gotoPage" data-url="integralmall/integralmall">
       <image src="/static/imgs/user/icon/u-nav-1.png"></image>
       <view class="unav-item__titel">积分商城</view>
-      <view class="unav-item__value">113</view>
+      <view class="unav-item__value"></view>
     </view>
-    <view class="unav-item arror-right">
+    <view class="unav-item arror-right" bindtap="gotoPage" data-url="honour/honour">
       <image src="/static/imgs/user/icon/u-nav-2.png"></image>
       <view class="unav-item__titel">个人荣誉</view>
       <view class="unav-item__value">3</view>
     </view>
-    <view class="unav-item arror-right">
-      <image src="/static/imgs/user/icon/u-nav-3.png"></image>
+    <view class="unav-item arror-right" bindtap="gotoPage" data-url="ranking/ranking">
+      <image src="/static/imgs/user/icon/u-nav-3.png" ></image>
       <view class="unav-item__titel">排行榜</view>
       <view class="unav-item__value">223</view>
       
     </view>
-    <view class="unav-item arror-right">
+    <view class="unav-item arror-right"  bindtap="gotoPage" data-url="ecoupon/ecoupon">
       <image src="/static/imgs/user/icon/u-nav-4.png"></image>
       <view class="unav-item__titel">电子券</view>
       <view class="unav-item__value">223</view>
     </view>
-    <view class="unav-item arror-right">
+    <view class="unav-item arror-right" bindtap="openloginOut">
       <image src="/static/imgs/user/icon/u-nav-5.png"></image>
       <view class="unav-item__titel">退出登录</view>
     </view>
@@ -87,15 +87,21 @@
           <view class="uedit-sxe">
             <view>
                 <view class="{{sex == 1 ? 'imgfilter' : ''}}" bindtap="setSelectSex" data-value='0'>
-                    <image src="/static/imgs/user/man.png" class="uedit-sxe__head"></image>
-                    <view class="uedit-sxe__select"><image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image></view>
+                  <view class="uedit-sxe__head" style="{{sex == 1 ? '' : 'background-color:#bdd0ee;'}}">
+                    <image src="/static/imgs/user/man.png"></image>
+                  </view>
+                  <view class="uedit-sxe__select" style="background: #90add8;">
+                    <image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image>
+                  </view>
                 </view>
                 <text>男</text>
             </view>
             <view>
             <view class="{{ sex == 0 ? 'imgfilter' : ''}}" bindtap="setSelectSex" data-value='1'>
-              <image src="/static/imgs/user/woman.png" class="uedit-sxe__head"></image>
-              <view class="uedit-sxe__select"><image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image></view>
+              <view class="uedit-sxe__head" style="{{sex == 0 ? '' : 'background-color:#FBC3C3;'}}">
+                <image src="/static/imgs/user/woman.png"></image>
+              </view>        
+              <view class="uedit-sxe__select" style="background: #FC7474;"><image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image></view>
             </view>
             <text>女</text>
             </view>
@@ -103,8 +109,8 @@
           <view class="uedit-title">请选择你的生日</view>
           <view class="udeid-date">
             <picker mode="date" value="{{date}}"  bindchange="bindDateChange">
-              <view class="picker arror-right">
-                <text>{{date}}</text> 
+              <view class="picker arror-right" style="margin-top: 58rpx;">
+                <text class="{{ date == '请选择日期' ? '' : 'udeid-date__select'}}">{{date}}</text> 
               </view>
             </picker>
           </view>
@@ -114,5 +120,22 @@
       </view>
     </Uslide>
     </block>
+    <block wx:if="{{ isshowMessage }}">
+  <Umessage isshowconfirm="{{ isshowconfirm }}" message="{{ message }}" messagetype="{{ messagetype }}" showtype="{{ showtype }}" bindcloseMessage="closeMessage">
+    <view wx:if="{{ showtype == 'confirm' }}">
+       <view class="messbody">
+       <view class="messbody-content">
+        <view class="text">您是否确认退出登录？</view>
+       </view>
+        <view class="messbody-button">
+          <!-- <view class="mcancel" bindtap="closeMessage">取消</view> -->
+          <view class="mcancel" bindtap="closeMessage">取消</view>
+          <view class="msubmit" bindtap="loginout">确认</view>
+        </view>
+       </view>
+      </view>
+ 
+    </Umessage>
+  </block>
   <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="5" />
 </view>

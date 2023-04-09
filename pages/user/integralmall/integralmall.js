@@ -1,4 +1,5 @@
 // pages/user/integralmall/integralmall.js
+const app = getApp()
 Page({
 
   /**
@@ -9,9 +10,11 @@ Page({
     isshowMessage:false,
     isshowconfirm:false,
     message:'',
+    umessageTitle:app.globalData.fileUserUrl+'u-m-umessage-title.png',
     messagetype:'ok',
     showtype:'',
-    tempList:[]
+    tempList:[],
+    count:1
   },
 
   /**
@@ -20,12 +23,25 @@ Page({
   onLoad(options) {
       const datalist = []
       for(let i = 0;i<= 13;i++){
-        datalist.push({
-          id:i,
-          title:'麻辣烤肠真是棒'+i,
-          integralPrice:Math.round( Math.random()*1000),
-          src:'/static/imgs/user/temp-3.png'
-        })
+        if(i < 11){
+          datalist.push({
+            id:i,
+            title:'麻辣烤肠真是棒'+i,
+            integralPrice:Math.round( Math.random()*1000),
+            src:'/static/imgs/user/temp-3.png',
+            isnull:false
+          })
+        }else{
+          datalist.push({
+            id:i,
+            title:'麻辣烤肠真是棒'+i,
+            integralPrice:Math.round( Math.random()*1000),
+            src:'/static/imgs/user/temp-3.png',
+            isnull:true
+          })
+        }
+        
+       
       }
       this.setData({
         datalist : datalist
@@ -80,13 +96,37 @@ Page({
   onShareAppMessage() {
 
   },
-
-  showEditInfo(){
+  setExchangeCount(e){
+    const type = e.currentTarget.dataset.type
+  
+    let thisCount = this.data.count
+    if(type == 0){
+      if(thisCount > 1){
+        thisCount -= 1
+      }
+    }else{
+       thisCount += 1
+    }
     this.setData({
-      isshowUslide:true
+      count:thisCount
     })
-    const uslide = this.selectComponent('#uslide')
-    uslide.showUslide()
+  },
+  showEditInfo(e){
+    const item = e.currentTarget.dataset.item
+    if(item.isnull){
+        this.setData({
+          isshowMessage:true,
+          message: '抱歉，'+item.title + '已售罄',
+          messagetype:'error'
+        })
+    }else{
+      this.setData({
+        isshowUslide:true
+      })
+      const uslide = this.selectComponent('#uslide')
+      uslide.showUslide()
+    }
+  
   },
   shUslide(o){
     this.setData({

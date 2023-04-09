@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "FunctinonBar": "/components/functionBar/bar",
-    "Uslide": "./components/uslide/uslide"
+    "Uslide": "./components/uslide/uslide",
+    "Umessage": "./components/umessage/umessage"
 
   }
 }

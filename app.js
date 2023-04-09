@@ -44,6 +44,7 @@ App({
         this.globalData.windowHeight = res.windowHeight;
         this.globalData.windowWidth = res.windowWidth;
         this.globalData.fileUrl = 'https://file.ysr.uninote.com.cn';
+        this.globalData.fileUserUrl = 'https://file.ysr.uninote.com.cn/resource/user/';
       },
     })
     wx.loadFontFace({

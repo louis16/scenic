@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "FunctinonBar": "/components/functionBar/bar",
+    "topContainer": "/components/topContainer/topContainer"
+  }
+}
