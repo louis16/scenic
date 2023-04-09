@@ -18,23 +18,26 @@
     </view>
   </view>
   <view wx:elif="{{resourceType === 'mp3'}}">
-    <view class="audioWrap">
-      <view class="audioRow">
-        <text>{{progressText}} / {{durationText}}</text>
-        <image bindtap="playAudio" class="playIcon" src="{{isPlaying?'/static/icon/play.png':'/static/icon/pause.png'}}" mode="" />
+    <image src="/static/icon/umessage-bg.png" mode="" class="audio_bg" />
+    <view style="transform:translateY(40rpx)">
+      <view class="audioWrap">
+        <view class="audioRow">
+          <text>{{progressText}} / {{durationText}}</text>
+          <image bindtap="playAudio" class="playIcon" src="{{isPlaying?'/static/icon/play.png':'/static/icon/pause.png'}}" mode="" />
+        </view>
+        <slider style="margin: 24rpx 0 0 0;" disabled="{{!isPlaying}}" bindchange="sliderChange" value="{{progress}}" step="1" min="0" max='{{duration}}' activeColor="#90ADD8" block-size="12" block-color="#F3F6FF" />
       </view>
-      <slider disabled="{{!isPlaying}}" bindchange="sliderChange" value="{{progress}}" step="1" min="0" max='{{duration}}' activeColor="#90ADD8" block-size="12" block-color="#F3F6FF" />
-    </view>
-    <view class="descWrap">
-      <view class="title">景观简介</view>
-      <text>{{originData. description}}</text>
-    </view>
+      <view class="descWrap">
+        <view class="title">景观简介</view>
+        <text>{{originData. description}}</text>
+      </view>
 
-    <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
-      <template wx:if="{{audioEnd}}" is="audioFillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
-    </view>
-    <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
-      <template wx:if="{{audioEnd}}" is="audioChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
+      <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
+        <template wx:if="{{audioEnd}}" is="audioFillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
+      </view>
+      <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
+        <template wx:if="{{audioEnd}}" is="audioChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
+      </view>
     </view>
   </view>
   <view wx:else>

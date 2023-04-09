@@ -11,7 +11,7 @@
 <template name="fillBlanks">
   <view class="mask_temp">
     <view class="v_c_container  ">
-      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
+      <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
@@ -32,7 +32,7 @@
 <template name="videoChoose">
   <view class="mask_temp">
     <view class="v_c_container  ">
-      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
+      <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
@@ -41,7 +41,7 @@
         <view class="choose_text_temp">{{item.k}}</view>
       </view>
       <view class="replay_temp" bindtap="rePlay">
-        再次播放
+        再次播放1
       </view>
     </view>
   </view>
@@ -49,7 +49,7 @@
 <template name="videoFillBlanks">
   <view class="mask_temp">
     <view class="v_c_container  ">
-      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
+      <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
@@ -73,7 +73,7 @@
 <template name="audioFillBlanks">
   <view class="mask_temp">
     <view class="v_c_container  ">
-      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
+      <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
@@ -97,9 +97,10 @@
 <template name="audioChoose">
   <view class="mask_temp">
     <view class="v_c_container  ">
-      <image src="/static/imgs/user/umessage-bg.png" mode="" class="v_c_container_bg"/>
+      <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
+      <image src="/static/icon/close.png" mode="" class="v_c_close" bindtap="rePlayAudio" />
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
       <view class="question_temp">{{question}}</view>
       <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
@@ -113,7 +114,7 @@
 </template>
 <template name="rewardsPage">
   <view class="mask_temp" catchtouchmove='true'>
-    <view class="good_contents"> 
+    <view class="good_contents">
       <image src="/static/icon/congrats.png" mode="aspectFit" class="good_header_icon" />
       <view class="detail_text" wx:if="{{rewards.length > 0}}">奖励明细</view>
       <view class="reward_wrap">
