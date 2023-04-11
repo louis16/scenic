@@ -1,4 +1,4 @@
-<view style="height: 100vh;overflow-x: hidden;display: flex;flex-direction: column;">
+<view>
   <topContainer title="选择景区" style="background-color: #F1F2F6;" />
   <view class="wrap">
     <view class="search-input-wrap">

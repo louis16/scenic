@@ -10,7 +10,7 @@
   </topContainer>
   <FullScreen />
   <!--  -->
-  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" show-compass setting="{{setting}}" enable-overlooking="{{true}}" scale="15" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
+  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" show-compass setting="{{setting}}" enable-overlooking="{{true}}" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
   <view class="show-input" style="top:{{navHeight + 10}}px">
     <image class="input-search-icon" src="/static/icon/search.png" mode="" />
     <input value="{{searchInputValue}}" placeholder-class="placeholder-text" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindinput="inputHandle" bindconfirm="searchResult" />
@@ -74,7 +74,7 @@
       <view slot="body" style="height: {{280}}rpx;display:flex;justify-content:space-around">
         <view class="layer_control">
           <view class="control_item" data-layer="1" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="/static/icon/2D.png" mode="aspectFit" lazy-load="false" />
+            <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="/static/icon/2D.png" mode="scaleToFill" lazy-load="false" />
             <text class="item_text {{layerIndex == 1  && 'item_text_active'}}" selectable="false" space="false" decode="false">
               2D
             </text>

@@ -1,13 +1,18 @@
 const {
-  login
+  login,
+  getTaskDetail
 } = require('./util/api')
 const {
   TOKEN,
   PHONE,
   storageSync,
-  permission_request
+  permission_request,
+  formatOption
 } = require('./util/util')
 const eventBus = require('./util/eventBus')
+const {
+  getDistance
+} = require('./util/constants')
 App({
   onLaunch() {
     // 登录
@@ -34,6 +39,7 @@ App({
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
       success: res => {
+        console.log(res)
         //导航高度
         let statusBarHeight = res.statusBarHeight,
           navTop = menuButtonObject.top,
@@ -65,8 +71,13 @@ App({
     }
     permission_request("scope.userLocation", "地理位置").then(granted => {
       if (granted) {
-        console.log(111, granted)
-        wx.onLocationChange(this._locationChangeFn)
+        wx.startLocationUpdate({
+          complete: (res) => {
+            if (res.errMsg == 'startLocationUpdate:ok') {
+              wx.onLocationChange(this._locationChangeFn)
+            }
+          }
+        })
       }
     })
   },
@@ -74,7 +85,43 @@ App({
     wx.offLocationChange(this._locationChangeFn)
   },
   _locationChangeFn(res) {
-    console.log('location change', res)
+    this.onNearLocationTask(res)
+  },
+
+  onNearLocationTask(res) {
+    let distanceTask = this.globalData.positionWatchLists || []
+    for (let index = 0; index < distanceTask.length; index++) {
+      const element = distanceTask[index];
+      let dis = getDistance(element, {
+        lat: res.latitude,
+        lng: res.longitude,
+      })
+      if (dis < element.accuracy) {
+        wx.showModal({
+          title: '当前到达任务地点',
+          content: '是否确认前去完成任务',
+          complete: (res) => {
+            if (res.confirm) {
+              getTaskDetail(element.id).then(taskDetail => {
+                const data = formatOption(taskDetail)
+                wx.navigateTo({
+                  url: '/pages/taskTrigger/taskTrigger',
+                  success: function (res) {
+                    res.eventChannel.emit('acceptDataFromOpenerPage', {
+                      data: {
+                        ...data,
+                        complete_id: element.id
+                      },
+                    })
+                  }
+                })
+              })
+            }
+          }
+        })
+        break
+      }
+    }
   },
   globalData: {
     userInfo: null,

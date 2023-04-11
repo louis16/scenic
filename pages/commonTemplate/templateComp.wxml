@@ -4,7 +4,10 @@
     <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
     <view class="question_temp">{{question}}</view>
     <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
-      <view class="choose_text_temp">{{item.k}}</view>
+      <view class="choose_text_temp">
+        <text class="choose_index">{{['A','B','C','D'][index]}}</text>
+        <text>{{item.k}}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -35,13 +38,17 @@
       <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
+      <image src="/static/icon/close.png" mode="" class="v_c_close" bindtap="rePlay" />
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
       <view class="question_temp">{{question}}</view>
       <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
-        <view class="choose_text_temp">{{item.k}}</view>
+        <view class="choose_text_temp">
+          <text class="choose_index">{{['A','B','C','D'][index]}}</text>
+          <text>{{item.k}}</text>
+        </view>
       </view>
       <view class="replay_temp" bindtap="rePlay">
-        再次播放1
+        再次播放
       </view>
     </view>
   </view>
@@ -52,6 +59,7 @@
       <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
+      <image src="/static/icon/close.png" mode="" class="v_c_close" bindtap="rePlay" />
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
       <view class="question_temp">{{question}}</view>
       <view class="flex_row " style="position: relative;">
@@ -76,6 +84,7 @@
       <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
     <view class="v_c_container blur_temp">
+      <image src="/static/icon/close.png" mode="" class="v_c_close" bindtap="rePlayAudio" />
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
       <view class="question_temp">{{question}}</view>
       <view class="flex_row " style="position: relative;">
@@ -104,7 +113,10 @@
       <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
       <view class="question_temp">{{question}}</view>
       <view wx:for="{{options}}" data-value="{{item.v}}" bindtap="radioChange" wx:key="index" class="radioItem_temp">
-        <view class="choose_text_temp">{{item.k}}</view>
+        <view class="choose_text_temp">
+          <text class="choose_index">{{['A','B','C','D'][index]}}</text>
+          <text>{{item.k}}</text>
+        </view>
       </view>
       <view class="replay_temp" bindtap="rePlayAudio">
         再次播放
@@ -115,13 +127,21 @@
 <template name="rewardsPage">
   <view class="mask_temp" catchtouchmove='true'>
     <view class="good_contents">
-      <image src="/static/icon/congrats.png" mode="aspectFit" class="good_header_icon" />
+      <image wx:if="{{imgType==='answer'}}" src="/static/icon/answer.png" mode="aspectFit" class="good_header_icon" />
+      <image wx:if="{{imgType==='scan'}}" src="/static/icon/scan.png" mode="aspectFit" class="good_header_icon" />
+      <image wx:if="{{imgType==='clock'}}" src="/static/icon/clock.png" mode="aspectFit" class="good_header_icon" />
+      <image wx:if="{{imgType==='group_photo'}}" src="/static/icon/group_photo.png" mode="aspectFit" class="good_header_icon" />
+      <image wx:if="{{imgType==='photograph'}}" src="/static/icon/photograph.png" mode="aspectFit" class="good_header_icon" />
+      <image wx:if="{{imgType==='congrats'}}" src="/static/icon/congrats.png" mode="aspectFit" class="good_header_icon" />
       <view class="detail_text" wx:if="{{rewards.length > 0}}">奖励明细</view>
       <view class="reward_wrap">
         <view class="reward_item" wx:for="{{rewards}}" wx:key="index">
-          <view class="img_back">
+          <view class="img_back" wx:if="{{!item.points}}">
             <image wx:if='{{handler.isSystemIcon(item.item_icon)}}' class="item_icon" src="/static/icon/goodIcon/{{item.item_icon}}.png" mode="" />
             <image wx:else class="item_icon" src="https://file.ysr.uninote.com.cn/{{item.item_icon}}" mode="" />
+          </view>
+          <view class="img_back" wx:else>
+            <image class="item_icon" src="/static/icon/point.jpg" mode="" />
           </view>
           <text>{{item.points? item.points + '积分' : item.item_name}}</text>
         </view>

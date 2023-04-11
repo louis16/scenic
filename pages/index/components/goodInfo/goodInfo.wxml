@@ -57,7 +57,7 @@
   </block>
 
   <!-- 正确弹窗 -->
-  <template wx:if="{{ showRewards }}" is="rewardsPage" data="{{rewards:rewards }}" />
+  <template wx:if="{{ showRewards }}" is="rewardsPage" data="{{rewards:rewards,imgType:'congrats' }}" />
   <!-- <block wx:else>
     <view class="contentWrap" catchtap>
       <view class="imageWrap">

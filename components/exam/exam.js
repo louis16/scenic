@@ -62,7 +62,7 @@ Component({
   },
   methods: {
     //单选
-    radioChange(e) {
+    radioChanges(e) {
     },
     //多选
     checkboxChange(e) {

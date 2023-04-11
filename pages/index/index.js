@@ -209,11 +209,20 @@ Page({
     const markerId = event.detail.markerId
     let currentMarker = this.data.markers.filter(markerItem => markerItem.id == markerId)
     this.mapContext.includePoints({
-      padding: [100],
+      // padding: [100],
       points: [{
         latitude: currentMarker[0].latitude * 1 - 0.0002,
         longitude: currentMarker[0].longitude,
-      }]
+      }],
+      complete: (res) => {
+        this.mapContext.getScale().then(res => {
+          this.setData({
+            setting: {
+              scale: res.scale
+            }
+          })
+        })
+      }
     })
     let timer = setTimeout(() => { //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
       this.setData({
@@ -232,7 +241,7 @@ Page({
       currentItem: item
     });
     this.mapContext.includePoints({
-      padding: [100],
+      // padding: [100],
       points: [{
         latitude: item.lat * 1 - 0.0002,
         longitude: item.lng,
@@ -435,8 +444,8 @@ Page({
           longitude: res.longitude
         })
       }
-      hideLoading()
-    })
+    }).finally(() =>
+      hideLoading())
   },
   callPhone(event) {
     const phone = event.currentTarget.dataset.phone

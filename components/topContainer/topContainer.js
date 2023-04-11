@@ -17,7 +17,7 @@ Component({
             type: String,
             value: ""
         },
-        titleWhite:{
+        titleWhite:{ 
           type:Boolean,
           value:false
         }

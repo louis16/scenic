@@ -33,16 +33,9 @@ Page({
           originData: data.data,
           resourceType: type
         })
-        if (data.data.complete_type == 1) { //直接获取奖励
+        if (type == 'jpg' && data.data.complete_type == 1) { //如果是图文，1.5秒后直接获取奖励
           let timer = setTimeout(() => {
-            completeTask(this.data.originData.complete_id).then(res => {
-              eventBus.emit('refreshTask')
-              this.setData({
-                rewards: res.rewards || [],
-                quests: res.quests || [],
-                showRight: res.rewards.length > 0 || res.quests.length > 0,
-              })
-            })
+            this.completeTaskFun()
             clearTimeout(timer)
           }, 1500)
         }
@@ -57,6 +50,7 @@ Page({
               audioEnd: true,
               isPlaying: false
             })
+            this.data.originData.complete_type == 1 && this.completeTaskFun() //如果是mp3 则听完音频再获得奖励
           })
         }
       })
@@ -79,15 +73,7 @@ Page({
     const answer = this.data.originData.questions[0].answer
     if (this.data.originData.complete_type == 2) { //填空题
       if (answer == this.data.inputAnswer) {
-        completeTask(this.data.originData.complete_id).then(res => {
-          eventBus.emit('refreshTask')
-          // wx.navigateBack()
-          this.setData({
-            rewards: res.rewards || [],
-            quests: res.quests || [],
-            showRight: res.rewards.length > 0 || res.quests.length > 0,
-          })
-        })
+        this.completeTaskFun()
       } else {
         this.setData({
           showError: true,
@@ -105,19 +91,23 @@ Page({
     const RightAnswer = this.data.originData.questions[0].answer
     const SelectAnswer = e.currentTarget.dataset.value
     if (SelectAnswer == RightAnswer) { //选择题
-      completeTask(this.data.originData.complete_id).then(res => {
-        eventBus.emit('refreshTask')
-        this.setData({
-          rewards: res.rewards || [],
-          quests: res.quests || [],
-          showRight: res.rewards.length > 0 || res.quests.length > 0,
-        })
-      })
+      this.completeTaskFun()
     } else {
       this.setData({
         showError: true
       })
     }
+  },
+  completeTaskFun() {
+    completeTask(this.data.originData.complete_id).then(res => {
+      eventBus.emit('refreshTask')
+      this.setData({
+        rewards: res.rewards || [],
+        quests: res.quests || [],
+        showRight: res.rewards.length > 0 || res.quests.length > 0,
+        videoEnd: false, //选择正确后，关闭答题界面
+      })
+    })
   },
   reAnswer() {
     this.setData({
@@ -142,6 +132,7 @@ Page({
       this.setData({
         videoEnd: true
       })
+      this.data.originData.complete_type == 1 && this.completeTaskFun() //如果是mp4 则听完音频再获得奖励
     }
   },
   rePlay() {

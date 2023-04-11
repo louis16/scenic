@@ -1,4 +1,5 @@
 const app = getApp();
+const eventBus = app.globalData.bus
 Component({
   properties: {
     top: {
@@ -27,15 +28,29 @@ Component({
     }
   },
 
+  lifetimes: {
+    attached() {
+      eventBus.on('closeProgress', () => {
+        this.setData({
+          showTask: false,
+          showContent: false
+        })
+      })
+    },
+    detached() {
+      eventBus.off('closeProgress')
+    }
+  },
   data: {
     navHeight: app.globalData.navHeight, //导航栏高度
     showTask: false,
+    showContent: false
   },
   methods: {
     callPhone() {
       this.triggerEvent("showSoS")
     },
-    currentLocation(){
+    currentLocation() {
       this.triggerEvent("currentLocation")
     },
     itemClick(event) {
@@ -61,7 +76,6 @@ Component({
           })
         }
       })
-
     },
     openTask() {
       this.triggerEvent("openTaskList", {});

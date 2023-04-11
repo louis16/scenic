@@ -66,6 +66,38 @@
   justify-content: center;
 }
 
+.progress-line {
+  position: relative;
+  width: 8rpx;
+}
+
+.progress-line:nth-child(1) {
+  border-radius: 10rpx 10rpx 0 0;
+  transform: translateY(5rpx);
+}
+
+.progress-line:nth-child(2) {
+  border-radius: 10rpx 10rpx 0 0;
+  transform: translateY(5rpx);
+}
+
+.progress-line:nth-child(3) {
+  border-radius: 10rpx 10rpx 10rpx 10rpx;
+}
+
+.progress-line::after {
+  content: ' ';
+  display: inline-block;
+  position: absolute;
+  width: 4rpx;
+  height: 4rpx;
+  background-color: white;
+  border-radius: 50%;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 50%);
+}
+
 .progress-text {
   position: absolute;
   top: 0;

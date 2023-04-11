@@ -93,7 +93,7 @@ Component({
       let finished = event.currentTarget.dataset.finished;
       let max = event.currentTarget.dataset.max;
       let alert = event.currentTarget.dataset.alert;
-      if (finished >= max) {
+      if (finished >= (max || 10000000)) {
         showToast({
           title: alert || '当前任务完成数以达到最大,无法继续参与',
           icon: 'none'
@@ -122,7 +122,7 @@ Component({
                   lat: res.latitude,
                   lng: res.longitude,
                 })
-                if (dis < element.accuracy * 100000) {
+                if (dis < element.accuracy) {
                   hasNear = true
                   getTaskDetail(element.id).then(taskDetail => {
                     const data = formatOption(taskDetail)
@@ -140,6 +140,10 @@ Component({
                   })
                   break
                 }
+                !hasNear && showToast({
+                  title: '暂未到达任务地点',
+                  icon: 'none'
+                })
               }
             } else {
               showToast({
@@ -157,10 +161,6 @@ Component({
           })
         }
         hideLoading();
-        !hasNear && showToast({
-          title: '暂未到达任务地点',
-          icon: 'none'
-        })
       } else if (type == 3) {
         const _this = this
         wx.scanCode({

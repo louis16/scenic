@@ -50,6 +50,7 @@ Page({
     showLoading()
     getScenicList({
       page: currentPage,
+      per_page: 100,
       ...params
     }).then(scenicListResult => {
       const {

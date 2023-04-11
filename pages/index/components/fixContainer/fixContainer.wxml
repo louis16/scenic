@@ -13,13 +13,13 @@
     <view class="right-bottom-wrap">
       <view class="progress" bindtap="progressClick">
         <view style="transform: translateX(-10rpx);">
-          <view style="position:relative;width: 8rpx;background-color: #E9E9E9;height: {{unlock_h}}%">
+          <view class="progress-line" style="background-color: #E9E9E9;height: {{unlock_h}}%">
             <text wx:if="{{overview.total_unlock}}" class="progress-text">{{overview.total_unlock}}</text>
           </view>
-          <view style="position:relative;width: 8rpx;background-color: #FB9898;height: {{unfinish_h}}%">
+          <view class="progress-line" style="background-color: #FB9898;height: {{unfinish_h}}%">
             <text wx:if="{{overview.total_unfinish}}" class="progress-text">{{overview.total_unfinish}}</text>
           </view>
-          <view style="position:relative;width: 8rpx;background-color: #90ADD8;height: {{finished_h}}%">
+          <view class="progress-line" style="background-color: #90ADD8;height: {{finished_h}}%">
             <text wx:if="{{overview.total_finished}}" class="progress-text">{{overview.total_finished}}</text>
           </view>
         </view>

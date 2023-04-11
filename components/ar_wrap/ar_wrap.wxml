@@ -1,8 +1,8 @@
 <view class="ar_page">
   <topContainer hiddenBack="{{false}}" title="飞洒地方"></topContainer>
 
-  <canvas type="webgl" id="webgl" style="width: {{width}}px; height: {{height}}px;background-color: red;">
-  </canvas>
+  <!-- <canvas type="webgl" id="webgl" style="width: {{width}}px; height: {{height}}px;background-color: red;">
+  </canvas> -->
   <!-- <canvas type="webgl" id="webgl" style="background-color: aqua;width: {{windowWidth}}px; height: {{windowHeight - navHeight}}px;padding-top: {{navHeight}}px;"> -->
   <!-- <view class="btn-cnt">
         <button type="primary" class="btn-choose" bindtap="loadTest">test1</button>

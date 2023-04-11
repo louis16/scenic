@@ -10,7 +10,6 @@
 .top-content {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 	align-items: center;
 	padding-left: 20px;
 	position: relative;
@@ -20,15 +19,24 @@
 	width: 28rpx;
 	height: 28rpx;
 	border: 4rpx solid #333333;
-	transform: rotate(45deg);
+	transform: rotate(45deg) scale(.7);
 	border-top: none;
-	border-right: none;
+  border-right: none;
 }
 
 .top-title {
+  display: inline-block;
+  text-align: center;
 	position: absolute;
 	right: 50%;
 	transform: translateX(50%);
+}
+.top-title text{
+  display: inline-block;
+  position: relative;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+
 }
 .white{
   color: white;

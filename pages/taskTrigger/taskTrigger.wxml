@@ -4,16 +4,16 @@
   <view wx:if="{{resourceType === 'mp4'}}">
     <!--视频 ___ 直接获得奖励 -->
     <view class="contentWrap" wx:if="{{originData.complete_type == 1 }}">
-      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
     </view>
     <!-- 视频 ___填空题 -->
     <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
-      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
       <template wx:if="{{videoEnd}}" is="videoFillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus }}" />
     </view>
     <!--视频 ___ 选择题 -->
     <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
-      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" muted show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
       <template wx:if="{{videoEnd}}" is="videoChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
     </view>
   </view>
@@ -84,5 +84,5 @@
     <view class="ResultWrap" />
   </view>
   <!-- 正确弹窗 -->
-  <template wx:if="{{ showRight}}" is="rewardsPage" data="{{rewards:rewards,quests:quests}}" />
+  <template wx:if="{{ showRight}}" is="rewardsPage" data="{{rewards:rewards,quests:quests,imgType:originData.complete_type=='1'?'congrats':'answer'}}" />
 </view>

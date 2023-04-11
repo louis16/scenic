@@ -1,7 +1,13 @@
-.safeBottom {
-	margin-bottom: constant(safe-area-inset-bottom);
-	margin-bottom: env(safe-area-inset-bottom);
+page {
+  width: 100vw;
+  overflow-x: hidden;
 }
+
+.safeBottom {
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
