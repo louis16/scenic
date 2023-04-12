@@ -214,15 +214,15 @@ Page({
         latitude: currentMarker[0].latitude * 1 - 0.0002,
         longitude: currentMarker[0].longitude,
       }],
-      complete: (res) => {
-        this.mapContext.getScale().then(res => {
-          this.setData({
-            setting: {
-              scale: res.scale
-            }
-          })
-        })
-      }
+      // complete: (res) => {
+      //   this.mapContext.getScale().then(res => {
+      //     this.setData({
+      //       setting: {
+      //         scale: res.scale
+      //       }
+      //     })
+      //   })
+      // }
     })
     let timer = setTimeout(() => { //因为再地图上绑定的点击关闭窗口的事件，所以将打开操作变为异步
       this.setData({
@@ -261,7 +261,7 @@ Page({
           ...{
             [`markers[${i}].callout.bgColor`]: bgColor,
             [`markers[${i}].callout.color`]: fontColor,
-            [`markers[${i}].iconPath`]: mapIcon[element.item?.type ? 'normal' : 'landscape']
+            [`markers[${i}].iconPath`]: `${app.globalData.fileUrl}/${element.item.icon}`
           }
         }
       }
@@ -332,6 +332,13 @@ Page({
         scale: 15
       }
     });
+  },
+  onShareAppMessage(e) {
+    return {
+      title: '觅迹游园会',
+      path: '/pages/scenicSpot/chooseScenic/chooseScenic',
+      imageUrl: 'https://so1.360tres.com/t010ae94d49ddd280be.png'
+    }
   },
   toggleExpand(event) { //切换list高度
     this.setData({

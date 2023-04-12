@@ -17,6 +17,22 @@
   line-height: 460rpx;
 }
 
+.page-show {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  width: 74rpx;
+  height: 32rpx;
+  right: 30rpx;
+  top: 360rpx;
+  font-family: 'PingFang SC Regular';
+  font-size: 20rpx;
+  font-weight: normal;
+  line-height: 32rpx;
+  color: #ffffff;
+  text-align: center;
+}
+
 .container {
   flex: 1;
   padding: 0 40rpx 100rpx 40rpx;
@@ -59,6 +75,7 @@
   border-top: 2rpx solid #D8E3F6;
   padding-top: 80rpx;
 }
+
 .titleView {
   margin: 46rpx 0 20rpx;
   position: relative;

@@ -1,10 +1,13 @@
 <view class="wrap">
   <topContainer hiddenBack="{{false}}" title="景区详情" />
-  <swiper class="swiper" autoplay interval="2000" easing-function="easeInOutCubic" circular>
-    <swiper-item wx:for="{{images}}" wx:key="index">
-      <image class="swiper-item" src="{{item.path}}" mode="" />
-    </swiper-item>
-  </swiper>
+  <view style="position: relative;">
+    <swiper class="swiper" autoplay interval="2000" easing-function="easeInOutCubic" circular bindchange="changePage">
+      <swiper-item wx:for="{{images}}" wx:key="index">
+        <image class="swiper-item" src="{{item.path}}" mode="" />
+      </swiper-item>
+    </swiper>
+    <view class="page-show">{{currentPage + 1}} / {{images.length}}</view>
+  </view>
   <view class="container safeBottom">
     <view class="titleView">
       <image class="titleIcon" src="/static/icon/scenicDesc.png" mode="" />

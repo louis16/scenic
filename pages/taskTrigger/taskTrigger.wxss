@@ -100,6 +100,10 @@
   color: rgb(102, 102, 102);
 }
 
+.longDesc {
+  height: 100rpx;
+  overflow: auto;
+}
 
 .question {
   font-family: 'PingFang SC Bold';

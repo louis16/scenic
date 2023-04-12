@@ -37,7 +37,7 @@ Page({
           let timer = setTimeout(() => {
             this.completeTaskFun()
             clearTimeout(timer)
-          }, 1500)
+          }, 3500)
         }
         if (type == 'mp3') {
           this.innerAudioContext = wx.createInnerAudioContext({
@@ -106,6 +106,7 @@ Page({
         quests: res.quests || [],
         showRight: res.rewards.length > 0 || res.quests.length > 0,
         videoEnd: false, //选择正确后，关闭答题界面
+        audioEnd: false
       })
     })
   },

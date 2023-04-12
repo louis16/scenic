@@ -89,6 +89,9 @@ App({
   },
 
   onNearLocationTask(res) {
+    if (this.stopLocation || this.showOnce) {
+      return
+    }
     let distanceTask = this.globalData.positionWatchLists || []
     for (let index = 0; index < distanceTask.length; index++) {
       const element = distanceTask[index];
@@ -97,6 +100,7 @@ App({
         lng: res.longitude,
       })
       if (dis < element.accuracy) {
+        this.showOnce = true
         wx.showModal({
           title: '当前到达任务地点',
           content: '是否确认前去完成任务',
@@ -116,6 +120,9 @@ App({
                   }
                 })
               })
+            }
+            if (res.cancel) {
+              this.stopLocation = true
             }
           }
         })

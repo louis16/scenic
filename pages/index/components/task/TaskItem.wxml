@@ -9,7 +9,20 @@
         {{taskStatus[status] ? taskStatus[status].text : taskStatus[item.status].text}}
       </view>
     </view>
-    <view wx:if="{{item.rewards && item.rewards.length > 0}}" class="rewards">
+    <view wx:if="{{item.rewards_show && item.rewards_show.length > 0}}" class="rewards">
+      <view wx:for="{{item.rewards_show}}" wx:for-item="reward" wx:for-index="idx" wx:key="idx" class="reward">
+        <view wx:if="{{reward==1}}" class="flex">
+          <image class="appIcon" src="/static/icon/reward_point_icon.png" mode="" />
+          积分
+        </view>
+        <view wx:if="{{reward==2}}" class="flex">
+          <image class="appIcon" src="/static/icon/reward_goods_icon.png" mode="" />
+          奖励
+        </view>
+      </view>
+    </view>
+
+    <!-- <view wx:if="{{item.rewards && item.rewards.length > 0}}" class="rewards">
       <view wx:for="{{item.rewards}}" wx:for-item="reward" wx:for-index="idx" wx:key="idx" class="reward">
         <view wx:if="{{reward.points}}" class="flex">
           <image class="appIcon" src="/static/icon/reward_point_icon.png" mode="" />
@@ -18,10 +31,10 @@
         <view wx:if="{{reward.item_id}}" class="flex">
           <image class="appIcon" src="/static/icon/reward_goods_icon.png" mode="" />
           奖励
-          <!-- {{rewwardsType[reward.type]}}：{{reward.item_name}} -->
+          {{rewwardsType[reward.type]}}：{{reward.item_name}}
         </view>
       </view>
-    </view>
+    </view> -->
     <view wx:if="{{showMoreInfo && item.groups && item.groups.length > 0}}" class="groups">
       <view wx:for="{{item.groups}}" wx:for-item="group" wx:key="group" class="groupItem">
         {{group.name}}

@@ -31,13 +31,12 @@
         <view class="title">景观简介</view>
         <text>{{originData. description}}</text>
       </view>
-
-      <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
-        <template wx:if="{{audioEnd}}" is="audioFillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
-      </view>
-      <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
-        <template wx:if="{{audioEnd}}" is="audioChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
-      </view>
+    </view>
+    <view class="contentWrap" wx:if="{{originData.complete_type == 2 }}">
+      <template wx:if="{{audioEnd}}" is="audioFillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
+    </view>
+    <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
+      <template wx:if="{{audioEnd}}" is="audioChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
     </view>
   </view>
   <view wx:else>
@@ -46,7 +45,7 @@
       <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
       <view class="content">
         <view class="title">{{originData.name}}</view>
-        <view class="desc">{{originData.description}}</view>
+        <text class="desc">{{originData.show_text}}</text>
       </view>
     </view>
     <!--图文 ___ 填空题 -->
@@ -54,7 +53,7 @@
       <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
       <view class="content">
         <view class="title">{{originData.name}}</view>
-        <view class="desc">{{originData.description}}</view>
+        <view class="desc">{{originData.show_text}}</view>
         <!-- <template is="fillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" /> -->
       </view>
       <template is="fillBlanks" data="{{question:originData.questions[0].question, code:inputAnswer,answer:originData.questions[0].answer,isFocus:isFocus  }}" />
@@ -64,7 +63,7 @@
       <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
       <view class="content">
         <view class="title">{{originData.name}}</view>
-        <view class="desc">{{originData.description}}</view>
+        <view class="desc">{{originData.show_text}}</view>
         <template is="choose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
       </view>
     </view>

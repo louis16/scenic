@@ -12,7 +12,20 @@
   </view>
 </template>
 <template name="fillBlanks">
-  <view class="mask_temp">
+  <view class="choose_wrap" style="width: 90vw;margin-bottom: 30rpx;">
+    <image src="/static/icon/question.png" mode="" class="question_icon_temp" />
+    <view class="question_temp">{{question}}</view>
+    <view class="flex_row " style="position: relative;">
+      <block wx:for="{{answer.length}}" wx:key="index">
+        <view class="input_item">{{code[index]}}</view>
+      </block>
+      <input class="input_text {{isFocus?'hide_input_text':''}}" focus="{{isFocus}}" selection-start="100" adjust-position="{{false}}" selection-end="100" confirm-type="done" maxlength="{{answer.length}}" value="{{code}}" bindinput="bindKeyInput" bindfocus="handleUseFocus" bindblur="handleUseFocus" />
+    </view>
+    <view class="submit_temp" bindtap="submitData">
+      提交
+    </view>
+  </view>
+  <!-- <view class="mask_temp">
     <view class="v_c_container  ">
       <image src="/static/icon/umessage-bg.png" mode="" class="v_c_container_bg" />
     </view>
@@ -23,14 +36,13 @@
         <block wx:for="{{answer.length}}" wx:key="index">
           <view class="input_item">{{code[index]}}</view>
         </block>
-        <!-- input输入框 -->
         <input class="input_text {{isFocus?'hide_input_text':''}}" focus="{{isFocus}}" selection-start="100" adjust-position="{{false}}" selection-end="100" confirm-type="done" maxlength="{{answer.length}}" value="{{code}}" bindinput="bindKeyInput" bindfocus="handleUseFocus" bindblur="handleUseFocus" />
       </view>
       <view class="submit_temp" bindtap="submitData">
         提交
       </view>
     </view>
-  </view>
+  </view> -->
 </template>
 <template name="videoChoose">
   <view class="mask_temp">
