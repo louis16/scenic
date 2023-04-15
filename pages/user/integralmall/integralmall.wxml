@@ -1,7 +1,7 @@
 <!--pages/user/integralmall/integralmall.wxml-->
 <view class="container linearBg">
   <topContainer  hiddenBack="{{false}}" style="background: linear-gradient(360deg, #FD996E 0%, #FF6B2C 99%);" fixed title="积分商城" titleWhite />
-  <view class="main" style="margin-top: {{navHeight * 2 + 16}}rpx;">
+  <view class="main" style="margin-top: {{navHeight + 8}}px;">
     <view class="userinfo">
     <view class="userinfo-content">
       <view class="userinfo-head">
