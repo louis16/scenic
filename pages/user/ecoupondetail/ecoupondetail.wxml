@@ -37,7 +37,7 @@
     </view>
     <view class="ecoupondetail-code">
     <view>
-      <image src="{{ filePath + detailData.qr_code }}"  mode=""/>
+      <image src="{{ filePath + detailData.qr_code }}" wx:if="{{ detailData.qr_code }}" mode=""/>
     </view>
       <text>{{ detailData.code }}</text>
     </view>    

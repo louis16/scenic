@@ -4,7 +4,7 @@
     <topContainer  hiddenBack="{{false}}" style="background: linear-gradient(180deg, #E5EFFF 0%, rgba(248,251,255,1) 74%, rgba(255,255,255,1) 100%);" fixed title="电子券">
     </topContainer>
   </view>
-  <view class="ecoupon-main__nav" style="top: {{navHeight * 2}}rpx;">
+  <view class="ecoupon-main__nav" style="top: {{navHeight}}px;">
       <view class="{{ sindex == 0 ? 'active' : '' }}" bindtap="changeNav" data-index='0'><text class="navtext">全部</text></view>
       <view class="{{ sindex == 1 ? 'active' : '' }}" bindtap="changeNav" data-index='1'><text class="navtext">待核销</text></view>
       <view class="{{ sindex == 2 ? 'active' : '' }}" bindtap="changeNav" data-index='2'><text class="navtext">已核销</text></view>

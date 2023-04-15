@@ -15,7 +15,8 @@ Page({
     messagetype:'ok',
     showtype:'',
     filePath:app.globalData.fileUrl+'/',
-    detailData:{}
+    detailData:{},
+    title:''
   },
 
   /**
