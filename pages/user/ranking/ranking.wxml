@@ -1,32 +1,28 @@
 <view class="container linearBg">
-  <topContainer hiddenBack="{{false}}" title="排行榜" titleWhite />
-  <view class="ranking">
-    <view class="ranking-notice">
+  <!-- <view class="linearBg">
+    <image src="/static/imgs/user/rankin-top-bg.png" class="image" mode=""/>
+  </view> -->
+  <topContainer hiddenBack="{{false}}" titleStyle="font-family: DOUYU Font;font-size: 44rpx;" title="排行榜" titleWhite />
+  <view class="ranking-notice">
       <view>本轮排行结束，即将开始下一轮</view>
     </view>
     <view class="rankingnav">
         <view class="rankingmain">
-          <view class="rankingnav_items" style="{{ navitemsStyle }}">
-            <block wx:for="{{ tempitem }}" wx:key="item">
-              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
-            </block>
-            
-            <!-- <view class="tab {{ sindex == 1 ? 'active' : '' }}" bindtap="changeNav" data-index='1'><text class="navtext">获得积分</text></view>
-            <view class="tab {{ sindex == 2 ? 'active' : '' }}" bindtap="changeNav" data-index='2'><text class="navtext">获得分</text></view>
-            <view class="tab {{ index == 3 ? 'active' : '' }}" bindtap="changeNav" data-index='3'><text class="navtext">排行名</text></view>
-            <view class="tab {{ index == 4 ? 'active' : '' }}" bindtap="changeNav" data-index='4'><text class="navtext">获得积分</text></view>
-            <view class="tab {{ index == 5 ? 'active' : '' }}" bindtap="changeNav" data-index='5'><text class="navtext">积分消耗</text></view>
-            <view class="tab {{ index == 6 ? 'active' : '' }}" bindtap="changeNav" data-index='6'><text class="navtext">个人荣誉</text></view>     -->
-            <!-- <view class="nav-line" style="{{ linestyle }}"></view> -->
+          <view class="rankingnav_items" style="{{ navitemsStyle }}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+            <block wx:for="{{ typeItmes }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav" data-index="{{index}}" data-type="{{item.type}}"><text class="navtext">{{ item.name }}</text></view>
+            </block>       
           </view> 
         </view>
-       
-      <view class="navmoreBut" bindtap="showMoreTypeWrap">
-        <view></view>
-        <view></view>
-        <view></view>
-      </view>  
+        <view class="navmoreBut" bindtap="showMoreTypeWrap">
+          <image src="/static/imgs/user/more-type-ico1.png" mode=""/>
+          <view>
+            <image src="/static/imgs/user/more-type-icon0.png" class="image" mode=""/>
+          </view>
+        </view>  
     </view>
+  <view class="ranking">
+   
   
     <view class="rankingnav-main">
       <view class="ranking-top__item" bindtap="openNoticeBody">
@@ -43,7 +39,7 @@
         </view>
         <view class="r__item-content top2">
         <view class="headimgs">
-          <image src="/static/imgs/user/man.png"  mode=""></image>
+          <image src="/static/imgs/user/temp-1.png"  mode=""></image>
         </view>   
          
           <view class="r__userhot-head">
@@ -55,7 +51,7 @@
         </view>
         <view class="r__item-content top3">
         <view class="headimgs">
-          <image src="/static/imgs/user/woman.png"  mode=""></image>
+          <image src="/static/imgs/user/temp-1.png"  mode=""></image>
         </view>   
         <view class="r__userhot-head">
               <image src="/static/imgs/user/rankin-3.png" class="image" mode=""></image>
@@ -177,7 +173,7 @@
               <image src="/static/imgs/user/temp-1.png"  class="image" mode=""></image>
             </view>
             <view class="r-l-item__name">
-              <text>明媚的小桃子明媚的小桃子明媚的小桃子</text>
+              <text>明媚的小桃子</text>
               <!-- <view class="r-l-item__honour">
                 <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
                 <image src="/static/imgs/user/icon/u-m-s.png" mode=""></image>
@@ -195,8 +191,8 @@
             <image src="/static/imgs/user/rankingmoretypebg.png" class="image" mode=""/>
           </view>
           <view class="m-moretype__items">
-            <block wx:for="{{ tempitem }}" wx:key="item">
-              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
+            <block wx:for="{{ typeItmes }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav" data-type="{{item.type}}" data-index="{{index}}"><text class="navtext">{{ item.name }}</text></view>
             </block>
                
           </view> 

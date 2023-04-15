@@ -44,3 +44,7 @@
 .borderWhite{
   border-color: white;
 }
+.fixed{
+  position: fixed;
+  z-index: 9999;
+}

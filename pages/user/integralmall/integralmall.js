@@ -1,4 +1,7 @@
 // pages/user/integralmall/integralmall.js
+const { getGoodsList,getGoodsDetail,exchangeGoods,scenicDetail } = require('../common/api.js')
+const { formatTime } = require('../common/index')
+
 const app = getApp()
 Page({
 
@@ -9,43 +12,25 @@ Page({
     isshowUslide:false,
     isshowMessage:false,
     isshowconfirm:false,
-    message:'',
-    umessageTitle:app.globalData.fileUserUrl+'u-m-umessage-title.png',
     messagetype:'ok',
     showtype:'',
+    message:'',
+    umessageTitle:app.globalData.fileUserUrl+'u-m-umessage-title.png',
+    filePath:app.globalData.fileUrl+'/',
     tempList:[],
-    count:1
+    count:1,
+    goodsList:[],
+    detailData:[],
+    amount:0,
+    confirmMessage:'',
+    navHeight: app.globalData.navHeight, //导航栏高度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-      const datalist = []
-      for(let i = 0;i<= 13;i++){
-        if(i < 11){
-          datalist.push({
-            id:i,
-            title:'麻辣烤肠真是棒'+i,
-            integralPrice:Math.round( Math.random()*1000),
-            src:'/static/imgs/user/temp-3.png',
-            isnull:false
-          })
-        }else{
-          datalist.push({
-            id:i,
-            title:'麻辣烤肠真是棒'+i,
-            integralPrice:Math.round( Math.random()*1000),
-            src:'/static/imgs/user/temp-3.png',
-            isnull:true
-          })
-        }
-        
-       
-      }
-      this.setData({
-        datalist : datalist
-      })
+      this.getGoodsList()   
   },
 
   /**
@@ -96,10 +81,23 @@ Page({
   onShareAppMessage() {
 
   },
+  //获取积分商城列表
+  getGoodsList(){
+    const scenicDetailItem = scenicDetail()
+    getGoodsList({scenery_id:scenicDetailItem.id}).then(res => {
+      res.map(item =>{
+          item.showName = this.formatCouponname(item)
+      })
+      this.setData({
+        goodsList : res
+      })
+      
+    })
+  },
+  // 选择兑换数量
   setExchangeCount(e){
     const type = e.currentTarget.dataset.type
-  
-    let thisCount = this.data.count
+    let thisCount = parseInt(this.data.count)
     if(type == 0){
       if(thisCount > 1){
         thisCount -= 1
@@ -107,40 +105,59 @@ Page({
     }else{
        thisCount += 1
     }
+    const amount = this.data.detailData.point * thisCount
     this.setData({
-      count:thisCount
+      amount : amount,
+      count:thisCount,
+      confirmMessage:'您是否确认消耗'+ amount +'积分兑换'+ thisCount +'张'+this.data.detailData.showName+'？',
     })
   },
-  showEditInfo(e){
-    const item = e.currentTarget.dataset.item
-    if(item.isnull){
+  // 打开兑换窗口
+  showExchangeItem(e){
+    const {id} = e.currentTarget.dataset
+    getGoodsDetail(id).then(res => {
+      if(res.stock_status == 0){
         this.setData({
           isshowMessage:true,
-          message: '抱歉，'+item.title + '已售罄',
-          messagetype:'error'
+          message: '抱歉，'+res.showName + '已售罄',
+          messagetype:'error',
+          showtype:''
         })
-    }else{
-      this.setData({
-        isshowUslide:true
-      })
-      const uslide = this.selectComponent('#uslide')
-      uslide.showUslide()
-    }
-  
+      }else{
+        res.showName = this.formatCouponname(res)
+        res.expiry_finish_at = formatTime(res.expiry_finish_at,'Y年M月D日 h:m:s')
+        this.setData({
+          count:1,
+          amount:res.point,
+          detailData : res,
+          confirmMessage:'您是否确认消耗'+ res.point +'积分兑换1张'+res.showName+'？',
+          isshowUslide:true
+        })
+        const uslide = this.selectComponent('#uslide')
+        uslide.showUslide()
+      }
+    })
   },
+  // 设置输出商品名称
+  formatCouponname(item){
+    if(item.coupon_type == 1){
+      return item.coupon_amount + '元代金券'
+    }else if(item.coupon_type == 3){
+      return item.coupon_amount + '折优惠券'
+    }else{
+      return item.coupon_name
+    }
+     
+  },
+  // 关闭兑换窗口 子组件调用
   shUslide(o){
     this.setData({
       isshowUslide:o.detail.isshowSlide
     })
   },
-  closeMessage(){
-    this.setData({
-      isshowMessage:false,
-      isshowconfirm:false
-    })
-  },
+
+  // 显示确认兑换窗口
   showconfirm(){
-    // this.showEditInfo()
     this.setData({
       isshowUslide:false,
       isshowMessage:true,
@@ -148,16 +165,53 @@ Page({
       showtype:'confirm'
     })
   },
-  submitExchange(){
+  // 设置兑换数量
+  setCount(e){
+    let count = parseInt(e.detail.value)
+    if(isNaN(count)||count <= 0){
+      count = 1
+    }else if(count > 999){
+      count = 999
+    }
+    const amount = this.data.detailData.point * count
     this.setData({
-      showtype:'success'
+      amount : amount,
+      count:count,
+      confirmMessage:'您是否确认消耗'+ amount +'积分兑换'+ count +'张'+this.data.detailData.showName+'？',
     })
   },
-  setMessage(){
-    this.setData({
-        message:'烤肠券已达到兑换上限，无法兑换',
+  // 提交兑换请求
+  submitExchange(){
+    const that = this
+    exchangeGoods(this.data.detailData.id,{amount:this.data.count}).then(res => {
+      that.setData({
+        isshowconfirm:false,
         messagetype:'error',
-        showtype:''
+        showtype:'success'
+        
+      })      
+    }).catch(error =>{
+      if(error.errors){ 
+          that.setData({
+            isshowMessage:true,
+            isshowconfirm:false,
+            messagetype:'error',
+            showtype:'message',
+            message:error.errors[0]
+          })      
+      }
+    })
+    
+  },
+    // 关闭返回对话弹出 子组件调用
+  closeMessage(){
+    this.setData({
+      isshowUslide:false,
+      isshowMessage:false,
+      isshowconfirm:false,
+      messagetype:'',
+      showtype:'',
+      message:'',
     })
   }
 })

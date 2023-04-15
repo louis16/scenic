@@ -2,28 +2,27 @@
     <view class="topbg">
       <topContainer hiddenBack="{{false}}" title="个人荣誉" />
     </view>
+    <view class="honournav">
+      <view class="honournavmain">
+      <view class="honournav_items" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend" style="{{ navitemsStyle }}">
+        <block wx:for="{{ types }}" wx:key="item">
+          <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeNav" data-type="{{ item.typeid }}"  data-index="{{index}}"><text class="navtext">{{ item.title }}</text></view>
+        </block>     
+      </view> 
+    </view>
+    <view class="navmoreBut" bindtap="showMoreTypeWrap">
+      <image src="/static/imgs/user/more-type-icon.png" mode="scaleToFill"/>
+    </view>  
+  </view>
     <view class="honourmain">
-      <view class="honournav">
-        <view class="honournavmain">
-          <view class="honournav_items" style="{{ navitemsStyle }}">
-            <block wx:for="{{ tempitem }}" wx:key="item">
-              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
-            </block>     
-          </view> 
-        </view>     
-        <view class="navmoreBut" bindtap="showMoreTypeWrap">
-          <view></view>
-          <view></view>
-          <view></view>
-        </view>  
-      </view>
+      
       <view class="honourlist">
-        <block wx:for="{{ tempitems}}" wx:key="index">
-          <view class="honour-item" bindtap="openNoticeBody">
+        <block wx:for="{{ listData }}" wx:key="index">
+          <view class="honour-item" wx:if="{{ sindex == 0 || sindex == item.type }}">
             <view>
                 <image src="/static/imgs/user/temp03.png" mode=""/>
             </view>
-            <text>获得30积分</text>
+            <text>{{ item.name }}</text>
           </view>
       </block>
       
@@ -38,8 +37,8 @@
             <image src="/static/imgs/user/rankingmoretypebg.png" class="image" mode=""/>
           </view>
           <view class="m-moretype__items">
-            <block wx:for="{{ tempitem }}" wx:key="item">
-              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav"  data-index="{{index}}"><text class="navtext">{{ item }}</text></view>
+            <block wx:for="{{ types }}" wx:key="item">
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeNav" data-type="{{ item.typeid }}"  data-index="{{index}}"><text class="navtext">{{ item.title }}</text></view>
             </block>
                
           </view> 

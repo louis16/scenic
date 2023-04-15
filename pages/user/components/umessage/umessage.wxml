@@ -5,10 +5,10 @@
   <view class="umessage-main" wx:elif="{{ showtype == 'confirm'  }}">
     <view class="umessage-bg"></view>
     <view class="umessage-img">
-      <image src="{{ umessagebg }}" mode="buttom" />
+      <image src="{{ umessagebg }}" class="umessage-img-imgs" mode="buttom" />
     </view>
-    <view bindtap="closeumessage" class="closeBtn">
-      <image class="closeIcon" src="/static/imgs/user/icon/uclose-but.png" mode="" />   
+    <view bindtap="closeumessage" class="closeBtn" wx:if="{{ !hideClose }}">
+      <image class="butimgs" src="/static/imgs/user/icon/uclose-but.png" mode="" />   
     </view>
     <view class="umessage-content" >
       <slot></slot>   
@@ -17,17 +17,17 @@
   <view class="umessage-main" wx:else>
     <view class="umessage-bg"></view>
     <view class="umessage-img">
-      <image src="{{ umessagebg }}" mode="buttom" />
+      <image src="{{ umessagebg }}"   class="umessage-img-imgs" mode="buttom" />
     </view>
-    <view bindtap="closeumessage" class="closeBtn">
-      <image class="closeIcon" src="/static/imgs/user/icon/uclose-but.png" mode="" />   
+    <view bindtap="closeumessage" class="closeBtn" wx:if="{{ !hideClose }}">
+      <image class="closeIcon" class="butimgs" src="/static/imgs/user/icon/uclose-but.png" mode="" />   
     </view>
-    <view class="umessage-content" >
+    <view class="umessage-content">
     <view>
-      <view class="umessage-content__icon">
-        <image wx:if="{{ messagetype != 'noicon' }}" class="closeIcon" src="{{ messagetype == 'ok' ? '/static/imgs/user/icon/u-m-s.png' : '/static/imgs/user/icon/u-m-e.png' }}" mode="" />
+      <view class="umessage-content-icon">
+        <image wx:if="{{ messagetype != 'noicon' }}" class="closeIcon" src="{{ messagetype == 'ok' ? '/static/imgs/user/icon/u-m-s.png' : '/static/imgs/user/icon/u-m-e.png' }}" class="umessage-content-icon-imgs" mode="" />
       </view>
-        <view class="umessage-content__text">{{ message }}</view>
+        <view class="umessage-content-text">{{ message }}</view>
       </view>
       <slot></slot>    
     </view>   

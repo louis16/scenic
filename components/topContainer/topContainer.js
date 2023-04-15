@@ -20,6 +20,14 @@ Component({
         titleWhite:{ 
           type:Boolean,
           value:false
+        },
+        titleStyle:{
+          type:String,
+          value:''
+        },
+        fixed:{
+          type:Boolean,
+          value:false
         }
     },
     data: {
@@ -30,6 +38,7 @@ Component({
         titleHeight: app.globalData.navHeight - app.globalData.statusBarHeight,
         statusBarHeight: app.globalData.statusBarHeight,
         width: app.globalData.windowWidth,
+        navHeightfixed: app.globalData.navHeight, //导航栏高度
         navWidth: app.globalData.navWidth
     },
     methods: {

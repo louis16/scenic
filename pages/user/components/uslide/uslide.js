@@ -1,7 +1,7 @@
 // pages/user/components/uslide/uslide.js
 Component({
   options: {
-    multipleSlots: true,
+    multipleSlots: true
   },
   /**
    * 组件的属性列表

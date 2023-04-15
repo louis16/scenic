@@ -1,7 +1,7 @@
 <!--pages/user/integralmall/integralmall.wxml-->
 <view class="container linearBg">
-  <topContainer hiddenBack="{{false}}" title="积分商城" titleWhite />
-  <view class="main">
+  <topContainer  hiddenBack="{{false}}" style="background: linear-gradient(360deg, #FD996E 0%, #FF6B2C 99%);" fixed title="积分商城" titleWhite />
+  <view class="main" style="margin-top: {{navHeight * 2 + 16}}rpx;">
     <view class="userinfo">
     <view class="userinfo-content">
       <view class="userinfo-head">
@@ -38,37 +38,43 @@
       <text>积分商城</text>
     </view>
   </view>
-  <view class="infolists">
-    <block wx:for="{{datalist}}" wx:for-item="item" wx:key="index">
-    <view class="infolists-item {{ item.isnull ? 'item-null' : '' }}" bindtap="showEditInfo" data-item="{{ item }}">
-
-        <image src="{{ item.src }}" class="imgs"></image>
-        <view class="item-null__image">
-          <image src="/static/imgs/user/u-i-null.png" class="image"></image>
-        </view>
-        <view class="item__title">{{ item.title }}</view>
-        <view class="item-info">
-          <image src="/static/imgs/user/temp-2.png"></image>
-          <view class="p">{{ item.integralPrice }}</view>
-          <view class="e">兑</view>
-        </view>
+  
+</view>
+<view class="infolists">
+    <block wx:for="{{goodsList}}" wx:for-item="item" wx:key="index">
+    <view class="infolists-item {{ item.stock_status == 0 ? 'item-null' : '' }}" bindtap="showExchangeItem" data-id="{{ item.id }}" data-item="{{ item }}" style="{{ index % 3 == 0 ? 'margin-left:10rpx' : '' }}">
+      <image src="/static/imgs/user/i-item-bg.png" class="item-bg"></image>
+        <view class="item-content">
+          <image src="{{ filePath + item.coupon_image }}" class="imgs" mode="scaleToFill"></image>
+            <view class="item-null__image">
+              <image src="/static/imgs/user/u-i-null.png" class="image"></image>
+            </view>
+            <view class="item__title">{{ item.showName }}</view>
+            <view class="item-info">
+              <image src="/static/imgs/user/temp-2.png"></image>
+              <view class="p">{{ item.point }}</view>
+              <view class="e">兑</view>
+            </view>
+        </view>    
     </view>
     </block>
   </view>
-</view>
+
 <block wx:if="{{isshowUslide}}">
 <Uslide id="uslide" height="-1200rpx"  bind:shUslide="shUslide">
       <view slot="body">
         <view class="showitem">
           <view class="iteminfo">
-            <image src="/static/imgs/user/temp-3.png" class="imgs"></image>
+            <image src="{{ filePath + detailData.coupon_image }}" class="imgs"></image>
             <view class="iteminfo__text">
-              <text class="n">烤肠卷</text>
-              <text class="i">100积分</text>
+              <text class="n">{{ detailData.showName }}</text>
+              <text class="i">{{ detailData.point }}</text>
             </view>
             <view class="iteminfo__but">
                 <view class="but {{ count == 1 ? 'disabled' : '' }}" bindtap="setExchangeCount" data-type="0">-</view>
-                <view class="count">{{ count }}</view>
+                <view class="count">
+                  <input type="text" class="input" value="{{count}}" bindblur="setCount" />
+                </view>
                 <view class="but" bindtap="setExchangeCount" data-type="1">+</view>
             </view>      
           </view>
@@ -78,32 +84,32 @@
               <text>使用说明：</text><text>仅限于指定店铺使用，在商家允许的情况下可兑换同等价位的其他商品。</text>
             </view>
             <view>
-              <text>适用店铺：</text><text>景区直通车、景区特产超市、景区直通车景区直通车、景区直通车、景区直通车。</text>
+              <text>适用店铺：</text><block wx:for="{{ detailData.shops }}" wx:for-item="items" wx:for-index="index1" wx:key="items"><text>{{ index1 == 0 ? '' : '、' }}{{ items.name}}</text></block>
             </view>
+            
             <view>
-              <text>截止时间：</text><text>2023年02月12日 12:56:25</text>
+              <text>截止时间：</text><text>{{ detailData.expiry_finish_at }}</text>
             </view>  
           </view>
         </view> 
         <view class="exchange">
-            <view class="exchange-price">共计：<text>100</text>积分</view>
+            <view class="exchange-price">共计：<text>{{ amount }}</text>积分</view>
             <view class="exchange-button" bindtap="showconfirm">立即兑换</view>
         </view>   
       </view>
     </Uslide>
   </block>
-  <!-- <Umessage wx:if="{{ isshowMessage }}" isshowconfirm="{{isshowconfirm}}"  -->
   <block wx:if="{{ isshowMessage }}">
   <Umessage isshowconfirm="{{ isshowconfirm }}" message="{{ message }}" messagetype="{{ messagetype }}" showtype="{{ showtype }}" bindcloseMessage="closeMessage">
     <view wx:if="{{ showtype == 'confirm' }}">
        <view class="messbody">
        <view class="messbody-content">
         <image src="/static/imgs/user/temp-3.png" class="imgs"></image>
-        <view class="text">您是否确认消耗100积分兑换1张烤肠券？</view>
+        <view class="text">{{ confirmMessage }}</view>
        </view>
         <view class="messbody-button">
           <!-- <view class="mcancel" bindtap="closeMessage">取消</view> -->
-          <view class="mcancel" bindtap="setMessage">取消</view>
+          <view class="mcancel" bindtap="closeMessage">取消</view>
           <view class="msubmit" bindtap="submitExchange">确认</view>
         </view>
        </view>
@@ -119,12 +125,12 @@
                 <image src="/static/imgs/user/temp-3.png" class="item-img"></image>
               <view class="s-content__info">
                 <view class="s-content__infoname">
-                <view>烤肠卷烤肠卷烤肠卷烤肠卷</view>
-                <text>×2</text>
+                <view>{{ detailData.showName }}</view>
+                <text>×{{ count }}</text>
                 </view>
                 <view class="s-content__infocount">
                     <view>消耗</view>
-                    <view>200积分</view>
+                    <view>{{ amount }}积分</view>
                 </view>
               </view>    
             </view>    

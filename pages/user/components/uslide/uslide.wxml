@@ -2,7 +2,7 @@
   <!-- bindtransitionend="animationCall" -->
   <view class="uslide-main" style="bottom: {{ offsetHeight }};" animation="{{slideAnimation}}">
     <view bindtap="showUslide" class="closeBtn">
-    <image src="/static/imgs/user/icon/uclose-but.png" mode="" />
+    <image src="/static/imgs/user/icon/uclose-but.png" class="butimgs" mode="" />
     </view>
     <slot name="body"></slot>
   </view>

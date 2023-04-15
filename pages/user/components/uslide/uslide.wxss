@@ -9,7 +9,7 @@
   left: 0px;
   top: 0px;
 }
-.uslide-main {
+.uslide-main{
   width: 100%;
   position: absolute;
   padding-bottom: 68rpx;

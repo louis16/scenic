@@ -1,213 +1,58 @@
 <!--pages/user/ecoupon/ecoupon.wxml-->
 <view class="container linearBg">
   <view class="topbg">
-    <topContainer hiddenBack="{{false}}" title="电子券" />
+    <topContainer  hiddenBack="{{false}}" style="background: linear-gradient(180deg, #E5EFFF 0%, rgba(248,251,255,1) 74%, rgba(255,255,255,1) 100%);" fixed title="电子券">
+    </topContainer>
   </view>
-  <view class="ecoupon-main pagebottom">
-    <view class="ecoupon-main__nav">
+  <view class="ecoupon-main__nav" style="top: {{navHeight * 2}}rpx;">
       <view class="{{ sindex == 0 ? 'active' : '' }}" bindtap="changeNav" data-index='0'><text class="navtext">全部</text></view>
       <view class="{{ sindex == 1 ? 'active' : '' }}" bindtap="changeNav" data-index='1'><text class="navtext">待核销</text></view>
       <view class="{{ sindex == 2 ? 'active' : '' }}" bindtap="changeNav" data-index='2'><text class="navtext">已核销</text></view>
       <view class="{{ sindex == 3 ? 'active' : '' }}" bindtap="changeNav" data-index='3'><text class="navtext">已过期</text></view>
-      <view class="nav-line" style="{{ linestyle }}"></view>
     </view>
+  <view class="ecoupon-main pagebottom"  style="margin-top: {{navHeight * 2 + 80}}rpx;">
     <view class="ecoupon-main__list">
       <!-- <view class="eitem" style="box-shadow: 0px 6rpx 12rpx 0rpx #D5E1F2;">
         <image src="/static/imgs/user/eitem-bg.png" style="width: 316px; height: 94px;"></image>
       </view> -->
-    <block wx:for="{{tempdata}}" wx:key="index">
-      <view class="eitem {{ item.classN }} {{ item.isdis ? 'disitem' : '' }}" bindtap="showDetail">
+      <block wx:for="{{listData}}" wx:key="index">
+      <view class="eitem {{ item.class }} {{ item.isdis ? 'disitem' : '' }}" bindtap="showDetail" data-id="{{ item.id }}" wx:if="{{ item.show }}">
         <view class="eitembg">
           <image src="{{ item.bgsrc }}" class="image" mode=""/>
         </view>
         <view class="eitem-content">
-            <view class="eitem-content__left" wx:if="{{ item.type == 0 }}">
+            <view class="eitem-content__left" wx:if="{{ item.type == 2 }}">
               <view class="e-left__pic">
-                <image src="/static/imgs/user/temp-3.png" class="image" mode=""/>
+                <image src="{{ filePath + item.image }}" class="image" mode=""/>
               </view>            
             </view>
             <view class="eitem-content__left" wx:if="{{ item.type == 1 }}">
               <view class="e-left__text1">
                 <view>
-                ￥<text>{{ item.count }}</text>
-              </view>
-              <view>{{ item.text }}</view>
-              </view>
-              
+                ￥<text>{{ item.amount }}</text>
+                </view>
+                <view>{{ item.explain }}</view>
+              </view>        
             </view>
-            <view class="eitem-content__left" wx:if="{{ item.type == 2 }}">
+            <view class="eitem-content__left" wx:if="{{ item.type == 3 }}">
               <view class="e-left__text2">
-                <text>8</text>折         
+                <text>{{ item.amount }}</text>折         
               </view>             
           </view>
             <view class="eitem-content__intro">
-                <view>{{ item.name }}</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
+                <view>{{ item.description }}</view>
+                <view>适用店铺：<block wx:for="{{ item.shops }}" wx:for-item="items" wx:key="items"><text>{{ items.name}}</text></block>
+              </view>             
+                <view>{{ item.expiry_start_at }} - {{ item.expiry_finish_at }}</view>
             </view>
         </view>
         <view class="eitem-status">
-          <view wx:if="{{ item.isdis }}">{{ item.distype == 0 ? '已核销' : '已过期' }}</view>
+          <view wx:if="{{ item.isdis }}">{{ item.status == 2 ? '已核销' : '已过期' }}</view>
           <view wx:else>立即核销</view>
         </view>
       </view>
-   
     </block>
-<!-- 
-      <view class="eitem eitem-0" bindtap="showDetail">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg1.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-            <view class="eitem-content__left">
-              <view class="e-left__pic">
-                <image src="/static/imgs/user/temp-3.png" class="image" mode=""/>
-              </view>            
-            </view>
-            <view class="eitem-content__intro">
-                <view>烤肠券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>立即核销</view>
-        </view>
-      </view>
-      <view class="eitem eitem-1">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg2.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-            <view class="eitem-content__left">
-              <view class="e-left__text1">
-                <view>
-                ￥<text>5</text>
-              </view>
-              <view>满30元可用</view>
-              </view>
-              
-            </view>
-            <view class="eitem-content__intro">
-                <view>代金券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>立即核销</view>
-        </view>
-      </view>
-      <view class="eitem eitem-1">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg2.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-            <view class="eitem-content__left">
-              <view class="e-left__text1">
-                <view>
-                ￥<text>50</text>
-              </view>
-              <view>满30元可用</view>
-              </view>
-              
-            </view>
-            <view class="eitem-content__intro">
-                <view>代金券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>立即核销</view>
-        </view>
-      </view>
-      <view class="eitem eitem-2">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg3.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-          <view class="eitem-content__left">
-              <view class="e-left__text2">
-                <text>8</text>折         
-              </view>             
-          </view>
-            <view class="eitem-content__intro">
-                <view>优惠券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>立即核销</view>
-        </view>
-      </view> -->
-      <!-- <view class="eitem eitem-3">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg4.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-          <view class="eitem-content__left">
-              <view class="e-left__text2">
-                <text>8</text>折         
-              </view>             
-          </view>
-            <view class="eitem-content__intro">
-                <view>优惠券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>已核销</view>
-        </view>
-      </view>
-      <view class="eitem eitem-3">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg4.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-            <view class="eitem-content__left">
-              <view class="e-left__pic">
-                <image src="/static/imgs/user/temp-3.png" class="image" mode=""/>
-              </view>
-              
-            </view>
-            <view class="eitem-content__intro">
-                <view>烤肠券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>已过期</view>
-        </view>
-      </view>
-      <view class="eitem eitem-3">
-        <view class="eitembg">
-          <image src="/static/imgs/user/u-e-item-bg4.png" class="image" mode=""/>
-        </view>
-        <view class="eitem-content">
-            <view class="eitem-content__left">
-              <view class="e-left__text1">
-                <view>
-                ￥<text>50</text>
-              </view>
-              <view>满30元可用</view>
-              </view>
-              
-            </view>
-            <view class="eitem-content__intro">
-                <view>代金券</view>
-                <view>适用店铺：景区直通车、景区特产超市车…</view>
-                <view>2023.02.12 12:56 - 2023.03.12 12:56</view>
-            </view>
-        </view>
-        <view class="eitem-status">
-          <view>已核销</view>
-        </view>
-      </view> -->
     </view>
   </view>
-  <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="2" />
+  <FunctinonBar wx:if="{{ isFunctinonBar }}" bind:clickItem="handleFuncClick" currentTabKey="2" />
 </view>

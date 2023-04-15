@@ -19,6 +19,7 @@
   content: '';
   position: absolute;
   background: url(data:image/png;base64,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);
+  
   background-size: 100% 100%;
   width: 120rpx;
   height: 62rpx;
@@ -113,9 +114,9 @@
   position: relative;
 }
 .userinfo-integral > view > view:nth-child(1){
- font-weight: DIN-Bold;
+ font-weight: Roboto;
 }
-.userinfo-integral > view > view::before{
+.userinfo-integral > view:last-child > view::before{
   position: absolute;
   content: '';
   left: 0px;
@@ -132,6 +133,7 @@
   width: 650rpx;
   border-radius: 16rpx;
   box-shadow: 0px 8rpx 16rpx 0px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08); */
   margin-left: 30rpx;
   margin-top: 40rpx;
   padding:0px 20rpx;
@@ -258,7 +260,7 @@
 }
 .udeid-date .picker::before{
   right: 30rpx;
-  top: 26rpx;
+  top: 22rpx;
 }
 .udeid-date__select{
   color: #333333!important;
@@ -279,7 +281,8 @@
   padding: 0rpx;
   border-radius: 28rpx;
   background: linear-gradient(180deg, #C5DAF8 0%, #668FCC 100%);
-  box-shadow: 0px 3px 6px 0px #AFC4E3,inset 0px 4px 6px 0px #C5DDFF;
+  box-shadow: inset 0px 4px 6px 0px #C5DDFF;
+  /* box-shadow: 0px 3px 6px 0px #AFC4E3,inset 0px 4px 6px 0px #C5DDFF; */
 }
 .messbody{
   padding-top: 120rpx;

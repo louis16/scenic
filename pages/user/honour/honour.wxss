@@ -10,26 +10,31 @@
   background: linear-gradient(180deg, #E5EFFF 0%, rgba(248,251,255,0.64) 74%, rgba(255,255,255,0.00) 100%);
 }
 .honourmain{
-  width: 690rpx;
+  width: 720rpx;
   margin-left: 30rpx;
 }
 .honournav{
-  /* width: 750rpx; */
-  width: 100%;
-  /* overflow: hidden; */
+  width: 720rpx;
+  height: 64rpx;
+  
+  overflow: hidden;
   position: relative;
+  margin-left: 30rpx;
 }
 .honournavmain{
-  width: 650rpx;
+  width: 690rpx;
+  height: 64rpx;
   overflow: hidden;
 }
 .honournav_items{
   position: absolute;
-  width: 10000rpx;
+  height: 63rpx;
   display: flex;
-  position: relative;
-  padding-bottom: 14rpx;
-  padding-top: 50rpx;
+  flex-wrap: nowrap;
+  line-height: 64rpx;
+  /* position: relative; */
+  /* padding-bottom: 14rpx; */
+  /* padding-top: 50rpx; */
   left: 0rpx;
   top: 0rpx;
 }
@@ -44,7 +49,6 @@
 .honournav_items view text{
   display: inline-block;
   position: relative;
-  padding-bottom: 18rpx;
 }
 .honournav_items view text::before{
   content: "";
@@ -82,31 +86,26 @@
   position: absolute;
   width: 80rpx;
   height: 64rpx;
-  right: -30rpx;
-  bottom: 14rpx;
+  top: 0rpx;
+  right: 0rpx;
+}
+.navmoreBut image{
+  width: 80rpx;
+  height: 64rpx;
+  position: relative;
+  z-index: 1;
 }
 .navmoreBut::before{
   content: "";
   position: absolute;
-  left: 0rpx;
-  top: 10rpx;
-  background-color: #333333;
+  z-index: 0;
+  left: 4rpx;
+  top: 18rpx;
   width: 4rpx;
-  height: 44rpx;
-  background: rgba(0, 0, 0, 0.15);
-  filter: blur(12rpx);
+  height: 30rpx;
+  box-shadow: -6rpx 0rpx 10rpx #999999;
 }
-.navmoreBut view{
-  width: 33rpx;
-  height: 4rpx;
-  background: #333333;
-  margin-left: 23rpx;
-  margin-top: 20rpx;
-  border-radius: 8rpx;
-}
-.navmoreBut view:nth-child(2),.navmoreBut view:nth-child(3){
-  margin-top: 4rpx;
-}
+
 .honourlist{
   display: flex;
   flex-direction: row;
@@ -159,7 +158,7 @@ height: 24rpx;
 position: absolute;
 z-index: -1;
 right: 14rpx;
-top: -18rpx;
+top: -24rpx;
 }
 .m-moretype__items{
 display: flex;

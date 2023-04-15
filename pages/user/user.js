@@ -1,3 +1,5 @@
+const { getStorageSync,TOKEN } = require('../../util/util')
+const { submitUserInfo,userOnline,scenicDetail } = require('./common/api')
 const app = getApp()
 const eventBus = app.globalData.bus
 Page({
@@ -15,7 +17,7 @@ Page({
     messagetype:'noicon',
     message:'',
     sex: 1,
-    userbgurl:app.globalData.fileUserUrl+'e-page-bg.png',
+    userbgurl:app.globalData.fileUserUrl+'usermain-bg.png',
     userdata: {
       sex: 1,
       age: 0
@@ -28,6 +30,8 @@ Page({
   onLoad(options) {
     //  this.getUserInfo()
     this.setData()
+    // this.userOnline()
+    
   },
 
   /**
@@ -42,6 +46,7 @@ Page({
    */
   onShow() {
 
+   this.userOnline()
   },
 
   /**
@@ -78,6 +83,7 @@ Page({
   onShareAppMessage() {
 
   },
+  // 页面跳转
   gotoPage(e) {
     const url = e.currentTarget.dataset['url'];
     wx.navigateTo({
@@ -89,6 +95,7 @@ Page({
       isshowUslide: o.detail.isshowSlide
     })
   },
+  // 打开用户资料编辑弹窗
   showEditInfo() {
     this.setData({
       isshowUslide: true
@@ -96,20 +103,32 @@ Page({
     const uslide = this.selectComponent('#uslide')
     uslide.showUslide()
   },
+  //设置用户生日
   bindDateChange(e) {
     this.setData({
       date: e.detail.value
     })
   },
+  // 设置用户性别
   setSelectSex(e) {
     const value = e.currentTarget.dataset['value'];
     this.setData({
       sex: value
     })
   },
-  setUserInfo() {
+  //保存用户生日 性别
+  submitUserInfo() {
     const uslide = this.selectComponent('#uslide')
     uslide.showUslide()
+    submitUserInfo({gender:this.data.sex,birthday:this.data.date}).then(res =>{
+      this.setData({
+        isshowMessage:true,
+        isshowconfirm:false,
+        showtype:'message',
+        messagetype:'ok',
+        message:'用户信息已保存',
+      })
+    })
     this.setData({
       userdata: {
         sex: this.data.sex,
@@ -117,6 +136,18 @@ Page({
       }
     })
   },
+  // 获取用户信息
+  userOnline(){
+    const scenicDetailItem = scenicDetail()
+    const token = getStorageSync(TOKEN)
+    if(token){
+      userOnline({scenery_id:scenicDetailItem.id}).then(res=>{
+        console.log(res);
+      })
+    }
+    
+  },
+  // 打开退出登录弹出窗口
   openloginOut(){
     this.setData({
       isshowMessage:true,
@@ -125,12 +156,14 @@ Page({
       messagetype:'noicon'
     })
   },
+  // 关闭退出弹出窗口
   closeMessage(){
     this.setData({
       isshowMessage:false,
       isshowconfirm:false
     })
   },
+  // 点击退出
   loginout(){
     this.setData({
       isshowMessage:false,

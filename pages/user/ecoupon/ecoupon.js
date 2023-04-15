@@ -1,4 +1,7 @@
 // pages/user/ecoupon/ecoupon.js
+const { getCouponsList,scenicDetail } = require('../common/api')
+const { formatTime } = require('../common/index')
+const app = getApp()
 Page({
 
   /**
@@ -6,49 +9,32 @@ Page({
    */
   data: {
     sindex:0,
+    title:'',
     linestyle:'',
-    tempdata:[]
+    tempdata:[],
+    listData:[],
+    isFunctinonBar:false,
+    filePath:app.globalData.fileUrl+'/',
+    navHeight: app.globalData.navHeight //导航栏高度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setNavLine()
-    const names = ['烤肠卷','代金券','优惠券']
-    const tempData = []
-    for(let i=0;i<=7;i++){
-      const item = {}
-      const j = i%3
-      item.name = names[j]
-      item.type = j
-      item.src = '/static/imgs/user/temp-3.png'
-      item.bgsrc = '/static/imgs/user/u-e-item-bg'+(j+1)+'.png'
-      item.classN = 'eitem-'+j
-      item.count = '50'
-      item.isdis = false
-      item.text = '满300元可用'
-      tempData.push(item)
+    this.getCouponsList()
+    const pages = getCurrentPages()
+    const prvepage = pages[pages.length - 2]
+    //FunctinonBar
+    if(prvepage.route.indexOf('user') > 0){
+      this.setData({
+        isFunctinonBar : false
+      })
+    }else{
+      this.setData({
+        isFunctinonBar : true
+      })
     }
-    const tempDis = ['已核销','已过期']
-    for(let i=0;i<=4;i++){
-      const item = {}
-      const j = i%3
-      const s = i%2
-      item.name = names[j]
-      item.distype = s
-      item.isdis = true
-      item.type = j
-      item.src = '/static/imgs/user/temp-3.png'
-      item.bgsrc = '/static/imgs/user/u-e-item-bg4.png'
-      item.classN = 'eitem-3'
-      item.count = '50'
-      item.text = '满300元可用'
-      tempData.push(item)
-    }
-    this.setData({
-      tempdata: tempData
-    })
   },
 
   /**
@@ -76,7 +62,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-   
+    
   },
 
   /**
@@ -99,38 +85,79 @@ Page({
   onShareAppMessage() {
 
   },
-  showDetail(){
-    wx.navigateTo({
-      url: '../ecoupondetail/ecoupondetail'
+  // 获取优惠券列表
+  getCouponsList(){
+    const scenicDetailItem = scenicDetail()
+    getCouponsList({scenery_id:scenicDetailItem.id}).then(res =>{
+      res.map(item => {
+        item.show =  true
+       
+        if(item.status == 2 || item.status == 3  ){
+          item.isdis = true
+        }   
+          this.setItemClass(item)
+          item.expiry_finish_at = formatTime(item.expiry_finish_at,'Y-M-D h:m')
+          item.expiry_start_at = formatTime(item.expiry_start_at,'Y-M-D h:m')
+      })
+      this.setData({
+        listData : res
+      })
+
     })
   },
+  // 设置优惠券展示样式
+  setItemClass(item){
+    if(item.type == 1){
+      item.class = 'eitem-1'
+      item.bgsrc = '/static/imgs/user/u-e-item-bg001.png'
+    }else if(item.type == 2){
+      item.class = 'eitem-2'
+      item.bgsrc = '/static/imgs/user/u-e-item-bg002.png'
+    }else if(item.type == 3){
+      item.class = 'eitem-3'
+      item.bgsrc = '/static/imgs/user/u-e-item-bg003.png'
+    }
+    if(item.isdis){
+      item.class = 'eitem-0'
+      item.bgsrc = '/static/imgs/user/u-e-item-bg000.png'
+    }
+  },
+  // 跳转优惠券详情
+  showDetail(e){
+    const id = parseFloat(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: `../ecoupondetail/ecoupondetail?id=${id}`
+    })
+  },
+  // 点击筛选并设置本地数据状态
   changeNav(e){
     let tindex = 0
     if(e){
        tindex = parseFloat(e.currentTarget.dataset.index);
     }
+    const listData = this.data.listData
+    listData.map(item => {
+      if(tindex == 0){
+        item.show = true
+      }else{
+        item.show = item.status == tindex
+      }
+    })
     this.setData({
-      sindex:tindex
+      sindex:tindex,
+      listData : listData
     })
-    this.setNavLine()
-    // const index = e.get
   },
-  setNavLine(){
-    const that = this
-    let obj = wx.createSelectorQuery();
-    obj.select('.ecoupon-main__nav > .active').boundingClientRect()
-    obj.select('.ecoupon-main__nav .nav-line').boundingClientRect()
-    obj.exec(res =>{
-      const aobj = res[0]
-      // const l = 188 * tindex
-       const o = (aobj.left*2) - 20
-      let style = ''
-      style = 'transform: translateX('+o+'rpx);transition-duration: 0.3s;'  
-      that.setData({
-        linestyle  : style
-      })
-
+  handleFuncClick(event) {
+    const {
+      type
+    } = event.detail;
+    if (type == '2') return
+    wx.navigateBack({
+      success: function () {
+        eventBus.emit('changeTab', type)
+      }
     })
-
   }
+  
 })

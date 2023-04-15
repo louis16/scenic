@@ -115,7 +115,7 @@
             </picker>
           </view>
           <view class="uedid-button">
-            <button bindtap="setUserInfo">保存</button>
+            <button bindtap="submitUserInfo">保存</button>
           </view>
       </view>
     </Uslide>

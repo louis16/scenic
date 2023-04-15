@@ -39,6 +39,8 @@ function request(params) {
           } else { //请求失败
             _showToas(res.data.msg.toString());
           }
+        }else if(statusCode === '400'){
+          reject(res.data)
         } else if (statusCode === '403') {
           reject(403)
           showToast({

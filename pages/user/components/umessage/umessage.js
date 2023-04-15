@@ -2,7 +2,7 @@
 const app = getApp()
 Component({
   options: {
-    multipleSlots: true,
+    multipleSlots: true
   },
   /**
    * 组件的属性列表
@@ -16,6 +16,10 @@ Component({
       type:String,
       value:''
     },
+    hideClose:{
+      type:Boolean,
+      value:false
+    },
     showtype:{
       type:String,
       value:''
@@ -28,8 +32,14 @@ Component({
   data: {
     umessagebg:app.globalData.fileUserUrl+'umessage-bg.png',
   },
-  created() {
-  
+  attached() {
+    if(this.data.hideClose){
+      const that = this
+      setTimeout(()=>{      
+        this.triggerEvent('closeMessage')   
+        that.triggerEvent('gotoPage')   
+      },3000)
+    }
   },
   /**
    * 组件的方法列表

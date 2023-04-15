@@ -1,6 +1,7 @@
 .container{
   overflow-x:hidden;
   box-sizing:border-box;
+  position: relative;
 }
 .page-bg{
   position: fixed;
@@ -51,7 +52,7 @@
   top: 0rpx;
   text-align: center;
 }
-.closeBtn image{
+.butimgs{
   position: absolute;
   right: 35rpx;
   top: 35rpx;

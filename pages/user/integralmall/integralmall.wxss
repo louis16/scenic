@@ -54,7 +54,6 @@
   font-size: 32rpx;
 }
 .userinfo-content .uinfo{
-  /* display: flex; */
   width: 360rpx;
   margin-left: 6rpx;
 }
@@ -141,46 +140,34 @@
   z-index: 0;
 }
 .infolists{
- 
-  width: 690rpx;
+  width: 750rpx;
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
  padding-bottom: 60rpx;
+ padding-top: 16rpx;
 }
 .infolists .infolists-item{
+  width: 242rpx;
+  height: 324rpx;
+  
+  position: relative;
+  overflow: hidden;
+}
+.infolists .infolists-item .item-bg{
+  width: 242rpx;
+  height: 324rpx;
+  position: absolute;
+  z-index: -1;
+  left: 0rpx;
+  top: 0rpx;
+}
+.item-content{
   width: 210rpx;
   height: 292rpx;
   overflow: hidden;
-  position: relative;
-  margin-right: 30rpx;
-  background: #ffffff;
-  box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(0, 0, 0, 0.08);
-  border-radius: 28rpx;
-  margin-top: 32rpx;
-}
-.infolists .infolists-item:nth-child(3n){
-  margin-right: 0rpx;
-}
-.infolists .infolists-item::before{
-  position: absolute;
-  content: '';
-  width: 24rpx;
-  height: 24rpx;
-  left: -12rpx;
-  bottom: 59rpx;
- background-color: rgba(0, 0, 0, 0.06);
- border-radius: 24rpx;
-}
-.infolists .infolists-item::after{
-  position: absolute;
-  content: '';
-  width: 24rpx;
-  height: 24rpx;
-  right: -12rpx;
-  bottom: 59rpx;
- background-color: rgba(0, 0, 0, 0.06);
- border-radius: 24rpx;
+  margin-top: 8rpx;
+  margin-left: 16rpx;
 }
 
 .infolists .infolists-item .imgs{
@@ -243,12 +230,12 @@ margin-top: 16rpx;
 opacity: 1;
 background: linear-gradient(180deg, #FFB85B 0%, #FF6B2C 100%);
 }
-.infolists-item  .item-null__image{
+.infolists-item .item-null__image{
   width: 120rpx;
   height: 120rpx;
   position: absolute;
-  left:45rpx;
-  top: 24rpx;
+  left:61rpx;
+  top: 32rpx;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 12rpx;
   display: none;  
