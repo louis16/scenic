@@ -118,7 +118,7 @@
   text-align: center;
   z-index: 4;
   /* background: linear-gradient(180deg, #FDD6C5 0%, #FCE3D9 100%); */
-  background: linear-gradient(180deg, #ffe1d5 0%, #feebe3 100%);
+  background: linear-gradient(180deg, #ffd7c7 0%, #ffe4d9 100%);
 }
 .navmoreBut > image{
   /* width: 80rpx;
@@ -145,7 +145,7 @@
   width: 10rpx;
   height: 44rpx;
   position: absolute;
-  left: -0rpx;
+  left: 0rpx;
   top: 12rpx;
 }
 .ranking-top__item{

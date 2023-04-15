@@ -126,11 +126,16 @@ Page({
   },
    // 选择排行榜类型排行榜
   changeMoreNav(e){
-    const index = e ? parseFloat(e.currentTarget.dataset.index) : 0
+    const index = e ? parseInt(e.currentTarget.dataset.index) : 0
+    const type = e ? parseInt(e.currentTarget.dataset.type) : 0
     this.setData({
       sindex:index,
       showMoreTypes:false
     })
+    if(type !== 0){
+      this.getRanksList(type)
+    }
+   
     this.setNavOffset(index)
   },
   // 设置排行榜类别导航条位置

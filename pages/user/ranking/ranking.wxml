@@ -22,8 +22,6 @@
         </view>  
     </view>
   <view class="ranking">
-   
-  
     <view class="rankingnav-main">
       <view class="ranking-top__item" bindtap="openNoticeBody">
         <view class="r__item-content top1">
