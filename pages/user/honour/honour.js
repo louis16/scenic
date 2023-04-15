@@ -206,7 +206,7 @@ Page({
     const senddata = {
       scenery_id : scenicDetailItem.id
     }
-    if(type !== 0){
+    if(type !== 0 && type !== undefined){
       senddata.type = type
     }
     getHonourList(senddata).then(res =>{

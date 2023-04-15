@@ -1,6 +1,6 @@
-<<<<<<< Updated upstream
-<view class="top-container {{absolute? 'absolute': ''}} " style="width: {{width}}px; height:{{navHeight}}px;{{style}}">
-  <!-- <view class="top-container" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;"> -->
+
+<!-- <view class="top-container {{absolute? 'absolute': ''}} " style="width: {{width}}px; height:{{navHeight}}px;{{style}}">
+  <view class="top-container" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;">
   <view class="top-content" style="height: {{titleHeight}}px;top: {{statusBarHeight}}px;">
     <view hidden="{{hiddenBack}}" bindtap="goBack" class="top-back-icon {{ titleWhite ? 'borderWhite' : '' }}" />
     <view wx:if="title" class="top-title {{ titleWhite ? 'white' : '' }}">
@@ -8,16 +8,15 @@
     </view>
     <slot></slot>
   </view>
-</view>
-=======
+</view> -->
+
 <view class="top-container {{absolute? 'absolute': ''}} {{ fixed ? 'fixed' : '' }}" style="width: {{width}}px; height:{{fixed ? navHeightfixed : navHeight }}px;padding-right: {{navObjWid}}px;{{style}}">
 	<!-- <view class="top-container" style="width: {{navWidth}}px;height:{{navHeight}}px;padding-right: {{navObjWid}}px;"> -->
 	<view class="top-content" style="height: {{titleHeight}}px;top: {{statusBarHeight}}px;padding-right: {{navObjWid}}px;">
 		<view hidden="{{hiddenBack}}" bindtap="goBack" class="top-back-icon {{ titleWhite ? 'borderWhite' : '' }}"/>
 		<view wx:if="title" class="top-title {{ titleWhite ? 'white' : '' }}">
-			<text style="{{ titleStyle }}">{{title}}</text>
+			<text class="top-title-text" style="{{ titleStyle }}">{{title}}</text>
 		</view>
 		<slot></slot>
 	</view>
 </view> 
->>>>>>> Stashed changes
