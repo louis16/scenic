@@ -28,38 +28,40 @@
         <image class="right-item-icon" src="/static/icon/task.png" mode="" />
         <text class="right-item-text">任务</text>
       </view>
-      <view class="task-wrap {{!showTask && 'hide-task-wrap'}}">
-        <block wx:if="{{showContent}}">
-          <view catchtap class="line">
-            <view class="line-title">
-              <image class="line-icon" src="/static/icon/task_total.png" mode="" />
-              任务总数：
+      <view class="task-wrap-mask {{!showTask && 'hide-task-wrap-mask'}}" bindtap="progressClick">
+        <view class="task-wrap {{!showContent && 'hide-task-wrap-mask'}}">
+          <block wx:if="{{showContent}}">
+            <view catchtap class="line">
+              <view class="line-title">
+                <image class="line-icon" src="/static/icon/task_total.png" mode="" />
+                任务总数：
+              </view>
+              <text class="line-num">{{overview.total_quests}}条</text>
             </view>
-            <text class="line-num">{{overview.total_quests}}条</text>
-          </view>
-          <view class="line">
-            <view class="line-title">
-              <image class="line-icon" src="/static/icon/task_unlocked.png" mode="" />
-              未解锁任务：
+            <view class="line">
+              <view class="line-title">
+                <image class="line-icon" src="/static/icon/task_unlocked.png" mode="" />
+                未解锁任务：
+              </view>
+              <text class="line-num">{{overview.total_unlock}}条</text>
             </view>
-            <text class="line-num">{{overview.total_unlock}}条</text>
-          </view>
-          <view class="line">
-            <view class="line-title">
-              <image class="line-icon" src="/static/icon/task_unfinished.png" mode="" />
-              未完成任务：
+            <view class="line">
+              <view class="line-title">
+                <image class="line-icon" src="/static/icon/task_unfinished.png" mode="" />
+                未完成任务：
+              </view>
+              <text class="line-num">{{overview.total_unfinish}}条</text>
             </view>
-            <text class="line-num">{{overview.total_unfinish}}条</text>
-          </view>
-          <view class="line">
-            <view class="line-title">
-              <image class="line-icon" src="/static/icon/task_complete.png" mode="" />
-              已完成任务：
+            <view class="line">
+              <view class="line-title">
+                <image class="line-icon" src="/static/icon/task_complete.png" mode="" />
+                已完成任务：
+              </view>
+              <text class="line-num">{{overview.total_finished}}条</text>
             </view>
-            <text class="line-num">{{overview.total_finished}}条</text>
-          </view>
-        </block>
-        <view class="triangle" />
+          </block>
+          <view class="triangle" />
+        </view>
       </view>
     </view>
   </view>
@@ -69,6 +71,6 @@
     <text>SOS</text>
   </view>
   <view class="left-wrap" style="top: {{navHeight + top + 50}}px" bindtap="currentLocation">
-    <image  src="/static/icon/myLocation.png" mode="" class="my-location" />
+    <image src="/static/icon/myLocation.png" mode="" class="my-location" />
   </view>
 </block>

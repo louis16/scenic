@@ -90,8 +90,9 @@
   color: #333333;
 }
 
+/*
 .hd_flex::after {
-  /* content: "";
+ content: "";
   position: absolute;
   bottom: 0;
   width: 0%;
@@ -99,8 +100,8 @@
   background-image: linear-gradient(to right, #90add8, #ffffff);
   border-radius: 3rpx;
   left: 50%;
-  transform: translateX(-50%); */
-}
+  transform: translateX(-50%); 
+}*/
 
 .hd_flex_on {
   display: inline;

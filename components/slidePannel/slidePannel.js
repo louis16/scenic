@@ -70,7 +70,7 @@ Component({
               lng: this.data.location.lng
             })
             this.setData({
-              distance: distance > 1000 ? `${String(distance).slice(0,3)}km` : `${distance}m`
+              distance: distance > 1000 ? `${(distance / 1000).toFixed(0)}km` : `${distance.toFixed(0)}m`
             })
           }
         })

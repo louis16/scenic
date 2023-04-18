@@ -110,6 +110,15 @@
   color: #999999;
 }
 
+.task-wrap-mask {
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
 .task-wrap {
   width: 400rpx;
   transition: width 0.3s;
@@ -117,8 +126,9 @@
   background-color: white;
   position: absolute;
   z-index: 99;
+  top: 600rpx;
   right: 92rpx;
-  transform: translateY(-46rpx);
+  transform: translate(-40rpx,-46rpx);
   border-radius: 28rpx;
   box-shadow: 0 12rpx 24rpx 0 rgba(0, 0, 0, 0.08);
   display: flex;
@@ -126,6 +136,17 @@
   justify-content: space-between;
   padding: 28rpx 32rpx;
   box-sizing: border-box;
+}
+
+.hide-task-wrap-mask {
+  width: 0;
+  opacity: 0;
+  transition: width 0.1s;
+}
+
+.hide-task-wrap {
+  width: 0;
+  opacity: 0;
 }
 
 .line {
@@ -171,13 +192,6 @@
   transform: rotate(45deg) translateY(-25%);
   right: 0;
   top: 45%;
-}
-
-.hide-task-wrap {
-  width: 0rpx;
-  padding: 0;
-  opacity: 0;
-  transition: width 1.3s;
 }
 
 .left-wrap {
