@@ -92,7 +92,6 @@ Page({
    // 获取荣誉列表
   getRanksList(rank_id){
     const scenicDetailItem = scenicDetail()
-    rank_id = 5
     getRanksList({scenery_id:scenicDetailItem.id,rank_id:rank_id}).then(res => {
       const rankTData = []
       const rankData = []
