@@ -1,4 +1,4 @@
-const { getStorageSync,TOKEN } = require('../../util/util')
+const { getStorageSync,storageSync,TOKEN } = require('../../util/util')
 const { submitUserInfo,getUserInfo,scenicDetail } = require('./common/api')
 const app = getApp()
 const eventBus = app.globalData.bus
@@ -118,6 +118,11 @@ Page({
     const uslide = this.selectComponent('#uslide')
     uslide.showUslide()
     submitUserInfo({gender:this.data.gender,birthday:this.data.birthday}).then(res =>{
+      const userInfo = {
+        gender : this.data.gender,
+        birthday:this.data.birthday
+      }
+      storageSync('USERINFO',JSON.stringify(userInfo))
       wx.showToast({
         title: '用户信息已保存',
         icon: 'success'
@@ -133,6 +138,11 @@ Page({
     if(token){
       getUserInfo({scenery_id:scenicDetailItem.id}).then(res=>{
         res.age = this.getAge(res.birthday)
+        const userInfo = {
+          gender : res.gender,
+          birthday:res.birthday
+        }
+        storageSync('USERINFO',JSON.stringify(userInfo))
         this.setData({
           birthday:res.birthday.substring(0,10),
           gender:res.gender,

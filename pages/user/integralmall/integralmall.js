@@ -1,4 +1,5 @@
 // pages/user/integralmall/integralmall.js
+const { getStorageSync } = require('../../../util/util')
 const { getGoodsList,getGoodsDetail,exchangeGoods,scenicDetail } = require('../common/api.js')
 const { formatTime } = require('../common/index')
 
@@ -24,6 +25,9 @@ Page({
     amount:0,
     confirmMessage:'',
     navHeight: app.globalData.navHeight, //导航栏高度
+    points:0,
+    newexchange:'',
+    userInfo:{}
   },
 
   /**
@@ -31,6 +35,11 @@ Page({
    */
   onLoad(options) {
       this.getGoodsList()   
+      const userInfo = JSON.parse(getStorageSync('USERINFO'))
+      userInfo.age = this.getAge(userInfo.birthday)
+      this.setData({
+        userInfo : userInfo
+      })
   },
 
   /**
@@ -85,12 +94,32 @@ Page({
   getGoodsList(){
     const scenicDetailItem = scenicDetail()
     getGoodsList({scenery_id:scenicDetailItem.id}).then(res => {
-      res.map(item =>{
+      const goods = res.goods
+      goods.map(item =>{
           item.showName = this.formatCouponname(item)
       })
+      //【明媚的小桃子】兑换了 1张 麻辣烤肠券
+      let coupon_type = ''
+      if(res.record_coupon_type == 2){
+        coupon_type = '兑换券'
+      }else if(res.record_coupon_type == 1){
+        coupon_type = '优惠券'
+      }else if(res.record_coupon_type == 3){
+        coupon_type = '代金券'
+      }
+     if(coupon_type != '' && res.record_coupon_name != null){
       this.setData({
-        goodsList : res
+        goodsList : goods,
+        points:res.points,
+        newexchange:`【${res.record_coupon_name}】兑换了 1 张 ${coupon_type}`
       })
+     }else{
+      this.setData({
+        goodsList : goods,
+        points:res.points      
+      })
+     }
+      
       
     })
   },
@@ -213,5 +242,47 @@ Page({
       showtype:'',
       message:'',
     })
-  }
+  },
+    // 获取年龄
+    getAge(s){
+      let returnAge;
+      const birthday = new Date(s)
+      const birthYear = birthday.getFullYear();
+      const birthMonth = birthday.getMonth() + 1;
+      const birthDay = birthday.getDate() + 1;
+     
+      const d = new Date();
+      const nowYear = d.getFullYear();
+      const nowMonth = d.getMonth() + 1;
+      const nowDay = d.getDate();
+     
+      if(nowYear == birthYear){
+        returnAge = 0;//同年 则为0岁
+      }
+      else{
+        const ageDiff = nowYear - birthYear ; //年之差
+        if(ageDiff > 0){
+          if(nowMonth == birthMonth) {
+            var dayDiff = nowDay - birthDay;//日之差
+            if(dayDiff < 0){
+              returnAge = ageDiff - 1;
+            }else{
+              returnAge = ageDiff ;
+            }
+          }else{
+            var monthDiff = nowMonth - birthMonth;//月之差
+            if(monthDiff < 0){
+              returnAge = ageDiff - 1;
+            }else{
+              returnAge = ageDiff ;
+            }
+          }
+        }
+        else
+        {
+          returnAge = -1;//出生日期不能大于今天
+        }
+      }
+      return returnAge;
+    }
 })
