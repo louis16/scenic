@@ -1,5 +1,5 @@
 const { getStorageSync,TOKEN } = require('../../util/util')
-const { submitUserInfo,userOnline,scenicDetail } = require('./common/api')
+const { submitUserInfo,getUserInfo,scenicDetail } = require('./common/api')
 const app = getApp()
 const eventBus = app.globalData.bus
 Page({
@@ -8,20 +8,17 @@ Page({
    */
   data: {
     usersex: false,
-    date: '请选择日期',
-    selectSex: 0,
     isshowUslide: false,
     isshowMessage:false,
     isshowconfirm:false,
     showtype:'confirm',
     messagetype:'noicon',
     message:'',
-    sex: 1,
     userbgurl:app.globalData.fileUserUrl+'usermain-bg.png',
-    userdata: {
-      sex: 1,
-      age: 0
-    }
+    userInfo:{},
+    userdata:'请选择日期',
+    gender: 0
+    
   },
 
   /**
@@ -46,7 +43,7 @@ Page({
    */
   onShow() {
 
-   this.userOnline()
+   this.getUserInfo()
   },
 
   /**
@@ -106,43 +103,41 @@ Page({
   //设置用户生日
   bindDateChange(e) {
     this.setData({
-      date: e.detail.value
+      birthday: e.detail.value
     })
   },
   // 设置用户性别
   setSelectSex(e) {
     const value = e.currentTarget.dataset['value'];
     this.setData({
-      sex: value
+      gender : value
     })
   },
   //保存用户生日 性别
   submitUserInfo() {
     const uslide = this.selectComponent('#uslide')
     uslide.showUslide()
-    submitUserInfo({gender:this.data.sex,birthday:this.data.date}).then(res =>{
-      this.setData({
-        isshowMessage:true,
-        isshowconfirm:false,
-        showtype:'message',
-        messagetype:'ok',
-        message:'用户信息已保存',
+    submitUserInfo({gender:this.data.gender,birthday:this.data.birthday}).then(res =>{
+      wx.showToast({
+        title: '用户信息已保存',
+        icon: 'success'
       })
+      this.getUserInfo()
     })
-    this.setData({
-      userdata: {
-        sex: this.data.sex,
-        age: 23
-      }
-    })
+    
   },
   // 获取用户信息
-  userOnline(){
+  getUserInfo(){
     const scenicDetailItem = scenicDetail()
     const token = getStorageSync(TOKEN)
     if(token){
-      userOnline({scenery_id:scenicDetailItem.id}).then(res=>{
-        console.log(res);
+      getUserInfo({scenery_id:scenicDetailItem.id}).then(res=>{
+        res.age = this.getAge(res.birthday)
+        this.setData({
+          birthday:res.birthday.substring(0,10),
+          gender:res.gender,
+          userInfo : res
+        })
       })
     }
     
@@ -169,6 +164,48 @@ Page({
       isshowMessage:false,
       isshowconfirm:false
     })
+  },
+  // 获取年龄
+  getAge(s){
+    let returnAge;
+    const birthday = new Date(s)
+    const birthYear = birthday.getFullYear();
+    const birthMonth = birthday.getMonth() + 1;
+    const birthDay = birthday.getDate() + 1;
+   
+    const d = new Date();
+    const nowYear = d.getFullYear();
+    const nowMonth = d.getMonth() + 1;
+    const nowDay = d.getDate();
+   
+    if(nowYear == birthYear){
+      returnAge = 0;//同年 则为0岁
+    }
+    else{
+      const ageDiff = nowYear - birthYear ; //年之差
+      if(ageDiff > 0){
+        if(nowMonth == birthMonth) {
+          var dayDiff = nowDay - birthDay;//日之差
+          if(dayDiff < 0){
+            returnAge = ageDiff - 1;
+          }else{
+            returnAge = ageDiff ;
+          }
+        }else{
+          var monthDiff = nowMonth - birthMonth;//月之差
+          if(monthDiff < 0){
+            returnAge = ageDiff - 1;
+          }else{
+            returnAge = ageDiff ;
+          }
+        }
+      }
+      else
+      {
+        returnAge = -1;//出生日期不能大于今天
+      }
+    }
+    return returnAge;
   },
   handleFuncClick(event) {
     const {
