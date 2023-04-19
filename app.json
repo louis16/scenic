@@ -2,7 +2,8 @@
   "pages": [
     "pages/firstPage/fisrtPage",
     "pages/index/index",
-    "pages/commonTemplate/templateComp"
+    "pages/commonTemplate/templateComp",
+    "pages/osdMarker/osdM"
   ],
   "subPackages": [
     {

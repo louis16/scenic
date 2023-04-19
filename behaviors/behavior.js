@@ -6,10 +6,11 @@ import {
 } from './gltf-loader'
 import cloneGltf from './gltf-clone'
 const MODEL_URL1 = 'http://file.ysr.uninote.com.cn/images/Stork.glb'
-const MODEL_URL2 = 'https://threejs.org/examples/models/gltf/Stork.glb'
-// const MODEL_URL2 = 'https://kivicube-asset.kivisense.com/model/gltf/2.0/unify/J1Oclk00PtmdOQHZasfowV3-GXO7bD4s/J1Oclk00PtmdOQHZasfowV3-GXO7bD4s.gltf'
+// const MODEL_URL2 = 'https://threejs.org/examples/models/gltf/Stork.glb'
+const MODEL_URL2 = 'https://kivicube-asset.kivisense.com/model/gltf/2.0/unify/J1Oclk00PtmdOQHZasfowV3-GXO7bD4s/J1Oclk00PtmdOQHZasfowV3-GXO7bD4s.gltf'
 const MODEL_URL3 = 'http://file.ysr.uninote.com.cn/images/RobotExpressive.glb' // RobotExpressive helmet.glb Stork.glb
 
+const modelCache = new Map()
 export default function getBehavior() {
   return Behavior({
     data: {
@@ -80,115 +81,23 @@ export default function getBehavior() {
         if (this.session) this.session = null
         if (this.anchor2DList) this.anchor2DList = []
       },
-      loadTest() {
-        console.log('------------------load test')
-
-        let THREE = this.THREE;
-        const loader = new THREE.GLTFLoader()
-        loader.load(MODEL_URL1, gltf => {
-          let model = {
-            scene: gltf.scene,
-            animations: gltf.animations,
-          }
-          console.log('model', model, 3333333333)
-          this.MODEL3 = model
-        }, (onProgress) => {
-          console.log('onProgress', onProgress)
-        }, (onError) => {
-          console.log('onError', onError, 4444)
-        })
-
-      },
-      loadTest3() {
-        console.log('------------------load test3')
-
-        let THREE = this.THREE;
-        const loader = new THREE.GLTFLoader()
-        loader.load(MODEL_URL3, gltf => {
-          let model = {
-            scene: gltf.scene,
-            animations: gltf.animations,
-          }
-          console.log('model', model, 3333333333)
-          this.MODEL3 = model
-
-        }, (onProgress) => {
-          console.log('onProgress', onProgress)
-        }, (onError) => {
-          console.log('onError', onError, 4444)
-        })
-
-      },
-      initModel3(THREE, addModelFunc, url) {
-
-        const loader = new THREE.GLTFLoader()
-        loader.load(url, gltf => {
-          let model = {
-            scene: gltf.scene,
-            animations: gltf.animations,
-          }
-          console.log('model', model, 3333333333)
-          this.MODEL3 = model
-
-          addModelFunc({}, 2, 3)
-        }, (onProgress) => {
-          console.log('onProgress', onProgress)
-        }, (onError) => {
-          console.log('onError', onError, 3333333333)
-        })
-      },
-
       initVK() {
         // 初始化 threejs
         this.initTHREE()
         // 自定义初始化
         if (this.init) this.init()
-
-        this.loadRender("", MODEL_URL1);
+        this.loadRender();
       },
-
-      loadRender(event, url2) {
-        let url = url2 || event.currentTarget.dataset.url;
-        console.log('load------------', url);
+      initModelUrl() {
+        for (let index = 0; index < this.data.datas.length; index++) {
+          const url = this.data.datas[index].model;
+          const key = this.data.datas[index].key
+          modelCache.set(key, url)
+        }
+        console.log(modelCache)
+      },
+      loadRender() {
         const THREE = this.THREE
-        const updateMatrix = (object, m) => {
-          object.matrixAutoUpdate = false
-          // object.matrix.fromArray(m)
-        }
-        const addModel = (anchor, rotate, type) => {
-          let modelRef = null
-          if (type === 3) {
-            modelRef = this.MODEL3
-          } else if (type === 2) {
-            modelRef = this.MODEL2
-          } else if (type === 1) {
-            modelRef = this.MODEL1
-          }
-          console.log(modelRef, type, 'FDsafasdfasfdsaf')
-          const size = {
-            width: 5,
-            height: 5
-          }
-          if (!modelRef) {
-            console.warn('this.model 还没加载完成 ！！！！！', modelRef, `${type}${type}${type}`)
-            return
-          }
-
-          let object = new THREE.Object3D()
-          const model = this.getRobot(type)
-          object.add(model)
-          object._id = Number((Math.random() * 1000).toFixed(0))
-          object._size = size
-
-          // 适配 焦点
-          this.camera.position.set(object.position.x, object.position.y, object.position.z);
-          this.camera.position.add(new THREE.Vector3(100.0, 100.0, 100.0));
-          this.camera.lookAt(object.position);
-          this.camera.updateMatrix();
-
-          updateMatrix(object, anchor.transform)
-          this.planeBox.add(object)
-        }
         const session = this.session = wx.createVKSession({
           track: {
             plane: {
@@ -200,32 +109,32 @@ export default function getBehavior() {
           gl: this.gl
         })
         this.clock = new THREE.Clock()
-
         session.start(err => {
           if (err) return console.error('VK error: ', err)
           console.log('@@@@@@@@ VKSession.version', session.version)
           const canvas = this.canvas
-          const calcSize = (width, height) => {
-            console.log(`canvas size: width = ${width} , height = ${height}`)
-            this.canvas.width = width / 2
-            this.canvas.height = height / 2
-            this.setData({
-              width,
-              height,
+          session.on('addAnchors', anchors => {
+            anchors.forEach(anchor => {
+              let currentTarget = this.data.pictureAndMarkerId.filter(item => item.markerId == anchor.id)
+              console.log(currentTarget, 'currentTarget')
+              if (currentTarget) {
+                this.loaderModel(currentTarget[0].key, anchor)
+              }
             })
-          }
-          session.on('resize', () => {
-            calcSize(this.data.windowWidth, this.data.windowHeight - this.data.navHeight)
+          })
+
+          session.on('removeAnchors', anchors => {
+            if (this.model) this.model = null
+            this.planeBox.children.forEach(object => {
+              this.planeBox.remove(object)
+            })
           })
           // 平面集合
           const planeBox = this.planeBox = new THREE.Object3D()
           this.scene.add(planeBox)
-
-          //同时加载多个模型
-          this.initModel3(THREE, addModel, url)
-
           //限制调用帧率
           let fps = 30
+          fps = 1000
           let fpsInterval = 1000 / fps
           let last = Date.now()
           // 逐帧渲染
@@ -246,6 +155,63 @@ export default function getBehavior() {
         })
       },
 
+      loaderModel(key, anchor = {}) {
+        const url = modelCache.get(key)
+        console.log(modelCache, url)
+        const THREE = this.THREE
+        const loader = new THREE.GLTFLoader()
+        loader.load(url, gltf => {
+          let model = {
+            scene: gltf.scene,
+            animations: gltf.animations,
+          }
+          console.log('model', model, '加载ModelUrl成功')
+          this.model = model
+          this.addModelFunc(anchor)
+        }, (onProgress) => {
+          console.log('onProgress', onProgress)
+        }, (onError) => {
+          console.log('onError', onError, '执行失败')
+        })
+      },
+      updateMatrix(object) {
+        object.matrixAutoUpdate = false
+        // object.matrix.fromArray(m)
+      },
+      addModelFunc(anchor) {
+        const THREE = this.THREE
+        console.log('进入addModelFun', this.model)
+        let modelRef = this.model
+        console.log(modelRef, 'FDsafasdfasfdsaf')
+        const size = anchor.size || {
+          width: 5,
+          height: 5
+        }
+        if (!modelRef) {
+          console.warn('this.model 还没加载完成 ！！！！！', modelRef)
+          return
+        }
+
+        let object = new THREE.Object3D()
+        let model = null
+        try {
+          model = this.getRobot()
+        } catch {
+          console.log('执行二次方法报错')
+        }
+        object.add(model)
+        object._id = Number((Math.random() * 1000).toFixed(0))
+        object._size = size
+
+        // 适配 焦点
+        this.camera.position.set(object.position.x, object.position.y, object.position.z);
+        this.camera.position.add(new THREE.Vector3(100.0, 100.0, 100.0));
+        this.camera.lookAt(object.position);
+        this.camera.updateMatrix();
+
+        this.updateMatrix(object)
+        this.planeBox.add(object)
+      },
       initTHREE() {
         const THREE = this.THREE = createScopedThreejs(this.canvas)
         registerGLTFLoader(THREE)
@@ -279,19 +245,14 @@ export default function getBehavior() {
         if (this.mixers) this.mixers.forEach(mixer => mixer.update(dt))
       },
 
-      copyRobot(type) {
-        const model = type === 1 ? this.MODEL1 : type === 2 ? this.MODEL2 : this.MODEL3
-        console.log("copyRobot: ", model, `${type}${type}${type}${type}${type}${type}${type}`)
-
+      copyRobot() {
+        console.log('进入了copyRobot', this.model, )
         const THREE = this.THREE;
-
         const {
           scene,
           animations
-        } = cloneGltf(model, THREE);
-
-        scene.position.set(3, 6, -5)
-
+        } = cloneGltf(this.model, THREE);
+        // scene.position.set(3, 6, -5)
         // 动画混合器
         const mixer = new THREE.AnimationMixer(scene)
         for (let i = 0; i < animations.length; i++) {
@@ -308,10 +269,15 @@ export default function getBehavior() {
         return scene
       },
 
-      getRobot(type) {
+      getRobot() {
+        console.log('进入了getRobot')
         const THREE = this.THREE
         const model = new THREE.Object3D()
-        model.add(this.copyRobot(type))
+        try {
+          model.add(this.copyRobot())
+        } catch {
+          console.log('copyRobot报错')
+        }
 
         this._insertModels = this._insertModels || []
         this._insertModels.push(model)

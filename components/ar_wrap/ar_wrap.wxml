@@ -1,14 +1,13 @@
 <view class="ar_page">
-  <topContainer hiddenBack="{{false}}" title="飞洒地方"></topContainer>
-
+  <topContainer hiddenBack="{{false}}" title="session，Anchors"></topContainer>
   <!-- <canvas type="webgl" id="webgl" style="width: {{width}}px; height: {{height}}px;background-color: red;">
   </canvas> -->
-  <!-- <canvas type="webgl" id="webgl" style="background-color: aqua;width: {{windowWidth}}px; height: {{windowHeight - navHeight}}px;padding-top: {{navHeight}}px;"> -->
-  <!-- <view class="btn-cnt">
-        <button type="primary" class="btn-choose" bindtap="loadTest">test1</button>
-        <button type="primary" class="btn-choose" bindtap="loadTest3">test3</button>
-        <button type="primary" class="btn-choose" bindtap="loadRender" data-url="http://file.ysr.uninote.com.cn/images/helmet.glb">loadRender1</button>
-        <button type="primary" class="btn-choose" bindtap="loadRender" data-url="http://file.ysr.uninote.com.cn/images/RobotExpressive.glb">loadRender2</button>
-        <button type="primary" class="btn-choose" bindtap="loadRender" data-url="http://file.ysr.uninote.com.cn/image/the_loon.glb">loadRender3</button>
-    </view> -->
+  <canvas type="webgl" id="webgl" style="width: {{windowWidth}}px; height: {{windowHeight - navHeight}}px">
+  </canvas>
+  <view class="btn-cnt">
+    <image wx:for="{{testPicArr}}" src="{{item}}" wx:key="index" mode="" style="width:60px;height:60px;background-color: rosybrown;" />
+    <view style="width: 100vw;height:5vh;"></view>
+    <!-- <button type="primary" class="btn-choose" bindtap="loadRender" data-url="http://file.ysr.uninote.com.cn/images/RobotExpressive.glb">xrFrame</button> -->
+    <!-- <button type="primary" class="btn-choose" bindtap="loadRender" data-url="http://file.ysr.uninote.com.cn/images/RobotExpressive.glb">Robot</button> -->
+  </view>
 </view>

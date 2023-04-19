@@ -10,11 +10,39 @@ Component({
   data: {
     theme: 'light',
     pictureAndMarkerId: [],
-    modelUrls: ['http://file.ysr.uninote.com.cn/images/Character_Red.glb', 'https://threejs.org/examples/models/gltf/Stork.glb', 'http://file.ysr.uninote.com.cn/images/RobotExpressive.glb']
+    modelUrls: ['http://file.ysr.uninote.com.cn/images/Character_Red.glb', 'https://threejs.org/examples/models/gltf/Stork.glb', 'http://file.ysr.uninote.com.cn/images/RobotExpressive.glb'],
+    testPicArr: []
   },
   lifetimes: {
+    attached() {
+      wx.showLoading({
+        title: '加载中',
+      })
+      let timer = setTimeout(() => {
+        clearTimeout(timer)
+        this.setData({
+          // https://file.ysr.uninote.com.cn/resource/shuiguai.gltf
+          datas: [{
+            url: 'https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/marker/2dmarker-test.jpg',
+            model: 'https://threejs.org/examples/models/gltf/Stork.glb',
+            // model: 'https://file.ysr.uninote.com.cn/resource/shuiguai.gltf',
+            key: '2dmarker'
+          }, {
+            url: 'https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg',
+            model: 'http://file.ysr.uninote.com.cn/images/RobotExpressive.glb',
+            // model: 'https://file.ysr.uninote.com.cn/resource/shuiguai.glb',
+            key: 'dongwuyuan'
+          }]
+        }, () => {
+          this.data.datas.forEach(item => {
+            this.download(item.url, item.key)
+          })
+          this.initModelUrl()
+          wx.hideLoading()
+        })
+      }, 2000)
+    },
     detached() {
-      console.log("页面detached")
       if (wx.offThemeChange) {
         wx.offThemeChange()
       }
@@ -28,21 +56,8 @@ Component({
       this.initGL()
     },
 
-    downloadPicture() {
-      return this.initTest();
-      let data = [{
-        url: 'https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/marker/2dmarker-test.jpg',
-        key: 'imgUrl'
-      }, {
-        url: 'https://wujianar.oss-cn-hongkong.aliyuncs.com/a98a405c28c144c0b43ac5ce4ed7db0c/b0f131e8818348eeb160e081a936c578.jpg',
-        key: 'imgUrl2'
-      }, {
-        url: 'https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg',
-        key: 'imgUrl3'
-      }]
-      data.forEach(item => {
-        this.download(item.url, item.key)
-      })
+    downloadPicture(data) {
+
     },
     download(url, field) {
       const _this = this
@@ -52,12 +67,12 @@ Component({
         url: url,
         filePath: wx.env.USER_DATA_PATH + '/' + fileName + '.jpeg',
         success(res) {
-          console.log('downloadFile', res)
           if (res.statusCode === 200) {
+            _this.data.testPicArr.push(res.filePath)
             _this.setData({
               [field]: res.filePath,
+              testPicArr: _this.data.testPicArr
             })
-            console.log('传入：', res.filePath, '字段', field)
             let timer = setTimeout(() => {
               _this.addMarker(res.filePath, field)
               clearTimeout(timer)
@@ -84,8 +99,7 @@ Component({
       this.renderer.render(this.scene, this.camera)
       this.renderer.state.setCullFace(this.THREE.CullFaceNone)
     },
-    addMarker(temp, field) {
-      console.log('接收：', temp, '字段', field)
+    addMarker(tempPath, field) {
       const _this = this
       const fs = wx.getFileSystemManager()
       // 此处如果为jpeg,则后缀名也需要改成对应后缀
@@ -93,7 +107,7 @@ Component({
       const filePath = `${wx.env.USER_DATA_PATH}/${dateString}-marker-ar.jpeg`
       fs.saveFile({
         filePath,
-        tempFilePath: temp,
+        tempFilePath: tempPath,
         success: () => {
           let markerId = _this.session.addMarker(filePath)
           _this.data.pictureAndMarkerId.push({
@@ -101,7 +115,7 @@ Component({
             key: field
           })
           _this.setData({
-            pictureAndMarkerId: this.data.pictureAndMarkerId
+            pictureAndMarkerId: _this.data.pictureAndMarkerId
           })
         },
         fail: res => {
@@ -114,9 +128,6 @@ Component({
         this.session.removeMarker(this.markerId)
         this.markerId = null
       }
-    },
-    getAllMarker() {
-      console.log(this.session.getAllMarker(), this.data.pictureAndMarkerId)
     },
   },
 })

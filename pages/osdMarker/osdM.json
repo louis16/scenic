@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ar": "./comp/ar/index",
+    "marker": "./comp/marker/index"
+  },
+  "disableScroll": true
+}
