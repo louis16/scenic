@@ -13,7 +13,11 @@ Page({
     shownoticeBody:false,
     navitemsStyle:'',
     noticeContentBg:app.globalData.fileUserUrl+'notice-c-bg1.png',
-    typeItmes:[]
+    fileUrl:app.globalData.fileUrl + '/',
+    typeItmes:[],
+    rankTData:[],
+    rewardsData:{},
+    rankData:[]
   
   },
 
@@ -89,10 +93,35 @@ Page({
   getRanksList(rank_id){
     const scenicDetailItem = scenicDetail()
     getRanksList({scenery_id:scenicDetailItem.id,rank_id:rank_id}).then(res => {
-      console.log(res);
-      // this.setData({
-      //   typeItmes : res
-      // })
+      const rankTData = []
+      const rankData = []
+      res.ranks.map((item,index) => {
+        if(index < 3){
+          rankTData.push(item)
+        }else{
+          rankData.push(item)
+        }
+      })
+      
+
+      if(res.rewards.length > 0){
+        let rewards = res.rewards[0]
+        if(!Array.isArray(rewards.rewards)){
+          rewards = Object.value(rewards.rewards)
+        }
+        const rankNum = ['一','二','三','四','五','六','七','八','九','十']
+        rewards.showRankNum = rankNum[rewards.rank -1]
+        this.setData({
+          rewardsData : rewards,
+          shownoticeBody : true
+        })
+        console.log(res);    
+      }
+
+      this.setData({
+        rankTData : rankTData,
+        rankData:rankData
+      })
       // this.changeMoreNav()
     })
   },
@@ -135,7 +164,7 @@ Page({
     if(type !== 0){
       this.getRanksList(type)
     }
-   
+
     this.setNavOffset(index)
   },
   // 设置排行榜类别导航条位置

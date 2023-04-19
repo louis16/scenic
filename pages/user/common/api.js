@@ -73,11 +73,11 @@ export const exchangeGoods = (id,params) => {
     data:params
   })
 }
-// 读取用户信息
-export const userOnline = (params) => {
+// 获取用户信息
+export const getUserInfo = (params) => {
   return request({
-    method: 'POST',  
-    url: `/user/online`,
+    method: 'GET',  
+    url: `/user/info`,
     data:params
   })
 }

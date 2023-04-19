@@ -10,16 +10,17 @@
     <view class="userinfo-content">
         <text class="uname">沉默的小王子</text>
         <view class="uinfo">
-          <view class="uother {{ userdata.sex == 1 ? 'ufemale' : 'umale' }}" wx:if="{{userdata.age > 0}}" bindtap="showEditInfo">
-             <view class="uother_sex">
-              <image src="{{ userdata.sex == 1 ? '/static/imgs/user/female.png' : '/static/imgs/user/male.png' }}" class="image"></image>    
-            </view>   
-            <text class="uother_age">23岁</text>
-          </view>
-          <view wx:else class="uother_edit" bindtap="showEditInfo">
+          <view wx:if="{{userInfo.gender == 0}}" class="uother_edit" bindtap="showEditInfo">
             <image src="/static/imgs/user/icon/u-edit.png" class="image"></image>
             <text>完善个人信息</text>
           </view>  
+          <view wx:else class="uother {{ userInfo.gender == 2 ? 'ufemale' : 'umale' }}"  bindtap="showEditInfo">
+             <view class="uother_sex">
+              <image src="{{ userInfo.gender == 2 ? '/static/imgs/user/female.png' : '/static/imgs/user/male.png' }}" class="image"></image>    
+            </view>   
+            <text class="uother_age">{{ userInfo.age }}岁</text>
+          </view>
+         
           <view class="uhonour arror-right" bindtap="gotoPage" data-url="honour/honour">       
               <view class="uhonour_item">
                 <image src="/static/imgs/user/icon1.png" class="image"></image>  
@@ -45,11 +46,11 @@
   </view>
     <view class="userinfo-integral">
       <view>
-        <view>300</view>
+        <view>{{ userInfo.points }}</view>
         <text>积分</text>
       </view>
       <view>
-        <view>8</view>
+        <view>{{ userInfo.unfinished_quest_count}}</view>
         <text>待完成任务</text>
       </view>
     </view>
@@ -62,7 +63,7 @@
     <view class="unav-item arror-right" bindtap="gotoPage" data-url="honour/honour">
       <image src="/static/imgs/user/icon/u-nav-2.png"></image>
       <view class="unav-item__titel">个人荣誉</view>
-      <view class="unav-item__value">3</view>
+      <view class="unav-item__value">{{ userInfo.honour_count }}</view>
     </view>
     <view class="unav-item arror-right" bindtap="gotoPage" data-url="ranking/ranking">
       <image src="/static/imgs/user/icon/u-nav-3.png" ></image>
@@ -73,7 +74,7 @@
     <view class="unav-item arror-right"  bindtap="gotoPage" data-url="ecoupon/ecoupon">
       <image src="/static/imgs/user/icon/u-nav-4.png"></image>
       <view class="unav-item__titel">电子券</view>
-      <view class="unav-item__value">223</view>
+      <view class="unav-item__value">{{ userInfo.user_coupon_count }}</view>
     </view>
     <view class="unav-item arror-right" bindtap="openloginOut">
       <image src="/static/imgs/user/icon/u-nav-5.png"></image>
@@ -86,8 +87,8 @@
           <view class="uedit-title">请选择你的性别</view>
           <view class="uedit-sxe">
             <view>
-                <view class="{{sex == 1 ? 'imgfilter' : ''}}" bindtap="setSelectSex" data-value='0'>
-                  <view class="uedit-sxe__head" style="{{sex == 1 ? '' : 'background-color:#bdd0ee;'}}">
+                <view class="{{gender == 0 ? 'imgfilter' : gender == 1 ? '' : 'imgfilter'}}" bindtap="setSelectSex" data-value='1'>
+                  <view class="uedit-sxe__head" style="{{gender == 0 ? '' : gender == 1 ? 'background-color:#bdd0ee;' : ''}}">
                     <image src="/static/imgs/user/man.png"></image>
                   </view>
                   <view class="uedit-sxe__select" style="background: #90add8;">
@@ -97,8 +98,8 @@
                 <text>男</text>
             </view>
             <view>
-            <view class="{{ sex == 0 ? 'imgfilter' : ''}}" bindtap="setSelectSex" data-value='1'>
-              <view class="uedit-sxe__head" style="{{sex == 0 ? '' : 'background-color:#FBC3C3;'}}">
+            <view class="{{gender == 0 ? 'imgfilter' : gender == 2 ? '' : 'imgfilter'}}" bindtap="setSelectSex" data-value='2'>
+              <view class="uedit-sxe__head" style="{{gender == 0 ? '' : gender == 2 ? 'background-color:#FBC3C3;' : ''}}">
                 <image src="/static/imgs/user/woman.png"></image>
               </view>        
               <view class="uedit-sxe__select" style="background: #FC7474;"><image src="/static/imgs/user/icon/u-edit-c.png" class="image"></image></view>
@@ -108,9 +109,9 @@
           </view>
           <view class="uedit-title">请选择你的生日</view>
           <view class="udeid-date">
-            <picker mode="date" value="{{date}}"  bindchange="bindDateChange">
+            <picker mode="date" value="{{birthday}}"  bindchange="bindDateChange">
               <view class="picker arror-right" style="margin-top: 58rpx;">
-                <text class="{{ date == '请选择日期' ? '' : 'udeid-date__select'}}">{{date}}</text> 
+                <text class="{{ birthday == '请选择日期' ? '' : 'udeid-date__select'}}">{{birthday}}</text> 
               </view>
             </picker>
           </view>

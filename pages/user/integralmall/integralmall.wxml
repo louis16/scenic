@@ -10,19 +10,18 @@
        <view class="uinfo">
         <text class="uname">沉默的小王子</text>
           <view class="uother">
-            <view class="uother_sex ">
+            <view class="uother_sex" wx:if="{{ userInfo.gender == '2' }}">
               <image src="/static/imgs/user/female.png" class="image"></image>      
             </view>  
-            <view class="uother_age ufemale">23岁</view> 
-           
-            <!-- <view class="uother_sex">
+            <!-- <view class="uother_age ufemale">23岁</view>            -->
+            <view class="uother_sex" wx:else>
               <image src="/static/imgs/user/male.png" class="image"></image>      
             </view> 
-            <view class="uother_age umale">23岁</view> -->
+            <view class="uother_age {{ userInfo.gender == '2' ? 'ufemale' : 'umale' }}">{{ userInfo.age }}岁</view>
           </view>     
         </view>
         <view class="uintegral">
-            <view class="ucount">1005</view>
+            <view class="ucount">{{ points }}</view>
             <view class="utext">
             <text>我的积分</text>
             <image src="/static/imgs/user/temp-2.png"></image>
@@ -30,7 +29,7 @@
         </view>    
     </view>
     <view class="userinfo-news">
-        <view>【明媚的小桃子】兑换了 1张 麻辣烤肠券</view>
+        <view>{{ newexchange }}</view>
     </view>
   </view>
   <view class="ptitle">
