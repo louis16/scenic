@@ -206,7 +206,7 @@
   height: 120rpx;
   text-align: center;
   left: 60rpx;
-  top: 40rpx;
+  top: 36rpx;
   color: #D83D16;
   font-size: 24rpx;
 }
@@ -222,7 +222,7 @@
   height: 120rpx;
   text-align: center;
   left: 58rpx;
-  top: 70rpx;
+  top: 66rpx;
   color: #FFFFFF;
   font-size: 24rpx;
 }
