@@ -170,13 +170,14 @@ Page({
   // 设置输出商品名称
   formatCouponname(item){
     if(item.coupon_type == 1){
-      return item.coupon_amount + '元代金券'
+      // return item.coupon_amount + '元代金券'
+      return  '代金券'
     }else if(item.coupon_type == 3){
-      return item.coupon_amount + '折优惠券'
+      // return item.coupon_amount + '折优惠券'
+      return '优惠券'
     }else{
       return item.coupon_name
     }
-     
   },
   // 关闭兑换窗口 子组件调用
   shUslide(o){

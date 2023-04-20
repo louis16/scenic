@@ -44,17 +44,34 @@
     <view class="infolists-item {{ item.stock_status == 0 ? 'item-null' : '' }}" bindtap="showExchangeItem" data-id="{{ item.id }}" data-item="{{ item }}" style="{{ index % 3 == 0 ? 'margin-left:10rpx' : '' }}">
       <image src="/static/imgs/user/i-item-bg.png" class="item-bg"></image>
         <view class="item-content">
-          <image src="{{ filePath + item.coupon_image }}" class="imgs" mode="scaleToFill"></image>
-            <view class="item-null__image">
+          <block  wx:if="{{ item.coupon_type == 2 }}"> 
+          <image src="{{ filePath + item.coupon_image }}" class="imgs" mode="scaleToFill"></image>       
+            <view class="item__title">{{ item.showName }}</view>
+          </block>
+          <block wx:if="{{ item.coupon_type == 1 }}">
+          <image src="/static/imgs/user/icon/u-i-icon1.png" class="imgs" mode="scaleToFill"></image>
+          <view class="item-type1">
+            <text>{{ item.coupon_amount }}</text>元
+          </view>   
+            <view class="item__title">代金券</view>
+          </block> 
+          <block  wx:if="{{ item.coupon_type == 3 }}">
+          <image src="/static/imgs/user/icon/u-i-icon2.png" class="imgs" mode="scaleToFill"></image>
+          <view class="item-type2">
+            <text>{{ item.coupon_amount }}</text>折
+          </view>       
+            <view class="item__title">优惠券</view>
+          </block>
+          <view class="item-null__image">
               <image src="/static/imgs/user/u-i-null.png" class="image"></image>
             </view>
-            <view class="item__title">{{ item.showName }}</view>
             <view class="item-info">
               <image src="/static/imgs/user/temp-2.png"></image>
               <view class="p">{{ item.point }}</view>
               <view class="e">兑</view>
             </view>
-        </view>    
+        </view> 
+      
     </view>
     </block>
   </view>
@@ -64,7 +81,22 @@
       <view slot="body">
         <view class="showitem">
           <view class="iteminfo">
-            <image src="{{ filePath + detailData.coupon_image }}" class="imgs"></image>
+            <block wx:if="{{ detailData.coupon_type == 2 }}">
+              <image src="{{ filePath + detailData.coupon_image }}" style="border-radius: 12rpx;" class="imgs"></image>
+            </block>
+  
+            <view class="showtype1"  wx:if="{{ detailData.coupon_type == 1 }}">
+              <image src="/static/imgs/user/icon/u-i-icon1.png" class="imgs" mode="scaleToFill"></image>
+              <view class="showtype1-content">
+                <text>{{ detailData.coupon_amount }}</text>元
+              </view>   
+            </view>  
+            <view class="showtype2"  wx:if="{{ detailData.coupon_type == 3 }}">
+              <image src="/static/imgs/user/icon/u-i-icon2.png" class="imgs" mode="scaleToFill"></image>
+              <view class="showtype2-content">
+                <text>{{ detailData.coupon_amount }}</text>折
+              </view>   
+            </view>             
             <view class="iteminfo__text">
               <text class="n">{{ detailData.showName }}</text>
               <text class="i">{{ detailData.point }}积分</text>

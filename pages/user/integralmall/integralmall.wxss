@@ -200,7 +200,37 @@
   bottom: 0rpx;
   border-bottom: 1px dashed #FFEAE2;
 }
+.item-type1{
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  left: 60rpx;
+  top: 40rpx;
+  color: #D83D16;
+  font-size: 24rpx;
+}
 
+.item-type1 text{
+  font-family: Roboto-Bold;
+  font-weight: bold;
+  font-size: 44rpx;
+}
+.item-type2{
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  left: 58rpx;
+  top: 70rpx;
+  color: #FFFFFF;
+  font-size: 24rpx;
+}
+.item-type2 text{
+  font-family: Roboto-Bold;
+  font-weight: bold;
+  font-size: 44rpx;
+}
 .item-info{
   display: flex;
   line-height: 50rpx;
@@ -280,7 +310,41 @@ background: linear-gradient(180deg, #FFB85B 0%, #FF6B2C 100%);
 .showitem .iteminfo .imgs{
   width: 128rpx;
   height: 128rpx;
-  border-radius: 12rpx;
+
+}
+.showitem .iteminfo .showtype1,.showitem .iteminfo .showtype2{
+  position: relative;
+}
+.showitem .iteminfo .showtype1 .showtype1-content{
+  position: absolute;
+  width: 128rpx;
+  height: 128rpx;
+  text-align: center;
+  left: 0rpx;
+  top: 6rpx;
+  color: #D83D16;
+  font-size: 24rpx;
+}
+.showitem .iteminfo .showtype1 .showtype1-content text{
+  font-family: Roboto-Bold;
+  font-weight: bold;
+  font-size: 44rpx;
+}
+.showitem .iteminfo .showtype2 .showtype2-content{
+  position: absolute;
+  width: 128rpx;
+  height: 128rpx;
+  text-align: center;
+  left: 0rpx;
+  top: 36rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
+.showitem .iteminfo .showtype2 .showtype2-content text{
+  font-family: Roboto-Bold;
+  font-weight: bold;
+  font-size: 44rpx;
 }
 .iteminfo__text{
   padding-left: 20rpx;
