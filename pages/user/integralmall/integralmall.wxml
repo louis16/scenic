@@ -109,7 +109,7 @@
                 <view class="but" bindtap="setExchangeCount" data-type="1">+</view>
             </view>      
           </view>
-          <view class="showitem-intro">特色火山烤肠，蘸独有的川味烧烤料，咬一口肉质紧实饱满，绝对满足你的味蕾。</view>
+          <view class="showitem-intro">{{ detailData.explain }}</view>
           <view class="showitem-content">
             <view>
               <text>使用说明：</text><text>仅限于指定店铺使用，在商家允许的情况下可兑换同等价位的其他商品。</text>
