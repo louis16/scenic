@@ -166,8 +166,11 @@ Page({
     let dataObject = {};
     if (type === this.data.currentTabKey) { //多次点击当前tab或者点击为3
       if (type === "3") {
+        // wx.navigateTo({
+        //   url: '/components/ar_wrap/ar_wrap',
+        // })
         wx.navigateTo({
-          url: '/components/ar_wrap/ar_wrap',
+          url: '/pages/osdMarker/osdM',
         })
       }
       this.closeModal()

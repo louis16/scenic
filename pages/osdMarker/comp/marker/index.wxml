@@ -3,25 +3,33 @@
     <!-- <xr-asset-load type="video-texture" asset-id="hikari" options="loop:true" src="{{source}}" />
     <xr-asset-material asset-id="mat" effect="simple" uniforms="u_baseColorMap: video-hikari" /> -->
     <xr-asset-load type="gltf" asset-id="damage-helmet" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
-    <xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" />
-    <xr-asset-load type="gltf" asset-id="ceshi1" src="https://file.ysr.uninote.com.cn/resource/shuiguai.glb" />
-    <xr-asset-load type="gltf" asset-id="stroke" src="https://threejs.org/examples/models/gltf/Stork.glb" />
+    <!-- <xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" /> -->
+    <!-- <xr-asset-load type="gltf" asset-id="stroke" src="https://threejs.org/examples/models/gltf/Stork.glb" /> -->
     <xr-asset-load type="gltf" asset-id="robot" src="http://file.ysr.uninote.com.cn/images/RobotExpressive.glb" />
-
+    <!-- <xr-asset-load type="gltf" asset-id="shuiguai" src="https://file.ysr.uninote.com.cn/resource/shuiguai_3.glb" /> -->
+    <xr-asset-load type="gltf" asset-id="yaoshui" src="https://file.ysr.uninote.com.cn/resource/glb.glb" />
   </xr-assets>
 
-  <!-- <xr-gltf node-id="damage-helmet" model="damage-helmet" id="helmet" mesh-shape bind:touch-shape="handleTouchModel" />
-  <xr-gltf model="miku" position="-0.15 0.75 0" scale="0.07 0.07 0.07" rotation="0 180 0" anim-autoplay id="miku" cube-shape="autoFit:true" shape-gizmo bind:touch-shape="handleTouchModel" /> -->
+  <!-- <xr-gltf node-id="damage-helmet" model="damage-helmet" id="helmet" mesh-shape bind:touch-shape="handleTouchModel" /> -->
+  <!-- <xr-gltf model="miku" position="-0.15 0.75 0" scale="0.07 0.07 0.07" rotation="0 180 0" anim-autoplay id="miku" cube-shape="autoFit:true" shape-gizmo bind:touch-shape="handleTouchModel" /> -->
   <xr-node wx:if="{{loaded}}">
     <!-- <xr-ar-tracker mode="Marker" bind:ar-tracker-switch="handleTrackerSwitch" src="{{tracker}}">
       <xr-mesh node-id="mesh-plane" geometry="plane" material="mat" />
     </xr-ar-tracker> -->
     <xr-ar-tracker mode="Marker" src="{{tracker}}">
       <xr-env env-data="xr-frame-team-workspace-day" />
-      <xr-gltf node-id="damage-helmet" model="damage-helmet" scale="0.4 0.4 0.4" id="helmet" mesh-shape bind:touch-shape="handleTouchModel" />
-      <xr-gltf node-id="stroke" model="stroke" scale="0.4 0.4 0.4" id="stroke" mesh-shape bind:touch-shape="handleTouchModel" />
-      <xr-gltf node-id="robot" model="robot" scale="0.1 0.1 0.1" id="robot" mesh-shape bind:touch-shape="handleTouchModel" />
-      <xr-gltf node-id="ceshi1" model="ceshi1" scale="0.4 0.4 0.4" id="ceshi1" mesh-shape bind:touch-shape="handleTouchModel" />
+      <!-- <xr-gltf node-id="damage-helmet" model="damage-helmet" scale="0.4 0.4 0.4" id="helmet" mesh-shape rotation="-90 90 0" bind:touch-shape="handleTouchModel" /> -->
+      <!-- <xr-gltf node-id="stroke" model="stroke" scale="0.4 0.4 0.4" id="stroke" mesh-shape bind:touch-shape="handleTouchModel" /> -->
+      <!-- <xr-gltf model="miku" position="-0.15 0.75 0" scale="0.07 0.07 0.07" rotation="0 180 0" anim-autoplay id="miku" cube-shape="autoFit:true" shape-gizmo bind:touch-shape="handleTouchModel" /> -->
+      <!-- <xr-gltf node-id="robot" position="-0.15 0.15 -0.6" rotation="0 90 0" model="robot" scale="0.05 0.05 0.05" id="robot" mesh-shape bind:touch-shape="handleTouchModel" /> -->
+      <xr-gltf node-id="yaoshui" model="yaoshui" scale="0.3 0.3 0.3" id="yaoshui" mesh-shape anim-autoplay rotation="-90 70 10" bind:touch-shape="handleTouchModel" />
+    </xr-ar-tracker>
+    <xr-ar-tracker mode="Marker" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/marker/2dmarker-test.jpg">
+      <xr-env env-data="xr-frame-team-workspace-day" />
+      <!-- <xr-gltf node-id="damage-helmet" model="damage-helmet" scale="0.4 0.4 0.4" id="helmet" mesh-shape rotation="-90 90 0" bind:touch-shape="handleTouchModel" /> -->
+      <!-- <xr-gltf node-id="stroke" model="stroke" scale="0.4 0.4 0.4" id="stroke" mesh-shape bind:touch-shape="handleTouchModel" /> -->
+      <!-- <xr-gltf model="miku" position="-0.15 0.75 0" scale="0.07 0.07 0.07" rotation="0 180 0" anim-autoplay id="miku" cube-shape="autoFit:true" shape-gizmo bind:touch-shape="handleTouchModel" /> -->
+      <xr-gltf node-id="robot" position="-0.15 0.15 -0.6" rotation="270 0 0" model="robot" scale="0.05 0.05 0.05" id="robot" mesh-shape bind:touch-shape="handleTouchModel" />
     </xr-ar-tracker>
   </xr-node>
 

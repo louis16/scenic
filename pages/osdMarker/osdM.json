@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "topContainer": "/components/topContainer/topContainer",
     "ar": "./comp/ar/index",
     "marker": "./comp/marker/index"
   },

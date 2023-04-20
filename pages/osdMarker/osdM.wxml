@@ -1,4 +1,6 @@
 <view>
+  <topContainer hiddenBack="{{false}}" title="AR" />
   <!-- <ar disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" /> -->
-  <marker disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" source="{{source}}" tracker="{{tracker}}" />
+  <marker disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;position: absolute;z-index: 99" source="{{source}}" tracker="{{tracker}}" />
+  <!-- <view style="float: left;width: 40px;height: 40px;background-color: red;position: absolute;right: 40px;top: 70px;z-index: 9999;"></view> -->
 </view>

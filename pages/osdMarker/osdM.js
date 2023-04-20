@@ -1,4 +1,4 @@
-// pages/osdMarker/osdM.js
+const app = getApp()
 Page({
 
   data: {
@@ -14,7 +14,7 @@ Page({
     const dpi = info.pixelRatio;
     this.setData({
       width,
-      height,
+      height: height - app.globalData.navHeight,
       renderWidth: width * dpi,
       renderHeight: height * dpi,
       source: 'https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/2dmarker/hikari-v.mp4',
