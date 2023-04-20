@@ -1,27 +1,15 @@
-// pages/osdMarker/comp/marker/index.js
+const app = getApp()
 Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-    source: {
-      type: String
+
+  lifetimes: {
+    attached() {
+      console.log(this.data.modelsAndRecognize)
     },
-    tracker: {
-      type: String
-    }
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    modelsAndRecognize: app.globalData.arWatchLists,
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     handleReady: function ({
       detail
@@ -43,8 +31,6 @@ Component({
     }) {
       console.log(detail)
       const active = detail.value;
-      const video = this.scene.assets.getAsset('video-texture', 'hikari');
-      active ? video.play() : video.stop();
     },
     handleTouchModel: function ({
       detail

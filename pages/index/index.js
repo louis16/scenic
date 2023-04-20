@@ -3,6 +3,7 @@ const {
   getAllMarked,
   getAllTask,
   getGoods,
+  getAnnouncement,
   userOnline
 } = require("../../util/api");
 const {
@@ -66,6 +67,7 @@ Page({
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
     this.getAllGoodsFunc(detail.id)
+    this.getAnnouncement(detail.id)
     eventBus.on('refreshTask', () => {
       this.getAllMarkedFunc(detail)
       this.getAllTaskFunc(detail.id)
@@ -149,6 +151,13 @@ Page({
       })
       app.globalData.positionWatchLists = res.positionWatchLists
       app.globalData.qrCodeWatchLists = res.qrCodeWatchLists
+      app.globalData.arWatchLists = res.arWatchLists.map(item => {
+        return {
+          id: item.id,
+          ai_image: `${app.globalData.fileUrl}/${item.ai_image}`,
+          model: `${app.globalData.fileUrl}/${item.model}`,
+        }
+      })
     });
   },
   getAllGoodsFunc(id) {
@@ -159,6 +168,19 @@ Page({
       });
     })
   },
+  getAnnouncement(id) {
+    getAnnouncement(id).then(announcement => {
+      if (announcement.length > 0) {
+        eventBus.emit('announcement', announcement)
+      } else {
+        this.hideNews({
+          detail: {
+            closed: true
+          }
+        })
+      }
+    })
+  },
   handleFuncClick(event) { //底部功能区域点击
     const {
       type
@@ -167,7 +189,7 @@ Page({
     if (type === this.data.currentTabKey) { //多次点击当前tab或者点击为3
       if (type === "3") {
         wx.navigateTo({
-          url: '/components/ar_wrap/ar_wrap',
+          url: '/pages/osdMarker/osdM',
         })
       }
       this.closeModal()
@@ -184,7 +206,7 @@ Page({
       })
     } else if (type === "3") {
       wx.navigateTo({
-        url: '/components/ar_wrap/ar_wrap',
+        url: '/pages/osdMarker/osdM',
       })
       this.closeModal()
     } else if (type === '1') {

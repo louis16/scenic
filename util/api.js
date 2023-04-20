@@ -103,3 +103,10 @@ export const goodComposition = (params) => {
     data: params
   })
 }
+//获取通知
+export const getAnnouncement = (id) => {
+  return request({
+    method: 'GET',
+    url: `/announcements?scenery_id=${id}`
+  })
+}
