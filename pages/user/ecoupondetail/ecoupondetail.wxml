@@ -12,19 +12,19 @@
         <image src="{{ filePath + detailData.image }}"  mode=""/>
           <view class="e-d-title">
             <text class="title">{{ detailData.description }}</text>
-            <text class="count">100积分</text>
+            <!-- <text class="count">100积分</text> -->
           </view>
       </view>
-      <view class="ecoupondetail-item__title item-1" wx:if="{{ detailData.type == 3 }}">
+      <view class="ecoupondetail-item__title item-1" wx:if="{{ detailData.type == 1 }}">
           <view>
-            ￥<text>{{ detailData.amount }}</text>
+            ￥<text>{{ detailData.amount }}</text>   
           </view>
           <view class="e-d-title">
             <text class="title">{{ detailData.description }}</text>
             <text class="count">{{ detailData.explain }}</text>
           </view>
       </view>
-      <view class="ecoupondetail-item__title item-2" wx:if="{{ detailData.type == 1 }}">
+      <view class="ecoupondetail-item__title item-2" wx:if="{{ detailData.type == 3 }}">
           <view>
             <text>{{ detailData.amount }}</text>折
           </view>
@@ -51,7 +51,7 @@
     </view>
     
     <view>
-      <text>适用店铺：</text><block wx:for="{{ detailData.shops }}" wx:for-item="items" wx:key="items"><text>{{ items.name}}</text></block>
+      <text>适用店铺：</text><block wx:for="{{ detailData.shops }}" wx:for-item="items" wx:key="items"><text>{{ index > 0 ? '、' : '' }}{{ items.name}}</text></block>
     </view>
 
     <view>

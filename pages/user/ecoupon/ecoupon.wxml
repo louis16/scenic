@@ -41,7 +41,7 @@
           </view>
             <view class="eitem-content__intro">
                 <view>{{ item.description }}</view>
-                <view>适用店铺：<block wx:for="{{ item.shops }}" wx:for-item="items" wx:key="items"><text>{{ items.name}}</text></block>
+                <view>适用店铺：<block wx:for="{{ item.shops }}" wx:for-item="items" wx:key="items"><text>{{ index > 0 ? '、' : '' }}{{ items.name}}</text></block>
               </view>             
                 <view>{{ item.expiry_start_at }} - {{ item.expiry_finish_at }}</view>
             </view>

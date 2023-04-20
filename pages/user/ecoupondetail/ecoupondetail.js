@@ -80,6 +80,7 @@ Page({
       res.statusText = res.status == 1 ? '待核销' : res.status == 2 ? '已核销' : '已过期'
       res.expiry_finish_at = formatTime(res.expiry_finish_at,'Y年M月D日 h:m:s')
       res.expiry_start_at = formatTime(res.expiry_start_at,'Y年M月D日 h:m:s')
+      
       this.setData({
        title:res.type == 1 ? '代金券' : res.type == 2 ? '兑换券' : '优惠券',
         detailData : res

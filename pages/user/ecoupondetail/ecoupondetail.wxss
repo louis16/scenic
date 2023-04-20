@@ -85,6 +85,7 @@
 }
 .item-2 view:nth-child(1){
   color: #70D6BF;
+  white-space:nowrap;
   font-size: 32rpx;
   line-height: 96rpx;
 }
