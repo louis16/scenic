@@ -1,4 +1,4 @@
-<view style="position: relative;">
+<view>
   <topContainer hiddenBack="{{false}}" title="AR" />
   <!-- <ar disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" /> -->
   <marker disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" />

@@ -3,6 +3,7 @@ const {
   getAllMarked,
   getAllTask,
   getGoods,
+  getAnnouncement,
   userOnline
 } = require("../../util/api");
 const {
@@ -66,6 +67,7 @@ Page({
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
     this.getAllGoodsFunc(detail.id)
+    this.getAnnouncement(detail.id)
     eventBus.on('refreshTask', () => {
       this.getAllMarkedFunc(detail)
       this.getAllTaskFunc(detail.id)
@@ -156,7 +158,6 @@ Page({
           model: `${app.globalData.fileUrl}/${item.model}`,
         }
       })
-      console.log(app.globalData.arWatchLists, 111)
     });
   },
   getAllGoodsFunc(id) {
@@ -165,6 +166,19 @@ Page({
       this.setData({
         goodsList: goodsListResult
       });
+    })
+  },
+  getAnnouncement(id) {
+    getAnnouncement(id).then(announcement => {
+      if (announcement.length > 0) {
+        eventBus.emit('announcement', announcement)
+      } else {
+        this.hideNews({
+          detail: {
+            closed: true
+          }
+        })
+      }
     })
   },
   handleFuncClick(event) { //底部功能区域点击

@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "ar": "./comp/ar/index",
-    "marker": "./comp/marker/index"
+    "marker": "./comp/marker/index",
+    "topContainer": "/components/topContainer/topContainer"
   },
   "disableScroll": true
 }
