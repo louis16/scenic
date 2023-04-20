@@ -1,27 +1,21 @@
-// pages/osdMarker/comp/marker/index.js
+const app = getApp()
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
-    source: {
-      type: String
-    },
-    tracker: {
-      type: String
+    modelsAndRecognize: {
+      type: Array,
+      value: []
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
+  lifetimes: {
+    attached() {
+      console.log(this.data.modelsAndRecognize)
+    }
+  },
   data: {
-
+  
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     handleReady: function ({
       detail
@@ -43,8 +37,18 @@ Component({
     }) {
       console.log(detail)
       const active = detail.value;
-      const video = this.scene.assets.getAsset('video-texture', 'hikari');
-      active ? video.play() : video.stop();
+      console.log(detail, 1111)
+      // const video = this.scene.assets.getAsset('video-texture', 'hikari');
+      // active ? video.play() : video.stop();
+    },
+    handleTrackerSwitch1: function ({
+      detail
+    }) {
+      console.log(detail)
+      const active = detail.value;
+      console.log(detail, 222222, active)
+      // const video = this.scene.assets.getAsset('video-texture', 'hikari');
+      // active ? video.play() : video.stop();
     },
     handleTouchModel: function ({
       detail
@@ -53,7 +57,6 @@ Component({
         target
       } = detail.value;
       const id = target.id;
-
       wx.showToast({
         title: `点击了模型： ${id}`
       });

@@ -149,6 +149,14 @@ Page({
       })
       app.globalData.positionWatchLists = res.positionWatchLists
       app.globalData.qrCodeWatchLists = res.qrCodeWatchLists
+      app.globalData.arWatchLists = res.arWatchLists.map(item => {
+        return {
+          id: item.id,
+          ai_image: `${app.globalData.fileUrl}/${item.ai_image}`,
+          model: `${app.globalData.fileUrl}/${item.model}`,
+        }
+      })
+      console.log(app.globalData.arWatchLists)
     });
   },
   getAllGoodsFunc(id) {
@@ -187,7 +195,7 @@ Page({
       })
     } else if (type === "3") {
       wx.navigateTo({
-        url: '/components/ar_wrap/ar_wrap',
+        url: '/pages/osdMarker/osdM',
       })
       this.closeModal()
     } else if (type === '1') {

@@ -1,11 +1,11 @@
 const app = getApp()
 Page({
-
   data: {
     width: 300,
     height: 300,
     renderWidth: 300,
     renderHeight: 300,
+    modelsAndRecognize: app.globalData.arWatchLists
   },
   onLoad(options) {
     const info = wx.getSystemInfoSync();
@@ -17,8 +17,6 @@ Page({
       height: height - app.globalData.navHeight,
       renderWidth: width * dpi,
       renderHeight: height * dpi,
-      source: 'https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/xr-frame-team/2dmarker/hikari-v.mp4',
-      tracker: "https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg"
     });
   },
 
@@ -26,9 +24,7 @@ Page({
 
   },
 
-  onShow() {
-
-  },
+  onShow() {},
 
   onHide() {
 
