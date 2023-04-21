@@ -10,7 +10,7 @@
     </xr-ar-tracker> -->
     <xr-ar-tracker wx:for="{{modelsAndRecognize}}" wx:key="index" mode="Marker" src="{{item.ai_image}}" id="{{item.id}}" bind:ar-tracker-switch="handleTrackerSwitch">
       <xr-env env-data="xr-frame-team-workspace-day" />
-      <xr-gltf node-id="{{item.id}}" model="{{item.id}}" rotation="{{ item.ai_rotation || '270 0 0' }}" scale="{{item.ao_scale || '0.24 0.24 0.24' }}" id="{{item.id}}" mesh-shape bind:touch-shape="handleTouchModel" />
+      <xr-gltf node-id="{{item.id}}" model="{{item.id}}" rotation="{{ item.ai_rotation || '270 0 0' }}" scale="{{item.ai_scale || '0.5 0.5 0.5' }}" id="{{item.id}}" mesh-shape bind:touch-shape="handleTouchModel" />
     </xr-ar-tracker>
   </xr-node>
   <xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />

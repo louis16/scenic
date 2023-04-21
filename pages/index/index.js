@@ -156,6 +156,8 @@ Page({
           id: item.id,
           ai_image: `${app.globalData.fileUrl}/${item.ai_image}`,
           model: `${app.globalData.fileUrl}/${item.model}`,
+          ai_rotation: item.ai_rotation,
+          ai_scale: item.ai_scale,
         }
       })
       console.log(app.globalData.arWatchLists, '加载数据')
