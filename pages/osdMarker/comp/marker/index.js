@@ -3,11 +3,37 @@ Component({
 
   lifetimes: {
     attached() {
-      console.log(this.data.modelsAndRecognize)
+      if (app.globalData.arWatchLists.length === 0) {
+        wx.showModal({
+          title: '提示',
+          content: '当前景区未配置数据',
+          showCancel: false,
+          complete: (res) => {
+            if (res.cancel) {
+              wx.navigateBack()
+            }
+            if (res.confirm) {
+              wx.navigateBack()
+            }
+          }
+        })
+      } else {
+        wx.showLoading({
+          title: '初始化中...',
+        })
+        this.setData({
+          modelsAndRecognize: app.globalData.arWatchLists
+        })
+      }
     },
+    detached() {
+      this.setData({
+        modelsAndRecognize: []
+      })
+    }
   },
   data: {
-    modelsAndRecognize: app.globalData.arWatchLists,
+    modelsAndRecognize: [],
   },
 
   methods: {
@@ -16,11 +42,10 @@ Component({
     }) {
       this.scene = detail.value;
     },
-    handleAssetsLoaded: function ({
-      detail
-    }) {
+    handleAssetsLoaded: function () {
+      wx.hideLoading()
       wx.showToast({
-        title: '1111'
+        title: '初始化完成'
       });
       this.setData({
         loaded: true

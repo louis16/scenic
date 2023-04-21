@@ -158,6 +158,7 @@ Page({
           model: `${app.globalData.fileUrl}/${item.model}`,
         }
       })
+      console.log(app.globalData.arWatchLists, '加载数据')
     });
   },
   getAllGoodsFunc(id) {
