@@ -22,7 +22,7 @@ Component({
           title: '初始化中...',
         })
         this.setData({
-          modelsAndRecognize: app.globalData.arWatchLists
+          modelsAndRecognize: app.globalData.arWatchLists || []
         })
       }
     },
@@ -54,8 +54,17 @@ Component({
     handleTrackerSwitch: function ({
       detail
     }) {
-      console.log(detail)
       const active = detail.value;
+      const taskId = detail.el._backendId
+      // if (active) {
+      //   wx.showToast({
+      //     title: taskId,
+      //   })
+      // }
+      this.triggerEvent('handleArScan', {
+        taskId,
+        active
+      })
     },
     handleTouchModel: function ({
       detail
@@ -64,10 +73,9 @@ Component({
         target
       } = detail.value;
       const id = target.id;
-
-      wx.showToast({
-        title: `点击了模型： ${id}`
-      });
+      // wx.showToast({
+      //   title: `点击了模型： ${id}`
+      // });
     },
   }
 })

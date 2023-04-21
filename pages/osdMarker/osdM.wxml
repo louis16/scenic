@@ -1,5 +1,30 @@
+<import src="/pages/commonTemplate/templateComp" />
 <view>
   <topContainer hiddenBack="{{false}}" title="AR" />
   <!-- <ar disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" /> -->
-  <marker disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" />
+  <block wx:if="{{!showError && !showRight}}">
+    <marker disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;transition: height 0.2s;" bind:handleArScan="handleArScan" />
+    <view class="contentWrap" style="width:{{width}}px;height:{{answerHeight}}px;transition: height 0.2s;display: flex;justify-content: center;overflow-y: scroll;">
+      <template wx:if="{{complete_type==2}}" is="fillBlanks" data="{{question:question[0].question, code:inputAnswer,answer:question[0].answer,isFocus:isFocus  }}" />
+      <template wx:if="{{complete_type==3}}" is="choose" data="{{question:question[0].question,options:question[0].options}}" />
+    </view>
+  </block>
+
+
+  <!-- 错误弹窗 -->
+  <view class=" mask" catchtouchmove='true' wx:if="{{showError}}">
+    <view class="ResultWrap blur">
+      <view class="notRightWrap">
+        <text>回答错误</text>
+        <image class="notRightIcon" src="/static/icon/not_right.png" mode="" />
+        <text>很遗憾，回答错误</text>
+        <view class="reAnswer" bindtap="reAnswer">
+          重新回答
+        </view>
+      </view>
+    </view>
+    <view class="ResultWrap" />
+  </view>
+  <!-- 正确弹窗 -->
+  <template wx:if="{{ showRight }}" is="rewardsPage" data="{{rewards:rewards,quests:quests,imgType:originData.complete_type=='1'?'congrats':'answer'}}" />
 </view>

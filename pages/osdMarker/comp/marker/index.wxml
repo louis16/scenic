@@ -1,17 +1,17 @@
 <xr-scene ar-system="modes:Marker" bind:ready="handleReady">
   <xr-assets bind:loaded="handleAssetsLoaded">
-    <!-- <xr-asset-load type="gltf" asset-id="ceshi111" src="{{item.model}}" src="https://file.ysr.uninote.com.cn/resource/yaoshuiqq.glb" /> -->
-    <xr-asset-load wx:for="{{modelsAndRecognize}}" type="gltf" asset-id="{{item.id}}" src="{{item.model}}" />
+    <!-- <xr-asset-load type="gltf" asset-id="ceshi111" src="https://file.ysr.uninote.com.cn/resource/ys2.glb" /> -->
+    <xr-asset-load wx:for="{{modelsAndRecognize}}" wx:key="index" type="gltf" asset-id="{{item.id}}" src="{{item.model}}" />
   </xr-assets>
   <xr-node wx:if="{{loaded}}">
     <!-- <xr-ar-tracker mode="Marker" bind:ar-tracker-switch="handleTrackerSwitch" src="https://file.ysr.uninote.com.cn/images/resource/cd092dcc3161336a52131c260fbe5ecb.jpg">
       <xr-env env-data="xr-frame-team-workspace-day" />
       <xr-gltf node-id="ceshi111" model="ceshi111" rotation="270 0 0" scale="0.24 0.24 0.24" id="ceshi111" mesh-shape bind:touch-shape="handleTouchModel" />
     </xr-ar-tracker> -->
-    <xr-ar-tracker wx:for="{{modelsAndRecognize}}" mode="Marker" src="{{item.ai_image}}">
+    <xr-ar-tracker wx:for="{{modelsAndRecognize}}" wx:key="index" mode="Marker" src="{{item.ai_image}}" id="{{item.id}}" bind:ar-tracker-switch="handleTrackerSwitch">
       <xr-env env-data="xr-frame-team-workspace-day" />
       <xr-gltf node-id="{{item.id}}" model="{{item.id}}" rotation="{{ item.ai_rotation || '270 0 0' }}" scale="{{item.ao_scale || '0.24 0.24 0.24' }}" id="{{item.id}}" mesh-shape bind:touch-shape="handleTouchModel" />
     </xr-ar-tracker>
   </xr-node>
-  <xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera camera-orbit-control />
+  <xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />
 </xr-scene>
