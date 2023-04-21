@@ -1,7 +1,7 @@
 // pages/user/integralmall/integralmall.js
 const { getStorageSync } = require('../../../util/util')
 const { getGoodsList,getGoodsDetail,exchangeGoods,scenicDetail } = require('../common/api.js')
-const { formatTime } = require('../common/index')
+const { formatTime,getAge } = require('../common/index')
 
 const app = getApp()
 Page({
@@ -36,7 +36,7 @@ Page({
   onLoad(options) {
       this.getGoodsList()   
       const userInfo = JSON.parse(getStorageSync('USERINFO'))
-      userInfo.age = this.getAge(userInfo.birthday)
+      userInfo.age = getAge(userInfo.birthday)
       this.setData({
         userInfo : userInfo
       })
@@ -243,47 +243,5 @@ Page({
       showtype:'',
       message:'',
     })
-  },
-    // 获取年龄
-    getAge(s){
-      let returnAge;
-      const birthday = new Date(s)
-      const birthYear = birthday.getFullYear();
-      const birthMonth = birthday.getMonth() + 1;
-      const birthDay = birthday.getDate() + 1;
-     
-      const d = new Date();
-      const nowYear = d.getFullYear();
-      const nowMonth = d.getMonth() + 1;
-      const nowDay = d.getDate();
-     
-      if(nowYear == birthYear){
-        returnAge = 0;//同年 则为0岁
-      }
-      else{
-        const ageDiff = nowYear - birthYear ; //年之差
-        if(ageDiff > 0){
-          if(nowMonth == birthMonth) {
-            var dayDiff = nowDay - birthDay;//日之差
-            if(dayDiff < 0){
-              returnAge = ageDiff - 1;
-            }else{
-              returnAge = ageDiff ;
-            }
-          }else{
-            var monthDiff = nowMonth - birthMonth;//月之差
-            if(monthDiff < 0){
-              returnAge = ageDiff - 1;
-            }else{
-              returnAge = ageDiff ;
-            }
-          }
-        }
-        else
-        {
-          returnAge = -1;//出生日期不能大于今天
-        }
-      }
-      return returnAge;
-    }
+  }
 })
