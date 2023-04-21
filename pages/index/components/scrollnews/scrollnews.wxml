@@ -2,7 +2,7 @@
   <view class="notify-icon-view">
     <image class="notify-icon" src="/static/icon/notify.png" mode="" />
   </view>
-  <view wx:if="{{closeAllow}}" class="close-icon-view" bindtap="closeMessage">
+  <view wx:if="{{closeAllow && showCloseBtn}}" class="close-icon-view" bindtap="closeMessage">
     <image class="close-icon" src="/static/icon/close.png" mode="" />
   </view>
   <view class="message-view">

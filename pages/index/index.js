@@ -67,7 +67,7 @@ Page({
     this.getAllMarkedFunc(detail)
     this.getAllTaskFunc(detail.id)
     this.getAllGoodsFunc(detail.id)
-    this.getAnnouncement(detail.id)
+    this.getAnnouncementFunc(detail.id)
     eventBus.on('refreshTask', () => {
       this.getAllMarkedFunc(detail)
       this.getAllTaskFunc(detail.id)
@@ -171,7 +171,7 @@ Page({
       });
     })
   },
-  getAnnouncement(id) {
+  getAnnouncementFunc(id) {
     getAnnouncement(id).then(announcement => {
       if (announcement.length > 0) {
         eventBus.emit('announcement', announcement)
