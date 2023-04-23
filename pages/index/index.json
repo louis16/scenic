@@ -13,6 +13,5 @@
     "FullScreen": "/components/fullScreen/FullScreen",
     "LandscapeList": "./components/landscape/LandscapeList",
     "Message": "./components/message/message"
-  },
-  "disableScroll": true
+  }
 }

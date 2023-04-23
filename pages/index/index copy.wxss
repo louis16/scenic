@@ -240,126 +240,15 @@
 }
 
 #myMap {
-  /* position: relative; */
-  box-sizing: content-box;
-}
-
-.useInfo {
-  position: absolute;
-  top: 0;
-  width: 392rpx;
-  height: 146rpx;
-}
-
-.info {
   position: relative;
-  z-index: 11;
-  width: 392rpx;
-  height: 146rpx;
-}
-
-.avatar {
-  width: 100rpx;
-  height: 90rpx;
-  border-radius: 10rpx;
-  position: absolute;
-  z-index: 10;
-  left: 36rpx;
-  top: 40rpx;
-}
-
-.userName {
-  font-family: 'JinNanJunJunTi-Bold';
-  font-size: 28rpx;
-  font-weight: normal;
-  text-align: center;
-  letter-spacing: 0em;
-  color: #FFFFFF;
-  position: absolute;
-  width: 224rpx;
-  left: 150rpx;
-  top: 56rpx;
-  z-index: 12;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.point {
-  position: absolute;
-  left: 400rpx;
-  top: 45rpx;
-}
-
-.pointIcon {
-  position: absolute;
-  z-index: 10;
-  width: 50rpx;
-  height: 60rpx;
-}
-
-.point text {
-  z-index: 11;
-  display: inline-block;
-  border: 2rpx solid #95522f;
-  border-radius: 20rpx;
-  font-family: 'JinNanJunJunTi-Bold';
-  font-size: 28rpx;
-  font-weight: normal;
-  text-align: center;
-  letter-spacing: 0em;
-  color: #7E363A;
-  padding-left: 50rpx;
-  transform: translate(10rpx, 5rpx);
-}
-.rightIcon{
-  position: relative;
-  right: -30rpx;
-}
-.func {
-  position: absolute;
-  top: -5px;
-  right: 30rpx;
-  width: 106rpx;
-  height: 320rpx;
-  /* background-size: 106rpx 320rpx; */
-  display: flex;
-  flex-direction: column;
-}
-
-.backImg {
-  position: absolute;
-  width: 106rpx;
-  height: 320rpx;
-}
-
-.funcItem {
-  display: flex;
-  flex-direction: column;
-  transform: translate(5rpx, 45rpx);
-  margin-top: -1rpx;
   box-sizing: content-box;
-}
-
-.funcItem image {
-  align-self: center;
-  width: 96rpx;
-  height: 96rpx;
-}
-
-.funcItem text {
-  font-family: 'JinNanJunJunTi-Bold';
-  font-size: 24rpx;
-  font-weight: normal;
-  text-align: center;
-  letter-spacing: 0em;
-  color: white;
-  margin-top: 14rpx;
 }
 
 .taskBottomFlower {
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  /* bottom: 0; */
+  /* z-index: 999; */
+  background-color: rgba(255, 0, 0, 0.116);
   width: 100vw;
   height: 376rpx;
 }

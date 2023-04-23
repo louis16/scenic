@@ -60,8 +60,14 @@ App({
     })
     wx.loadFontFace({
       global: true,
-      family: 'DIN-Bold',
-      source: 'url("https://file.ysr.uninote.com.cn/fronts/din-bold-2.ttf")',
+      family: 'DFWaWaW5',
+      source: 'url("https://file.ysr.uninote.com.cn/resource/hkwwtW5.ttc")',
+      scopes: ['webview', 'native'],
+    })
+    wx.loadFontFace({
+      global: true,
+      family: 'JinNanJunJunTi-Bold',
+      source: 'url("https://file.ysr.uninote.com.cn/resource/JingNanJunJunTi-JinNanJunJunTi-Bold-2.ttf")',
       scopes: ['webview', 'native'],
     })
   },

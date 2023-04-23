@@ -1,139 +1,33 @@
 <!-- index.wxml -->
-<view class="container">
-  <topContainer absolute style="background: linear-gradient(180deg, rgba(144, 173, 216, 0.90) 0%, rgba(144, 173, 216, 0.76) 57%, rgba(144, 173, 216, 0.00) 100%);">
-    <view class="logoView">
-      <image class="logo" src="{{scenicDetal.logo}}" mode="" />
-      <view class="titleWrap">
-        <text class="{{titleAnimation && 'animation'}}">{{scenicDetal.name}}</text>
+<view class="container" hover-class="none" hover-stop-propagation="false">
+  <topContainer titleWhite style="background: #505B0D" title="天才小侦探" />
+  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" setting="{{setting}}" enable-overlooking="{{true}}" max-scale="20" markers="{{markers}}" style="width: 100vw;height: {{mapHeight}}px;" bindmarkertap="marktap" bindtap="maptap">
+    <view class="useInfo">
+      <image class="info" src="/static/imgs/info.png" mode="" />
+      <image class="avatar" src="/static/imgs/user/temp-1.png" mode="" />
+      <text class="userName">这是用户名字</text>
+      <view class="point">
+        <image class="pointIcon" src="/static/imgs/pointsIcon.png" mode="" />
+        <text>1523</text>
+      </view>
+      <view class="rightIcon">sos</view>
+      <view class="rightIcon">dingwei</view>
+    </view>
+    <view class="func">
+      <image class="backImg" src="/static/imgs/func.png" mode="" />
+      <view class="funcItem">
+        <image src="/static/imgs/pack.png" mode="" />
+        <text>背包</text>
+      </view>
+      <view class="funcItem">
+        <image src="/static/imgs/pack.png" mode="" />
+        <text>我的</text>
       </view>
     </view>
-  </topContainer>
-  <FullScreen />
-  <!--  -->
-  <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" polyline="{{polyline}}" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" enable-3D="{{is_3D}}" show-compass setting="{{setting}}" enable-overlooking="{{true}}" max-scale="20" show-location="{{true}}" markers="{{markers}}" style="width: 100vw;height: 100vh;" enable-satellite="{{is_satellite}}" bindmarkertap="marktap" bindtap="maptap"></map>
-  <view class="show-input" style="top:{{navHeight + 10}}px">
-    <image class="input-search-icon" src="/static/icon/search.png" mode="" />
-    <input value="{{searchInputValue}}" placeholder-class="placeholder-text" placeholder="景观/洗手间/商店/美食" type="text" confirm-type="search" bindinput="inputHandle" bindconfirm="searchResult" />
-  </view>
-  <!-- enable-satellite -->
-  <FunctinonBar bind:clickItem="handleFuncClick" currentTabKey="{{currentTabKey}}" />
-  <scrollnews top="{{60}}" bind:toggleShowNews="hideNews" />
-  <!-- 右边操作栏 -->
-  <FixContainer top="{{60}}" height="{{230}}" bind:layerClick="openLayer" overview="{{overview || null}}" bind:openTaskList="openTaskLayer" />
-  <!-- 左边操作栏 -->
-  <FixContainer wx:if="{{sosArray.length > 0}}" right="{{false}}" top="{{leftTop ? leftTop : 100 }}" height="{{230}}" bind:showSoS="openSOS" bind:currentLocation="currentLocation" />
-  <!-- <flicker/> -->
-  <!-- 任务 -->
-  <block wx:if="{{showTaskModal}}">
-    <SlidePannel height="{{89}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="任务">
-      <view slot="body" style="height: 89vh">
-        <TaskList taskList="{{taskList}}" />
-      </view>
-    </SlidePannel>
-  </block>
-  <!-- 景点 -->
-  <block wx:if="{{showLandscapeModal}}">
-    <SlidePannel bind:closeModal="closeModal" titleArray="{{['景观','设施']}}" bind:changeTitle="changeData" bind:toggleExpand="toggleExpand">
-      <view slot="body" style="height: {{height}}vh">
-        <LandscapeList list="{{list}}" bind:showLandScapeDetail="openLandscapeDetail" />
-      </view>
-    </SlidePannel>
-  </block>
-  <!-- 物品 -->
-  <block wx:if="{{showGoodModal}}">
-    <SlidePannel bind:closeModal="closeModal" title="物品" bind:toggleExpand="toggleExpand">
-      <view class="head" slot="header">
-        <view class="hd">
-          <block wx:for="{{navList}}" wx:key="navList">
-            <view class="hd_flex " catchtap="changeType" data-index="{{index}}">
-              <view class="{{nav_type == index ? 'hd_flex_on' : ''}}">
-                {{item}}
-              </view>
-            </view>
-          </block>
-        </view>
-      </view>
-      <view slot="body" style="height: {{height}}vh">
-        <GoodsList list="{{goodsList}}" bind:goodclick="toogleItemInfo" />
-      </view>
-    </SlidePannel>
-  </block>
-  <!-- 物品点击后显示的详情 -->
-  <block wx:if="{{showItem}}">
-    <ItemInfo bind:closeItem="toogleItemInfo" itemData="{{itemData}}" />
-  </block>
-  <!-- 我的 -->
-  <block wx:if="{{showPackageModal}}">
-    <SlidePannel bind:closeModal="closeModal" title="我的">
-      <text>我的</text>
-    </SlidePannel>
-  </block>
-  <!-- 图层 -->
-  <block wx:if="{{showLayer}}">
-    <SlidePannel height="{{40}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="图层">
-      <view slot="body" style="height: {{280}}rpx;display:flex;justify-content:space-around">
-        <view class="layer_control">
-          <view class="control_item" data-layer="1" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 1  && 'item_icon_active'}}" src="/static/icon/2D.png" mode="scaleToFill" lazy-load="false" />
-            <text class="item_text {{layerIndex == 1  && 'item_text_active'}}" selectable="false" space="false" decode="false">
-              2D
-            </text>
-          </view>
-          <view class="control_item" data-layer="2" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 2  && 'item_icon_active'}}" src="/static/icon/3D.png" mode="aspectFit" lazy-load="false" />
-            <text class="item_text {{layerIndex == 2 && 'item_text_active'}}" selectable="false" space="false" decode="false">
-              3D
-            </text>
-          </view>
-          <view class="control_item" data-layer="3" bindtap="changeLayer">
-            <image class="item_icon {{layerIndex == 3  && 'item_icon_active'}}" src="/static/icon/siteLite.png" mode="aspectFit" lazy-load="false" />
-            <text class="item_text {{layerIndex == 3 && 'item_text_active'}}" selectable="false" space="false" decode="false">
-              卫星图层
-            </text>
-          </view>
-        </view>
-      </view>
-    </SlidePannel>
-  </block>
-
-  <!-- 消息 -->
-  <block wx:if="{{showMessage}}">
-    <SlidePannel leftTitle="{{true}}" bind:closeModal="closeModal" title="消息" bind:toggleExpand="toggleExpand">
-      <view slot="body" style="height: {{height}}vh">
-        <Message></Message>
-      </view>
-    </SlidePannel>
-  </block>
-  <!-- 景观详情 -->
-  <block wx:if="{{showMarkTapModal}}">
-    <SlidePannel isLandscapeDetail="{{true}}" bind:closeModal="closeModal" title="{{currentItem.name}}" bind:toggleExpand="toggleExpand" location="{{currentItem}}">
-      <view slot="body" style="height: {{height}}vh">
-        <LandscapeDetail item="{{currentItem}}" />
-      </view>
-    </SlidePannel>
-  </block>
-  <!-- SOS -->
-  <block wx:if="{{showSOS}}">
-    <SlidePannel height="{{43}}" closeExpand="{{false}}" bind:closeModal="closeModal" title="拨打紧急救援电话">
-      <view slot="body" style="height: {{25}}vh;display:flex;justify-content:space-around">
-        <view class="sos_layer">
-          <view wx:for="{{sosArray}}" class="sos_item" wx:key="index" data-phone="{{item.phone}}" bindtap="callPhone">
-            {{item.name}}（
-            <text class="sos_phone_num">{{item.phone}}</text>
-            ）
-          </view>
-        </view>
-      </view>
-    </SlidePannel>
-  </block>
-  <!-- 搜索结果展示 -->
-  <block wx:if="{{searchResults.length > 0}}">
-    <ResultList list="{{searchResults}}" bind:closeInput="toggleInput" />
-  </block>
-  <block wx:if="{{showEmptyResult}}">
-    <view class="empty-search-view">
-      <image src="/static/icon/search_empty.png" mode="" />
-      <text>搜索无结果，换个词试试</text>
+    <view class="taskBottomFlower">
+      <image style="width: 226rpx;height: 260rpx;position: absolute;left: 50%;top: 0;transform: translateX(-50%);" src="/static/imgs/middle.png" mode="" />
+      <image style="width: 262rpx;height: 376rpx;position: absolute;left: 0;bottom: 0;" src="/static/imgs/left.png" mode="" />
+      <image style="width: 262rpx;height: 376rpx;position: absolute;right: 0;bottom: 0;" src="/static/imgs/right.png" mode="" />
     </view>
-  </block>
+  </map>
 </view>
