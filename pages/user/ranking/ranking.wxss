@@ -36,6 +36,11 @@
   padding: 0rpx 30rpx;
   font-family: PingFang SC Regular;
 }
+.ranking-notice view text{
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 36rpx;
+}
 .rankingnav{
   /* width: 750rpx; */
   width: 720rpx;

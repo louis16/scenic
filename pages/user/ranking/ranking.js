@@ -17,7 +17,10 @@ Page({
     typeItmes:[],
     rankTData:[],
     rewardsData:{},
-    rankData:[]
+    rankData:[],
+    rankStatus:'本轮排行结束，即将开始下一轮',
+    finishTimes:0,
+    clearCountdown:0
   
   },
 
@@ -46,15 +49,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.data.clearCountdown > 0 && clearInterval(this.data.clearCountdown)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-   
-
+    this.data.clearCountdown > 0 && clearInterval(this.data.clearCountdown)
   },
 
   /**
@@ -92,6 +94,7 @@ Page({
   getRanksList(rank_id){
     const scenicDetailItem = scenicDetail()
     getRanksList({scenery_id:scenicDetailItem.id,rank_id:rank_id}).then(res => {
+      this.setRankStatus(res)
       const rankTData = []
       const rankData = []
       res.ranks.map((item,index) => {
@@ -101,8 +104,6 @@ Page({
           rankData.push(item)
         }
       })
-      
-
       if(res.rewards.length > 0){
         let rewards = res.rewards[0]
         if(!Array.isArray(rewards.rewards)){
@@ -123,6 +124,58 @@ Page({
       })
       // this.changeMoreNav()
     })
+  },
+  //设置显示当前任务状态
+  setRankStatus(obj){
+    this.data.clearCountdown > 0 && clearInterval(this.data.clearCountdown)
+
+    if(obj.status == 2){
+      this.setData({
+        finishTimes:0,
+        rankStatus : '本轮排行结束，即将开始下一轮'
+      })
+    }else{   
+      const fdate = new Date()
+      const tarr = obj.finish_at.split(":")
+      tarr.map(item => {
+        if(item == '00'){
+          item = 0
+        }
+      })
+     fdate.setHours(tarr[0],tarr[1],tarr[2])
+     const date = new Date()
+     const finishTimes = fdate.getTime()-date.getTime()
+     const that = this
+     if(finishTimes > 0){
+     const clearCountdown =  setInterval(()=>{
+        that.showCountdown()
+      },1000)
+      that.setData({
+        finishTimes : finishTimes,
+        clearCountdown : clearCountdown
+      }) 
+     }else{
+      this.setData({
+        rankStatus : '本轮排行结束，即将开始下一轮'
+      })
+     }
+      
+    }
+  },
+  //显示任务结束倒计时
+  showCountdown(){
+      const secCount = this.data.finishTimes / 1000
+      let h = parseInt(secCount / 60 / 60 % 24)
+      h = h < 10 ? '0'+ h : h
+      let m = parseInt(secCount / 60 % 60)
+      m = m < 10 ? '0' + m : m
+      let s = parseInt(secCount % 60)
+      s = s < 10 ? '0' + s : s
+      const str = (h == '00' ? '' : h +':')+ m + ':' + s
+      this.setData({
+        finishTimes: this.data.finishTimes - 1000,
+        rankStatus :  str
+      })
   },
   // 阻止点击蒙蔽
   stopEvent(){

@@ -4,7 +4,10 @@
   </view> -->
   <topContainer hiddenBack="{{false}}" titleStyle="font-family: DOUYU Font;font-size: 44rpx;" title="排行榜" titleWhite />
   <view class="ranking-notice">
-      <view>本轮排行结束，即将开始下一轮</view>
+      <view wx:if="{{ finishTimes === 0 }}">{{ rankStatus }}</view>
+      <view wx:else>
+          小时榜 <text>{{ rankStatus }}</text>
+      </view>
     </view>
     <view class="rankingnav">
         <view class="rankingmain">
