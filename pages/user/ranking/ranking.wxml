@@ -10,7 +10,7 @@
         <view class="rankingmain">
           <view class="rankingnav_items" style="{{ navitemsStyle }}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
             <block wx:for="{{ typeItmes }}" wx:key="item">
-              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav" data-index="{{index}}" data-type="{{item.type}}"><text class="navtext">{{ item.name }}</text></view>
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav" data-index="{{index}}" data-id="{{item.id}}"><text class="navtext">{{ item.name }}</text></view>
             </block>       
           </view> 
         </view>
@@ -99,7 +99,7 @@
           </view>
           <view class="m-moretype__items">
             <block wx:for="{{ typeItmes }}" wx:key="item">
-              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav" data-type="{{item.type}}" data-index="{{index}}"><text class="navtext">{{ item.name }}</text></view>
+              <view class="tab {{ sindex == index ? 'active' : '' }}" bindtap="changeMoreNav" data-id="{{item.id}}" data-index="{{index}}"><text class="navtext">{{ item.name }}</text></view>
             </block>
                
           </view> 

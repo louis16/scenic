@@ -25,7 +25,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
     this.getRanksType()
   },
 
@@ -156,13 +155,13 @@ Page({
    // 选择排行榜类型排行榜
   changeMoreNav(e){
     const index = e ? parseInt(e.currentTarget.dataset.index) : 0
-    const type = e ? parseInt(e.currentTarget.dataset.type) : 0
+    const typeid = e ? parseInt(e.currentTarget.dataset.id) : 0
     this.setData({
       sindex:index,
       showMoreTypes:false
     })
-    if(type !== 0){
-      this.getRanksList(type)
+    if(typeid !== 0){
+      this.getRanksList(typeid)
     }
 
     this.setNavOffset(index)
