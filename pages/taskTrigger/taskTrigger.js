@@ -65,6 +65,7 @@ Page({
     if (this.data.isPlaying) {
       this.innerAudioContext.stop()
     }
+    this.innerAudioContext && this.innerAudioContext.stop()
   },
   onPullDownRefresh() {},
   onReachBottom() {},

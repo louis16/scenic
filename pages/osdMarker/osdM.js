@@ -35,9 +35,7 @@ Page({
   },
 
 
-  onUnload() {
-    recognizedIds
-  },
+  onUnload() {},
   handleArScan(res) {
     const taskId = res.detail.taskId
     const active = res.detail.active
