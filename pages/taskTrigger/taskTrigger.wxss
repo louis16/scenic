@@ -15,6 +15,28 @@
   flex-direction: column;
 }
 
+.shareBtn {
+  position: absolute;
+  color: white;
+  background: #524b4b !important;
+  border-radius: 50%;
+  width: 100rpx !important;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  right: 40rpx;
+  top: 200rpx;
+}
+
+.shareIcon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .audioWrap {
   margin: 0 30rpx 0 30rpx;
   border-radius: 48rpx;

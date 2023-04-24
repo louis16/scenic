@@ -59,7 +59,12 @@ Page({
     }
   },
   onReady() {},
-  onShow() {},
+  onShow() {
+    if (this.sharedTaskId) {
+      this.sharedTaskId = null
+      this.completeTaskFun()
+    }
+  },
   onHide() {},
   onUnload() {
     if (this.data.isPlaying) {
@@ -69,7 +74,15 @@ Page({
   },
   onPullDownRefresh() {},
   onReachBottom() {},
-  onShareAppMessage() {},
+  // 自定义分享
+  onShareAppMessage() {
+    this.sharedTaskId = this.data.originData.complete_id
+    return {
+      title: this.data.originData.name,
+      path: "/pages/firstPage/fisrtPage ",
+      imageUrl: 'https://img0.baidu.com/it/u=2206010993,3306791188&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1682442000&t=70daa72393d8b4f35136b5ceef2c414e'
+    }
+  },
   submitData() {
     const answer = this.data.originData.questions[0].answer
     if (this.data.originData.complete_type == 2) { //填空题

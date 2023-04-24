@@ -16,6 +16,13 @@
       <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
       <template wx:if="{{videoEnd}}" is="videoChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
     </view>
+    <!--视频 ___ 分享 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 4 }}">
+      <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" />
+      <button class="shareBtn" type="primary" open-type="share">
+        <image class="shareIcon" src="/static/icon/3D.png" mode="" />
+      </button>
+    </view>
   </view>
   <view wx:elif="{{resourceType === 'mp3'}}">
     <image src="/static/icon/umessage-bg.png" mode="" class="audio_bg" />
@@ -37,6 +44,13 @@
     </view>
     <view class="contentWrap" wx:if="{{originData.complete_type == 3 }}">
       <template wx:if="{{audioEnd}}" is="audioChoose" data="{{question:originData.questions[0].question,options:originData.questions[0].options || [] }}" />
+    </view>
+    <!--视频 ___ 分享 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 4 }}">
+      <!-- <video id="myVideo" wx:if="{{originData.show_resource}}" src="{{filePath}}/{{originData.show_resource}}" show-fullscreen-btn="{{false}}" autoplay style="width: 100%;height: {{windownHeight-navHeight}}px;" bindended="bindended" /> -->
+      <button class="shareBtn" type="primary" open-type="share">
+        <image class="shareIcon" src="/static/icon/3D.png" mode="" />
+      </button>
     </view>
   </view>
   <view wx:else>
@@ -66,6 +80,18 @@
         <view class="desc">{{originData.show_text}}</view>
         <template is="choose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
       </view>
+    </view>
+    <!--视频 ___ 分享 -->
+    <view class="contentWrap" wx:if="{{originData.complete_type == 4 }}">
+      <image wx:if="{{originData.show_resource}}" class="img" src="{{filePath}}/{{originData.show_resource}}" mode="scaleToFill" />
+      <view class="content">
+        <view class="title">{{originData.name}}</view>
+        <view class="desc">{{originData.show_text}}</view>
+        <template is="choose" data="{{question:originData.questions[0].question,options:originData.questions[0].options}}" />
+      </view>
+      <button class="shareBtn" type="primary" open-type="share">
+        <image class="shareIcon" src="/static/icon/3D.png" mode="" />
+      </button>
     </view>
   </view>
   <!-- 错误弹窗 -->
