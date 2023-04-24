@@ -93,6 +93,22 @@ Component({
       let finished = event.currentTarget.dataset.finished;
       let max = event.currentTarget.dataset.max;
       let alert = event.currentTarget.dataset.alert;
+      let timeEndStr = event.currentTarget.dataset.item.time_finish_at
+      const DATE = new Date()
+      let year = DATE.getFullYear(),
+        month = DATE.getMonth() + 1,
+        date = DATE.getDate()
+      const Time = `${year}-${month}-${date} ${timeEndStr}`
+      console.log(Time)
+      const NOW = new Date().getTime()
+      const expireTime = new Date(`${Time}`).getTime()
+      if (NOW - expireTime > 0) {
+        showToast({
+          title: '已过期',
+          icon: 'none'
+        })
+        return
+      }
       if (finished >= (max || 10000000)) {
         showToast({
           title: alert || '当前任务完成数以达到最大,无法继续参与',

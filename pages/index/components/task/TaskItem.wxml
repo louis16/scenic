@@ -87,7 +87,7 @@
           </view>
         </view>
       </block>
-      <view class="finishBtn" data-taskType="{{item.trigger_type}}" data-id="{{item.id}}" data-finished="{{item.finished}}" data-max="{{item.max_complete_number}}" data-alert="{{item.alert}}" catchtap="goFinish">去完成</view>
+      <view class="finishBtn" data-taskType="{{item.trigger_type}}" data-item="{{item}}" data-id="{{item.id}}" data-finished="{{item.finished}}" data-max="{{item.max_complete_number}}" data-alert="{{item.alert}}" catchtap="goFinish">去完成</view>
     </view>
   </block>
 </view>
