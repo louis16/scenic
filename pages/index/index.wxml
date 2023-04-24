@@ -1,4 +1,5 @@
 <!-- index.wxml -->
+<import src="/pages/index/index_template" />
 <view class="container" hover-class="none" hover-stop-propagation="false">
   <topContainer titleWhite style="background: #505B0D" title="天才小侦探" />
   <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" setting="{{setting}}" enable-overlooking="{{true}}" max-scale="20" markers="{{markers}}" style="width: 100vw;height: {{mapHeight}}px;" bindmarkertap="marktap" bindtap="maptap">
@@ -10,8 +11,9 @@
         <image class="pointIcon" src="/static/imgs/pointsIcon.png" mode="" />
         <text>1523</text>
       </view>
-      <view class="rightIcon">sos</view>
-      <view class="rightIcon">dingwei</view>
+
+      <view class="rightIcon" style="background-image: url('/static/imgs/sos.png');"></view>
+      <view class="rightIcon locationIcon" style="background-image: url('/static/imgs/location.png');"></view>
     </view>
     <view class="func">
       <image class="backImg" src="/static/imgs/func.png" mode="" />
@@ -24,10 +26,6 @@
         <text>我的</text>
       </view>
     </view>
-    <view class="taskBottomFlower">
-      <image style="width: 226rpx;height: 260rpx;position: absolute;left: 50%;top: 0;transform: translateX(-50%);" src="/static/imgs/middle.png" mode="" />
-      <image style="width: 262rpx;height: 376rpx;position: absolute;left: 0;bottom: 0;" src="/static/imgs/left.png" mode="" />
-      <image style="width: 262rpx;height: 376rpx;position: absolute;right: 0;bottom: 0;" src="/static/imgs/right.png" mode="" />
-    </view>
+    <template is="task" data="" />
   </map>
-</view>
+</view>     

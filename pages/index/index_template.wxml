@@ -1,0 +1,64 @@
+<template name="center">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <text class="center_title">激活任务</text>
+      <view class="center_input_wrap">
+        <input type="text" class="center_input" placeholder="请输入激活码" placeholder-class="placeholder" />
+      </view>
+      <view class="center_note">若您尚未购买，请
+        <text>联系客服</text>
+      </view>
+      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
+        立即激活
+      </view>
+    </view>
+  </view>
+</template>
+<template name="task">
+  <view class="task_bottom_wrap">
+    <image class="task_left" src="/static/imgs/left.png" mode="" />
+    <view style="background-image: url('/static/imgs/backImg.png')" class="task_middle">
+      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <view class="temp_flex task_content">
+        <view class="task_title_wrap">
+          <image bindtap="playAudio" class="task_audio_icon" src="/static/imgs/palyAudio.png" mode="" />
+          <view class="task_title" style="background-image: url('https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg');">
+            任务1 《找到XXX》
+          </view>
+        </view>
+        <view class="title_desc">
+          在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭。否则那将会成为他今后最不愿提及的往事之一。
+        </view>
+        <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">激活任务</view>
+      </view>
+    </view>
+    <image class="task_right" src="/static/imgs/right.png" mode="" />
+    <image class="task_old_man" src="/static/imgs/oldMan.png" mode="" />
+  </view>
+</template>
+<template name="default">
+  <view class="default_wrap">
+    <image class="default_middle" src="/static/imgs/middle.png" mode="" />
+    <image class="default_left" src="/static/imgs/left.png" mode="" />
+    <image class="default_right" src="/static/imgs/right.png" mode="" />
+  </view>
+</template>
+<template name="activeSuccess">
+  <view class="success_wrap">
+    <view style="background-image: url('/static/imgs/rope.png');" class="active_title">
+      <text>激活成功</text>
+    </view>
+    <view style="background-image: url('/static/imgs/backImg.png');background-size: 100% 100%;width: 670rpx;height: 442rpx;z-index: 9;">
+      <view class="temp_flex active_content">
+        <text class="active_content_title">奖励</text>
+        <view class="active_content_point">
+          20<text>积分</text>
+        </view>
+      </view>
+    </view>
+    <view style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
+      我收下了
+    </view>
+  </view>
+</template>

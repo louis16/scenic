@@ -108,4 +108,7 @@ Page({
       imageUrl: 'https://so1.360tres.com/t010ae94d49ddd280be.png'
     }
   },
+  playAudio() {
+    console.log(111)
+  }
 });

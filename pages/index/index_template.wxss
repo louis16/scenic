@@ -1,0 +1,270 @@
+.default_wrap {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 376rpx;
+}
+
+.default_left {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.default_right {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.default_middle {
+  width: 226rpx;
+  height: 260rpx;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.task_bottom_wrap {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 676rpx;
+}
+
+.task_left {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.task_middle {
+  background-size: 100% 100%;
+  width: 636rpx;
+  height: 612rpx;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+
+.task_content {
+  padding: 64rpx 56rpx;
+}
+
+.task_title_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 44rpx;
+}
+
+.task_title_wrap::after {
+  content: ' ';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 4px;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, #472419 54%, rgba(0, 0, 0, 0.00) 100%);
+  bottom: -20rpx;
+}
+
+.task_title {
+  flex: 1;
+  text-align: center;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 40rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.title_desc {
+  font-family: 'PingFang SC Bold';
+  font-size: 28rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+}
+
+.task_audio_icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.task_audio_icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-25%, -25%);
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -15rpx;
+}
+
+.task_right {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+}
+
+.task_old_man {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+
+.center_wrap {
+  background-size: 100% 100%;
+  width: 670rpx;
+  height: 442rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -70%);
+  z-index: 9;
+}
+
+.temp_flex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center_btn {
+  width: 220rpx;
+  height: 80rpx;
+  background-size: 100% 100%;
+  text-align: center;
+  line-height: 70rpx;
+  color: #FFF09E;
+  font-family: 'DFWaWaW5';
+  font-size: 40rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  margin-top: 40rpx;
+}
+
+.center_input_wrap {
+  width: 320rpx;
+  height: 72rpx;
+  border-radius: 40rpx;
+  background-color: #8D4B02;
+  text-indent: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center_input {
+  width: 260rpx;
+}
+
+.placeholder {
+  color: #BC8343;
+}
+
+.center_title {
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 40rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  margin-top: 48rpx;
+}
+
+.center_note {
+  font-family: 'PingFang SC Regular';
+  font-size: 24rpx;
+  font-weight: normal;
+  line-height: 24rpx;
+  letter-spacing: 0em;
+  color: #2F1407;
+  margin-top: 50rpx;
+}
+
+.center_note text {
+  color: #FFF09E;
+}
+
+.success_wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active_title {
+  background-size: 100% 100%;
+  width: 352rpx;
+  height: 194rpx;
+  transform: translateY(20rpx);
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 48rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+}
+
+.active_content {
+  justify-content: center;
+}
+
+.active_content_title {
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 40rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+}
+
+.active_content_point {
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 56rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  text-shadow: 0 2rpx 6rpx 0 #774122;
+  margin-top: 36rpx;
+}

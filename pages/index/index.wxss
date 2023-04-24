@@ -1,3 +1,5 @@
+@import "/pages/index/index_template.wxss";
+
 .container {
   position: relative;
   width: 100vw;
@@ -302,6 +304,7 @@
   z-index: 11;
   display: inline-block;
   border: 2rpx solid #95522f;
+  padding-right: 2 0rpx;
   border-radius: 20rpx;
   font-family: 'JinNanJunJunTi-Bold';
   font-size: 28rpx;
@@ -312,10 +315,22 @@
   padding-left: 50rpx;
   transform: translate(10rpx, 5rpx);
 }
-.rightIcon{
+
+.rightIcon {
+  width: 64rpx;
+  height: 54rpx;
   position: relative;
-  right: -30rpx;
+  right: -45rpx;
+  background-size: 100% 100%;
+  transform: scale(2);
+  margin-top: 40rpx;
 }
+
+.locationIcon {
+  margin-top: 35rpx;
+  transform: scale(2.5);
+}
+
 .func {
   position: absolute;
   top: -5px;
@@ -355,11 +370,4 @@
   letter-spacing: 0em;
   color: white;
   margin-top: 14rpx;
-}
-
-.taskBottomFlower {
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  height: 376rpx;
 }

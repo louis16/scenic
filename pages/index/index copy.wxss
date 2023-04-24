@@ -238,17 +238,3 @@
     right: 100%;
   }
 }
-
-#myMap {
-  position: relative;
-  box-sizing: content-box;
-}
-
-.taskBottomFlower {
-  position: relative;
-  /* bottom: 0; */
-  /* z-index: 999; */
-  background-color: rgba(255, 0, 0, 0.116);
-  width: 100vw;
-  height: 376rpx;
-}
