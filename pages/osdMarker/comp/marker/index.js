@@ -56,14 +56,11 @@ Component({
     }) {
       const active = detail.value;
       const taskId = detail.el._backendId
-      // if (active) {
-      //   wx.showToast({
-      //     title: taskId,
-      //   })
-      // }
+      let element = this.data.modelsAndRecognize.filter(item => item.id == taskId)
       this.triggerEvent('handleArScan', {
         taskId,
-        active
+        active,
+        isComplete: element[0].is_complete == 1
       })
     },
     handleTouchModel: function ({

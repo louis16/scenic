@@ -158,6 +158,8 @@ Page({
           model: `${app.globalData.fileUrl}/${item.model}`,
           ai_rotation: item.ai_rotation,
           ai_scale: item.ai_scale,
+          ai_position: item.ai_position,
+          is_complete: item.is_complete,
         }
       })
       console.log(app.globalData.arWatchLists, '加载数据')

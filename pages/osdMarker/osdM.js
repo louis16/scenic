@@ -39,6 +39,10 @@ Page({
   handleArScan(res) {
     const taskId = res.detail.taskId
     const active = res.detail.active
+    const isComplete = res.detail.isComplete
+    if (isComplete) {
+      return
+    }
     if (active) {
       console.log(this.data.recognizedIds, taskId, 333)
       if (!this.data.recognizedIds.includes(taskId)) {
@@ -60,12 +64,16 @@ Page({
         })
       }
     } else {
-      this.setData({
-        height: this.height,
-        renderHeight: this.height * this.dpi,
-        answerHeight: 0,
-        answerRenderHeight: 0,
-      });
+      timer && clearTimeout(timer)
+      let timer = setTimeout(() => {
+        this.setData({
+          height: this.height,
+          renderHeight: this.height * this.dpi,
+          answerHeight: 0,
+          answerRenderHeight: 0,
+        });
+        clearTimeout(timer)
+      }, 1000)
     }
   },
 
@@ -122,7 +130,7 @@ Page({
     this.setData({
       showRight: false
     })
-    // wx.navigateBack()
+    wx.navigateBack()
   },
   handleUseFocus(event) {
     this.setData({

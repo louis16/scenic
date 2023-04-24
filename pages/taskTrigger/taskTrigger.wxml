@@ -109,5 +109,5 @@
     <view class="ResultWrap" />
   </view>
   <!-- 正确弹窗 -->
-  <template wx:if="{{ showRight}}" is="rewardsPage" data="{{rewards:rewards,quests:quests,imgType:originData.complete_type=='1'?'congrats':'answer'}}" />
+  <template wx:if="{{ showRight}}" is="rewardsPage" data="{{rewards:rewards,quests:quests,imgType:originData.complete_type=='1'?'congrats':originData.complete_type == '4' ? 'clock' :'answer'}}" />
 </view>
