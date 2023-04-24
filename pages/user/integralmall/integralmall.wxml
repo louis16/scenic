@@ -106,7 +106,7 @@
                 <view class="count">
                   <input type="text" class="input" value="{{count}}" bindblur="setCount" />
                 </view>
-                <view class="but" bindtap="setExchangeCount" data-type="1">+</view>
+                <view class="but {{ count < maximum  ? '' : 'disabled' }}" bindtap="setExchangeCount"  data-type="1">+</view>
             </view>      
           </view>
           <view class="showitem-intro">{{ detailData.explain }}</view>

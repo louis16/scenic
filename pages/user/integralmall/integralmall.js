@@ -27,7 +27,8 @@ Page({
     navHeight: app.globalData.navHeight, //导航栏高度
     points:0,
     newexchange:'',
-    userInfo:{}
+    userInfo:{},
+    maximum:0
   },
 
   /**
@@ -132,7 +133,10 @@ Page({
         thisCount -= 1
       }
     }else{
-       thisCount += 1
+      if(thisCount < this.data.maximum){
+        thisCount += 1
+      }
+       
     }
     const amount = this.data.detailData.point * thisCount
     this.setData({
@@ -155,8 +159,10 @@ Page({
       }else{
         res.showName = this.formatCouponname(res)
         res.expiry_finish_at = formatTime(res.expiry_finish_at,'Y年M月D日 h:m:s')
+
         this.setData({
           count:1,
+          maximum: parseInt(res.maximum),
           amount:res.point,
           detailData : res,
           confirmMessage:'您是否确认消耗'+ res.point +'积分兑换1张'+res.showName+'？',
@@ -200,8 +206,9 @@ Page({
     let count = parseInt(e.detail.value)
     if(isNaN(count)||count <= 0){
       count = 1
-    }else if(count > 999){
-      count = 999
+    }else if(count >= this.data.maximum  || count > 999){
+
+      count = this.data.maximum
     }
     const amount = this.data.detailData.point * count
     this.setData({
