@@ -69,7 +69,7 @@
   margin-bottom: 44rpx;
 }
 
-.task_title_wrap::after {
+.liner_line::after {
   content: ' ';
   position: absolute;
   left: 50%;
@@ -267,4 +267,128 @@
   color: #FFF09E;
   text-shadow: 0 2rpx 6rpx 0 #774122;
   margin-top: 36rpx;
+}
+
+.sos_bg {
+  width: 532rpx;
+  height: 134rpx;
+  background-size: 100% 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-120%);
+}
+
+.sos_phone_wrap {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sos_bg text {
+  /* display: inline-block; */
+  flex: 1;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 32rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+}
+
+.sos_call_btn {
+  width: 156rpx;
+  height: 56rpx;
+  background-size: 100% 100%;
+  text-align: center;
+  line-height: 50rpx;
+  color: #FFF09E;
+  font-family: 'DFWaWaW5';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  font-size: 32rpx;
+  text-shadow: 0px 1px 1px 0px #31170D;
+}
+
+.contact_wrap {
+  width: 690rpx;
+  height: 664rpx;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.contact_title {
+  width: 9 0%;
+  position: relative;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 36rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  margin-top: 50rpx;
+}
+
+.contact_bg {
+  width: 532rpx;
+  height: 134rpx;
+  background-size: 100% 100%;
+  position: relative;
+  top: 5%;
+}
+
+.contact_phone {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contact_phone text {
+  /* display: inline-block; */
+  flex: 1;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 32rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+}
+
+.contact_qrcode {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50rpx;
+}
+
+.contact_qrcode image {
+  width: 240rpx;
+  height: 240rpx;
+  background-color: rgb(192, 136, 52);
+}
+
+.contact_qrcode text {
+  font-family: 'PingFang SC Bold';
+  font-size: 24rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #2F1407;
+  margin-top: 16rpx;
+}
+
+.wrong_icon {
+  width: 112rpx;
+  height: 112rpx;
+  margin-top: 40rpx;
 }

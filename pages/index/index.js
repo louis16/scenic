@@ -32,7 +32,8 @@ Page({
     goodsList: [],
     taskList: [],
     scenicDetal: {},
-    mapHeight: app.globalData.windowHeight - app.globalData.navHeight // 20是为了遮挡住腾讯地图的logo
+    mapHeight: app.globalData.windowHeight - app.globalData.navHeight, // 20是为了遮挡住腾讯地图的logo
+    templateName: 'default'
   },
   onLoad() {
     this.mapContext = wx.createMapContext('myMap', this)

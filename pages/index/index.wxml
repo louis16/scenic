@@ -11,7 +11,6 @@
         <image class="pointIcon" src="/static/imgs/pointsIcon.png" mode="" />
         <text>1523</text>
       </view>
-
       <view class="rightIcon" style="background-image: url('/static/imgs/sos.png');"></view>
       <view class="rightIcon locationIcon" style="background-image: url('/static/imgs/location.png');"></view>
     </view>
@@ -26,6 +25,6 @@
         <text>我的</text>
       </view>
     </view>
-    <template is="task" data="" />
+    <template is="{{templateName}}" data="" />
   </map>
 </view>     

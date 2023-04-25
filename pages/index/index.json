@@ -3,14 +3,10 @@
     "FunctinonBar": "/components/functionBar/bar",
     "SlidePannel": "/components/slidePannel/slidePannel",
     "topContainer": "/components/topContainer/topContainer",
-    "scrollnews": "./components/scrollnews/scrollnews",
     "GoodsList": "./components/goodList/goodsList",
     "ItemInfo": "./components/goodInfo/goodInfo",
-    "ResultList": "./components/searchResultList/resultList",
-    "FixContainer": "./components/fixContainer/fixContainer",
     "TaskList": "./components/task/TaskList",
     "LandscapeDetail": "./components/landscapeDetail/landscapeDetail",
-    "FullScreen": "/components/fullScreen/FullScreen",
     "LandscapeList": "./components/landscape/LandscapeList",
     "Message": "./components/message/message"
   }

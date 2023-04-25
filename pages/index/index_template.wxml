@@ -21,7 +21,7 @@
     <view style="background-image: url('/static/imgs/backImg.png')" class="task_middle">
       <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
       <view class="temp_flex task_content">
-        <view class="task_title_wrap">
+        <view class="task_title_wrap liner_line">
           <image bindtap="playAudio" class="task_audio_icon" src="/static/imgs/palyAudio.png" mode="" />
           <view class="task_title" style="background-image: url('https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg');">
             任务1 《找到XXX》
@@ -59,6 +59,56 @@
     </view>
     <view style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
       我收下了
+    </view>
+  </view>
+</template>
+<template name="sos">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <text class="center_title">拨打紧急救援电话</text>
+      <view class="sos_bg" style="background-image: url('/static/imgs/bgSos.png');">
+        <view class="sos_phone_wrap">
+          <text>028-56895325</text>
+          <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="11111">
+            拨打
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<template name="contact">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="contact_wrap">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <view class="contact_title liner_line">
+        联系客服
+      </view>
+      <view class="contact_bg" style="background-image: url('/static/imgs/bgSos.png');">
+        <view class="contact_phone">
+          <text>028-56895325</text>
+          <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="222222">
+            拨打
+          </view>
+        </view>
+      </view>
+      <view class="contact_qrcode">
+        <image src="" mode="" />
+        <text>截图添加客服微信</text>
+      </view>
+    </view>
+  </view>
+</template>
+<template name="wrongAnswer">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <text class="center_title">回答错误</text>
+      <image class="wrong_icon" src="/static/imgs/wrong.png" mode="" />
+      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
+        重新回答
+      </view>
     </view>
   </view>
 </template>

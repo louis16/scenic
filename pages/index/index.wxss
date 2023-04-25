@@ -304,7 +304,7 @@
   z-index: 11;
   display: inline-block;
   border: 2rpx solid #95522f;
-  padding-right: 2 0rpx;
+  padding-right: 20rpx;
   border-radius: 20rpx;
   font-family: 'JinNanJunJunTi-Bold';
   font-size: 28rpx;
