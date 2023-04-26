@@ -1,3 +1,18 @@
+.mask_layer{
+  width: 100vw; 
+  height: 100%; 
+  background-color:rgba(0,0,0,0.7);
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fadeout{
+  transform: scale(0.5);
+  opacity: 0;
+}
+/* 初始化状态 */
 .default_wrap {
   position: absolute;
   bottom: 0;
@@ -11,6 +26,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: 3;
 }
 
 .default_right {
@@ -19,6 +35,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
+  z-index: 1;
 }
 
 .default_middle {
@@ -29,7 +46,7 @@
   top: 0;
   transform: translateX(-50%);
 }
-
+/* 任务 */
 .task_bottom_wrap {
   position: absolute;
   bottom: 0;
@@ -38,8 +55,8 @@
 }
 
 .task_left {
-  width: 262rpx;
-  height: 376rpx;
+  width: 362rpx;
+  height: 366rpx;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -62,7 +79,7 @@
 }
 
 .task_title_wrap {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -100,8 +117,25 @@
   font-weight: normal;
   letter-spacing: 0em;
   color: #2F1407;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
+.task_box{
+  text-align: center;
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20rpx;
+}
+.task_box image {
+  margin-bottom: 10rpx;
+}
+.task_icon {
+  width: 120rpx;
+  height: 120rpx;
+}
 .task_audio_icon {
   width: 40rpx;
   height: 40rpx;
@@ -117,7 +151,7 @@
   height: 70rpx;
 }
 
-.btn_close {
+.task_middle .btn_close {
   width: 80rpx;
   height: 80rpx;
   position: absolute;
@@ -127,7 +161,7 @@
 
 .task_right {
   width: 262rpx;
-  height: 376rpx;
+  height: 328rpx;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -135,24 +169,28 @@
 }
 
 .task_old_man {
-  width: 262rpx;
-  height: 376rpx;
+  width: 348rpx;
+  height: 346rpx;
   position: absolute;
-  right: 0;
+  right: -15rpx;
   bottom: 0;
   z-index: 10;
 }
-
-
+.task_old_man.left{
+  left: -15px;
+  transform: scaleX(-1);
+}
+/* 激活 */
 .center_wrap {
+  position: relative;
   background-size: 100% 100%;
   width: 670rpx;
   height: 442rpx;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -70%);
-  z-index: 9;
+}
+.center_wrap.box2{
+  background-size: 636rpx 612rpx;
+  width: 636rpx;
+  height: 612rpx;
 }
 
 .temp_flex {
@@ -161,13 +199,19 @@
   flex-direction: column;
   align-items: center;
 }
-
+.center_wrap .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -15rpx;
+}
 .center_btn {
   width: 220rpx;
   height: 80rpx;
   background-size: 100% 100%;
   text-align: center;
-  line-height: 70rpx;
+  line-height: 72rpx;
   color: #FFF09E;
   font-family: 'DFWaWaW5';
   font-size: 40rpx;
@@ -219,13 +263,19 @@
 .center_note text {
   color: #FFF09E;
 }
-
+/* 激活成功 */
 .success_wrap {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -55%);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height:100%;
+  background-position: center center;
+  background-size: 710rpx 620rpx;
+  background-repeat: no-repeat;
+  /* transform: translate(-50%, -55%); */
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
@@ -251,7 +301,7 @@
 
 .active_content_title {
   font-family: 'JinNanJunJunTi-Bold';
-  font-size: 40rpx;
+  font-size: 32rpx;
   font-weight: normal;
   text-align: center;
   letter-spacing: 0em;
@@ -268,14 +318,14 @@
   text-shadow: 0 2rpx 6rpx 0 #774122;
   margin-top: 36rpx;
 }
-
+/*SOS*/
 .sos_bg {
   width: 532rpx;
   height: 134rpx;
   background-size: 100% 100%;
-  position: relative;
-  top: 50%;
-  transform: translateY(-120%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sos_phone_wrap {
@@ -283,10 +333,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .sos_bg text {
@@ -297,6 +343,7 @@
   font-weight: normal;
   letter-spacing: 0em;
   color: #2F1407;
+  line-height: 56rpx;
 }
 
 .sos_call_btn {
@@ -313,17 +360,42 @@
   font-size: 32rpx;
   text-shadow: 0px 1px 1px 0px #31170D;
 }
+.top_border {
+  height:5rpx;
+  margin-top:25rpx;
+  margin-bottom:10rpx;
+  width:70%;
+  background: linear-gradient(270deg, rgba(71,36,25,0.00) 0%, #472419 54%, rgba(71,36,25,0.00) 100%);
+}
+.sos_personInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sos_personInfo text{
+  color:#2F1407;
+  font-size: 24rpx;
+}
+.sos_personInfo .personQrCode {
+  width: 240rpx;
+  height: 240rpx;
+}
 
+/*联系方式*/
 .contact_wrap {
+  position: relative;
   width: 690rpx;
   height: 664rpx;
   background-size: 100% 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -60%);
 }
-
+.contact_wrap .btn_close{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -15rpx;
+}
 .contact_title {
   width: 9 0%;
   position: relative;
@@ -391,4 +463,108 @@
   width: 112rpx;
   height: 112rpx;
   margin-top: 40rpx;
+}
+/*对话框*/
+.dialogBox{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 416rpx;
+  display: flex;
+  justify-content: center;
+}
+.dialogBox .dialog_middle{
+  position: relative;
+  z-index: 2;
+  width: 710rpx;
+  height: 316rpx;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.dialogBox .dialog_middle>view{
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 56rpx 66rpx;
+}
+.dialogBox .dialog_middle>view>view:first-child{
+  font-family: JinNanJunJunTi-Bold;
+  font-size: 32rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  height: 32rpx;
+  margin-bottom: 34rpx;
+}
+.dialogBox .dialog_middle.left>view>view:first-child{
+  padding-left: 200rpx;
+}
+.dialogBox .dialog_middle>view>scroll-view{
+  font-family: 'PingFang SC Bold';
+  padding-left: 20rpx;
+  padding-right: 200rpx;
+  font-size: 28rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+  width: auto;
+  height: 140rpx;
+}
+.dialogBox .dialog_middle.left>view>scroll-view {
+  padding-left: 200rpx;
+  padding-right: 20rpx;
+}
+.dialogBox .mysteryMan::before{
+  content:'?';
+  display: inline-block;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left: -30rpx;
+  margin-top: -80rpx;
+  font-family: JinNanJunJunTi-Bold;
+  font-size: 102rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+}
+.dialogBox .mysteryMan.left::before{
+  transform: scaleX(-1);
+}
+.dialogBox .next_btn{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 32rpx;
+  top: 32rpx;
+}
+/*背包*/
+.bag{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.bag .bag_top_title{
+  width: 276rpx;
+  height: 136rpx;
+  transform: translateY(-100%);
+}
+.bg_cover, .bg_contain{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg_contain{
+  background-size: contain;
+}
+.bag .bag_box{
+  width: 100vw;
+  flex: 1;
+  transform: translateY(100%);
+  background-position: center top;
+  background-size: 100% calc(100% - 60rpx);
 }

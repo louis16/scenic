@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <import src="/pages/index/index_template" />
-<view class="container" hover-class="none" hover-stop-propagation="false">
-  <topContainer titleWhite style="background: #505B0D" title="天才小侦探" />
+<view class="container" hover-class="none"  hover-stop-propagation="false">
+  <topContainer titleWhite style="background: #505B0D;position: relative;z-index: 101;" title="天才小侦探" />
   <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" setting="{{setting}}" enable-overlooking="{{true}}" max-scale="20" markers="{{markers}}" style="width: 100vw;height: {{mapHeight}}px;" bindmarkertap="marktap" bindtap="maptap">
     <view class="useInfo">
       <image class="info" src="/static/imgs/info.png" mode="" />
@@ -25,6 +25,7 @@
         <text>我的</text>
       </view>
     </view>
-    <template is="{{templateName}}" data="" />
-  </map>
+    <!-- <template is="{{templateName}}" data="" /> -->
+    <template is="bag" data="{{slideDown,slideUp}}"/>
+  </map>  
 </view>     

@@ -33,7 +33,41 @@ Page({
     taskList: [],
     scenicDetal: {},
     mapHeight: app.globalData.windowHeight - app.globalData.navHeight, // 20是为了遮挡住腾讯地图的logo
-    templateName: 'default'
+    templateName: 'default',
+    slideDown: {}, // 从上向下滑出
+    slideUp:{}, // 从下向上滑出
+    fadeOut:{} // 渐显
+  },
+  onShow: function () {
+    // 创建动画实例
+    let fadeOut = wx.createAnimation({
+      duration: 1000, // 动画时长
+      timingFunction: 'ease', // 缓动函数
+      delay: 0, // 延迟时间
+      transformOrigin: '50% 50%', // 变形原点
+    });
+
+    // 设置动画效果
+    fadeOut.scale(1).opacity(1).step();
+
+    var slideDown = wx.createAnimation({
+      duration: 1000, // 动画持续时间
+      timingFunction: 'ease', // 动画类型
+    });
+    // 设置动画初始状态
+    slideDown.translateY('0').step();
+    var slideUp = wx.createAnimation({
+      duration: 1000, // 动画持续时间
+      timingFunction: 'ease', // 动画类型
+    });
+    // 设置动画初始状态
+    slideUp.translateY('0').step();
+    // 更新数据，开始执行动画
+    this.setData({
+      fadeOut: fadeOut.export(),
+      slideDown: slideDown.export(),
+      slideUp: slideUp.export(),
+    });
   },
   onLoad() {
     this.mapContext = wx.createMapContext('myMap', this)

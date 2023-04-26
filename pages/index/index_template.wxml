@@ -1,20 +1,24 @@
+<!-- 激活任务 -->
 <template name="center">
-  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap">
-    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
-    <view class="temp_flex">
-      <text class="center_title">激活任务</text>
-      <view class="center_input_wrap">
-        <input type="text" class="center_input" placeholder="请输入激活码" placeholder-class="placeholder" />
-      </view>
-      <view class="center_note">若您尚未购买，请
-        <text>联系客服</text>
-      </view>
-      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
-        立即激活
+  <view class="mask_layer">
+    <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap fadeout" animation="{{fadeOut}}">
+      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <view class="temp_flex">
+        <text class="center_title">激活任务</text>
+        <view class="center_input_wrap">
+          <input type="text" class="center_input" placeholder="请输入激活码" placeholder-class="placeholder" />
+        </view>
+        <view class="center_note">若您尚未购买，请
+          <text>联系客服</text>
+        </view>
+        <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
+          立即激活
+        </view>
       </view>
     </view>
   </view>
 </template>
+<!-- 任务 -->
 <template name="task">
   <view class="task_bottom_wrap">
     <image class="task_left" src="/static/imgs/left.png" mode="" />
@@ -29,6 +33,10 @@
         </view>
         <view class="title_desc">
           在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭。否则那将会成为他今后最不愿提及的往事之一。
+          <view class="task_box">
+            <image class="task_icon" src="/static/imgs/palyAudio.png" mode="scaleToFill" />
+            找到花果山水帘洞并扫描图中物件
+          </view>
         </view>
         <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">激活任务</view>
       </view>
@@ -37,6 +45,7 @@
     <image class="task_old_man" src="/static/imgs/oldMan.png" mode="" />
   </view>
 </template>
+<!-- 默认状态 -->
 <template name="default">
   <view class="default_wrap">
     <image class="default_middle" src="/static/imgs/middle.png" mode="" />
@@ -44,70 +53,117 @@
     <image class="default_right" src="/static/imgs/right.png" mode="" />
   </view>
 </template>
+<!-- 激活成功 -->
 <template name="activeSuccess">
-  <view class="success_wrap">
-    <view style="background-image: url('/static/imgs/rope.png');" class="active_title">
-      <text>激活成功</text>
-    </view>
-    <view style="background-image: url('/static/imgs/backImg.png');background-size: 100% 100%;width: 670rpx;height: 442rpx;z-index: 9;">
-      <view class="temp_flex active_content">
-        <text class="active_content_title">奖励</text>
-        <view class="active_content_point">
-          20<text>积分</text>
+  <view class="mask_layer">
+    <view class="success_wrap fadeout" style="background-image: url(/static/imgs/shine.png);" animation="{{fadeOut}}">
+      <view style="background-image: url('/static/imgs/rope.png');" class="active_title">
+        <text>激活成功</text>
+      </view>
+      <view style="background-image: url('/static/imgs/background2.png');background-size: 406rpx 262rpx;width: 406rpx;height: 262rpx;z-index: 9;">
+        <view class="temp_flex active_content">
+          <text class="active_content_title">奖励</text>
+          <view class="active_content_point">
+            20<text>积分</text>
+          </view>
         </view>
       </view>
-    </view>
-    <view style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
-      我收下了
+      <view style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
+        我收下了
+      </view>
     </view>
   </view>
 </template>
+<!-- SOS -->
 <template name="sos">
-  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap">
-    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
-    <view class="temp_flex">
-      <text class="center_title">拨打紧急救援电话</text>
-      <view class="sos_bg" style="background-image: url('/static/imgs/bgSos.png');">
-        <view class="sos_phone_wrap">
-          <text>028-56895325</text>
-          <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="11111">
-            拨打
+  <view class="mask_layer">
+    <view style="{{true?'background-image: url(/static/imgs/backImg.png);':'background-image:url(/static/imgs/background2.png)'}})" class="center_wrap fadeout {{true?'box2':''}}" animation="{{fadeOut}}">
+      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <view class="temp_flex">
+        <text class="center_title">拨打紧急救援电话</text>
+        <view class="top_border"></view>
+        <view class="sos_bg" style="background-image: url('/static/imgs/bgSos.png');">
+          <view class="sos_phone_wrap">
+            <text>028-56895325</text>
+            <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="11111">
+              拨打
+            </view>
           </view>
+        </view>
+        <view class="sos_personInfo">
+          <image class="personQrCode" src="/static/imgs/Marker1_Activated@3x.png" mode="" />
+          <text>长按识别二维码添加微信</text>
         </view>
       </view>
     </view>
   </view>
 </template>
+<!-- 联系方式 -->
 <template name="contact">
-  <view style="background-image: url('/static/imgs/backImg.png')" class="contact_wrap">
-    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
-    <view class="temp_flex">
-      <view class="contact_title liner_line">
-        联系客服
-      </view>
-      <view class="contact_bg" style="background-image: url('/static/imgs/bgSos.png');">
-        <view class="contact_phone">
-          <text>028-56895325</text>
-          <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="222222">
-            拨打
+  <view class="mask_layer">
+    <view style="background-image: url('/static/imgs/backImg.png')" class="contact_wrap fadeout" animation="{{fadeOut}}">
+      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <view class="temp_flex">
+        <view class="contact_title liner_line">
+          联系客服
+        </view>
+        <view class="contact_bg" style="background-image: url('/static/imgs/bgSos.png');">
+          <view class="contact_phone">
+            <text>028-56895325</text>
+            <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="222222">
+              拨打
+            </view>
           </view>
         </view>
-      </view>
-      <view class="contact_qrcode">
-        <image src="" mode="" />
-        <text>截图添加客服微信</text>
+        <view class="contact_qrcode">
+          <image src="" mode="" />
+          <text>截图添加客服微信</text>
+        </view>
       </view>
     </view>
   </view>
 </template>
+<!-- 错误提示框 -->
 <template name="wrongAnswer">
-  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap">
-    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
-    <view class="temp_flex">
-      <text class="center_title">回答错误</text>
-      <image class="wrong_icon" src="/static/imgs/wrong.png" mode="" />
-      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
-        重新回答
+  <vire class="mask_layer">
+    <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap fadeout" animation="{{fadeOut}}">
+      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <view class="temp_flex">
+        <text class="center_title">回答错误</text>
+        <image class="wrong_icon" src="/static/imgs/wrong.png" mode="" />
+        <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
+          重新回答
+        </view>
+      </view>
+    </view>
+  </vire>
+</template>
+<!--对话-->
+<template name="dialogBox">
+  <view class="dialogBox">
+    <view style="background-image: url('/static/imgs/dialog.png')" class="dialog_middle {{'left'}}">
+      <image class="next_btn" src="/static/imgs/next_ steps.png" mode="" />
+      <view>
+        <view><text>探险智者:</text></view>
+        <scroll-view scroll-y="true" bounces="true">
+          <text>快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦~</text>
+        </scroll-view>
+        <view></view>
+      </view>
+    </view>
+    <image class="default_left" src="/static/imgs/left.png" mode="" />
+    <image class="default_right" src="/static/imgs/right.png" mode="" />
+    <image class="task_old_man mysteryMan {{'left'}}" src="/static/imgs/mysteryMan.png" mode="" />
+    <!-- <image class="task_old_man {{'left'}}" src="/static/imgs/oldMan.png" mode="" /> -->
+  </view>
+</template>
+<!--背包-->
+<template name="bag">
+  <view class="mask_layer">
+    <view class="bag">
+      <image class="bag_top_title" animation="{{slideDown}}" src="/static/imgs/rope2.png" mode="aspectFill" />
+      <view class="bag_box bg_cover" style="background-image: url(/static/imgs/bagbg.png);" animation="{{slideUp}}">
+      
       </view>
     </view>
   </view>
