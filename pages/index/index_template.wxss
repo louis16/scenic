@@ -1,16 +1,62 @@
-.mask_layer{
-  width: 100vw; 
-  height: 100%; 
-  background-color:rgba(0,0,0,0.7);
+.mask_layer {
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   position: relative;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.fadeout{
+
+.fadeout {
   transform: scale(0.5);
   opacity: 0;
+}
+.align-center{
+  width: 100%;
+  text-align: center;
+}
+.font_style_1 {
+  font-family: JinNanJunJunTi-Bold;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+}
+.font_style_2{
+  font-family: PingFang SC Regular;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #fff;
+}
+.border-0{
+  border: 0!important;
+}
+.fs-20{
+  font-size: 20rpx;
+}
+.fs-24{
+  font-size: 24rpx;
+}
+.fs-28{
+  font-size: 28rpx;
+}
+.fs-32{
+  font-size: 32rpx;
+}
+.fs-40{
+  font-size: 40rpx;
+}
+.flex_nowrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.flex_wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 /* 初始化状态 */
 .default_wrap {
@@ -46,6 +92,7 @@
   top: 0;
   transform: translateX(-50%);
 }
+
 /* 任务 */
 .task_bottom_wrap {
   position: absolute;
@@ -101,7 +148,6 @@
   flex: 1;
   text-align: center;
   font-family: 'JinNanJunJunTi-Bold';
-  font-size: 40rpx;
   font-weight: normal;
   text-align: center;
   letter-spacing: 0em;
@@ -113,7 +159,6 @@
 
 .title_desc {
   font-family: 'PingFang SC Bold';
-  font-size: 28rpx;
   font-weight: normal;
   letter-spacing: 0em;
   color: #2F1407;
@@ -121,21 +166,24 @@
   flex-direction: column;
   align-items: center;
 }
-.task_box{
+
+.task_box {
   text-align: center;
   width: 200rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 20rpx;
 }
+
 .task_box image {
   margin-bottom: 10rpx;
 }
+
 .task_icon {
   width: 120rpx;
   height: 120rpx;
 }
+
 .task_audio_icon {
   width: 40rpx;
   height: 40rpx;
@@ -176,10 +224,12 @@
   bottom: 0;
   z-index: 10;
 }
-.task_old_man.left{
+
+.task_old_man.left {
   left: -15px;
   transform: scaleX(-1);
 }
+
 /* 激活 */
 .center_wrap {
   position: relative;
@@ -187,7 +237,8 @@
   width: 670rpx;
   height: 442rpx;
 }
-.center_wrap.box2{
+
+.center_wrap.box2 {
   background-size: 636rpx 612rpx;
   width: 636rpx;
   height: 612rpx;
@@ -199,6 +250,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .center_wrap .btn_close {
   width: 80rpx;
   height: 80rpx;
@@ -206,19 +258,21 @@
   right: -15rpx;
   top: -15rpx;
 }
+
 .center_btn {
   width: 220rpx;
   height: 80rpx;
+  display: inline-block;
   background-size: 100% 100%;
-  text-align: center;
   line-height: 72rpx;
   color: #FFF09E;
   font-family: 'DFWaWaW5';
-  font-size: 40rpx;
   font-weight: normal;
   text-align: center;
   letter-spacing: 0em;
   margin-top: 40rpx;
+  position: relative;
+  z-index: 100;
 }
 
 .center_input_wrap {
@@ -242,7 +296,6 @@
 
 .center_title {
   font-family: 'JinNanJunJunTi-Bold';
-  font-size: 40rpx;
   font-weight: normal;
   text-align: center;
   letter-spacing: 0em;
@@ -252,7 +305,6 @@
 
 .center_note {
   font-family: 'PingFang SC Regular';
-  font-size: 24rpx;
   font-weight: normal;
   line-height: 24rpx;
   letter-spacing: 0em;
@@ -263,13 +315,14 @@
 .center_note text {
   color: #FFF09E;
 }
+
 /* 激活成功 */
 .success_wrap {
   position: absolute;
   left: 0;
   top: 0;
   width: 100vw;
-  height:100%;
+  height: 100%;
   background-position: center center;
   background-size: 710rpx 620rpx;
   background-repeat: no-repeat;
@@ -318,6 +371,7 @@
   text-shadow: 0 2rpx 6rpx 0 #774122;
   margin-top: 36rpx;
 }
+
 /*SOS*/
 .sos_bg {
   width: 532rpx;
@@ -360,23 +414,27 @@
   font-size: 32rpx;
   text-shadow: 0px 1px 1px 0px #31170D;
 }
+
 .top_border {
-  height:5rpx;
-  margin-top:25rpx;
-  margin-bottom:10rpx;
-  width:70%;
-  background: linear-gradient(270deg, rgba(71,36,25,0.00) 0%, #472419 54%, rgba(71,36,25,0.00) 100%);
+  height: 5rpx;
+  margin-top: 25rpx;
+  margin-bottom: 10rpx;
+  width: 70%;
+  background: linear-gradient(270deg, rgba(71, 36, 25, 0.00) 0%, #472419 54%, rgba(71, 36, 25, 0.00) 100%);
 }
+
 .sos_personInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.sos_personInfo text{
-  color:#2F1407;
+
+.sos_personInfo text {
+  color: #2F1407;
   font-size: 24rpx;
 }
+
 .sos_personInfo .personQrCode {
   width: 240rpx;
   height: 240rpx;
@@ -389,13 +447,15 @@
   height: 664rpx;
   background-size: 100% 100%;
 }
-.contact_wrap .btn_close{
+
+.contact_wrap .btn_close {
   width: 80rpx;
   height: 80rpx;
   position: absolute;
   right: -15rpx;
   top: -15rpx;
 }
+
 .contact_title {
   width: 9 0%;
   position: relative;
@@ -464,8 +524,9 @@
   height: 112rpx;
   margin-top: 40rpx;
 }
+
 /*对话框*/
-.dialogBox{
+.dialogBox {
   position: absolute;
   bottom: 0;
   width: 100vw;
@@ -473,7 +534,8 @@
   display: flex;
   justify-content: center;
 }
-.dialogBox .dialog_middle{
+
+.dialogBox .dialog_middle {
   position: relative;
   z-index: 2;
   width: 710rpx;
@@ -481,14 +543,16 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.dialogBox .dialog_middle>view{
+
+.dialogBox .dialog_middle>view {
   box-sizing: content-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 56rpx 66rpx;
 }
-.dialogBox .dialog_middle>view>view:first-child{
+
+.dialogBox .dialog_middle>view>view:first-child {
   font-family: JinNanJunJunTi-Bold;
   font-size: 32rpx;
   font-weight: normal;
@@ -497,10 +561,12 @@
   height: 32rpx;
   margin-bottom: 34rpx;
 }
-.dialogBox .dialog_middle.left>view>view:first-child{
+
+.dialogBox .dialog_middle.left>view>view:first-child {
   padding-left: 200rpx;
 }
-.dialogBox .dialog_middle>view>scroll-view{
+
+.dialogBox .dialog_middle>view>scroll-view {
   font-family: 'PingFang SC Bold';
   padding-left: 20rpx;
   padding-right: 200rpx;
@@ -511,16 +577,18 @@
   width: auto;
   height: 140rpx;
 }
+
 .dialogBox .dialog_middle.left>view>scroll-view {
   padding-left: 200rpx;
   padding-right: 20rpx;
 }
-.dialogBox .mysteryMan::before{
-  content:'?';
+
+.dialogBox .mysteryMan::before {
+  content: '?';
   display: inline-block;
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   margin-left: -30rpx;
   margin-top: -80rpx;
   font-family: JinNanJunJunTi-Bold;
@@ -530,41 +598,240 @@
   letter-spacing: 0em;
   color: #FFF09E;
 }
-.dialogBox .mysteryMan.left::before{
+
+.dialogBox .mysteryMan.left::before {
   transform: scaleX(-1);
 }
-.dialogBox .next_btn{
+
+.dialogBox .next_btn {
   width: 80rpx;
   height: 80rpx;
   position: absolute;
   right: 32rpx;
   top: 32rpx;
 }
+
 /*背包*/
-.bag{
+.bag {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
-.bag .bag_top_title{
-  width: 276rpx;
-  height: 136rpx;
+
+.bag .bag_title {
+  position: relative;
   transform: translateY(-100%);
 }
-.bg_cover, .bg_contain{
+
+.bag .bag_title text {
+  position: absolute;
+  bottom: 30rpx;
+  left: 100rpx;
+  font-family: JinNanJunJunTi-Bold;
+  font-size: 40rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFFFFF;
+  text-shadow: 0px 1px 2px 0px #353A08;
+}
+
+.bag .bag_title_bg {
+  width: 276rpx;
+  height: 136rpx;
+}
+
+.bg_cover,
+.bg_contain {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.bg_contain{
+
+.bg_contain {
   background-size: contain;
 }
-.bag .bag_box{
+
+.bag .bag_box {
+  box-sizing: border-box;
   width: 100vw;
   flex: 1;
   transform: translateY(100%);
   background-position: center top;
   background-size: 100% calc(100% - 60rpx);
+  padding: 70rpx;
+}
+.bag .bag_box .bag_box_content{
+  height: 830rpx;
+}
+.bag .bag_box .left_bg{
+  position: absolute;
+  left:0;
+  bottom: 0;
+  width: 350rpx;
+  height:346rpx;
+  z-index: 2;
+}
+.bag .bag_box .right_bg1{
+  position: absolute;
+  right:0;
+  bottom: 0;
+  width: 300rpx;
+  height: 240rpx;
+  z-index: 2;
+}
+.bag .bag_box .right_bg2{
+  position: absolute;
+  right: -230rpx;
+  bottom: 0;
+  width: 518rpx;
+  height: 518rpx;
+  z-index: 1;
+}
+.bag .bag_box .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -10rpx;
+  top: -15rpx;
+}
+.bag .bag_box .tip_box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bag .bag_box .tip_box .tip{
+  margin-top: -200rpx;
+  width: 610rpx;
+  min-height: 256rpx;
+  border-radius: 28rpx;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.75);
+  box-sizing: border-box;
+  /* #FFF09E */
+  border: 2rpx solid #FFF09E;
+  padding: 26rpx;
+}
+.bag .bag_box .tip_box .tip .header {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+.bag .bag_box .tip_box .tip .header view {
+  margin-left: 8rpx;
+}
+.bag .bag_box .tip_box .tip .header>view:last-child {
+  flex: 1;
+  font-size: 0;
+  padding: 12rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bag .bag_box .tip_box .tip .header view>view:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.bag .bag_box .tip_box .tip .main {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20rpx;
+}
+.bag .bag_box .tip_box .tip .main .number_2 {
+  width: 530rpx;
+  height: 265rpx;
+}
+.bag .bag_box .tip_box .tip .main .number_4,
+.bag .bag_box .tip_box .tip .main .number_8 {
+  width: 530rpx;
+  height: 530rpx;
+}
+.bag .bag_box .tip_box .tip .main .number_6 {
+  width: 530rpx;
+  height: 352rpx;
+}
+.bag .bag_box .tip_box .tip .main .image_map {
+  position: relative;
+}
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask{
+  position: absolute;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_2,
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_4{
+  width: 265rpx;
+  height: 265rpx;
+}
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_6,
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_8{
+  width: 176rpx;
+  height: 176rpx;
+}
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.unlock {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.unlock::before {
+  content: '🔒'; /*后面换成服务器图片地址*/
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.bag .bag_box .tip_box .tip .main .detail text:first-child{
+  margin: 34rpx 0 24rpx 0;
+}
+.bag .bag_box .tip_box .tip .footer {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.bag .bag_box .tip_box .tip .footer text{
+  color:#FFF09E;
+}
+.bag .pic_box {
+  float: left;
+  width: 104rpx;
+  height: 104rpx;
+  margin: 10rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bag .pic_box image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.bag .pic_box text {
+  font-family: Roboto-Black;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFFFFF;
+  -webkit-text-stroke: #582F1E 0.5px;
+  position:absolute;
+  bottom: 0;
+  right:0;
 }

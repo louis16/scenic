@@ -102,6 +102,25 @@ Page({
     eventBus.off('refreshTask')
     this.interval && clearInterval(this.interval)
   },
+  close(){
+    var slideDown = wx.createAnimation({
+      duration: 1000, // 动画持续时间
+      timingFunction: 'ease', // 动画类型
+    });
+    // 设置动画初始状态
+    slideDown.translateY('100%').step();
+    var slideUp = wx.createAnimation({
+      duration: 1000, // 动画持续时间
+      timingFunction: 'ease', // 动画类型
+    });
+    // 设置动画初始状态
+    slideUp.translateY('-100%').step();
+    // 更新数据，开始执行动画
+    this.setData({
+      slideDown: slideUp.export(),
+      slideUp: slideDown.export(),
+    });
+  },
   getAllMarkedFunc(detailRef) { //获取景观设施的定位，用以展示mark
     getAllMarked(detailRef.id, '').then((res) => {
       this.facilities = formatMarkData(res.facilities);
