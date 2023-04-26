@@ -11,6 +11,12 @@
         <image class="pointIcon" src="/static/imgs/pointsIcon.png" mode="" />
         <text>1523</text>
       </view>
+      <view class="progress">
+        <view class="progressBar" style="background-color:red">
+          <view style="width: 50%;"><image src="/static/imgs/fdj.png" mode="" /></view>
+        </view>
+        <text>50%</text>
+      </view>
       <view class="rightIcon" style="background-image: url('/static/imgs/sos.png');"></view>
       <view class="rightIcon locationIcon" style="background-image: url('/static/imgs/location.png');"></view>
     </view>
@@ -26,6 +32,6 @@
       </view>
     </view>
     <!-- <template is="{{templateName}}" data="" /> -->
-    <template is="bag" data="{{slideDown,slideUp}}"/>
+    <template is="dialogBox" data="{{slideDown,slideUp,fadeOut}}"/>
   </map>  
 </view>     

@@ -8,7 +8,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.slideUp{
+  transform: translateY(100%);
+}
 .fadeout {
   transform: scale(0.5);
   opacity: 0;
@@ -47,6 +49,9 @@
 }
 .fs-40{
   font-size: 40rpx;
+}
+.mgt-0{
+  margin-top: 0!important;
 }
 .flex_nowrap {
   display: flex;
@@ -90,7 +95,7 @@
   position: absolute;
   left: 50%;
   top: 0;
-  transform: translateX(-50%);
+  margin-left: -113rpx;
 }
 
 /* 任务 */
@@ -126,7 +131,7 @@
 }
 
 .task_title_wrap {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -155,6 +160,8 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .title_desc {
@@ -543,7 +550,11 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.dialogBox .dialog_middle .task_audio_icon{
+  position: absolute;
+  right: 130rpx;
+  top:48rpx;
+}
 .dialogBox .dialog_middle>view {
   box-sizing: content-box;
   display: flex;
@@ -559,7 +570,7 @@
   letter-spacing: 0em;
   color: #FFF09E;
   height: 32rpx;
-  margin-bottom: 34rpx;
+  margin-bottom: 30rpx;
 }
 
 .dialogBox .dialog_middle.left>view>view:first-child {
@@ -608,7 +619,7 @@
   height: 80rpx;
   position: absolute;
   right: 32rpx;
-  top: 32rpx;
+  top: 28rpx;
 }
 
 /*背包*/

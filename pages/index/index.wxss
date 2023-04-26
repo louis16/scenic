@@ -321,14 +321,14 @@
   height: 54rpx;
   position: relative;
   right: -45rpx;
-  background-size: 100% 100%;
+  background-size: 100% auto;
   transform: scale(2);
   margin-top: 40rpx;
 }
 
 .locationIcon {
-  margin-top: 35rpx;
-  transform: scale(2.5);
+  margin-top: 45rpx;
+  transform: scale(2.3);
 }
 
 .func {
@@ -369,5 +369,42 @@
   text-align: center;
   letter-spacing: 0em;
   color: white;
-  margin-top: 14rpx;
+  margin-top: 17rpx;
+}
+.progress{
+  width: 285rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 110rpx;
+  left:150rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.progress .progressBar{
+  flex: 1;
+}
+.progress .progressBar view{
+  position: relative;
+  background-color: blue;
+  min-width: 10rpx;
+  height: 30rpx;
+}
+.progress .progressBar view image {
+  width: 26rpx;
+  height: 32rpx;
+  position: absolute;
+  right: -13rpx;
+}
+.progress text{
+  margin-left: 15rpx;
+  width: 60rpx;
+  font-family: Roboto-Medium;
+  font-size: 25rpx;
+  font-weight: 500;
+  line-height: 30rpx;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #2F1407;
 }
