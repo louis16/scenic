@@ -1,0 +1,1 @@
+<camera device-position="back" mode="scanCode" resolution="high" flash="off" binderror="onError" bindinitdone="initDone" bindscancode="scanCode" style="width: {{width}}px;height: {{height}}px;background-color: rebeccapurple;"></camera>
