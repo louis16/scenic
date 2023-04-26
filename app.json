@@ -3,7 +3,9 @@
     "pages/firstPage/fisrtPage",
     "pages/index/index",
     "pages/commonTemplate/templateComp",
-    "pages/osdMarker/osdM"
+    "pages/osdMarker/osdM",
+    "pages/IdentifyPage/IdentifyPage",
+    "pages/IdentifyPage/ScanCamera"
   ],
   "subPackages": [
     {

@@ -2,10 +2,10 @@
   <xr-assets bind:loaded="handleAssetsLoaded">
     <!-- <xr-asset-load type="video-texture" asset-id="hikari" options="loop:true" src="{{source}}" />
     <xr-asset-material asset-id="mat" effect="simple" uniforms="u_baseColorMap: video-hikari" /> -->
-    <xr-asset-load type="gltf" asset-id="damage-helmet" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
-    <xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" />
-    <xr-asset-load type="gltf" asset-id="ceshi1" src="https://file.ysr.uninote.com.cn/resource/shuiguai.glb" />
-    <xr-asset-load type="gltf" asset-id="stroke" src="https://threejs.org/examples/models/gltf/Stork.glb" />
+    <!-- <xr-asset-load type="gltf" asset-id="damage-helmet" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
+    <xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" /> -->
+    <!-- <xr-asset-load type="gltf" asset-id="ceshi1" src="https://file.ysr.uninote.com.cn/resource/shuiguai.glb" />
+    <xr-asset-load type="gltf" asset-id="stroke" src="https://threejs.org/examples/models/gltf/Stork.glb" /> -->
     <xr-asset-load type="gltf" asset-id="robot" src="http://file.ysr.uninote.com.cn/images/RobotExpressive.glb" />
 
   </xr-assets>
@@ -16,12 +16,12 @@
     <!-- <xr-ar-tracker mode="Marker" bind:ar-tracker-switch="handleTrackerSwitch" src="{{tracker}}">
       <xr-mesh node-id="mesh-plane" geometry="plane" material="mat" />
     </xr-ar-tracker> -->
-    <xr-ar-tracker mode="Marker" src="{{tracker}}">
+    <xr-ar-tracker mode="Marker" src="https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg">
       <xr-env env-data="xr-frame-team-workspace-day" />
-      <xr-gltf node-id="damage-helmet" model="damage-helmet" scale="0.4 0.4 0.4" id="helmet" mesh-shape bind:touch-shape="handleTouchModel" />
-      <xr-gltf node-id="stroke" model="stroke" scale="0.4 0.4 0.4" id="stroke" mesh-shape bind:touch-shape="handleTouchModel" />
-      <xr-gltf node-id="robot" model="robot" scale="0.1 0.1 0.1" id="robot" mesh-shape bind:touch-shape="handleTouchModel" />
-      <xr-gltf node-id="ceshi1" model="ceshi1" scale="0.4 0.4 0.4" id="ceshi1" mesh-shape bind:touch-shape="handleTouchModel" />
+      <!-- <xr-gltf node-id="damage-helmet" model="damage-helmet" scale="0.4 0.4 0.4" id="helmet" mesh-shape bind:touch-shape="handleTouchModel" /> -->
+      <!-- <xr-gltf node-id="stroke" model="stroke" scale="0.4 0.4 0.4" id="stroke" mesh-shape bind:touch-shape="handleTouchModel" /> -->
+      <xr-gltf node-id="robot" model="robot" scale="0.3 0.3 0.3" id="robot" mesh-shape bind:touch-shape="handleTouchModel" />
+      <!-- <xr-gltf node-id="ceshi1" model="ceshi1" scale="0.4 0.4 0.4" id="ceshi1" mesh-shape bind:touch-shape="handleTouchModel" /> -->
     </xr-ar-tracker>
   </xr-node>
 

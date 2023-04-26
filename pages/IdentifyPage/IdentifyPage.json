@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ScanCamera": "./ScanCamera",
+    "OsdMark": "/pages/osdMarker/comp/marker/index"
+  }
+}

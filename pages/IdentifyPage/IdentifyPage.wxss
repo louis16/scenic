@@ -1,0 +1,28 @@
+.bottom {
+  background-color: black;
+  color: white;
+  font-size: 48rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom_text {
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+  transform: translateY(-20rpx);
+}
+
+.active {
+  position: relative;
+}
+
+.active::after {
+  content: ' ';
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -20rpx;
+  border-bottom: 5rpx solid white;
+}

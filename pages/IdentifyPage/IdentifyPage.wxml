@@ -1,0 +1,9 @@
+<view>
+  <!-- <view wx:if="{{cameraType === 'ar'}}" style="width:{{width}}px;height:{{height}}px;" width="{{renderWidth}}" height="{{renderHeight}}" /> -->
+  <OsdMark wx:if="{{cameraType === 'ar'}}" style="width:{{width}}px;height:{{height}}px;" width="{{renderWidth}}" height="{{renderHeight}}" />
+  <ScanCamera wx:if="{{cameraType==='scanCode'}}" type="{{cameraType}}" width="{{width}}" height="{{height}}" />
+  <view class="bottom" style="width:{{width}}px;height:{{optionBarHeight}}px;background-color: black;">
+    <text data-type="scanCode" bindtap="changeTab" class="bottom_text {{cameraType==='scanCode' && 'active'}}">扫一扫</text>
+    <text data-type="ar" bindtap="changeTab" class="bottom_text {{cameraType==='ar' && 'active'}}">AR</text>
+  </view>
+</view>
