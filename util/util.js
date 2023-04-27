@@ -82,7 +82,8 @@ const formatMarkData = (arr) => {
       },
       latitude: Number(item.lat),
       longitude: Number(item.lng),
-      iconPath: item.icon ? `https://file.ysr.uninote.com.cn/${item.icon}` : mapIcon['landscape'],
+      iconPath: renderIcon(item.quests, item.icon),
+      // iconPath: item.icon ? `https://file.ysr.uninote.com.cn/${item.icon}` : mapIcon['landscape'],
       // iconPath:'https://uninote.com.cn/__pic/2023/01/a5/81/e31b8a4c05adf822ca77fa698370.png',
       // iconPath:'https://pic.rmb.bdstatic.com/bjh/down/6f65655c5d8f74d304309e3092c968f2.gif',
       // iconPath: mapIcon[item?.type ? 'normal' : 'landscape'],
@@ -94,6 +95,29 @@ const formatMarkData = (arr) => {
       item: item
     }
   })
+}
+const renderIcon = (quests, icon) => {
+  if (quests.length == 0) {
+    return icon ? `https://file.ysr.uninote.com.cn/${icon}` : mapIcon['landscape']
+  } else {
+    if (check_all_quest_finish(quests)) {
+      return 'https://file.ysr.uninote.com.cn/resource/6a9d4e27ae857fe6ca02dde1b6b95d02.png'
+    } else {
+      return 'https://file.ysr.uninote.com.cn/resource/ab6a2526d3812db4274dac004f9ff606.png'
+    }
+  }
+}
+
+const check_all_quest_finish = (arr) => {
+  let hasSomeComplete = false
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    if (element.status == 2) {
+      hasSomeComplete = true
+      break
+    }
+  }
+  return hasSomeComplete
 }
 
 /**

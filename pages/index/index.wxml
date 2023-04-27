@@ -1,6 +1,6 @@
 <!-- index.wxml -->
 <import src="/pages/index/index_template" />
-<view class="container" hover-class="none"  hover-stop-propagation="false">
+<view class="container" hover-class="none" hover-stop-propagation="false">
   <topContainer titleWhite style="background: #505B0D;position: relative;z-index: 101;" title="天才小侦探" />
   <map id="myMap" subkey="WAIBZ-ZM3KF-V6KJU-JMI5K-M3JV7-XYFVT" longitude="{{scenicDetal.lng}}" latitude="{{scenicDetal.lat}}" setting="{{setting}}" enable-overlooking="{{true}}" max-scale="20" markers="{{markers}}" style="width: 100vw;height: {{mapHeight}}px;" bindmarkertap="marktap" bindtap="maptap">
     <view class="useInfo">
@@ -13,16 +13,18 @@
       </view>
       <view class="progress">
         <view class="progressBar" style="background-color:red">
-          <view style="width: 50%;"><image src="/static/imgs/fdj.png" mode="" /></view>
+          <view style="width: 50%;">
+            <image src="/static/imgs/fdj.png" mode="" />
+          </view>
         </view>
         <text>50%</text>
       </view>
-      <view class="rightIcon" style="background-image: url('/static/imgs/sos.png');"></view>
+      <view bindtap="changeTemplate" data-templateName="sos" class="rightIcon" style="background-image: url('/static/imgs/sos.png');"></view>
       <view class="rightIcon locationIcon" style="background-image: url('/static/imgs/location.png');"></view>
     </view>
     <view class="func">
       <image class="backImg" src="/static/imgs/func.png" mode="" />
-      <view class="funcItem">
+      <view class="funcItem" bindtap="changeTemplate" data-templateName="bag">
         <image src="/static/imgs/pack.png" mode="" />
         <text>背包</text>
       </view>
@@ -31,7 +33,15 @@
         <text>我的</text>
       </view>
     </view>
-    <!-- <template is="{{templateName}}" data="" /> -->
-    <template is="dialogBox" data="{{slideDown,slideUp,fadeOut}}"/>
-  </map>  
-</view>     
+    <template wx:if="{{templateName !== 'bag'}}" is="{{templateName}}" data="{{fadeOut,taskData,sosData}}" />
+    <template wx:else="" is="bag" data="{{slideDown,slideUp}}" />
+    <!-- <template is="dialogBox" data="{{slideDown,slideUp,fadeOut}}" /> -->
+  </map>
+</view>
+<!-- =======
+
+<template wx:if="{{templateName !== 'bag'}}" is="{{templateName}}" data="{{fadeOut,taskData,sosData}}" />
+<template wx:else="" is="bag" data="{{slideDown,slideUp}}" />
+</map>
+</view>
+>>>>>>> Stashed changes -->

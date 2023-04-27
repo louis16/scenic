@@ -80,7 +80,7 @@ App({
         wx.startLocationUpdate({
           complete: (res) => {
             if (res.errMsg == 'startLocationUpdate:ok') {
-              wx.onLocationChange(this._locationChangeFn)
+              wx.onLocationChange(this.onNearLocationTask)
             }
           }
         })
@@ -88,14 +88,11 @@ App({
     })
   },
   onHide() {
-    wx.offLocationChange(this._locationChangeFn)
-  },
-  _locationChangeFn(res) {
-    this.onNearLocationTask(res)
+    wx.offLocationChange(this.onNearLocationTask)
   },
 
   onNearLocationTask(res) {
-    if (this.stopLocation || this.showOnce) {
+    if (this.showOnce) {
       return
     }
     let distanceTask = this.globalData.positionWatchLists || []
@@ -107,31 +104,42 @@ App({
       })
       if (dis < element.accuracy) {
         this.showOnce = true
-        wx.showModal({
-          title: '当前到达任务地点',
-          content: '是否确认前去完成任务',
-          complete: (res) => {
-            if (res.confirm) {
-              getTaskDetail(element.id).then(taskDetail => {
-                const data = formatOption(taskDetail)
-                wx.navigateTo({
-                  url: '/pages/taskTrigger/taskTrigger',
-                  success: function (res) {
-                    res.eventChannel.emit('acceptDataFromOpenerPage', {
-                      data: {
-                        ...data,
-                        complete_id: element.id
-                      },
-                    })
-                  }
-                })
-              })
-            }
-            if (res.cancel) {
-              this.stopLocation = true
-            }
-          }
+        getTaskDetail(element.id).then(taskDetail => {
+          const data = formatOption(taskDetail)
+          this.bus.emit('nearTask', {
+            ...data,
+            complete_id: element.id,
+            lat: element.lat,
+            lng: element.lng,
+            accuracy: element.accuracy
+          })
         })
+        // wx.showModal({
+        //   title: '当前到达任务地点',
+        //   content: '是否确认前去完成任务',
+        //   complete: (res) => {
+        //     if (res.confirm) {
+        //       getTaskDetail(element.id).then(taskDetail => {
+        //         const data = formatOption(taskDetail)
+        //         console.log(data)
+        //         // wx.navigateTo({
+        //         //   url: '/pages/taskTrigger/taskTrigger',
+        //         //   success: function (res) {
+        //         //     res.eventChannel.emit('acceptDataFromOpenerPage', {
+        //         //       data: {
+        //         //         ...data,
+        //         //         complete_id: element.id
+        //         //       },
+        //         //     })
+        //         //   }
+        //         // })
+        //       })
+        //     }
+        //     if (res.cancel) {
+        //       this.stopLocation = true
+        //     }
+        //   }
+        // })
         break
       }
     }

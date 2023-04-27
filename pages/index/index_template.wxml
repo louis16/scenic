@@ -2,7 +2,7 @@
 <template name="center">
   <view class="mask_layer">
     <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap fadeout" animation="{{fadeOut}}">
-      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <image bindtap="changeTemplate" data-templateName="default" class="btn_close" src="/static/imgs/bgClose.png" mode="" />
       <view class="temp_flex">
         <text class="center_title">激活任务</text>
         <view class="center_input_wrap">
@@ -23,19 +23,19 @@
   <view class="task_bottom_wrap">
     <image class="task_left" src="/static/imgs/left.png" mode="" />
     <view style="background-image: url('/static/imgs/backImg.png')" class="task_middle">
-      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      <image bindtap="changeTemplate" data-templateName="default" class="btn_close" src="/static/imgs/bgClose.png" mode="" />
       <view class="temp_flex task_content">
         <view class="task_title_wrap liner_line">
           <image bindtap="playAudio" class="task_audio_icon" src="/static/imgs/palyAudio.png" mode="" />
           <view class="task_title fs-40" style="background-image: url('/static/imgs/gold.png');">
-            任务1 《找到XXX》
+            {{taskData.name}}
           </view>
         </view>
         <swiper indicator-dots="{{true}}" style="width: 100%;height:350rpx;">
           <block>
             <swiper-item>
               <view class="title_desc fs-28">
-                在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭。否则那将会成为他今后最不愿提及的往事之一。
+                {{taskData.description}}
                 <view class="task_box fs-20">
                   <image class="task_icon" src="/static/imgs/palyAudio.png" mode="scaleToFill" />
                   找到花果山水帘洞并扫描图中物件
@@ -43,7 +43,7 @@
               </view>
             </swiper-item>
           </block>
-          <block>
+          <!-- <block>
             <swiper-item>
               <view class="title_desc fs-28">
                 在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭。否则那将会成为他今后最不愿提及的往事之一。
@@ -53,9 +53,11 @@
                 </view>
               </view>
             </swiper-item>
-          </block>
+          </block> -->
         </swiper>
-        <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn fs-40 mgt-0">激活任务</view>
+        <view bindtap="goFinishTask" style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn fs-40 mgt-0">{{
+          taskData.need_pay == 1 && taskData.payed ==0 ? '激活任务':'去完成'
+          }}</view>
       </view>
     </view>
     <image class="task_right" src="/static/imgs/right.png" mode="" />
@@ -94,23 +96,23 @@
 <!-- SOS -->
 <template name="sos">
   <view class="mask_layer">
-    <view style="{{true?'background-image: url(/static/imgs/backImg.png);':'background-image:url(/static/imgs/background2.png)'}})" class="center_wrap fadeout {{true?'box2':''}}" animation="{{fadeOut}}">
-      <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view style="{{true?'background-image: url(/static/imgs/backImg.png);':'background-image:url(/static/imgs/background2.png)'}})" class="center_wrap fadeout {{false?'box2':''}}" animation="{{fadeOut}}">
+      <image bindtap="changeTemplate" data-templateName="default" class="btn_close" src="/static/imgs/bgClose.png" mode="" />
       <view class="temp_flex">
         <text class="center_title fs-40">拨打紧急救援电话</text>
         <view class="top_border"></view>
         <view class="sos_bg" style="background-image: url('/static/imgs/bgSos.png');">
           <view class="sos_phone_wrap">
-            <text>028-56895325</text>
-            <view style="background-image: url('/static/imgs/bgBtn.png');" class="sos_call_btn" data-phone="11111">
+            <text>{{sosData.phone}}</text>
+            <view style="background-image: url('/static/imgs/bgBtn.png');" bindtap="callSoS" class="sos_call_btn" data-phone="{{sosData.phone}}">
               拨打
             </view>
           </view>
         </view>
-        <view class="sos_personInfo">
+        <!-- <view class="sos_personInfo">
           <image class="personQrCode" src="/static/imgs/Marker1_Activated@3x.png" mode="" />
           <text>长按识别二维码添加微信</text>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>
@@ -228,7 +230,7 @@
                 <view class="image_map number_8">
                   <image class="number_8" src="/static/imgs/backImg.png" mode="" />
                   <view class="lock_mask">
-                  <!-- 1、全局替换class类名：number_2,number_4,number_6,number_8
+                    <!-- 1、全局替换class类名：number_2,number_4,number_6,number_8
                   2、有多少个方格则有多少个view -->
                     <view class="number_8 unlock"></view>
                     <view class="number_8"></view>
@@ -255,9 +257,9 @@
           </view>
           <image catchtap="close" class="btn_close" src="/static/imgs/bgClose.png" mode="" />
         </view>
-        <image class="left_bg no_point_event" src="/static/imgs/grass_1.png" mode="aspectFill"/>
-        <image class="right_bg1" src="/static/imgs/grass_2.png" mode="aspectFill"/>
-        <image class="right_bg2" src="/static/imgs/grass_3.png" mode="aspectFill"/>
+        <image class="left_bg no_point_event" src="/static/imgs/grass_1.png" mode="aspectFill" />
+        <image class="right_bg1" src="/static/imgs/grass_2.png" mode="aspectFill" />
+        <image class="right_bg2" src="/static/imgs/grass_3.png" mode="aspectFill" />
       </view>
     </view>
   </view>
