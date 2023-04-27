@@ -260,30 +260,33 @@ Page({
     })
   },
   marktap(e) {
-    console.log(e)
-    return 
+    this.mapEvent = e.type;
+    setTimeout(() => this.mapEvent = "", 200); //避免点击mark的时候同时触发maptap
     let currentMarker = this.data.markers.filter((item) => item.id === e.detail.markerId)
     this.currentMarkerIndex = this.data.markers.findIndex(item => item.id == e.detail.markerId)
-    console.log(this.currentMarkerIndex)
-    console.log(currentMarker)
-    this.setData({
-      [`markers[${this.currentMarkerIndex}].width`]: '64px',
-      [`markers[${this.currentMarkerIndex}].height`]: '64px'
-    })
+    this.toogleMarkerIcon(this.currentMarkerIndex)
+  },
+  toogleMarkerIcon(itemIndex) {
+    for (let index = 0; index < this.data.markers.length; index++) {
+      if (itemIndex === index) {
+        this.setData({
+          [`markers[${itemIndex}].width`]: '74px',
+          [`markers[${itemIndex}].height`]: '74px'
+        })
+      } else {
+        this.setData({
+          [`markers[${index}].width`]: '34px',
+          [`markers[${index}].height`]: '34px'
+        })
+      }
+ 
+    }
+
   },
   maptap() {
-    const deepCloneList = JSON.parse(JSON.stringify(this.data.markers))
-    const length = deepCloneList.length
-    let temp = {}
-    for (let i = 0; i < length; i++) {
-      temp = {
-        ...temp,
-        ...{
-          [`markers[${i}].width`]: '34px',
-          [`markers[${i}].height`]: '34px'
-        }
-      }
+    // 普通的tap事件
+    if (this.mapEvent === "") {
+      this.toogleMarkerIcon(-1)
     }
-    console.log(temp)
   }
 });
