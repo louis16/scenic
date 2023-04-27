@@ -1,0 +1,6 @@
+<!-- 默认状态 -->
+<view class="default_wrap">
+  <image class="default_middle slideUp" animation="{{slideUp}}" src="/static/imgs/middle.png" mode="" />
+  <image class="default_left" src="/static/imgs/left.png" mode="" />
+  <image class="default_right" src="/static/imgs/right.png" mode="" />
+</view>

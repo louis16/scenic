@@ -1,0 +1,17 @@
+<view class="dialogBox">
+  <view style="background-image: url('/static/imgs/dialog.png')" class="dialog_middle {{'left'}}">
+    <image class="next_btn" src="/static/imgs/next_ steps.png" mode="" />
+    <image bindtap="playAudio" class="task_audio_icon" src="/static/imgs/palyAudio.png" mode="" />
+    <view>
+      <view><text>探险智者:</text></view>
+      <scroll-view scroll-y="true" bounces="true">
+        <text>快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦快来山顶找到峨眉山金顶，完成任务后可以获得大礼包哦~</text>
+      </scroll-view>
+      <view></view>
+    </view>
+  </view>
+  <image class="default_left" src="/static/imgs/left.png" mode="" />
+  <image class="default_right" src="/static/imgs/right.png" mode="" />
+  <image class="old_man mysteryMan {{'left'}} slideUp" animation="{{slideUp}}" src="/static/imgs/mysteryMan.png" mode="" />
+  <!-- <image class="old_man {{'left'}}" src="/static/imgs/oldMan.png" mode="" /> -->
+</view>

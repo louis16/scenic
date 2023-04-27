@@ -1,0 +1,42 @@
+<!-- 任务 -->
+<view class="task_bottom_wrap">
+  <image class="task_left" src="/static/imgs/left.png" mode="" />
+  <view style="background-image: url('/static/imgs/backImg.png')" class="task_middle">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex task_content">
+      <view class="task_title_wrap liner_line">
+        <image bindtap="playAudio" class="task_audio_icon" src="/static/imgs/palyAudio.png" mode="" />
+        <view class="task_title fs-40" style="background-image: url('/static/imgs/gold.png');">
+          任务1 《找到XXX》
+        </view>
+      </view>
+      <swiper indicator-dots="{{true}}" style="width: 100%;height:350rpx;">
+        <block>
+          <swiper-item>
+            <view class="title_desc fs-28">
+              在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭。否则那将会成为他今后最不愿提及的往事之一。
+              <view class="task_box fs-20">
+                <image class="task_icon" src="/static/imgs/palyAudio.png" mode="scaleToFill" />
+                找到花果山水帘洞并扫描图中物件
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+        <block>
+          <swiper-item>
+            <view class="title_desc fs-28">
+              在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭。否则那将会成为他今后最不愿提及的往事之一。
+              <view class="task_box fs-20">
+                <image class="task_icon" src="/static/imgs/palyAudio.png" mode="scaleToFill" />
+                找到花果山水帘洞并扫描图中物件
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn fs-40 mgt-0">激活任务</view>
+    </view>
+  </view>
+  <image class="task_right" src="/static/imgs/right.png" mode="" />
+  <image class="old_man slideUp" animation="{{slideUp}}" src="/static/imgs/oldMan.png" mode="" />
+</view>

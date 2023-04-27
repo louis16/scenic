@@ -1,0 +1,17 @@
+<view class="mask_layer">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap fadeout" animation="{{fadeOut}}">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <text class="center_title">激活任务</text>
+      <view class="center_input_wrap">
+        <input type="text" class="center_input" placeholder="请输入激活码" placeholder-class="placeholder" />
+      </view>
+      <view class="center_note fs-24">若您尚未购买，请
+        <text>联系客服</text>
+      </view>
+      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
+        立即激活
+      </view>
+    </view>
+  </view>
+</view>

@@ -8,6 +8,16 @@
     "TaskList": "./components/task/TaskList",
     "LandscapeDetail": "./components/landscapeDetail/landscapeDetail",
     "LandscapeList": "./components/landscape/LandscapeList",
-    "Message": "./components/message/message"
+    "Message": "./components/message/message",
+    "Bag": "./components/bag",
+    "Contact": "./components/contact",
+    "Default": "./components/default",
+    "Sos": "./components/sos",
+    "DialogBox": "./components/dialogBox",
+    "ActivateTask": "./components/task/activateTask",
+    "TaskItem": "./components/task/taskItem/index",
+    "Task": "./components/task/task",
+    "ActivationSuccessful": "./components/tip/activationSuccessful",
+    "Tip": "./components/tip"
   }
 }

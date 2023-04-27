@@ -1,0 +1,250 @@
+/*背包*/
+.bag {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bag .bag_title {
+  position: relative;
+  transform: translateY(-100%);
+}
+
+.bag .bag_title text {
+  position: absolute;
+  bottom: 30rpx;
+  left: 100rpx;
+  font-family: JinNanJunJunTi-Bold;
+  font-size: 40rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFFFFF;
+  text-shadow: 0px 1px 2px 0px #353A08;
+}
+
+.bag .bag_title_bg {
+  width: 276rpx;
+  height: 136rpx;
+}
+
+.bg_cover,
+.bg_contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg_contain {
+  background-size: contain;
+}
+
+.bag .bag_box {
+  box-sizing: border-box;
+  width: 100vw;
+  flex: 1;
+  transform: translateY(100%);
+  background-position: center top;
+  background-size: 100% calc(100% - 60rpx);
+  padding: 70rpx;
+}
+
+.bag .bag_box .bag_box_content {
+  height: 830rpx;
+}
+
+.bag .bag_box .left_bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 350rpx;
+  height: 346rpx;
+  z-index: 2;
+}
+
+.bag .bag_box .right_bg1 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 300rpx;
+  height: 240rpx;
+  z-index: 2;
+}
+
+.bag .bag_box .right_bg2 {
+  position: absolute;
+  right: -230rpx;
+  bottom: 0;
+  width: 518rpx;
+  height: 518rpx;
+  z-index: 1;
+}
+
+.bag .bag_box .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -10rpx;
+  top: -15rpx;
+}
+
+.bag .bag_box .tip_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bag .bag_box .tip_box .tip {
+  margin-top: -200rpx;
+  width: 610rpx;
+  min-height: 256rpx;
+  border-radius: 28rpx;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.75);
+  box-sizing: border-box;
+  /* #FFF09E */
+  border: 2rpx solid #FFF09E;
+  padding: 26rpx;
+}
+
+.bag .bag_box .tip_box .tip .header {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.bag .bag_box .tip_box .tip .header view {
+  margin-left: 8rpx;
+}
+
+.bag .bag_box .tip_box .tip .header>view:last-child {
+  flex: 1;
+  font-size: 0;
+  padding: 12rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bag .bag_box .tip_box .tip .header view>view:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bag .bag_box .tip_box .tip .main {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20rpx;
+}
+
+.bag .bag_box .tip_box .tip .main .number_2 {
+  width: 530rpx;
+  height: 265rpx;
+}
+
+.bag .bag_box .tip_box .tip .main .number_4,
+.bag .bag_box .tip_box .tip .main .number_8 {
+  width: 530rpx;
+  height: 530rpx;
+}
+
+.bag .bag_box .tip_box .tip .main .number_6 {
+  width: 530rpx;
+  height: 352rpx;
+}
+
+.bag .bag_box .tip_box .tip .main .image_map {
+  position: relative;
+}
+
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_2,
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_4 {
+  width: 265rpx;
+  height: 265rpx;
+}
+
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_6,
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.number_8 {
+  width: 176rpx;
+  height: 176rpx;
+}
+
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.unlock {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bag .bag_box .tip_box .tip .main .image_map .lock_mask view.unlock::before {
+  content: '🔒';
+  /*后面换成服务器图片地址*/
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.bag .bag_box .tip_box .tip .main .detail text:first-child {
+  margin: 34rpx 0 24rpx 0;
+}
+
+.bag .bag_box .tip_box .tip .footer {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.bag .bag_box .tip_box .tip .footer text {
+  color: #FFF09E;
+}
+
+.bag .pic_box {
+  float: left;
+  width: 104rpx;
+  height: 104rpx;
+  margin: 10rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bag .pic_box image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.bag .pic_box text {
+  font-family: Roboto-Black;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFFFFF;
+  -webkit-text-stroke: #582F1E 0.5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

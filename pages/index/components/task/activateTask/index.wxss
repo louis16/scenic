@@ -1,0 +1,78 @@
+.center_wrap {
+  position: relative;
+  background-size: 100% 100%;
+  width: 670rpx;
+  height: 442rpx;
+}
+
+.center_wrap.box2 {
+  background-size: 636rpx 612rpx;
+  width: 636rpx;
+  height: 612rpx;
+}
+
+.center_wrap .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -15rpx;
+}
+
+.center_btn {
+  width: 220rpx;
+  height: 80rpx;
+  display: inline-block;
+  background-size: 100% 100%;
+  line-height: 72rpx;
+  color: #FFF09E;
+  font-family: 'DFWaWaW5';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  margin-top: 40rpx;
+  position: relative;
+  z-index: 100;
+}
+
+.center_input_wrap {
+  width: 320rpx;
+  height: 72rpx;
+  border-radius: 40rpx;
+  background-color: #8D4B02;
+  text-indent: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center_input {
+  width: 260rpx;
+}
+
+.placeholder {
+  color: #BC8343;
+}
+
+.center_title {
+  font-family: 'JinNanJunJunTi-Bold';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.center_note {
+  font-family: 'PingFang SC Regular';
+  font-weight: normal;
+  line-height: 24rpx;
+  letter-spacing: 0em;
+  color: #2F1407;
+  margin-top: 50rpx;
+}
+
+.center_note text {
+  color: #FFF09E;
+}

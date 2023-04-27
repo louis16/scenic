@@ -1,0 +1,85 @@
+<!--背包-->
+<view class="mask_layer">
+  <view class="bag">
+    <view class="bag_title" animation="{{slideDown}}">
+      <image class="bag_title_bg" src="/static/imgs/rope2.png" mode="aspectFill" />
+      <text>背包</text>
+    </view>
+    <view class="bag_box bg_cover" style="background-image: url(/static/imgs/bagbg.png);" animation="{{slideUp}}">
+      <scroll-view class="bag_box_content" scroll-y="true" enable-flex="true">
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+          <text class="fs-24">10</text>
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+        <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+          <image src="/static/imgs/demo1.png" mode="" />
+        </view>
+      </scroll-view>
+      <view class="tip_box">
+        <view class="tip">
+          <view class="header">
+            <view class="pic_box" style="background-image: url(/static/imgs/pic_box.png);">
+              <image src="/static/imgs/demo1.png" mode="" />
+            </view>
+            <view>
+              <view><text class="font_style_1 fs-32">孙悟空头饰</text><text class="font_style_2 fs-24">拥有：2</text></view>
+              <view><text class="font_style_2 fs-20">前往峨眉山金顶扫描“金顶”即可获得碎片</text></view>
+            </view>
+          </view>
+          <view class="main border-0">
+            <text wx:if="{{false}}" class="font_style_2 fs-28">在水帘洞找到取经前的孙悟空雕像，告诉他别去天庭当弼马温，否则那将会成为他今后最不愿提及的往事之。</text>
+            <view wx:elif="{{true}}">
+              <view class="image_map number_8">
+                <image class="number_8" src="/static/imgs/backImg.png" mode="" />
+                <view class="lock_mask">
+                  <!-- 1、全局替换class类名：number_2,number_4,number_6,number_8
+                  2、有多少个方格则有多少个view -->
+                  <view class="number_8 unlock"></view>
+                  <view class="number_8"></view>
+                  <view class="number_8 "></view>
+                  <view class="number_8 "></view>
+                  <view class="number_8 "></view>
+                  <view class="number_8 "></view>
+                  <view class="number_8 "></view>
+                  <view class="number_8 unlock"></view>
+                </view>
+              </view>
+              <view class="detail flex_wrap">
+                <text class="font_style_1 fs-28">孙悟空</text>
+                <text class="font_style_2 fs-24">找到拼图碎片完成孙悟空拼图，可获得50积分并解锁下一个任务。</text>
+              </view>
+              <view class="align-center">
+                <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn" bindtap="playAudio">立即合成</view>
+              </view>
+            </view>
+          </view>
+          <view class="footer" wx:if="{{false}}">
+            <text class="font_style_2 fs-28">请将这本书带到峨眉山金顶</text>
+          </view>
+        </view>
+        <image catchtap="close" class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+      </view>
+      <image class="left_bg no_point_event" src="/static/imgs/grass_1.png" mode="aspectFill" />
+      <image class="right_bg1" src="/static/imgs/grass_2.png" mode="aspectFill" />
+      <image class="right_bg2" src="/static/imgs/grass_3.png" mode="aspectFill" />
+    </view>
+  </view>
+</view>

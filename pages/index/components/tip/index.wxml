@@ -1,0 +1,13 @@
+<!-- 错误提示框 -->
+<view class="mask_layer">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="center_wrap fadeout" animation="{{fadeOut}}">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <text class="center_title">回答错误</text>
+      <image class="wrong_icon" src="/static/imgs/wrong.png" mode="" />
+      <view style="background-image: url('/static/imgs/bgBtn.png');" class="center_btn">
+        重新回答
+      </view>
+    </view>
+  </view>
+</view>

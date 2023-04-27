@@ -1,0 +1,19 @@
+<!-- 激活成功 -->
+<view class="mask_layer">
+  <view class="success_wrap fadeout" style="background-image: url(/static/imgs/shine.png);" animation="{{fadeOut}}">
+    <view style="background-image: url('/static/imgs/rope.png');" class="active_title">
+      <text>激活成功</text>
+    </view>
+    <view style="background-image: url('/static/imgs/background2.png');background-size: 406rpx 262rpx;width: 406rpx;height: 262rpx;z-index: 9;">
+      <view class="temp_flex active_content">
+        <text class="active_content_title">奖励</text>
+        <view class="active_content_point">
+          20<text>积分</text>
+        </view>
+      </view>
+    </view>
+    <view style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
+      我收下了
+    </view>
+  </view>
+</view>

@@ -1,0 +1,97 @@
+/*SOS*/
+.center_title {
+  font-family: 'JinNanJunJunTi-Bold';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  margin-top: 48rpx;
+}
+
+.center_wrap {
+  position: relative;
+  background-size: 100% 100%;
+  width: 670rpx;
+  height: 442rpx;
+}
+
+.center_wrap.box2 {
+  background-size: 636rpx 612rpx;
+  width: 636rpx;
+  height: 612rpx;
+}
+
+.center_wrap .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -15rpx;
+}
+
+.sos_bg {
+  width: 532rpx;
+  height: 134rpx;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sos_phone_wrap {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.sos_bg text {
+  /* display: inline-block; */
+  flex: 1;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-size: 32rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+  line-height: 56rpx;
+}
+
+.call_btn {
+  width: 156rpx;
+  height: 56rpx;
+  background-size: 100% 100%;
+  text-align: center;
+  line-height: 50rpx;
+  color: #FFF09E;
+  font-family: 'DFWaWaW5';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  font-size: 32rpx;
+  text-shadow: 0px 1px 1px 0px #31170D;
+}
+
+.top_border {
+  height: 5rpx;
+  margin-top: 25rpx;
+  margin-bottom: 10rpx;
+  width: 70%;
+  background: linear-gradient(270deg, rgba(71, 36, 25, 0.00) 0%, #472419 54%, rgba(71, 36, 25, 0.00) 100%);
+}
+
+.sos_personInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sos_personInfo text {
+  color: #2F1407;
+  font-size: 24rpx;
+}
+
+.sos_personInfo .personQrCode {
+  width: 240rpx;
+  height: 240rpx;
+}

@@ -1,0 +1,23 @@
+<!-- 联系方式 -->
+<view class="mask_layer">
+  <view style="background-image: url('/static/imgs/backImg.png')" class="contact_wrap fadeout" animation="{{fadeOut}}">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <view class="contact_title liner_line">
+        联系客服
+      </view>
+      <view class="contact_bg" style="background-image: url('/static/imgs/bgSos.png');">
+        <view class="contact_phone">
+          <text>028-56895325</text>
+          <view style="background-image: url('/static/imgs/bgBtn.png');" class="call_btn" data-phone="222222">
+            拨打
+          </view>
+        </view>
+      </view>
+      <view class="contact_qrcode">
+        <image src="" mode="" />
+        <text>截图添加客服微信</text>
+      </view>
+    </view>
+  </view>
+</view>

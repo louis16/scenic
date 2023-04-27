@@ -1,0 +1,49 @@
+.center_wrap {
+  position: relative;
+  background-size: 100% 100%;
+  width: 670rpx;
+  height: 442rpx;
+}
+
+.center_wrap.box2 {
+  background-size: 636rpx 612rpx;
+  width: 636rpx;
+  height: 612rpx;
+}
+
+.center_wrap .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -10rpx;
+  top: -10rpx;
+}
+.center_title {
+  font-family: 'JinNanJunJunTi-Bold';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  margin-top: 48rpx;
+}
+.center_btn {
+  width: 220rpx;
+  height: 80rpx;
+  display: inline-block;
+  background-size: 100% 100%;
+  line-height: 72rpx;
+  color: #FFF09E;
+  font-family: 'DFWaWaW5';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  margin-top: 50rpx;
+  position: relative;
+  z-index: 100;
+}
+
+.wrong_icon {
+  width: 112rpx;
+  height: 112rpx;
+  margin-top: 50rpx;
+}

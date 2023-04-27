@@ -1,0 +1,22 @@
+<!-- SOS -->
+<view class="mask_layer">
+  <view style="{{true?'background-image: url(/static/imgs/backImg.png);':'background-image:url(/static/imgs/background2.png)'}})" class="center_wrap fadeout {{true?'box2':''}}" animation="{{fadeOut}}">
+    <image class="btn_close" src="/static/imgs/bgClose.png" mode="" />
+    <view class="temp_flex">
+      <text class="center_title fs-40">拨打紧急救援电话</text>
+      <view class="top_border"></view>
+      <view class="sos_bg" style="background-image: url('/static/imgs/bgSos.png');">
+        <view class="sos_phone_wrap">
+          <text>028-56895325</text>
+          <view style="background-image: url('/static/imgs/bgBtn.png');" class="call_btn" data-phone="11111">
+            拨打
+          </view>
+        </view>
+      </view>
+      <view class="sos_personInfo">
+        <image class="personQrCode" src="/static/imgs/Marker1_Activated@3x.png" mode="" />
+        <text>长按识别二维码添加微信</text>
+      </view>
+    </view>
+  </view>
+</view>

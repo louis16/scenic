@@ -1,0 +1,153 @@
+/*背包*/
+.taskInfo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bg_cover,
+.bg_contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg_contain {
+  background-size: contain;
+}
+
+.taskInfo .task_info_box {
+  box-sizing: border-box;
+  width: 100vw;
+  flex: 1;
+  transform: translateY(100%);
+  background-position: center top;
+  background-size: 100% calc(100% - 60rpx);
+  padding: 70rpx;
+}
+
+.taskInfo .task_info_box .bag_box_content {
+  height: 830rpx;
+}
+
+.taskInfo .task_info_box .left_bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 350rpx;
+  height: 346rpx;
+  z-index: 2;
+}
+
+.taskInfo .task_info_box .right_bg1 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 300rpx;
+  height: 240rpx;
+  z-index: 2;
+}
+
+.taskInfo .task_info_box .right_bg2 {
+  position: absolute;
+  right: -230rpx;
+  bottom: 0;
+  width: 518rpx;
+  height: 518rpx;
+  z-index: 1;
+}
+
+.taskInfo .task_info_box .btn_close {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -5rpx;
+  top: 0rpx;
+}
+
+.task_title_wrap {
+  width: 100%;
+  margin: 10rpx 0 15rpx 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.liner_line::before {
+  content: ' ';
+  display: block;
+  margin: 15rpx;
+  height: 8rpx;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, #472419 54%, rgba(0, 0, 0, 0.00) 100%);
+}
+.task_title {
+  flex:1;
+  font-family: 'JinNanJunJunTi-Bold';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 15rpx;
+}
+.task_info_head image{
+  height: 250rpx;
+  width: 100%;
+}
+.task_info_head text,
+.task_info_main text{
+  font-family: 'PingFang SC Bold';
+  color: #2F1407;
+}
+
+.title_desc {
+  font-family: 'PingFang SC Bold';
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.task_box {
+  text-align: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15rpx;
+}
+
+.task_box image {
+  margin-bottom: 10rpx;
+}
+.task_icon {
+  width: 120rpx;
+  height: 120rpx;
+}
+/* 在 wxss 文件中添加以下样式 */
+/* 修改小圆点的大小 */
+.swiper-dots {
+  width: 10px;
+  height: 10px;
+}
+
+/* 修改小圆点的颜色 */
+.swiper-dots .swiper-dot {
+  background-color: rgb(18, 201, 125);
+}
+.swiper-dots .swiper-dot-active {
+  background-color: #333;
+}
+
+/* 修改小圆点的位置 */
+.swiper-dots {
+  bottom: 20px;
+}

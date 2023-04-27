@@ -12,7 +12,7 @@
         <text>1523</text>
       </view>
       <view class="progress">
-        <view class="progressBar" style="background-color:red">
+        <view class="progressBar" style="background-image:url('/static/imgs/progress_bar.png')">
           <view style="width: 50%;"><image src="/static/imgs/fdj.png" mode="" /></view>
         </view>
         <text>50%</text>
@@ -31,7 +31,15 @@
         <text>我的</text>
       </view>
     </view>
-    <!-- <template is="{{templateName}}" data="" /> -->
-    <template is="dialogBox" data="{{slideDown,slideUp,fadeOut}}"/>
+    <!-- <Contact></Contact> -->
+    <!-- <Bag></Bag> -->
+    <!-- <Default></Default> -->
+    <!-- <DialogBox></DialogBox> -->
+    <!-- <Sos></Sos> -->
+    <!-- <TaskItem></TaskItem> -->
+    <!-- <ActivateTask></ActivateTask> -->
+    <!-- <ActivationSuccessful></ActivationSuccessful> -->
+    <!-- <Tip></Tip> -->
+    <Task></Task>
   </map>  
-</view>     
+</view>

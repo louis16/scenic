@@ -1,0 +1,91 @@
+/*对话框*/
+.dialogBox {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 416rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dialogBox .dialog_middle {
+  position: relative;
+  z-index: 2;
+  width: 710rpx;
+  height: 316rpx;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dialogBox .dialog_middle .task_audio_icon {
+  position: absolute;
+  right: 130rpx;
+  top: 48rpx;
+}
+
+.dialogBox .dialog_middle>view {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 56rpx 66rpx;
+}
+
+.dialogBox .dialog_middle>view>view:first-child {
+  font-family: JinNanJunJunTi-Bold;
+  font-size: 32rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #FFF09E;
+  height: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.dialogBox .dialog_middle.left>view>view:first-child {
+  padding-left: 200rpx;
+}
+
+.dialogBox .dialog_middle>view>scroll-view {
+  font-family: 'PingFang SC Bold';
+  padding-left: 20rpx;
+  padding-right: 200rpx;
+  font-size: 28rpx;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #2F1407;
+  width: auto;
+  height: 140rpx;
+}
+
+.dialogBox .dialog_middle.left>view>scroll-view {
+  padding-left: 200rpx;
+  padding-right: 20rpx;
+}
+
+.dialogBox .mysteryMan::before {
+  content: '?';
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -30rpx;
+  margin-top: -80rpx;
+  font-family: JinNanJunJunTi-Bold;
+  font-size: 102rpx;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+}
+
+.dialogBox .mysteryMan.left::before {
+  transform: scaleX(-1);
+}
+
+.dialogBox .next_btn {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 32rpx;
+  top: 28rpx;
+}

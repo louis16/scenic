@@ -2,6 +2,156 @@ page {
   width: 100vw;
   overflow-x: hidden;
 }
+.mask_layer {
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slideUp{
+  transform: translateY(100%);
+}
+.fadeout {
+  transform: scale(0.5);
+  opacity: 0;
+}
+.align-center{
+  width: 100%;
+  text-align: center;
+}
+.font_style_1 {
+  font-family: JinNanJunJunTi-Bold;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  color: #FFF09E;
+}
+.font_style_2{
+  font-family: PingFang SC Regular;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #fff;
+}
+.border-0{
+  border: 0!important;
+}
+.fs-20{
+  font-size: 20rpx;
+}
+.fs-24{
+  font-size: 24rpx;
+}
+.fs-28{
+  font-size: 28rpx;
+}
+.fs-32{
+  font-size: 32rpx;
+}
+.fs-40{
+  font-size: 40rpx;
+}
+.mgt-0{
+  margin-top: 0!important;
+}
+.flex_nowrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.flex_wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.temp_flex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.center_btn {
+  width: 220rpx;
+  height: 80rpx;
+  display: inline-block;
+  background-size: 100% 100%;
+  line-height: 72rpx;
+  color: #FFF09E;
+  font-family: 'DFWaWaW5';
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0em;
+  margin-top: 40rpx;
+  position: relative;
+  z-index: 100;
+}
+
+.task_audio_icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.task_audio_icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-25%, -25%);
+  width: 70rpx;
+  height: 70rpx;
+}
+
+/* 初始化状态 */
+.default_wrap {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 376rpx;
+}
+
+.default_left {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+}
+
+.default_right {
+  width: 262rpx;
+  height: 376rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.default_middle {
+  width: 226rpx;
+  height: 260rpx;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -113rpx;
+}
+
+.old_man {
+  width: 348rpx;
+  height: 346rpx;
+  position: absolute;
+  right: -15rpx;
+  bottom: 0;
+  z-index: 10;
+}
+
+.old_man.left {
+  left: -15px;
+  transform: scaleX(-1);
+}
 
 .safeBottom {
   margin-bottom: constant(safe-area-inset-bottom);
