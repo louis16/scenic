@@ -108,6 +108,10 @@ Page({
         videoEnd: false, //选择正确后，关闭答题界面
         audioEnd: false
       })
+      eventBus.emit('nearTask', {
+        show_type: 'completeTask',
+        ...res.quests[0] || {}
+      })
     })
   },
   reAnswer() {

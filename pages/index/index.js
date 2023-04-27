@@ -41,6 +41,18 @@ Page({
     fadeOut: {} // 渐显
   },
   onShow: function () {
+    console.log(this.show_type)
+    if (this.show_type === 'completeTask') {
+      // this.taskDataFromComplete = result
+      console.log(222)
+      setTimeout(() => {
+        this.setData({
+          taskData: this.taskDataFromComplete,
+          templateName: 'task'
+        })
+      }, 160)
+    }
+
     // 创建动画实例
     let fadeOut = wx.createAnimation({
       duration: 1000, // 动画时长
@@ -92,6 +104,12 @@ Page({
     })
     eventBus.on('nearTask', result => {
       console.log(result, 11)
+      if (result.show_type === 'completeTask') {
+        this.show_type = result.show_type
+        this.taskDataFromComplete = result
+        console.log(this.show_type, this.taskDataFromComplete, 2222)
+        return
+      }
       this.setData({
         taskData: result,
         templateName: 'task'
@@ -190,7 +208,7 @@ Page({
       payed
     } = this.data.taskData
     //需要激活的任务未激活
-    if (need_pay == 1 && payed == 0) {
+    if (need_pay == 0 && payed == 0) {
       this.setData({
         templateName: 'center'
       })
@@ -204,8 +222,8 @@ Page({
     wx.getLocation({
       success: function (res) {
         let dis = getDistance({
-          lat: this.data.taskData.lat,
-          lng: this.data.taskData.lng
+          lat: _this.data.taskData.lat,
+          lng: _this.data.taskData.lng
         }, {
           lat: res.latitude,
           lng: res.longitude,
