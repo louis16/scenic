@@ -3,7 +3,8 @@ const {
   getAllMarked,
   getAllTask,
   getGoods,
-  userOnline
+  userOnline,
+  activeTask
 } = require("../../util/api");
 const {
   getStorageSync,
@@ -40,6 +41,7 @@ Page({
     fadeOut: {} // 渐显
   },
   onShow: function () {
+    // 创建动画实例
     let fadeOut = wx.createAnimation({
       duration: 1000, // 动画时长
       timingFunction: 'ease', // 缓动函数
@@ -48,8 +50,23 @@ Page({
     });
     // 设置动画效果
     fadeOut.scale(1).opacity(1).step();
+    var slideDown = wx.createAnimation({
+      duration: 1000, // 动画持续时间
+      timingFunction: 'ease', // 动画类型
+    });
+    // 设置动画初始状态
+    slideDown.translateY('0').step();
+    var slideUp = wx.createAnimation({
+      duration: 1000, // 动画持续时间
+      timingFunction: 'ease', // 动画类型
+    });
+    // 设置动画初始状态
+    slideUp.translateY('0').step();
+    // 更新数据，开始执行动画
     this.setData({
       fadeOut: fadeOut.export(),
+      slideDown: slideDown.export(),
+      slideUp: slideUp.export(),
       templateName: 'default'
     });
   },
@@ -162,59 +179,34 @@ Page({
   },
   changeTemplate(event) {
     const name = event.currentTarget.dataset.templatename
-    // 创建动画实例
-    let fadeOut = wx.createAnimation({
-      duration: 1000, // 动画时长
-      timingFunction: 'ease', // 缓动函数
-      delay: 0, // 延迟时间
-      transformOrigin: '50% 50%', // 变形原点
-    });
-    // 设置动画效果
-    fadeOut.scale(1).opacity(1).step();
-    var slideDown = wx.createAnimation({
-      duration: 1000, // 动画持续时间
-      timingFunction: 'ease', // 动画类型
-    });
-    // 设置动画初始状态
-    slideDown.translateY('0').step();
-    var slideUp = wx.createAnimation({
-      duration: 1000, // 动画持续时间
-      timingFunction: 'ease', // 动画类型
-    });
-    // 设置动画初始状态
-    slideUp.translateY('0').step();
-    // 更新数据，开始执行动画
-    let animationObj = {}
-    if (name === 'bag') {
-      animationObj = {
-        slideDown: slideDown.export(),
-        slideUp: slideUp.export(),
-      }
-    } else {
-      animationObj = {
-        fadeOut: fadeOut.export(),
-      };
-    }
-
     this.setData({
       templateName: event.currentTarget.dataset.templatename,
-      ...animationObj
     })
   },
 
   goFinishTask() {
-    const _this = this
-    const itemLatLng = {
-      lat: this.data.taskData.lat,
-      lng: this.data.taskData.lng
+    const {
+      need_pay,
+      payed
+    } = this.data.taskData
+    //需要激活的任务未激活
+    if (need_pay == 1 && payed == 0) {
+      this.setData({
+        templateName: 'center'
+      })
+      return
     }
+    const _this = this
     const accuracy = this.data.taskData.accuracy || 100
     wx.showLoading({
       title: '距离计算中',
     })
     wx.getLocation({
       success: function (res) {
-        let dis = getDistance(itemLatLng, {
+        let dis = getDistance({
+          lat: this.data.taskData.lat,
+          lng: this.data.taskData.lng
+        }, {
           lat: res.latitude,
           lng: res.longitude,
         })
@@ -236,10 +228,29 @@ Page({
             title: `距离任务${dis.toFixed(0)}米`,
           })
         }
-        console.log(dis, accuracy)
       },
       complete: () => wx.hideLoading()
     })
+  },
+  onActiveCodeChange(e) {
+    this.activeCode = e.detail.value
+  },
+  toActiveTask() {
+    wx.showLoading({
+      title: '激活中...',
+    })
+    let detail = JSON.parse(getStorageSync(SCENICDETAIL));
+    let params = {
+      scenery_id: detail.id,
+      code: this.activeCode,
+      user_quest_id: this.data.taskData.complete_id
+    }
+    // activeTask(params).then(res => {
+    //   eventBus.emit('nearTask', this.data.taskData)
+    // }).finally(() => wx.hideLoading()) //激活任务
+    setTimeout(() => {
+      eventBus.emit('nearTask', this.data.taskData)
+    }, 1000)
   },
   callSoS(event) {
     const sosPhone = event.currentTarget.dataset.phone
@@ -247,5 +258,32 @@ Page({
     wx.makePhoneCall({
       phoneNumber: sosPhone,
     })
+  },
+  marktap(e) {
+    console.log(e)
+    return 
+    let currentMarker = this.data.markers.filter((item) => item.id === e.detail.markerId)
+    this.currentMarkerIndex = this.data.markers.findIndex(item => item.id == e.detail.markerId)
+    console.log(this.currentMarkerIndex)
+    console.log(currentMarker)
+    this.setData({
+      [`markers[${this.currentMarkerIndex}].width`]: '64px',
+      [`markers[${this.currentMarkerIndex}].height`]: '64px'
+    })
+  },
+  maptap() {
+    const deepCloneList = JSON.parse(JSON.stringify(this.data.markers))
+    const length = deepCloneList.length
+    let temp = {}
+    for (let i = 0; i < length; i++) {
+      temp = {
+        ...temp,
+        ...{
+          [`markers[${i}].width`]: '34px',
+          [`markers[${i}].height`]: '34px'
+        }
+      }
+    }
+    console.log(temp)
   }
 });

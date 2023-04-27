@@ -103,3 +103,11 @@ export const goodComposition = (params) => {
     data: params
   })
 }
+//激活任务
+export const activeTask = (params) => {
+  return request({
+    url: `/quests/active`,
+    method: 'POST',
+    data: params
+  })
+}
