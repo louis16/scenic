@@ -246,11 +246,22 @@ Page({
       user_quest_id: this.data.taskData.complete_id
     }
     // activeTask(params).then(res => {
-    //   eventBus.emit('nearTask', this.data.taskData)
+    //   this.setData({
+    //     templateName: 'activeSuccess'
+    //   })
+    //   // eventBus.emit('nearTask', this.data.taskData)
     // }).finally(() => wx.hideLoading()) //激活任务
     setTimeout(() => {
-      eventBus.emit('nearTask', this.data.taskData)
+      wx.hideLoading()
+      this.setData({
+        templateName: 'activeSuccess'
+      })
     }, 1000)
+  },
+  finishActive() {
+    eventBus.emit('nearTask', {
+      ...this.data.taskData,
+    })
   },
   callSoS(event) {
     const sosPhone = event.currentTarget.dataset.phone
@@ -279,7 +290,7 @@ Page({
           [`markers[${index}].height`]: '34px'
         })
       }
- 
+
     }
 
   },

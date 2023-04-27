@@ -87,7 +87,7 @@
           </view>
         </view>
       </view>
-      <view style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
+      <view bindtap="finishActive" style="background-image: url('/static/imgs/bgBtn.png');margin-top: 72rpx;" class="center_btn">
         我收下了
       </view>
     </view>
