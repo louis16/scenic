@@ -107,6 +107,24 @@ const renderIcon = (quests, icon) => {
     }
   }
 }
+const getNewTask = (unfinishTask, questId) => {
+  let taskItem = {}
+  for (let index = 0; index < unfinishTask.length; index++) {
+    const element = unfinishTask[index];
+    for (let index = 0; index < element.quests.length; index++) {
+      const quest = element.quests[index];
+      if (quest.id == questId) {
+        taskItem = {
+          ...quest,
+          lat: element.lat,
+          lng: element.lng
+        }
+        break
+      }
+    }
+  }
+  return taskItem
+}
 
 const check_all_quest_finish = (arr) => {
   let hasSomeComplete = false
@@ -237,5 +255,6 @@ module.exports = {
   SCENICDETAIL,
   PHONE,
   getMyLocation,
-  SOS
+  SOS,
+  getNewTask
 };

@@ -4,7 +4,8 @@ const {
   getAllTask,
   getGoods,
   userOnline,
-  activeTask
+  activeTask,
+  getTaskDetail
 } = require("../../util/api");
 const {
   getStorageSync,
@@ -13,10 +14,10 @@ const {
   formatMarkData,
   SCENICDETAIL,
   SOS,
-  getMyLocation
+  getMyLocation,
+  getNewTask
 } = require("../../util/util");
 const {
-  mapIcon,
   getDistance
 } = require('../../util/constants')
 
@@ -41,16 +42,16 @@ Page({
     fadeOut: {} // 渐显
   },
   onShow: function () {
-    console.log(this.show_type)
     if (this.show_type === 'completeTask') {
-      // this.taskDataFromComplete = result
-      console.log(222)
+      let taskItem = getNewTask(this.data.taskList.unfinished, this.taskDataFromComplete.id)
+      console.log(taskItem, 222)
       setTimeout(() => {
         this.setData({
-          taskData: this.taskDataFromComplete,
+          taskData: taskItem,
           templateName: 'task'
         })
       }, 160)
+      this.show_type = ''
     }
 
     // 创建动画实例
@@ -107,7 +108,6 @@ Page({
       if (result.show_type === 'completeTask') {
         this.show_type = result.show_type
         this.taskDataFromComplete = result
-        console.log(this.show_type, this.taskDataFromComplete, 2222)
         return
       }
       this.setData({
@@ -205,56 +205,81 @@ Page({
   goFinishTask() {
     const {
       need_pay,
-      payed
+      payed,
+      trigger_type
     } = this.data.taskData
     //需要激活的任务未激活
-    if (need_pay == 0 && payed == 0) {
+    if (need_pay == 1 && payed == 0) {
       this.setData({
         templateName: 'center'
       })
       return
     }
     const _this = this
-    const accuracy = this.data.taskData.accuracy || 100
-    wx.showLoading({
+    showLoading({
       title: '距离计算中',
     })
     wx.getLocation({
       success: function (res) {
-        let dis = getDistance({
-          lat: _this.data.taskData.lat,
-          lng: _this.data.taskData.lng
-        }, {
-          lat: res.latitude,
-          lng: res.longitude,
-        })
-        if (dis < accuracy) {
-          wx.navigateTo({
-            url: '/pages/taskTrigger/taskTrigger',
-            success: function (res) {
-              res.eventChannel.emit('acceptDataFromOpenerPage', {
-                data: {
-                  ..._this.data.taskData,
-                  complete_id: _this.data.taskData.complete_id
-                },
-              })
-            }
-          })
-        } else {
-          wx.showToast({
-            icon: 'error',
-            title: `距离任务${dis.toFixed(0)}米`,
-          })
-        }
+        _this.handleTaskCompleteType(res, trigger_type)
       },
-      complete: () => wx.hideLoading()
+      complete: () => hideLoading()
+    })
+  },
+
+  handleTaskCompleteType(res, trigger_type) {
+    const accuracy = this.data.taskData.accuracy || 100
+    let dis = getDistance({
+      lat: this.data.taskData.lat,
+      lng: this.data.taskData.lng
+    }, {
+      lat: res.latitude,
+      lng: res.longitude,
+    })
+    const _this = this
+    if (dis < accuracy) {
+      if (trigger_type == 1) {
+        wx.showToast({
+          title: 'AR',
+        })
+      } else if (trigger_type == 2) {
+        wx.navigateTo({
+          url: '/pages/taskTrigger/taskTrigger',
+          success: function (res) {
+            res.eventChannel.emit('acceptDataFromOpenerPage', {
+              data: {
+                ..._this.data.taskData,
+                complete_id: _this.data.taskData.complete_id
+              },
+            })
+          }
+        })
+      } else if (trigger_type == 3) {
+        wx.scanCode({
+          success: function (res) {
+            _this.handleScanQrCode(res)
+          }
+        })
+      }
+    } else {
+      wx.showToast({
+        icon: 'error',
+        title: `距离任务${dis.toFixed(0)}米`,
+      })
+    }
+  },
+  handleScanQrCode(codeResult) {
+    let list = app.globalData.qrCodeWatchLists
+    let codeItem = list.filter(item => item.key === codeResult.result)
+    getTaskDetail(codeItem[0].id).then(res => {
+      console.log(res)
     })
   },
   onActiveCodeChange(e) {
     this.activeCode = e.detail.value
   },
   toActiveTask() {
-    wx.showLoading({
+    showLoading({
       title: '激活中...',
     })
     let detail = JSON.parse(getStorageSync(SCENICDETAIL));
@@ -263,22 +288,17 @@ Page({
       code: this.activeCode,
       user_quest_id: this.data.taskData.complete_id
     }
-    // activeTask(params).then(res => {
-    //   this.setData({
-    //     templateName: 'activeSuccess'
-    //   })
-    //   // eventBus.emit('nearTask', this.data.taskData)
-    // }).finally(() => wx.hideLoading()) //激活任务
-    setTimeout(() => {
-      wx.hideLoading()
+    activeTask(params).then(res => {
       this.setData({
         templateName: 'activeSuccess'
       })
-    }, 1000)
+      this.activeCode = ''
+    }).finally(() => hideLoading()) //激活任务
   },
   finishActive() {
     eventBus.emit('nearTask', {
       ...this.data.taskData,
+      payed: 1
     })
   },
   callSoS(event) {
